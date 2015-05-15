@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Sun May  3 21:54:43 2015 polydo_s
-// Last update Mon May  4 00:49:38 2015 polydo_s
+// Last update Tue May  5 19:48:31 2015 polydo_s
 //
 
 #ifndef COLOR_HH
@@ -19,6 +19,7 @@
  * the red hue,
  * the green hue
  * the blue hue
+ * the opacity
  *
  * @author Swann Polydor (polydo_s)
  * @version 0.1
@@ -26,40 +27,55 @@
  *
  * @date May 4, 2015
  */
+
+#include <cstdint>
+
 class	Color {
 
 private:
-  unsigned int	_r; //!< The red component
-  unsigned int	_g; //!< The green component
-  unsigned int	_b; //!< The blue component
+  unsigned char	_r;
+  unsigned char	_g;
+  unsigned char	_b;
+  float		_a;
 
 public:
 
   /**
   * Construct a new color
   *
-  * @param r the red component
-  * @param g the green component
-  * @param b the blue component
+  * @param r the red component between 0 and 255
+  * @param g the green component between 0 and 255
+  * @param b the blue component between 0 and 255
+  * @param a the alpha of the color between 0 and 1
   */
-  Color(unsigned int r, unsigned int g, unsigned int b);
+  Color(unsigned char r, unsigned char g, unsigned char b, float a);
 
 public:
 
   /**
    * Get the red component
    */
-  unsigned int	getR() const;
+  unsigned char	getR() const;
 
   /**
    * Get the green component
    */
-  unsigned int	getG() const;
+  unsigned char	getG() const;
 
   /**
    * Get the blue component
    */
-  unsigned int	getB() const;
+  unsigned char	getB() const;
+
+  /**
+   * Get the alpha component
+   */
+  float	       	getAlpha() const;
+
+  /**
+   * Get the color in a usable format
+   */
+  uint32_t	getRGBA() const;
 };
 
 #endif

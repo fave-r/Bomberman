@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Sun May  3 18:53:42 2015 polydo_s
-// Last update Mon May  4 00:53:34 2015 polydo_s
+// Last update Fri May 15 17:11:15 2015 polydo_s
 //
 
 #ifndef AELEMENT_HH
@@ -13,7 +13,7 @@
 
 /**
  * @class AElement
- * @brief Base class of Bomberman's element
+ * @brief Everything is an element
  * 
  * All the elements are represented by a position (x, y),
  * they are also drawable and visible.
@@ -30,8 +30,8 @@
 
 class	AElement {
 protected:
-  unsigned int	_x; //!< The x position of any element
-  unsigned int	_y; //!< The y position of any element
+  float	_x; //!< The x position of any element
+  float	_y; //!< The y position of any element
 
 public:
 
@@ -41,7 +41,7 @@ public:
    * @param x position
    * @param y position
    */
-  AElement(unsigned int x, unsigned int y);
+  AElement(float x, float y);
 
 public:
   /**
@@ -49,16 +49,25 @@ public:
    */
   virtual void	draw() const = 0;
 
+  /**
+   * Update any kind of element,
+   * very useful for the animation
+   */
+  virtual void	update() = 0;
+
 public:
   /**
    * Get the x position of any element
    */
-  int	getX() const;
+  float	getX() const;
 
   /**
    * Get the y position of any element
    */
-  int	getY() const;
+  float	getY() const;
+
+
+  virtual const std::string	&toString() const;
 
 public:
   /**
@@ -67,7 +76,7 @@ public:
    * @param x the new x position
    * @param y the new y position
    */
-  void	setPosition(unsigned int x, unsigned int y);
+  void	setPosition(float x, float y);
 };
 
 #endif

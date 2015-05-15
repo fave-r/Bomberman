@@ -5,22 +5,27 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Sun May  3 18:55:24 2015 polydo_s
-// Last update Sun May  3 21:24:57 2015 polydo_s
+// Last update Fri May 15 17:11:40 2015 polydo_s
 //
 
 #include "AElement.hh"
 
-int	AElement::getX() const
+float	AElement::getX() const
 {
   return this->_x;
 }
 
-int	AElement::getY() const
+float	AElement::getY() const
 {
   return this->_y;
 }
 
-void	AElement::setPosition(unsigned int x, unsigned int y)
+const std::string	&toString() const
+{
+  return ".";
+}
+
+void	AElement::setPosition(float x, float y)
 {
   this->_x = x;
   this->_y = y;
