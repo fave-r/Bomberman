@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 13:44:50 2015 clément jean
-// Last update Fri May 15 14:00:13 2015 polydo_s
+// Last update Fri May 15 17:14:18 2015 clément jean
 //
 
 #include <algorithm>
@@ -13,13 +13,14 @@
 #include <iostream>
 #include <vector>
 #include <ctime>
+#include "AElement.hh"
 
 class MapGenerator {
 
 private:
-  int			_width;
-  int			_height;
-  std::vector<bool>	_maze;
+  int						_width;
+  int						_height;
+  std::vector< std::vector<AElement *> >	_map;
 
 public:
   MapGenerator(const int &width, const int &height);
@@ -30,5 +31,4 @@ public:
   void				Show();
   void				Initialize();
   void				Carve(const int &x, const int &y);
-  const std::vector<bool>	&getMap();
 };
