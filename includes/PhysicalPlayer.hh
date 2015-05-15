@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:59:33 2015 polydo_s
-// Last update Fri May 15 22:06:46 2015 polydo_s
+// Last update Fri May 15 22:50:49 2015 polydo_s
 //
 
 #ifndef PHYSICAL_PLAYER_HH
@@ -28,6 +28,9 @@
 #include "APlayer.hh"
 
 class	PhysicalPlayer : public APlayer {
+
+public:
+  PhysicalPlayer(float x, float y, ACharacter::eOrientation orientation);
 
 public:
   virtual void	update();

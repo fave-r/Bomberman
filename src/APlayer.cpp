@@ -5,12 +5,13 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Fri May 15 22:08:50 2015 polydo_s
+// Last update Fri May 15 23:24:05 2015 polydo_s
 //
 
 #include "APlayer.hh"
 
-APlayer::APlayer() : ACharacter("Player", ACharacter::UP)
+APlayer::APlayer(float x, float y, ACharacter::eOrientation orientation)
+  : ACharacter(x, y, orientation)
 {
   static unsigned int id = 1;
 
