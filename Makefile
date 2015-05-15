@@ -5,11 +5,11 @@
 ## Login   <polydo_s@epitech.net>
 ## 
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Tue Apr 28 16:22:38 2015 Swann polydo_s
+## Last update Fri May 15 13:57:22 2015 polydo_s
 ##
 
 CC		= clang++
-CPPFLAGS	+= -W -Wall -Werror -Wextra
+CPPFLAGS	+= -W -Wall -Werror -Wextra -std=c++11
 CPPFLAGS	+= -I./includes
 
 NAME		= bomberman
@@ -18,20 +18,22 @@ RM		= rm -rf
 BIN		= bin
 SRC		= src
 
-SRCS		= main.cpp
+SRCS		= main.cpp			\
+		  $(SRC)/MapGenerator.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	mkdir -p $(BIN)
 	$(CC) $(OBJS) -o $(BIN)/$(NAME)
 
 clean:
 	$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(BIN)/$(NAME)
+	$(RM) $(BIN)
 
 re: fclean all
 
