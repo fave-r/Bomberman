@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Sun May  3 18:57:39 2015 polydo_s
-// Last update Mon May  4 00:49:38 2015 polydo_s
+// Last update Fri May 15 13:46:39 2015 polydo_s
 //
 
 #ifndef ACHARACTER_HH
@@ -17,7 +17,7 @@
 
 /**
  * @class ACharacter
- * @brief Class representing Player or Monster
+ * @brief Everything that moves and play
  *
  * All the characters are elements that can actually play,
  * they have a name and an orientation
@@ -52,21 +52,23 @@ public:
    * @param name player's name or monster type
    * @param orientation to where the character is looking
    */
-  ACharacter(std::string name, eOrientation orientation);
+  ACharacter(const std::string &name, eOrientation orientation);
 
 public:
-  
-  /**
-   * Draw any kind of character
-   */
-  virtual void	draw() const = 0;
+  void			move(eOrientation orientation);
+
+protected:
+  void			goUp();
+  void			goRight();
+  void			goDown();
+  void			goLeft();
 
 public:
 
   /**
   * Get the character name
   */
-  const std::string	getName() const;
+  const std::string	&getName() const;
 
   /**
    * Get the character orientation
