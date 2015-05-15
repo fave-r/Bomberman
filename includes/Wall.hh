@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 17:25:07 2015 clément jean
-// Last update Fri May 15 18:09:05 2015 polydo_s
+// Last update Fri May 15 21:43:33 2015 clément jean
 //
 
 #ifndef __WALL_HH__
@@ -17,19 +17,13 @@
 class   Wall : public AElement
 {
 public:
-  Wall(float x, float y)
-    : AElement(x, y)
-  {
-  }
-  ~Wall(){}
-public:
-  void	draw() const {};
-  void	update() {};
+  Wall(float x, float y);
+  ~Wall();
 
-  const std::string	ToString() const
-  {
-    return "W";
-  }
+public:
+  void	draw() const;
+  void	update();
+  const std::string	ToString() const;
 };
 
 #endif
