@@ -5,7 +5,7 @@
 ## Login   <polydo_s@epitech.net>
 ## 
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Fri May 15 13:57:22 2015 polydo_s
+## Last update Fri May 15 18:06:54 2015 polydo_s
 ##
 
 CC		= clang++
@@ -19,7 +19,8 @@ BIN		= bin
 SRC		= src
 
 SRCS		= main.cpp			\
-		  $(SRC)/MapGenerator.cpp
+		  $(SRC)/MapGenerator.cpp	\
+		  $(SRC)/AElement.cpp		\
 
 OBJS		= $(SRCS:.cpp=.o)
 

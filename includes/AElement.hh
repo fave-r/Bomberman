@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Sun May  3 18:53:42 2015 polydo_s
-// Last update Fri May 15 17:11:15 2015 polydo_s
+// Last update Fri May 15 18:07:15 2015 polydo_s
 //
 
 #ifndef AELEMENT_HH
@@ -27,6 +27,8 @@
  *
  * @date May 4, 2015
  */
+
+#include <string>
 
 class	AElement {
 protected:
@@ -67,7 +69,7 @@ public:
   float	getY() const;
 
 
-  virtual const std::string	&toString() const;
+  virtual const std::string	ToString() const;
 
 public:
   /**
