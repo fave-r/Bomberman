@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 13:44:50 2015 clément jean
-// Last update Fri May 15 17:29:59 2015 clément jean
+// Last update Fri May 15 22:37:12 2015 clément jean
 //
 
 #include <algorithm>
@@ -31,5 +31,4 @@ public:
   void				Generate();
   void				Show();
   void				Initialize();
-  void				Carve(const int &x, const int &y);
 };

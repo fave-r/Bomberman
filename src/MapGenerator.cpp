@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 13:34:23 2015 clément jean
-// Last update Fri May 15 22:21:31 2015 clément jean
+// Last update Fri May 15 22:42:11 2015 clément jean
 //
 
 #include "MapGenerator.hh"
@@ -19,9 +19,9 @@ MapGenerator::MapGenerator(const int &width, const int &height)
 
 void	MapGenerator::Generate()
 {
-  for (std::vector< std::vector<AElement *> >::size_type i = 0; i < this->_map.size(); i++)
+  for (unsigned int i = 0; i < this->_map.size(); i++)
     {
-      for (std::vector<AElement *>::size_type j = 0; j < this->_map[i].size(); j++)
+      for (unsigned int j = 0; j < this->_map[i].size(); j++)
         {
 	  if (i == 0 || i == this->_map.size() - 1 || j == 0 || j == this->_map[i].size() - 1)
             {
@@ -36,23 +36,14 @@ void	MapGenerator::Initialize()
 {
   this->_map.resize(this->_height);
   for (int i = 0; i < this->_height; i++)
-    {
-      this->_map[i].resize(this->_width);
-      this->_map[i][0] = NULL;
-    }
-}
-
-void MapGenerator::Carve(const int &x, const int &y)
-{
-  (void)x;
-  (void)y;
+    this->_map[i].resize(this->_width);
 }
 
 void MapGenerator::Show()
 {
-  for (std::vector< std::vector<AElement *> >::size_type i = 0; i < this->_map.size(); i++)
+  for (unsigned int i = 0; i < this->_map.size(); i++)
     {
-      for (std::vector<AElement *>::size_type j = 0; j < this->_map[i].size(); j++)
+      for (unsigned int j = 0; j < this->_map[i].size(); j++)
 	{
 	  if (this->_map[i][j] != NULL)
 	    std::cout << this->_map[i][j]->ToString() << " ";
@@ -65,5 +56,4 @@ void MapGenerator::Show()
 
 MapGenerator::~MapGenerator()
 {
-
 }
