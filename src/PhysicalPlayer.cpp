@@ -5,15 +5,12 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-// Last update Fri May 15 21:51:56 2015 polydo_s
+// Last update Fri May 15 22:07:30 2015 polydo_s
 //
+
+#include "PhysicalPlayer.hh"
 
 void	PhysicalPlayer::update()
 {
   
-}
-
-const std::string	PhysicalPlayer::toString() const
-{
-  return "P";
 }

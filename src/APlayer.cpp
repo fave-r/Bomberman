@@ -5,24 +5,29 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Fri May 15 16:59:22 2015 polydo_s
+// Last update Fri May 15 22:08:50 2015 polydo_s
 //
 
 #include "APlayer.hh"
 
-Player::Player()
+APlayer::APlayer() : ACharacter("Player", ACharacter::UP)
 {
   static unsigned int id = 1;
 
   this->_id = id++;
 }
 
-void	PhysicalPlayer::draw() const
+void	APlayer::draw() const
 {
 
 }
 
-unsigned int	Player::getId() const
+unsigned int	APlayer::getId() const
 {
   return this->_id;
+}
+
+const std::string	APlayer::ToString() const
+{
+  return "P";
 }
