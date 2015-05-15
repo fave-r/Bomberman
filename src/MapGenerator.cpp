@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 13:34:23 2015 clément jean
-// Last update Fri May 15 13:48:22 2015 clément jean
+// Last update Fri May 15 13:58:03 2015 clément jean
 //
 
 #include "MapGenerator.hh"
@@ -29,11 +29,11 @@ void	MapGenerator::Generate()
 void	MapGenerator::Initialize()
 {
   std::fill(this->_m_maze.begin(), this->_m_maze.end(), false);
-  for(unsigned x = 0; x < this->_m_width; x++) {
+  for(int x = 0; x < this->_m_width; x++) {
     this->_m_maze[x] = true;
     this->_m_maze[(this->_m_height - 1) * this->_m_width + x] = true;
   }
-  for(unsigned y = 0; y < this->_m_height; y++) {
+  for(int y = 0; y < this->_m_height; y++) {
     this->_m_maze[y * this->_m_width] = true;
     this->_m_maze[y * this->_m_width + this->_m_width - 1] = true;
   }
