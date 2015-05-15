@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Sun May  3 18:57:39 2015 polydo_s
-// Last update Fri May 15 13:46:39 2015 polydo_s
+// Last update Fri May 15 23:22:05 2015 polydo_s
 //
 
 #ifndef ACHARACTER_HH
@@ -41,7 +41,6 @@ public:
   };
 
 protected:
-  std::string	_name; //!< The name of the character entity
   eOrientation	_orientation; //!< The direction to which the character is looking
 
 public:
@@ -52,7 +51,7 @@ public:
    * @param name player's name or monster type
    * @param orientation to where the character is looking
    */
-  ACharacter(const std::string &name, eOrientation orientation);
+  ACharacter(float x, float y, eOrientation orientation);
 
 public:
   void			move(eOrientation orientation);
@@ -64,11 +63,6 @@ protected:
   void			goLeft();
 
 public:
-
-  /**
-  * Get the character name
-  */
-  const std::string	&getName() const;
 
   /**
    * Get the character orientation
