@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 13:34:23 2015 clément jean
-// Last update Fri May 15 18:09:46 2015 polydo_s
+// Last update Fri May 15 22:21:31 2015 clément jean
 //
 
 #include "MapGenerator.hh"
@@ -19,7 +19,17 @@ MapGenerator::MapGenerator(const int &width, const int &height)
 
 void	MapGenerator::Generate()
 {
-
+  for (std::vector< std::vector<AElement *> >::size_type i = 0; i < this->_map.size(); i++)
+    {
+      for (std::vector<AElement *>::size_type j = 0; j < this->_map[i].size(); j++)
+        {
+	  if (i == 0 || i == this->_map.size() - 1 || j == 0 || j == this->_map[i].size() - 1)
+            {
+	      Wall *w = new Wall((float)i, (float)j);
+              this->_map[i][j] = w;
+	    }
+	}
+    }
 }
 
 void	MapGenerator::Initialize()
@@ -44,11 +54,6 @@ void MapGenerator::Show()
     {
       for (std::vector<AElement *>::size_type j = 0; j < this->_map[i].size(); j++)
 	{
-	  if (i == 0 || i == this->_map.size() - 1 || j == 0 || j == this->_map[i].size() - 1)
-	    {
-	      Wall *w = new Wall((float)i, (float)j);
-	      this->_map[i][j] = w;
-	    }
 	  if (this->_map[i][j] != NULL)
 	    std::cout << this->_map[i][j]->ToString() << " ";
 	  else
