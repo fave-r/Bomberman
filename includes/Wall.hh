@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 17:25:07 2015 clément jean
-// Last update Fri May 15 17:44:27 2015 clément jean
+// Last update Fri May 15 17:51:48 2015 clément jean
 //
 
 #ifndef __WALL_HH__
