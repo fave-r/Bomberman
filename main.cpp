@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 13:51:26 2015 polydo_s
-// Last update Fri May 15 13:54:57 2015 polydo_s
+// Last update Fri May 15 22:24:07 2015 clément jean
 //
 
 #include <iostream>
@@ -22,6 +22,7 @@ int	main(int ac, char *av[])
   else
     {
       MapGenerator *map = new MapGenerator(std::stoi(av[1]), std::stoi(av[2]));
+      map->Generate();
       map->Show();
     }
   return (0);
