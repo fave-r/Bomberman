@@ -5,12 +5,13 @@
 ## Login   <polydo_s@epitech.net>
 ## 
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Fri May 15 21:52:34 2015 polydo_s
+## Last update Sat May 16 00:10:08 2015 clément jean
 ##
 
 CC		= clang++
 CPPFLAGS	+= -W -Wall -Werror -Wextra -std=c++11
-CPPFLAGS	+= -I./includes
+CPPFLAGS	+= -I./includes -I./lib/includes
+LDFLAGS		= -L./lib/libs -lgdl_gl -lGL -lGLEW -ldl -lrt -lfbxsdk -lSDL2 -lSDL -lpthread
 
 NAME		= bomberman
 RM		= rm -rf
@@ -33,7 +34,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	mkdir -p $(BIN)
-	$(CC) $(OBJS) -o $(BIN)/$(NAME)
+	$(CC) $(OBJS) -o $(BIN)/$(NAME) $(LDFLAGS)
 
 clean:
 	$(RM) $(OBJS)
