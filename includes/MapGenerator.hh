@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 13:44:50 2015 clément jean
-// Last update Fri May 15 22:37:12 2015 clément jean
+// Last update Fri May 15 23:56:48 2015 clément jean
 //
 
 #include <algorithm>
@@ -15,16 +15,19 @@
 #include <ctime>
 #include "AElement.hh"
 #include "Wall.hh"
+#include "Box.hh"
+#include "PhysicalPlayer.hh"
+#include "ACharacter.hh"
 
 class MapGenerator {
 
 private:
-  int						_width;
-  int						_height;
+  unsigned int						_width;
+  unsigned int						_height;
   std::vector< std::vector<AElement *> >	_map;
 
 public:
-  MapGenerator(const int &width, const int &height);
+  MapGenerator(const unsigned int &width, const unsigned int &height);
   ~MapGenerator();
 
 public:
