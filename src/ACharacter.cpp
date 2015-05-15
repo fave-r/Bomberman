@@ -5,23 +5,22 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Sun May  3 19:00:09 2015 polydo_s
-// Last update Fri May 15 13:46:40 2015 polydo_s
+// Last update Fri May 15 21:56:46 2015 clément jean
 //
 
 #include "ACharacter.hh"
 
 void			ACharacter::move(eOrientation orientation)
 {
-  
   this->_orientation = orientation;
 }
 
-const std::string	ACharacter::getName() const
+const std::string	&ACharacter::getName() const
 {
   return this->_name;
 }
 
-eOrientation		ACharacter::getOrientation() const
+ACharacter::eOrientation	ACharacter::getOrientation() const
 {
   return this->_orientation;
 }
