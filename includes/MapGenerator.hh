@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 13:44:50 2015 clément jean
-// Last update Fri May 15 17:14:18 2015 clément jean
+// Last update Fri May 15 17:29:59 2015 clément jean
 //
 
 #include <algorithm>
@@ -14,6 +14,7 @@
 #include <vector>
 #include <ctime>
 #include "AElement.hh"
+#include "Wall.hh"
 
 class MapGenerator {
 
