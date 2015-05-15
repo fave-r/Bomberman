@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 13:34:23 2015 clément jean
-// Last update Fri May 15 17:46:24 2015 clément jean
+// Last update Fri May 15 17:56:43 2015 clément jean
 //
 
 #include "MapGenerator.hh"
@@ -44,12 +44,15 @@ void MapGenerator::Show()
     {
       for (std::vector<AElement *>::size_type j = 0; j < this->_map[i].size(); j++)
 	{
-	  if (j == 0 || j == this->_map[i].size() - 1 || i == 0 || i == this->_map.size() - 1)
+	  if (i == 0 || i == this->_map.size() - 1 || j == 0 || j == this->_map[i].size() - 1)
 	    {
 	      Wall *w = new Wall(i, j);
 	      this->_map[i][j] = w;
 	    }
-	  std::cout << (this->_map[i][j])->ToString() << " ";
+	  if (this->_map[i][j] != NULL)
+	    std::cout << this->_map[i][j]->ToString() << " ";
+	  else
+	    std::cout << this->_map[i][j] << " ";
 	}
       std::cout << std::endl;
     }
