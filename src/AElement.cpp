@@ -5,13 +5,18 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Sun May  3 18:55:24 2015 polydo_s
-// Last update Fri May 15 18:10:25 2015 polydo_s
+// Last update Sun May 17 23:22:48 2015 polydo_s
 //
 
 #include "AElement.hh"
 
 AElement::AElement(float x, float y)
   : _x(x), _y(y)
+{
+
+}
+
+AElement::~AElement()
 {
 
 }

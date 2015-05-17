@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-// Last update Sun May 17 22:55:29 2015 polydo_s
+// Last update Sun May 17 23:43:58 2015 polydo_s
 //
 
 #include "PhysicalPlayer.hh"
@@ -15,11 +15,11 @@ PhysicalPlayer::PhysicalPlayer(float x, float y, ACharacter::eOrientation orient
 {
   if (this->_id == 1)
     {
-      
+
     }
   else
     {
-
+      
     }
 }
 
