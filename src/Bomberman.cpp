@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Sun May 17 23:00:12 2015 clément jean
+// Last update Sun May 17 23:23:43 2015 clément jean
 //
 
 
@@ -16,7 +16,10 @@ Bomberman::Bomberman(const unsigned int &x, const unsigned int &y)
   MapGenerator *map = new MapGenerator(x, y);
   map->Generate();
   this->_map = map->GetMap();
-  
+  PhysicalPlayer *p1 = new PhysicalPlayer(0, 0, ACharacter::DOWN);
+  PhysicalPlayer *p2 = new PhysicalPlayer(x - 1, y - 1, ACharacter::UP);
+  this->_playerlist.pushback(p2);
+  this->_playerlist.pushback(p1);
   this->ShowMap();
 }
 
