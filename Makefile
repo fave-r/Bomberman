@@ -5,13 +5,13 @@
 ## Login   <polydo_s@epitech.net>
 ## 
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Sat May 16 01:08:23 2015 clément jean
+## Last update Sun May 17 22:51:54 2015 polydo_s
 ##
 
 CC		= clang++
 CPPFLAGS	+= -W -Wall -Werror -Wextra -std=c++11
 CPPFLAGS	+= -I./includes -I./lib/includes
-LDFLAGS		= -L./lib/libs -Wl,--rpath=./lib/libs -lgdl_gl -lGL -lGLEW -ldl -lrt -lfbxsdk -lSDL2 -lSDL -lpthread
+LDFLAGS		+= -L./lib/libs -Wl,--rpath=./lib/libs -lgdl_gl -lGL -lGLEW -ldl -lrt -lfbxsdk -lSDL2 -lpthread
 
 NAME		= bomberman
 RM		= rm -rf
