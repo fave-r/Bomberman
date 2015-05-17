@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 13:34:23 2015 clément jean
-// Last update Fri May 15 23:57:49 2015 clément jean
+// Last update Sun May 17 22:44:45 2015 clément jean
 //
 
 #include "MapGenerator.hh"
@@ -35,8 +35,8 @@ void	MapGenerator::Generate()
 	    }
 	}
     }
-  PhysicalPlayer *p = new PhysicalPlayer(1, 1, ACharacter::DOWN);
-  this->_map[1][1] = p;
+  //  PhysicalPlayer *p = new PhysicalPlayer(1, 1, ACharacter::DOWN);
+  //this->_map[1][1] = p;
   /*  while (count < (this->_width * this->_height) / 4)
     {
       j = rand() % this->_width + 1;
@@ -61,19 +61,9 @@ void	MapGenerator::Initialize()
     this->_map[i].resize(this->_width);
 }
 
-void MapGenerator::Show()
+const std::vector< std::vector<AElement *> >	&MapGenerator::GetMap()
 {
-  for (unsigned int i = 0; i < this->_map.size(); i++)
-    {
-      for (unsigned int j = 0; j < this->_map[i].size(); j++)
-	{
-	  if (this->_map[i][j] != NULL)
-	    std::cout << "\033[1;31m" << this->_map[i][j]->ToString() << "\033[0m ";
-	  else
-	    std::cout << this->_map[i][j] << " ";
-	}
-      std::cout << std::endl;
-    }
+  return (this->_map);
 }
 
 MapGenerator::~MapGenerator()

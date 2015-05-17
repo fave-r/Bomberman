@@ -5,12 +5,12 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 13:51:26 2015 polydo_s
-// Last update Fri May 15 22:24:07 2015 clément jean
+// Last update Sun May 17 22:41:27 2015 clément jean
 //
 
 #include <iostream>
 
-#include "MapGenerator.hh"
+#include "Bomberman.hh"
 
 int	main(int ac, char *av[])
 {
@@ -20,10 +20,6 @@ int	main(int ac, char *av[])
       return (1);
     }
   else
-    {
-      MapGenerator *map = new MapGenerator(std::stoi(av[1]), std::stoi(av[2]));
-      map->Generate();
-      map->Show();
-    }
+    Bomberman	bomberman(std::stoi(av[1]), std::stoi(av[2]));
   return (0);
 }
