@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Sun May 17 23:23:43 2015 clément jean
+// Last update Sun May 17 23:46:06 2015 clément jean
 //
 
 
@@ -18,8 +18,8 @@ Bomberman::Bomberman(const unsigned int &x, const unsigned int &y)
   this->_map = map->GetMap();
   PhysicalPlayer *p1 = new PhysicalPlayer(0, 0, ACharacter::DOWN);
   PhysicalPlayer *p2 = new PhysicalPlayer(x - 1, y - 1, ACharacter::UP);
-  this->_playerlist.pushback(p2);
-  this->_playerlist.pushback(p1);
+  this->_playerlist.push_back(p2);
+  this->_playerlist.push_back(p1);
   this->ShowMap();
 }
 
@@ -30,7 +30,7 @@ void	Bomberman::ShowMap()
       for (unsigned int j = 0; j < this->_map[i].size(); j++)
         {
 	  if (this->_map[i][j] != NULL)
-	    std::cout << "\033[1;31m" << this->_map[i][j]->ToString() << "\033[0m";
+	    std::cout << "\033[1;31m" << this->_map[i][j]->ToString() << "\033[0m ";
           else
 	    std::cout << this->_map[i][j] << " ";
         }
