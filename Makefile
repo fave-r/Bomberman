@@ -5,10 +5,8 @@
 ## Login   <polydo_s@epitech.net>
 ## 
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Tue May 19 22:33:24 2015 polydo_s
+## Last update Wed May 20 01:04:49 2015 clément jean
 ##
-
-##-Wl,--rpath=./lib/libs
 
 CXX		= g++
 CXXFLAGS	= -W -Wall -Werror -Wextra -std=c++11 -g
