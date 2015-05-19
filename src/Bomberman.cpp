@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Tue May 19 21:06:56 2015 clément jean
+// Last update Tue May 19 23:47:09 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -17,10 +17,6 @@ Bomberman::Bomberman(const unsigned int &x, const unsigned int &y)
   this->_y = y;
   map->Generate();
   this->_map = map->GetMap();
-  PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, ACharacter::DOWN);
-  PhysicalPlayer *p2 = new PhysicalPlayer(x - 2, y - 2, ACharacter::UP);
-  this->_playerlist.push_back(p2);
-  this->_playerlist.push_back(p1);
 
   // Visual *game = new Visual(x, y);
 
@@ -43,6 +39,10 @@ bool	Bomberman::initialize()
       std::cout << "peut pas faire de fenetre" << std::endl;
       return false;
     }
+  PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, ACharacter::DOWN, this->_context);
+  PhysicalPlayer *p2 = new PhysicalPlayer(x - 2, y - 2, ACharacter::UP, this->_context);
+  this->_playerlist.push_back(p2);
+  this->_playerlist.push_back(p1);
   glEnable(GL_DEPTH_TEST);
   if (!this->_shader.load("./lib/shaders/basic.fp", GL_FRAGMENT_SHADER)
       || !this->_shader.load("./lib/shaders/basic.vp", GL_VERTEX_SHADER)
