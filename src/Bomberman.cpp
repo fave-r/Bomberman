@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Tue May 19 15:58:36 2015 polydo_s
+// Last update Tue May 19 19:50:02 2015 Leo Thevenet
 //
 
 #include "Bomberman.hh"
@@ -13,6 +13,8 @@
 Bomberman::Bomberman(const unsigned int &x, const unsigned int &y)
 {
   MapGenerator *map = new MapGenerator(x, y);
+  this->x = x;
+  this->y = y;
   map->Generate();
   this->_map = map->GetMap();
   PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, ACharacter::DOWN);
@@ -27,7 +29,92 @@ Bomberman::Bomberman(const unsigned int &x, const unsigned int &y)
   // while (game->update() == true)
   //   game->draw();
 
-  this->ShowMap();
+  // this->ShowMap();
+}
+
+bool	Bomberman::initialize()
+{
+  glm::mat4 projection;
+  glm::mat4 transformation;
+  gdl::Texture _texture;
+
+  if (!_context.start(1910, 1070, "My bomberman!"))
+    {
+      std::cout << "peut pas faire de fenetre" << std::endl;
+      return false;
+    }
+  glEnable(GL_DEPTH_TEST);
+  if (!this->_shader.load("./lib/shaders/basic.fp", GL_FRAGMENT_SHADER)
+      || !this->_shader.load("./lib/shaders/basic.vp", GL_VERTEX_SHADER)
+      || !this->_shader.build())
+    {
+      std::cout << "shader erreur" << std::endl;
+      return false;
+    }
+  projection = glm::perspective(60.0f, 1000.0f / 1000.0f, 0.1f, 2000.0f);
+  transformation = glm::lookAt(glm::vec3(0, 30, 30), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+  this->_shader.bind();
+  this->_shader.setUniform("view", transformation);
+  this->_shader.setUniform("projection", projection);
+
+  Cube        *old = new Cube;
+  Cube        *model;
+  old->initialize();
+  old->newTexture();
+  _objects.push_back(old);
+
+  float x = -(this->x / 2);
+  float y;
+  for (x = x; x <= (this->x / 2); x++)
+    {
+      y = -(this->y / 2);
+      model = new Cube;
+      model->move(y, 1, x);
+      _objects.push_back(model);
+      for (y = y; y <= (this->y / 2); y++)
+	{
+	  if (x == -(this->x / 2) || x == (this->x / 2))
+	    {
+	      model = new Cube;
+	      model->move(y, 1, x);
+	      _objects.push_back(model);
+	    }
+	  model = new Cube;
+	  model->move(y, 0, x);
+	  _objects.push_back(model);
+	}
+      model = new Cube;
+      model->move(y - 1, 1, x);
+      _objects.push_back(model);
+    }
+  for (size_t i = 0; i < _objects.size(); ++i)
+    {
+      if (_objects[i]->initialize() == false)
+	{
+	  std::cout << "object" << std::endl;
+	  return false;
+	}
+      ((Cube *)_objects[i])->setTexture(old->_texture);
+    }
+  draw();
+  return true;
+}
+
+bool	Bomberman::update()
+{
+  if (this->_input.getKey(SDLK_ESCAPE) || this->_input.getInput(SDL_QUIT))
+    {
+      std::cout << "update" << std::endl;
+      return false;
+    }
+  this->_context.updateClock(_clock);
+  this->_context.updateInputs(_input);
+
+  for (size_t i = 0; i < this->_objects.size(); ++i)
+    this->_objects[i]->update(this->_clock, this->_input);
+
+  this->_shader.bind();
+  return true;
 }
 
 void	Bomberman::ShowMap()
@@ -61,7 +148,17 @@ void	Bomberman::ShowMap()
     }
 }
 
+void	Bomberman::draw()
+{
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  this->_shader.bind();
+  for (size_t i = 0; i < this->_objects.size(); ++i)
+    this->_objects[i]->draw(this->_shader, this->_clock);
+  this->_context.flush();
+}
+
 Bomberman::~Bomberman()
 {
-
+  for (size_t i = 0; i < this->_objects.size(); ++i)
+    delete this->_objects[i];
 }
