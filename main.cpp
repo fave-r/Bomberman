@@ -5,12 +5,15 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 13:51:26 2015 polydo_s
-// Last update Sun May 17 22:41:27 2015 clément jean
+// Last update Tue May 19 15:34:40 2015 Leo Thevenet
 //
 
 #include <iostream>
 
 #include "Bomberman.hh"
+
+#include "Menu.hpp"
+#include "GameEngine.hpp"
 
 int	main(int ac, char *av[])
 {
@@ -20,6 +23,16 @@ int	main(int ac, char *av[])
       return (1);
     }
   else
-    Bomberman	bomberman(std::stoi(av[1]), std::stoi(av[2]));
+    {
+      Menu          menu;
+      GameEngine    engine;
+
+      if (menu.initialize() == false)
+	return (EXIT_FAILURE);
+      while (menu.update() == true)
+	menu.draw();
+      av = av;
+      //Bomberman	bomberman(std::stoi(av[1]), std::stoi(av[2]));
+    }
   return (0);
 }
