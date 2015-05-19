@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-// Last update Sun May 17 23:43:58 2015 polydo_s
+// Last update Mon May 18 11:35:11 2015 polydo_s
 //
 
 #include "PhysicalPlayer.hh"
@@ -15,26 +15,17 @@ PhysicalPlayer::PhysicalPlayer(float x, float y, ACharacter::eOrientation orient
 {
   if (this->_id == 1)
     {
-
-    }
-  else
-    {
-      
+      this->_actions[SDLK_UP] = &ACharacter::goUp;
+      this->_actions[SDLK_RIGHT] = &ACharacter::goRight;
+      this->_actions[SDLK_DOWN] = &ACharacter::goDown;
+      this->_actions[SDLK_LEFT] = &ACharacter::goLeft;
     }
 }
 
 void	PhysicalPlayer::update()
 {
-  if (this->_input.getKey(SDLK_UP))
-    {
-    }
-  else if (this->_input.getKey(SDLK_DOWN))
-    {
-    }
-  else if (this->_input.getKey(SDLK_LEFT))
-    {
-    }
-  else if (this->_input.getKey(SDLK_RIGHT))
-    {
-    }
+  std::map<int, void(ACharacter::*)(void)>::const_iterator it;
+  
+  for (it = this->_actions.begin(); it != this->_actions.end(); ++it)
+    std::cout << it->first << std::endl;
 }

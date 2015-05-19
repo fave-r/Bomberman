@@ -5,11 +5,13 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Sun May  3 18:57:39 2015 polydo_s
-// Last update Fri May 15 23:22:05 2015 polydo_s
+// Last update Mon May 18 11:24:38 2015 polydo_s
 //
 
 #ifndef ACHARACTER_HH
 #define ACHARACTER_HH
+
+#include <iostream>
 
 #include <string>
 
@@ -53,10 +55,10 @@ public:
    */
   ACharacter(float x, float y, eOrientation orientation);
 
-public:
+protected:
   void			move(eOrientation orientation);
 
-protected:
+public:
   void			goUp();
   void			goRight();
   void			goDown();

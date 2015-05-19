@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:59:33 2015 polydo_s
-// Last update Sat May 16 00:11:46 2015 clément jean
+// Last update Mon May 18 11:24:14 2015 polydo_s
 //
 
 #ifndef PHYSICAL_PLAYER_HH
@@ -25,20 +25,23 @@
  * @date May 5, 2015
  */
 
+#include <map>
 #include <Input.hh>
 #include <SdlContext.hh>
+
 #include "APlayer.hh"
 
 class	PhysicalPlayer : public APlayer {
+
+private:
+  std::map<int, void(ACharacter::*)(void)>	_actions;
+  gdl::Input					_input;
 
 public:
   PhysicalPlayer(float x, float y, ACharacter::eOrientation orientation);
 
 public:
   virtual void	update();
-
-private:
-  gdl::Input _input;
 };
 
 #endif
