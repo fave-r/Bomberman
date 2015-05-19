@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 13:51:26 2015 polydo_s
-// Last update Tue May 19 15:34:40 2015 Leo Thevenet
+// Last update Tue May 19 19:29:24 2015 Leo Thevenet
 //
 
 #include <iostream>
@@ -25,7 +25,6 @@ int	main(int ac, char *av[])
   else
     {
       Menu          menu;
-      GameEngine    engine;
 
       if (menu.initialize() == false)
 	return (EXIT_FAILURE);

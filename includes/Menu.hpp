@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May  8 00:44:30 2015 clément jean
-// Last update Tue May 19 16:05:19 2015 polydo_s
+// Last update Tue May 19 19:47:06 2015 Leo Thevenet
 //
 
 #ifndef __MENU_HPP__
@@ -19,8 +19,6 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <cstdlib>
-#include "GameEngine.hpp"
-#include "Visual.hpp"
 
 class Menu : public gdl::Game
 {
@@ -74,10 +72,10 @@ public:
 	Bomberman       bomberman(20, 20);
 	// ShowMap engine(100, 100);//GameEngine    engine;
 
-	// if (engine.initialize() == false)
-	//   return false;
-	// while (engine.update() == true)
-	//   engine.draw();
+	if (bomberman.initialize() == false)
+	  return false;
+	while (bomberman.update() == true)
+	  bomberman.draw();
       }
     else
       {
