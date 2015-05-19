@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:58:02 2015 clément jean
-// Last update Tue May 19 21:56:53 2015 clément jean
+// Last update Tue May 19 22:07:36 2015 clément jean
 //
 
 #include "Cube.hh"
@@ -50,9 +50,6 @@ bool			Cube::newTexture()
 
 bool			Cube::initialize()
 {
-  if (newTexture() == false)
-    return false;
-
   this->_geometry.setColor(glm::vec4(153.0 / 255.0, 51 / 255.0, 0, 1));
 
   this->_geometry.pushVertex(glm::vec3(0.5, -0.5, 0.5));
