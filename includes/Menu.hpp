@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May  8 00:44:30 2015 clément jean
-// Last update Tue May 19 15:41:33 2015 Leo Thevenet
+// Last update Tue May 19 16:05:19 2015 polydo_s
 //
 
 #ifndef __MENU_HPP__
@@ -20,7 +20,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <cstdlib>
 #include "GameEngine.hpp"
-#include "ShowMap.hpp"
+#include "Visual.hpp"
 
 class Menu : public gdl::Game
 {
@@ -71,7 +71,7 @@ public:
   {
     if (_path == "./Assets/start_fond.bmp")
       {
-	Bomberman       bomberman(100, 100);
+	Bomberman       bomberman(20, 20);
 	// ShowMap engine(100, 100);//GameEngine    engine;
 
 	// if (engine.initialize() == false)

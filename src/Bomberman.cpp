@@ -5,13 +5,10 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Tue May 19 15:53:21 2015 Leo Thevenet
+// Last update Tue May 19 15:58:36 2015 polydo_s
 //
 
-
 #include "Bomberman.hh"
-#include "Visual.hpp"
-#include "GameEngine.hpp"
 
 Bomberman::Bomberman(const unsigned int &x, const unsigned int &y)
 {
@@ -23,14 +20,14 @@ Bomberman::Bomberman(const unsigned int &x, const unsigned int &y)
   this->_playerlist.push_back(p2);
   this->_playerlist.push_back(p1);
 
-  Visual *game = new Visual(x, y);
+  // Visual *game = new Visual(x, y);
 
-  if (game->initialize() == false)
-    return;// false;
-  while (game->update() == true)
-    game->draw();
+  // if (game->initialize() == false)
+  //   return;// false;
+  // while (game->update() == true)
+  //   game->draw();
 
-  //this->ShowMap();
+  this->ShowMap();
 }
 
 void	Bomberman::ShowMap()
