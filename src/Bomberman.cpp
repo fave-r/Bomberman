@@ -5,11 +5,13 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Tue May 19 15:04:14 2015 polydo_s
+// Last update Tue May 19 15:53:21 2015 Leo Thevenet
 //
 
 
 #include "Bomberman.hh"
+#include "Visual.hpp"
+#include "GameEngine.hpp"
 
 Bomberman::Bomberman(const unsigned int &x, const unsigned int &y)
 {
@@ -20,7 +22,15 @@ Bomberman::Bomberman(const unsigned int &x, const unsigned int &y)
   PhysicalPlayer *p2 = new PhysicalPlayer(x - 2, y - 2, ACharacter::UP);
   this->_playerlist.push_back(p2);
   this->_playerlist.push_back(p1);
-  this->ShowMap();
+
+  Visual *game = new Visual(x, y);
+
+  if (game->initialize() == false)
+    return;// false;
+  while (game->update() == true)
+    game->draw();
+
+  //this->ShowMap();
 }
 
 void	Bomberman::ShowMap()
@@ -28,7 +38,7 @@ void	Bomberman::ShowMap()
   for (unsigned int i = 0; i < this->_map.size(); i++)
     {
       for (unsigned int j = 0; j < this->_map[i].size(); j++)
-        {
+	{
 	  bool isPlayer = false;
 	  std::list<APlayer *>::const_iterator it;
 	  for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
@@ -49,7 +59,7 @@ void	Bomberman::ShowMap()
 		std::cout << this->_map[i][j];
 	    }
 	  std::cout << " ";
-        }
+	}
       std::cout << std::endl;
     }
 }
