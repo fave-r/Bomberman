@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Tue May 19 19:50:02 2015 Leo Thevenet
+// Last update Tue May 19 20:24:23 2015 Leo Thevenet
 //
 
 #include "Bomberman.hh"
@@ -61,32 +61,35 @@ bool	Bomberman::initialize()
   Cube        *model;
   old->initialize();
   old->newTexture();
-  _objects.push_back(old);
+  this->_objects.push_back(old);
 
-  float x = -(this->x / 2);
-  float y;
-  for (x = x; x <= (this->x / 2); x++)
+  for (unsigned int i = 0; i < this->_map.size(); i++)
     {
-      y = -(this->y / 2);
-      model = new Cube;
-      model->move(y, 1, x);
-      _objects.push_back(model);
-      for (y = y; y <= (this->y / 2); y++)
+      for (unsigned int j = 0; j < this->_map[i].size(); j++)
 	{
-	  if (x == -(this->x / 2) || x == (this->x / 2))
+	  model = new Cube;
+	  model->move(j, 0, i);
+	  this->_objects.push_back(model);
+	  if (this->_map[i][j] != NULL)
 	    {
 	      model = new Cube;
-	      model->move(y, 1, x);
-	      _objects.push_back(model);
+	      model->move(j, 1, i);
+	      this->_objects.push_back(model);
 	    }
-	  model = new Cube;
-	  model->move(y, 0, x);
-	  _objects.push_back(model);
 	}
-      model = new Cube;
-      model->move(y - 1, 1, x);
-      _objects.push_back(model);
     }
+  std::list<APlayer *>::const_iterator it;
+  for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
+    {
+      float y = (*it)->getY();
+      float x = (*it)->getX();
+      model = new Cube;
+      model->move(y, 2, x);
+      this->_objects.push_back(model);
+    }
+
+
+
   for (size_t i = 0; i < _objects.size(); ++i)
     {
       if (_objects[i]->initialize() == false)
