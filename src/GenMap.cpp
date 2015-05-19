@@ -1,11 +1,11 @@
 //
 // GenMap.cpp for GenMap in /home/lhomme_a/rendu/Bomberman
-// 
+//
 // Made by Arnaud Lhomme
 // Login   <lhomme_a@epitech.net>
-// 
+//
 // Started on  Tue May  5 14:59:51 2015 Arnaud Lhomme
-// Last update Tue May 19 15:16:44 2015 polydo_s
+// Last update Tue May 19 19:09:52 2015 Leo Thevenet
 //
 
 #include "GenMap.hh"
@@ -29,13 +29,13 @@ void	GenMap::generate()
 {
   srand(time(NULL));
 
-  map.resize(size_y); 
-  for (int y = 0; y < size_y; y++) 
-    map[y].resize(size_x); 
- 
-  for (int x = 0; x < size_x; x++) 
-    for (int y = 0; y < size_y; y++) 
-      map[y][x] = 'W'; 
+  map.resize(size_y);
+  for (int y = 0; y < size_y; y++)
+    map[y].resize(size_x);
+
+  for (int x = 0; x < size_x; x++)
+    for (int y = 0; y < size_y; y++)
+      map[y][x] = 'W';
 
   drillers.push_back(std::make_pair(size_x / 2, size_y / 2));
   while (drillers.size() > 0)
@@ -83,15 +83,15 @@ void	GenMap::generate()
 
 	  if (remove_driller)
 	    it_begin = drillers.erase(it_begin);
-	  else 
-	    { 
-	      drillers.push_back(std::make_pair((*it_begin).first, (*it_begin).second)); 
+	  else
+	    {
+	      drillers.push_back(std::make_pair((*it_begin).first, (*it_begin).second));
 
 	      drillers.push_back(std::make_pair((*it_begin).first, (*it_begin).second));
 
 	      map[(*it_begin).second][(*it_begin).first] = 'S';
 	      ++it_begin;
-	    } 
+	    }
 
 	}
     }
@@ -128,11 +128,21 @@ void	GenMap::generate()
     }
 
 
-  for (int y = 0; y < size_y; y++) 
+  for (int y = 0; y < size_y; y++)
     {
-      for (int x = 0; x < size_x; x++) 
-	{ 
-	  std::cout << map[y][x] << " ";
+      for (int x = 0; x < size_x; x++)
+	{
+	  if (map[y][x] == 'P')
+	    std::cout << "\033[1;36m" << map[y][x] << " " << "\033[0m";
+	  else if (map[y][x] == 'W')
+	    std::cout << "\033[1;31m" << map[y][x] << " " << "\033[0m";
+	  else if (map[y][x] == 'E')
+	    std::cout << "\033[1;32m" << map[y][x] << " " << "\033[0m";
+	  else if (map[y][x] == 'S')
+	    std::cout << "\033[1;32m" << map[y][x] << " " << "\033[0m";
+	  else
+	    std::cout << map[y][x] << " ";
+
 	}
       std::cout << std::endl;
     }
