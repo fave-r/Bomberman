@@ -5,15 +5,14 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 13:51:26 2015 polydo_s
-// Last update Tue May 19 19:29:24 2015 Leo Thevenet
+// Last update Tue May 19 20:49:41 2015 clément jean
 //
 
 #include <iostream>
 
 #include "Bomberman.hh"
 
-#include "Menu.hpp"
-#include "GameEngine.hpp"
+#include "Menu.hh"
 
 int	main(int ac, char *av[])
 {

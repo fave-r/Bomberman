@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:29:04 2015 clément jean
-// Last update Tue May 19 20:12:24 2015 clément jean
+// Last update Tue May 19 20:49:28 2015 clément jean
 //
 
 #ifndef __CUBE_HPP__
@@ -14,7 +14,7 @@
 #include <iostream>
 #include <Geometry.hh>
 #include <Texture.hh>
-#include "AObject.hpp"
+#include "AObject.hh"
 
 class Cube : public AObject
 {

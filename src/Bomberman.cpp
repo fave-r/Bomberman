@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Tue May 19 19:50:02 2015 Leo Thevenet
+// Last update Tue May 19 20:48:01 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -13,8 +13,8 @@
 Bomberman::Bomberman(const unsigned int &x, const unsigned int &y)
 {
   MapGenerator *map = new MapGenerator(x, y);
-  this->x = x;
-  this->y = y;
+  this->_x = x;
+  this->_y = y;
   map->Generate();
   this->_map = map->GetMap();
   PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, ACharacter::DOWN);
@@ -63,17 +63,17 @@ bool	Bomberman::initialize()
   old->newTexture();
   _objects.push_back(old);
 
-  float x = -(this->x / 2);
+  float x = -(this->_x / 2);
   float y;
-  for (x = x; x <= (this->x / 2); x++)
+  for (x = x; x <= (this->_x / 2); x++)
     {
-      y = -(this->y / 2);
+      y = -(this->_y / 2);
       model = new Cube;
       model->move(y, 1, x);
       _objects.push_back(model);
-      for (y = y; y <= (this->y / 2); y++)
+      for (y = y; y <= (this->_y / 2); y++)
 	{
-	  if (x == -(this->x / 2) || x == (this->x / 2))
+	  if (x == -(this->_x / 2) || x == (this->_x / 2))
 	    {
 	      model = new Cube;
 	      model->move(y, 1, x);

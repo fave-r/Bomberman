@@ -5,7 +5,7 @@
 ## Login   <polydo_s@epitech.net>
 ## 
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Tue May 19 16:02:34 2015 polydo_s
+## Last update Tue May 19 20:49:13 2015 clément jean
 ##
 
 CC		= clang++
@@ -27,7 +27,11 @@ SRCS		= main.cpp			\
 		  $(SRC)/PhysicalPlayer.cpp	\
 		  $(SRC)/Box.cpp		\
 		  $(SRC)/Wall.cpp		\
-		  $(SRC)/Bomberman.cpp
+		  $(SRC)/Bomberman.cpp		\
+		  $(SRC)/Model.cpp		\
+		  $(SRC)/AObject.cpp		\
+		  $(SRC)/Cube.cpp		\
+		  $(SRC)/Menu.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 
