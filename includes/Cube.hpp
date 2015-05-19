@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:29:04 2015 clément jean
-// Last update Sun May 10 04:15:51 2015 Leo Thevenet
+// Last update Tue May 19 19:47:15 2015 clément jean
 //
 
 #ifndef __CUBE_HPP__
@@ -143,36 +143,35 @@ public:
   }
 
   // Ici le cube bougera avec les fleches du clavier
-  virtual void update(gdl::Clock const &clock, gdl::Input &input)
+  virtual void update(gdl::Clock const &clock)
   {
     // On multiplie par le temps ecoule depuis la derniere image pour que la vitesse ne depende pas de la puissance de l'ordinateur
-    if (input.getKey(SDLK_UP))
+    if (this->_input.getKey(SDLK_UP))
       translate(glm::vec3(0, 0, -1) * static_cast<float>(clock.getElapsed()) * _speed);
-    if (input.getKey(SDLK_DOWN))
+    if (this->_input.getKey(SDLK_DOWN))
       translate(glm::vec3(0, 0, 1) * static_cast<float>(clock.getElapsed()) * _speed);
-    if (input.getKey(SDLK_LEFT))
+    if (this->_input.getKey(SDLK_LEFT))
       translate(glm::vec3(-1, 0, 0) * static_cast<float>(clock.getElapsed()) * _speed);
-    if (input.getKey(SDLK_RIGHT))
+    if (this->_input.getKey(SDLK_RIGHT))
       translate(glm::vec3(1, 0, 0) * static_cast<float>(clock.getElapsed()) * _speed);
-    if (input.getKey(SDLK_KP_PLUS))
+    if (this->_input.getKey(SDLK_KP_PLUS))
       translate(glm::vec3(0, -1, 0) * static_cast<float>(clock.getElapsed()) * _speed);
-    if (input.getKey(SDLK_KP_MINUS))
+    if (this->_input.getKey(SDLK_KP_MINUS))
       translate(glm::vec3(0, 1, 0) * static_cast<float>(clock.getElapsed()) * _speed);
 
-    if (input.getKey(SDLK_q))
+    if (this->_input.getKey(SDLK_q))
       rotate(glm::vec3(0, -1, 0) * static_cast<float>(clock.getElapsed()) * _speed, 5);
-    if (input.getKey(SDLK_d))
+    if (this->_input.getKey(SDLK_d))
       rotate(glm::vec3(0, 1, 0) * static_cast<float>(clock.getElapsed()) * _speed, 5);
 
-    if (input.getKey(SDLK_z))
+    if (this->_input.getKey(SDLK_z))
       rotate(glm::vec3(-1, 0, 0) * static_cast<float>(clock.getElapsed()) * _speed, 5);
-    if (input.getKey(SDLK_s))
+    if (this->_input.getKey(SDLK_s))
       rotate(glm::vec3(1, 0, 0) * static_cast<float>(clock.getElapsed()) * _speed, 5);
   }
 
-  virtual void draw(gdl::AShader &shader, gdl::Clock const &clock)
+  virtual void draw(gdl::AShader &shader)
   {
-    (void)clock;
     // On bind la texture pour dire que l'on veux l'utiliser
     // std::cout << "d" << std::endl;
     _texture.bind();
