@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Sun May  3 21:54:43 2015 polydo_s
-// Last update Tue May 19 16:11:49 2015 polydo_s
+// Last update Tue May 19 23:49:34 2015 polydo_s
 //
 
 #ifndef COLOR_HH
@@ -22,7 +22,7 @@ private:
   float		_a;
 
 public:
-  Color(unsigned char r, unsigned char g, unsigned char b, float a);
+  Color(unsigned char, unsigned char, unsigned char, float);
 
 public:
   unsigned char	getR() const;

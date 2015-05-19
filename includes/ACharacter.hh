@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Sun May  3 18:57:39 2015 polydo_s
-// Last update Tue May 19 16:09:48 2015 polydo_s
+// Last update Tue May 19 23:48:08 2015 polydo_s
 //
 
 #ifndef ACHARACTER_HH
@@ -30,10 +30,10 @@ protected:
   eOrientation	_orientation;
 
 public:
-  ACharacter(float x, float y, eOrientation orientation);
+  ACharacter(float, float, eOrientation);
 
 protected:
-  void			move(eOrientation orientation);
+  void			move(eOrientation);
 
 public:
   void			goUp();
@@ -45,7 +45,7 @@ public:
   eOrientation		getOrientation() const;
 
 public:
-  void	setOrientation(eOrientation orientation);
+  void	setOrientation(eOrientation);
 };
 
 #endif

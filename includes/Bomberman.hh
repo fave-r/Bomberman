@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Tue May 19 21:02:12 2015 clément jean
+// Last update Tue May 19 23:58:00 2015 polydo_s
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -26,7 +26,7 @@
 class	Bomberman : public gdl::Game
 {
 public:
-  Bomberman(const unsigned int &x, const unsigned int &y);
+  Bomberman(const unsigned int &, const unsigned int &);
   ~Bomberman();
 
 public:
@@ -38,7 +38,7 @@ public:
 private:
   std::vector< std::vector<AElement *> >	_map;
   std::list<APlayer *>			       	_playerlist;
-  gdl::SdlContext				_context;
+  gdl::SdlContext			       	_context;
   gdl::Clock					_clock;
   gdl::Input					_input;
   gdl::BasicShader				_shader;

@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Tue May 19 16:10:53 2015 polydo_s
+// Last update Wed May 20 00:08:00 2015 polydo_s
 //
 
 #ifndef PLAYER_HH
@@ -19,14 +19,13 @@ protected:
   unsigned int	_id;
 
 public:
-  APlayer(float x, float y, ACharacter::eOrientation orientation);
+  APlayer(float, float, ACharacter::eOrientation);
 
 public:
   virtual void	draw() const;
 
 public:
   unsigned int	getId() const;
-  const std::string	ToString() const;
 };
 
 #endif

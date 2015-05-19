@@ -5,15 +5,15 @@
 ## Login   <polydo_s@epitech.net>
 ## 
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Tue May 19 21:35:28 2015 clément jean
+## Last update Tue May 19 22:33:24 2015 polydo_s
 ##
 
 ##-Wl,--rpath=./lib/libs
 
 CXX		= g++
-CXXFLAGS	= -W -Wall -Werror -Wextra -std=c++11
+CXXFLAGS	= -W -Wall -Werror -Wextra -std=c++11 -g
 CXXFLAGS	+= -I./includes -I./lib/includes
-LDFLAGS		= -Wl,--rpath=./lib/libs -lgdl_gl -lGL -lGLEW -ldl -lrt -lfbxsdk -lSDL2 -lpthread
+LDFLAGS		= -Wl,--rpath=./lib/libs -lgdl_gl -lGL -lGLEW -lrt -lfbxsdk -lSDL2 -lpthread -ldl
 LDLIBS		= -L./lib/libs
 
 NAME		= bomberman

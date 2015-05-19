@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Sun May  3 18:55:24 2015 polydo_s
-// Last update Sun May 17 23:22:48 2015 polydo_s
+// Last update Tue May 19 23:54:44 2015 polydo_s
 //
 
 #include "AElement.hh"
@@ -29,11 +29,6 @@ float	AElement::getX() const
 float	AElement::getY() const
 {
   return this->_y;
-}
-
-const std::string	AElement::ToString() const
-{
-  return ".";
 }
 
 void	AElement::setPosition(float x, float y)

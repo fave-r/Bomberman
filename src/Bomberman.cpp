@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Tue May 19 23:47:09 2015 clément jean
+// Last update Wed May 20 00:28:10 2015 polydo_s
 //
 
 #include "Bomberman.hh"
@@ -34,13 +34,13 @@ bool	Bomberman::initialize()
   glm::mat4 transformation;
   //  gdl::Texture _texture;
 
-  if (!_context.start(1910, 1070, "My bomberman!"))
+  if (!this->_context.start(1910, 1070, "My bomberman!"))
     {
       std::cout << "peut pas faire de fenetre" << std::endl;
       return false;
     }
-  PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, ACharacter::DOWN, this->_context);
-  PhysicalPlayer *p2 = new PhysicalPlayer(x - 2, y - 2, ACharacter::UP, this->_context);
+  PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, ACharacter::DOWN, &this->_context);
+  PhysicalPlayer *p2 = new PhysicalPlayer(this->_x - 2, this->_y - 2, ACharacter::UP, &this->_context);
   this->_playerlist.push_back(p2);
   this->_playerlist.push_back(p1);
   glEnable(GL_DEPTH_TEST);
@@ -114,42 +114,17 @@ bool	Bomberman::update()
   this->_context.updateClock(_clock);
   this->_context.updateInputs(_input);
 
-  for (size_t i = 0; i < this->_objects.size(); ++i)
-    this->_objects[i]->update(this->_clock);
+  for (unsigned int i = 0; i < this->_map.size(); ++i)
+    for (unsigned int j = 0; j < this->_map[i].size(); ++j)
+      if (this->_map[i][j])
+	this->_map[i][j]->update(this->_map);
+
+  std::list<APlayer *>::iterator it;
+  for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
+    (*it)->update(this->_map);
 
   this->_shader.bind();
   return true;
-}
-
-void	Bomberman::ShowMap()
-{
-  for (unsigned int i = 0; i < this->_map.size(); i++)
-    {
-      for (unsigned int j = 0; j < this->_map[i].size(); j++)
-	{
-	  bool isPlayer = false;
-	  std::list<APlayer *>::const_iterator it;
-	  for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
-	    {
-	      unsigned int y = (*it)->getY();
-	      unsigned int x = (*it)->getX();
-	      if (y == i && x == j)
-		{
-		  std::cout << "\033[1;32m" << (*it)->ToString() << "\033[0m";
-		  isPlayer = true;
-		}
-	    }
-	  if (isPlayer == false)
-	    {
-	      if (this->_map[i][j] != NULL)
-		std::cout << "\033[1;31m" << this->_map[i][j]->ToString() << "\033[0m";
-	      else
-		std::cout << this->_map[i][j];
-	    }
-	  std::cout << " ";
-	}
-      std::cout << std::endl;
-    }
 }
 
 void	Bomberman::draw()

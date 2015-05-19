@@ -5,14 +5,15 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-// Last update Tue May 19 15:37:44 2015 polydo_s
+// Last update Wed May 20 00:28:00 2015 polydo_s
 //
 
 #include "PhysicalPlayer.hh"
 
-PhysicalPlayer::PhysicalPlayer(float x, float y, ACharacter::eOrientation orientation)
-  : APlayer(x, y, orientation)
+PhysicalPlayer::PhysicalPlayer(float x, float y, ACharacter::eOrientation orientation, gdl::SdlContext *context)
+  : APlayer(x, y, orientation), _context(context)
 {
+  
   if (this->_id == 1)
     {
       this->_actions[SDLK_UP] = &ACharacter::goUp;
@@ -22,10 +23,13 @@ PhysicalPlayer::PhysicalPlayer(float x, float y, ACharacter::eOrientation orient
     }
 }
 
-void	PhysicalPlayer::update()
+void	PhysicalPlayer::update(std::vector<std::vector<AElement *> >)
 {
   std::map<int, void(ACharacter::*)(void)>::const_iterator it;
-  
+
   for (it = this->_actions.begin(); it != this->_actions.end(); ++it)
-    std::cout << it->first << std::endl;
+    {
+      if (this->_input.getKey(SDLK_UP))
+	std::cout << "UP" << std::endl;
+    }
 }
