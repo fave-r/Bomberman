@@ -5,14 +5,14 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:27:19 2015 clément jean
-// Last update Tue May 19 19:47:45 2015 clément jean
+// Last update Tue May 19 21:49:35 2015 clément jean
 //
 
 #include "AObject.hh"
 
-AObject::AObject() : this->_position(0, 0, 0),
-		     this->_rotation(0, 0, 0),
-		     this->_scale(1, 1, 1)
+AObject::AObject() : _position(0, 0, 0),
+		     _rotation(0, 0, 0),
+		     _scale(1, 1, 1)
 {
 }
 
@@ -42,7 +42,7 @@ void			AObject::scale(const glm::vec3 &scale)
   this->_scale *= scale;
 }
 
-const glm::mat4		&AObject::getTransformation()
+const glm::mat4		AObject::getTransformation()
 {
   glm::mat4		transform(1);
 

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:36:11 2015 clément jean
-// Last update Tue May 19 20:45:19 2015 clément jean
+// Last update Tue May 19 21:52:11 2015 clément jean
 //
 
 #ifndef __MENU_HH__
@@ -19,6 +19,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <cstdlib>
+#include "Bomberman.hh"
 
 class Menu : public gdl::Game
 {

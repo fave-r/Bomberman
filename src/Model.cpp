@@ -5,10 +5,10 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:15:50 2015 clément jean
-// Last update Tue May 19 20:31:43 2015 clément jean
+// Last update Tue May 19 21:57:09 2015 clément jean
 //
 
-#include "Model.hh"
+#include "Model.hpp"
 
 Model::Model()
 {
@@ -31,17 +31,17 @@ bool		Model::initialize()
       std::cerr << "Cannot load the model" << std::endl;
       return (false);
     }
-  _model.pause(true);
+  this->_model.pause(true);
   return true;
 }
 
-void          update(const gdl::Clock &clock)
+void		Model::update(const gdl::Clock &clock)
 {
   (void)clock;
 }
 
-void		Model::draw(const gdl::AShader &shader)
+void		Model::draw(gdl::AShader &shader)
 {
-  _texture.bind();
-  _model.draw(shader, getTransformation(), GL_QUADS);
+  this->_texture.bind();
+  this->_model.draw(shader, getTransformation(), GL_QUADS);
 }

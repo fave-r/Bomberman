@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:58:02 2015 clément jean
-// Last update Tue May 19 20:12:00 2015 clément jean
+// Last update Tue May 19 21:56:53 2015 clément jean
 //
 
 #include "Cube.hh"
@@ -25,7 +25,7 @@ const gdl::Texture	&Cube::getTexture() const
 
 const gdl::Geometry	&Cube::getGeometry() const
 {
-  return this->geometry;
+  return this->_geometry;
 }
 
 void			Cube::setGeometry(const gdl::Geometry &old)
@@ -124,13 +124,13 @@ void		Cube::move(const int &x, const int &y, const int &z)
   translate(glm::vec3(x, y, z));
 }
 
-void		Cube::draw(const gdl::AShader &shader)
+void		Cube::draw(gdl::AShader &shader)
 {
   _texture.bind();
   _geometry.draw(shader, getTransformation(), GL_QUADS);
 }
 
-void          update(const gdl::Clock &clock)
+void		Cube::update(const gdl::Clock &clock)
 {
   (void)clock;
 }

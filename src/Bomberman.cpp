@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Tue May 19 20:24:23 2015 Leo Thevenet
+// Last update Tue May 19 21:06:56 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -13,8 +13,8 @@
 Bomberman::Bomberman(const unsigned int &x, const unsigned int &y)
 {
   MapGenerator *map = new MapGenerator(x, y);
-  this->x = x;
-  this->y = y;
+  this->_x = x;
+  this->_y = y;
   map->Generate();
   this->_map = map->GetMap();
   PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, ACharacter::DOWN);
@@ -36,7 +36,7 @@ bool	Bomberman::initialize()
 {
   glm::mat4 projection;
   glm::mat4 transformation;
-  gdl::Texture _texture;
+  //  gdl::Texture _texture;
 
   if (!_context.start(1910, 1070, "My bomberman!"))
     {
@@ -59,6 +59,7 @@ bool	Bomberman::initialize()
 
   Cube        *old = new Cube;
   Cube        *model;
+
   old->initialize();
   old->newTexture();
   this->_objects.push_back(old);
@@ -114,7 +115,7 @@ bool	Bomberman::update()
   this->_context.updateInputs(_input);
 
   for (size_t i = 0; i < this->_objects.size(); ++i)
-    this->_objects[i]->update(this->_clock, this->_input);
+    this->_objects[i]->update(this->_clock);
 
   this->_shader.bind();
   return true;
@@ -156,7 +157,7 @@ void	Bomberman::draw()
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   this->_shader.bind();
   for (size_t i = 0; i < this->_objects.size(); ++i)
-    this->_objects[i]->draw(this->_shader, this->_clock);
+    this->_objects[i]->draw(this->_shader);
   this->_context.flush();
 }
 

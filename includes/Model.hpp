@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Wed May  6 00:18:56 2015 clément jean
-// Last update Tue May 19 20:46:01 2015 clément jean
+// Last update Tue May 19 21:55:38 2015 clément jean
 //
 
 #ifndef __MODEL_HPP__
@@ -23,8 +23,8 @@ public:
   Model();
   virtual ~Model();
   virtual bool		initialize();
-  virtual void		update(const gdl::Clock &clock);
-  virtual void		draw(const gdl::AShader &shader);
+  virtual void          update(const gdl::Clock &clock);
+  virtual void		draw(gdl::AShader &shader);
 
 private:
   gdl::Texture	_texture;

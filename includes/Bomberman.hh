@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Tue May 19 20:47:02 2015 clément jean
+// Last update Tue May 19 21:02:12 2015 clément jean
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -25,6 +25,16 @@
 
 class	Bomberman : public gdl::Game
 {
+public:
+  Bomberman(const unsigned int &x, const unsigned int &y);
+  ~Bomberman();
+
+public:
+  void	ShowMap();
+  bool	initialize();
+  bool	update();
+  void	draw();
+
 private:
   std::vector< std::vector<AElement *> >	_map;
   std::list<APlayer *>			       	_playerlist;
@@ -35,15 +45,6 @@ private:
   std::vector<AObject*>				_objects;
   int						_x;
   int						_y;
-public:
-  Bomberman(const unsigned int &x, const unsigned int &y);
-  ~Bomberman();
-
-public:
-  void	ShowMap();
-  bool	initialize();
-  bool	update();
-  void	draw();
 };
 
 #endif

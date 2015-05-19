@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Tue May 19 20:45:32 2015 clément jean
+// Last update Tue May 19 21:51:28 2015 clément jean
 //
 
 #include "Menu.hh"
@@ -58,7 +58,7 @@ bool		Menu::update()
   return true;
 }
 
-bool          Menu::Check_Path();
+bool          Menu::Check_Path()
 {
   if (this->_path == "./Assets/start_fond.bmp")
     {
