@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:40:10 2015 clément jean
-// Last update Fri May 15 21:45:44 2015 clément jean
+// Last update Tue May 19 15:13:58 2015 polydo_s
 //
 
 #include "Wall.hh"

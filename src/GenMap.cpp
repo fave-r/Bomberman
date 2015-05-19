@@ -5,7 +5,7 @@
 // Login   <lhomme_a@epitech.net>
 // 
 // Started on  Tue May  5 14:59:51 2015 Arnaud Lhomme
-// Last update Mon May 18 15:18:21 2015 Arnaud Lhomme
+// Last update Tue May 19 15:16:44 2015 polydo_s
 //
 
 #include "GenMap.hh"
