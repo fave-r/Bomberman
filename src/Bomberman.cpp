@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Thu May 21 11:03:30 2015 polydo_s
+// Last update Thu May 21 16:03:12 2015 polydo_s
 //
 
 #include "Bomberman.hh"
@@ -52,7 +52,7 @@ bool	Bomberman::initialize()
       return false;
     }
   projection = glm::perspective(60.0f, 1000.0f / 1000.0f, 0.1f, 2000.0f);
-  transformation = glm::lookAt(glm::vec3(0, 30, 30), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+  transformation = glm::lookAt(glm::vec3(this->_x / 2, (this->_x + this->_y) / 1.5, this->_y / 2), glm::vec3(this->_y / 2, 0, this->_x / 2 - 1), glm::vec3(0, 1, 0));
   this->_shader.bind();
   this->_shader.setUniform("view", transformation);
   this->_shader.setUniform("projection", projection);
