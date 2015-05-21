@@ -5,7 +5,7 @@
 // Login   <lhomme_a@epitech.net>
 //
 // Started on  Tue May  5 14:59:51 2015 Arnaud Lhomme
-// Last update Tue May 19 19:09:52 2015 Leo Thevenet
+// Last update Thu May 21 17:09:21 2015 Arnaud Lhomme
 //
 
 #include "GenMap.hh"
@@ -33,100 +33,33 @@ void	GenMap::generate()
   for (int y = 0; y < size_y; y++)
     map[y].resize(size_x);
 
-  for (int x = 0; x < size_x; x++)
-    for (int y = 0; y < size_y; y++)
-      map[y][x] = 'W';
-
-  drillers.push_back(std::make_pair(size_x / 2, size_y / 2));
-  while (drillers.size() > 0)
+  for (int y = 0; y < size_y; y++)
     {
-      std::list<std::pair<int,int> >::iterator	it_begin, it_end;
-      it_begin = drillers.begin();
-      it_end = drillers.end();
-
-      while (it_begin != it_end)
+      for (int x = 0; x < size_x; x++)
 	{
-	  bool	remove_driller = false;
-	  int	rand_value = rand() % 4;
-	  if (rand_value == 0)
-	    {
-	      (*it_begin).second -= 2;
-	      if ((*it_begin).second < 0 || map[(*it_begin).second][(*it_begin).first] != 'W')
-		remove_driller = true;
-	      else
-		map[(*it_begin).second + 1][(*it_begin).first] = 'S';
-	    }
-	  else if (rand_value == 1)
-	    {
-	      (*it_begin).second += 2;
-	      if ((*it_begin).second >= size_y || map[(*it_begin).second][(*it_begin).first] != 'W')
-		remove_driller = true;
-	      else
-		map[(*it_begin).second - 1][(*it_begin).first] = 'S';
-	    }
-	  else if (rand_value == 2)
-	    {
-	      (*it_begin).first -= 2;
-	      if ((*it_begin).first < 0 || map[(*it_begin).second][(*it_begin).first] != 'W')
-		remove_driller = true;
-	      else
-		map[(*it_begin).second][(*it_begin).first + 1] = 'S';
-	    }
-	  else if (rand_value == 3)
-	    {
-	      (*it_begin).first += 2;
-	      if ((*it_begin).first >= size_x || map[(*it_begin).second][(*it_begin).first] != 'W')
-		remove_driller = true;
-	      else
-		map[(*it_begin).second][(*it_begin).first - 1] = 'S';
-	    }
-
-	  if (remove_driller)
-	    it_begin = drillers.erase(it_begin);
+	  if (x == size_x - 1 || y == size_y - 1 || x == 0 || y == 0)
+	    map[x][y] = 'W';
 	  else
 	    {
-	      drillers.push_back(std::make_pair((*it_begin).first, (*it_begin).second));
+	      int rand_value = 0 + (int)((double)rand() / ((double)RAND_MAX + 1) * 99);
 
-	      drillers.push_back(std::make_pair((*it_begin).first, (*it_begin).second));
-
-	      map[(*it_begin).second][(*it_begin).first] = 'S';
-	      ++it_begin;
+	      if ((x == 1 && y == 1) || (x == 2 && y == 1) || (x == 1 && y == 2)
+		  || (x == size_x - 2 && y == size_y - 2) || (x == size_x  - 3 && y == size_y - 2) || (x == size_x - 2 && y == size_y - 3))
+		{
+		  map[x][y] = 'S';
+		}
+	      else if (rand_value > 60
+		       && (map[x + 1][y - 1] != 'W'))
+		map[x][y] = 'W';
+	      else
+		map[x][y] = 'E';
 	    }
-
 	}
     }
 
-  int	x;
-  int	y;
-  for (x = 0, y = 0; map[x][y] != 'S'; x++, y++)
-    ;
-  map[x][y] = 'P';
-
+  map[1][1] = 'P';
   if (players == 2)
-    {
-      for (x = size_x - 1, y = size_y - 1; map[x][y] != 'S'; x--, y--)
-	;
-      map[x][y] = 'P';
-    }
-
-  int dens = size_y * size_x / 8;
-  while (dens > 0)
-    {
-      int	rand_x = rand() % size_x;
-      int	rand_y = rand() % size_y;
-      if (map[rand_x][rand_y] != 'E' && map[rand_x][rand_y] != 'P')
-	{
-	  if ((rand_x > 0 && map[rand_x - 1][rand_y] == 'S')
-	      || (rand_x < size_x - 1 && map[rand_x + 1][rand_y] == 'S')
-	      || (rand_y > 0 && map[rand_x][rand_y - 1] == 'S')
-	      || (rand_y < size_y - 1 && map[rand_x][rand_y + 1] == 'S'))
-	    {
-	      map[rand_x][rand_y] = 'E';
-	      dens--;
-	    }
-	}
-    }
-
+    map[size_x - 2][size_y - 2] = 'P';
 
   for (int y = 0; y < size_y; y++)
     {
@@ -137,7 +70,7 @@ void	GenMap::generate()
 	  else if (map[y][x] == 'W')
 	    std::cout << "\033[1;31m" << map[y][x] << " " << "\033[0m";
 	  else if (map[y][x] == 'E')
-	    std::cout << "\033[1;32m" << map[y][x] << " " << "\033[0m";
+	    std::cout << "\033[1;38m" << map[y][x] << " " << "\033[0m";
 	  else if (map[y][x] == 'S')
 	    std::cout << "\033[1;32m" << map[y][x] << " " << "\033[0m";
 	  else
@@ -148,49 +81,44 @@ void	GenMap::generate()
     }
 }
 
-  int	GenMap::getX() const
-  {
-    return (this->size_x);
-  }
+int	GenMap::getX() const
+{
+  return (this->size_x);
+}
 
-  void	GenMap::setX(int _x)
-  {
-    this->size_x = _x;
-  }
+void	GenMap::setX(int _x)
+{
+  this->size_x = _x;
+}
 
-  int	GenMap::getY() const
-  {
-    return (this->size_y);
-  }
+int	GenMap::getY() const
+{
+  return (this->size_y);
+}
 
-  void	GenMap::setY(int _y)
-  {
-    this->size_y = _y;
-  }
+void	GenMap::setY(int _y)
+{
+  this->size_y = _y;
+}
 
-  int	GenMap::getPlayers() const
-  {
-    return (this->players);
-  }
+int	GenMap::getPlayers() const
+{
+  return (this->players);
+}
 
-  void	GenMap::setPlayers(int _players)
-  {
-    this->players = _players;
-  }
+void	GenMap::setPlayers(int _players)
+{
+  this->players = _players;
+}
 
-  /*char	**GenMap::getMap() const
-    {
-    return (this->map);
-    }*/
+std::vector<std::vector <char> >	GenMap::getMap() const
+{
+  return (this->map);
+}
 
-  std::vector<std::vector <char> >	GenMap::getMap() const
-  {
-    return (this->map);
-  }
+int	main()
+{
+  GenMap	map(15, 15, 2);
 
-  int	main()
-  {
-    GenMap	map(30, 30, 2);
-
-    map.generate();
-  }
+  map.generate();
+}
