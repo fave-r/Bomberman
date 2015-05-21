@@ -5,32 +5,18 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 13:51:26 2015 polydo_s
-// Last update Tue May 19 20:49:41 2015 clément jean
+// Last update Thu May 21 16:26:53 2015 Leo Thevenet
 //
-
-#include <iostream>
-
-#include "Bomberman.hh"
 
 #include "Menu.hh"
 
-int	main(int ac, char *av[])
+int	main()
 {
-  if (ac != 3)
-    {
-      std::cerr << "You need to pass a width and height for the map" << std::endl;
-      return (1);
-    }
-  else
-    {
-      Menu          menu;
+  Menu          menu;
 
-      if (menu.initialize() == false)
-	return (EXIT_FAILURE);
-      while (menu.update() == true)
-	menu.draw();
-      av = av;
-      //Bomberman	bomberman(std::stoi(av[1]), std::stoi(av[2]));
-    }
+  if (menu.initialize() == false)
+    return (EXIT_FAILURE);
+  while (menu.update() == true)
+    menu.draw();
   return (0);
 }

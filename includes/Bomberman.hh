@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Tue May 19 23:58:00 2015 polydo_s
+// Last update Thu May 21 17:15:45 2015 Leo Thevenet
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -32,6 +32,9 @@ public:
 public:
   void	ShowMap();
   bool	initialize();
+  void	init_player();
+  void	init_map();
+  bool	init_texture();
   bool	update();
   void	draw();
 

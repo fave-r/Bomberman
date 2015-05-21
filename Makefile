@@ -5,7 +5,7 @@
 ## Login   <polydo_s@epitech.net>
 ## 
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Thu May 21 16:02:59 2015 polydo_s
+## Last update Thu May 21 17:22:40 2015 Leo Thevenet
 ##
 
 CXX		= g++
@@ -31,7 +31,8 @@ SRCS		= main.cpp			\
 		  $(SRC)/Model.cpp		\
 		  $(SRC)/AObject.cpp		\
 		  $(SRC)/Cube.cpp		\
-		  $(SRC)/Menu.cpp
+		  $(SRC)/Menu.cpp		\
+		  $(SRC)/GenMap.cpp
 
 OBJS		= $(SRCS:.cpp=.o)
 

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 17:25:07 2015 clément jean
-// Last update Tue May 19 22:34:00 2015 polydo_s
+// Last update Thu May 21 17:40:20 2015 Leo Thevenet
 //
 
 #ifndef __WALL_HH__
@@ -23,7 +23,6 @@ public:
 public:
   void	draw() const;
   void	update(std::vector<std::vector<AElement *> >);
-  const std::string	ToString() const;
 };
 
 #endif

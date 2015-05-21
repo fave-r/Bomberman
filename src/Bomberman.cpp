@@ -5,18 +5,19 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Thu May 21 16:03:12 2015 polydo_s
+// Last update Thu May 21 17:45:52 2015 Leo Thevenet
 //
 
 #include "Bomberman.hh"
+#include "GenMap.hh"
 
 Bomberman::Bomberman(const unsigned int &x, const unsigned int &y)
 {
-  MapGenerator *map = new MapGenerator(x, y);
+  GenMap *map = new GenMap(x, y, 2);
   this->_x = x;
   this->_y = y;
-  map->Generate();
-  this->_map = map->GetMap();
+  map->generate();
+  this->_map = map->getMap();
 
   // Visual *game = new Visual(x, y);
 
@@ -32,17 +33,12 @@ bool	Bomberman::initialize()
 {
   glm::mat4 projection;
   glm::mat4 transformation;
-  //  gdl::Texture _texture;
 
-  if (!this->_context.start(1910, 1070, "My bomberman!"))
+  if (!this->_context.start(1920, 1080, "My bomberman!"))
     {
       std::cout << "peut pas faire de fenetre" << std::endl;
       return false;
     }
-  PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, APlayer::DOWN);
-  PhysicalPlayer *p2 = new PhysicalPlayer(this->_x - 2, this->_y - 2, APlayer::UP);
-  this->_playerlist.push_back(p2);
-  this->_playerlist.push_back(p1);
   glEnable(GL_DEPTH_TEST);
   if (!this->_shader.load("./lib/shaders/basic.fp", GL_FRAGMENT_SHADER)
       || !this->_shader.load("./lib/shaders/basic.vp", GL_VERTEX_SHADER)
@@ -51,64 +47,84 @@ bool	Bomberman::initialize()
       std::cout << "shader erreur" << std::endl;
       return false;
     }
-  projection = glm::perspective(60.0f, 1000.0f / 1000.0f, 0.1f, 2000.0f);
-  transformation = glm::lookAt(glm::vec3(this->_x / 2, (this->_x + this->_y) / 1.5, this->_y / 2), glm::vec3(this->_y / 2, 0, this->_x / 2 - 1), glm::vec3(0, 1, 0));
+  projection = glm::perspective(70.0f, 1920.0f / 1080.0f, 0.1f, 1000.0f);
+  transformation = glm::lookAt(glm::vec3(this->_x / 2, (this->_x + this->_y) / 2, this->_y / 2), glm::vec3(this->_y / 2, 0, this->_x / 2 - 0.0001), glm::vec3(0, 1, 0));
   this->_shader.bind();
   this->_shader.setUniform("view", transformation);
   this->_shader.setUniform("projection", projection);
+  init_map();
+  init_player();
+  if (init_texture() == false)
+    return false;
+  return true;
+}
 
-  Cube        *old = new Cube;
-  Cube        *model;
+bool	Bomberman::init_texture()
+{
+  Cube        *_cube = new Cube; /*texture pool*/
 
-  old->initialize();
-  old->newTexture();
-  this->_objects.push_back(old);
+  _cube->initialize();
+  _cube->newTexture();
+  this->_objects.push_back(_cube);
+
+  for (size_t i = 0; i < this->_objects.size(); ++i)
+    {
+      if (this->_objects[i]->initialize() == false)
+	{
+	  std::cout << "object" << std::endl;
+	  return false;
+	}
+      ((Cube *)this->_objects[i])->setTexture(_cube->_texture);
+    }
+  draw();
+  return true;
+}
+
+void	Bomberman::init_map()
+{
+  AObject        *model;
 
   for (unsigned int i = 0; i < this->_map.size(); i++)
     {
       for (unsigned int j = 0; j < this->_map[i].size(); j++)
 	{
-	  model = new Cube;
-	  model->move(j, 0, i);
+	  model = new Cube; // sol
+	  model->translate(glm::vec3(j, 0, i));
 	  this->_objects.push_back(model);
-	  if (this->_map[i][j] != NULL)
+	  if (this->_map[i][j] != NULL) // en fonction
 	    {
-	      model = new Cube;
-	      model->move(j, 1, i);
+	      model = new Cube; // mur, box...
+	      model->translate(glm::vec3(j, 1, i));
 	      this->_objects.push_back(model);
 	    }
 	}
     }
+}
+
+void	Bomberman::init_player()
+{
+  PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, APlayer::DOWN);
+  PhysicalPlayer *p2 = new PhysicalPlayer(this->_x - 2, this->_y - 2, APlayer::UP);
+
+  Cube        *model;
+
+  this->_playerlist.push_back(p2);
+  this->_playerlist.push_back(p1);
+
   std::list<APlayer *>::const_iterator it;
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
     {
-      float y = (*it)->getY();
-      float x = (*it)->getX();
       model = new Cube;
-      model->move(y, 2, x);
+      model->move((*it)->getY(), 2, (*it)->getX());
       this->_objects.push_back(model);
     }
-
-
-
-  for (size_t i = 0; i < _objects.size(); ++i)
-    {
-      if (_objects[i]->initialize() == false)
-	{
-	  std::cout << "object" << std::endl;
-	  return false;
-	}
-      ((Cube *)_objects[i])->setTexture(old->_texture);
-    }
-  draw();
-  return true;
 }
 
 bool	Bomberman::update()
 {
   if (this->_input.getKey(SDLK_ESCAPE) || this->_input.getInput(SDL_QUIT))
     {
-      std::cout << "update" << std::endl;
+      std::cout << "Exit" << std::endl;
       return false;
     }
   this->_context.updateClock(_clock);
