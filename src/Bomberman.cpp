@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Wed May 20 00:28:10 2015 polydo_s
+// Last update Thu May 21 11:03:30 2015 polydo_s
 //
 
 #include "Bomberman.hh"
@@ -39,8 +39,8 @@ bool	Bomberman::initialize()
       std::cout << "peut pas faire de fenetre" << std::endl;
       return false;
     }
-  PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, ACharacter::DOWN, &this->_context);
-  PhysicalPlayer *p2 = new PhysicalPlayer(this->_x - 2, this->_y - 2, ACharacter::UP, &this->_context);
+  PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, APlayer::DOWN);
+  PhysicalPlayer *p2 = new PhysicalPlayer(this->_x - 2, this->_y - 2, APlayer::UP);
   this->_playerlist.push_back(p2);
   this->_playerlist.push_back(p1);
   glEnable(GL_DEPTH_TEST);
@@ -121,8 +121,12 @@ bool	Bomberman::update()
 
   std::list<APlayer *>::iterator it;
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
-    (*it)->update(this->_map);
-
+    {
+      PhysicalPlayer *player = dynamic_cast<PhysicalPlayer *>(*it);
+      if (player)
+	player->setInput(this->_input);
+      (*it)->update(this->_map);
+    }
   this->_shader.bind();
   return true;
 }

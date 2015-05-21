@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 13:44:50 2015 clément jean
-// Last update Tue May 19 23:31:59 2015 polydo_s
+// Last update Thu May 21 10:51:04 2015 polydo_s
 //
 
 #ifndef MAP_GENERATOR_HH
@@ -20,7 +20,6 @@
 #include "Wall.hh"
 #include "Box.hh"
 #include "PhysicalPlayer.hh"
-#include "ACharacter.hh"
 
 class MapGenerator {
 

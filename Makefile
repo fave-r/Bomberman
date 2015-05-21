@@ -5,7 +5,7 @@
 ## Login   <polydo_s@epitech.net>
 ## 
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Tue May 19 22:33:24 2015 polydo_s
+## Last update Thu May 21 10:50:10 2015 polydo_s
 ##
 
 ##-Wl,--rpath=./lib/libs
@@ -25,7 +25,6 @@ SRC		= src
 SRCS		= main.cpp			\
 		  $(SRC)/MapGenerator.cpp	\
 		  $(SRC)/AElement.cpp		\
-		  $(SRC)/ACharacter.cpp		\
 		  $(SRC)/APlayer.cpp		\
 		  $(SRC)/PhysicalPlayer.cpp	\
 		  $(SRC)/Box.cpp		\
