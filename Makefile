@@ -5,11 +5,11 @@
 ## Login   <polydo_s@epitech.net>
 ## 
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Thu May 21 17:22:40 2015 Leo Thevenet
+## Last update Fri May 22 02:48:12 2015 clément jean
 ##
 
 CXX		= g++
-CXXFLAGS	= -W -Wall -Werror -Wextra -std=c++11 -g
+CXXFLAGS	= -W -Wall -Werror -Wextra -std=c++11 -g -g3 -ggdb
 CXXFLAGS	+= -I./includes -I./lib/includes
 LDFLAGS		= -Wl,--rpath=./lib/libs -lgdl_gl -lGL -lGLEW -lrt -lfbxsdk -lSDL2 -lpthread -ldl
 LDLIBS		= -L./lib/libs

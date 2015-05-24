@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:49:34 2015 clément jean
-// Last update Wed May 20 00:00:11 2015 polydo_s
+// Last update Fri May 22 04:34:52 2015 clément jean
 //
 
 #include "Box.hh"
@@ -20,8 +20,15 @@ Box::~Box()
 
 void	Box::draw() const
 {
+
 }
 
 void	Box::update()
 {
+
+}
+
+bool	Box::initialize()
+{
+  return true;
 }

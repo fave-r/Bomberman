@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Thu May 21 17:15:45 2015 Leo Thevenet
+// Last update Fri May 22 03:46:05 2015 clément jean
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -17,6 +17,7 @@
 #include <SdlContext.hh>
 #include <AShader.hh>
 #include <BasicShader.hh>
+#include <Model.hh>
 
 #include "Cube.hh"
 #include "APlayer.hh"
@@ -48,6 +49,11 @@ private:
   std::vector<AObject*>				_objects;
   int						_x;
   int						_y;
+
+protected:
+  std::map<const std::string, gdl::Texture>	_textureArray;
+  std::map<const std::string, gdl::Model *>	_modelArray;
+
 };
 
 #endif

@@ -5,13 +5,14 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:48:39 2015 clément jean
-// Last update Tue May 19 23:49:19 2015 polydo_s
+// Last update Fri May 22 04:34:39 2015 clément jean
 //
 
 #ifndef __BOX_HH__
 # define __BOX_HH__
 
 #include <iostream>
+#include <Texture.hh>
 #include "AElement.hh"
 
 class   Box : public AElement
@@ -23,6 +24,11 @@ public:
 public:
   void	draw() const;
   void	update();
+  bool	initialize();
+
+private:
+
+  gdl::Texture  _texture;
 };
 
 #endif

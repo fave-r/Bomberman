@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Thu May 21 17:45:52 2015 Leo Thevenet
+// Last update Sun May 24 13:52:40 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -14,6 +14,11 @@
 Bomberman::Bomberman(const unsigned int &x, const unsigned int &y)
 {
   GenMap *map = new GenMap(x, y, 2);
+
+  /* /!\ IMPLEMENT TEXTURE POOL CLASS THAT SAVE ALL TEXTURES IN ITSELF !!!!! */
+
+  //this->_textureArray = MapCreator::create_texture();
+  //  this->_modelArray = MapCreator::create_model();
   this->_x = x;
   this->_y = y;
   map->generate();
@@ -48,7 +53,9 @@ bool	Bomberman::initialize()
       return false;
     }
   projection = glm::perspective(70.0f, 1920.0f / 1080.0f, 0.1f, 1000.0f);
-  transformation = glm::lookAt(glm::vec3(this->_x / 2, (this->_x + this->_y) / 2, this->_y / 2), glm::vec3(this->_y / 2, 0, this->_x / 2 - 0.0001), glm::vec3(0, 1, 0));
+  transformation = glm::lookAt(glm::vec3(this->_x / 2, (this->_x + this->_y) / 2, this->_y / 2),
+			       glm::vec3(this->_y / 2, 0, this->_x / 2 - 0.0001),
+			       glm::vec3(0, 1, 0));
   this->_shader.bind();
   this->_shader.setUniform("view", transformation);
   this->_shader.setUniform("projection", projection);
