@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 13:34:23 2015 clément jean
-// Last update Sun May 24 14:07:51 2015 polydo_s
+// Last update Sun May 24 14:36:13 2015 polydo_s
 //
 
 #include "MapGenerator.hh"

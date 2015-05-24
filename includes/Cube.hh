@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:29:04 2015 clément jean
-// Last update Sun May 24 14:33:32 2015 polydo_s
+// Last update Sun May 24 14:37:17 2015 polydo_s
 //
 
 #ifndef __CUBE_HPP__

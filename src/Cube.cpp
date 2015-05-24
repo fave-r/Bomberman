@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:58:02 2015 clément jean
-// Last update Sun May 24 14:33:12 2015 polydo_s
+// Last update Sun May 24 14:36:22 2015 polydo_s
 //
 
 #include "Cube.hh"
@@ -40,7 +40,7 @@ void			Cube::setTexture(const gdl::Texture &old)
 
 bool			Cube::newTexture()
 {
-  if (this->_texture.load("./lib/assets/marvin.fbm/Main_texture_diffuse2.tga") == false)
+  if (this->_texture.load("./Assets/wall.fbm/Wall.tga") == false)
     {
       std::cerr << "Cannot load the cube texture" << std::endl;
       return (false);
@@ -50,7 +50,7 @@ bool			Cube::newTexture()
 
 bool			Cube::initialize()
 {
-  this->_geometry.setColor(glm::vec4(153.0 / 255.0, 51 / 255.0, 0, 1));
+  //  this->_geometry.setColor(glm::vec4(153.0 / 255.0, 51 / 255.0, 0, 1));
 
   this->_geometry.pushVertex(glm::vec3(0.5, -0.5, 0.5));
   this->_geometry.pushVertex(glm::vec3(0.5, 0.5, 0.5));
@@ -62,7 +62,7 @@ bool			Cube::initialize()
   this->_geometry.pushUv(glm::vec2(1.0f, 1.0f));
   this->_geometry.pushUv(glm::vec2(0.0f, 1.0f));
 
-  this->_geometry.setColor(glm::vec4(153.0 / 255.0, 51 / 255.0, 0, 1));
+  //this->_geometry.setColor(glm::vec4(153.0 / 255.0, 51 / 255.0, 0, 1));
   this->_geometry.pushVertex(glm::vec3(0.5, -0.5, -0.5));
   this->_geometry.pushVertex(glm::vec3(0.5, 0.5, -0.5));
   this->_geometry.pushVertex(glm::vec3(-0.5, 0.5, -0.5));
@@ -72,7 +72,7 @@ bool			Cube::initialize()
   this->_geometry.pushUv(glm::vec2(1.0f, 1.0f));
   this->_geometry.pushUv(glm::vec2(0.0f, 1.0f));
 
-  this->_geometry.setColor(glm::vec4(153.0 / 255.0, 51 / 255.0, 0, 1));
+  //this->_geometry.setColor(glm::vec4(153.0 / 255.0, 51 / 255.0, 0, 1));
   this->_geometry.pushVertex(glm::vec3(0.5, -0.5, -0.5));
   this->_geometry.pushVertex(glm::vec3(0.5, 0.5, -0.5));
   this->_geometry.pushVertex(glm::vec3(0.5, 0.5, 0.5));
@@ -82,7 +82,7 @@ bool			Cube::initialize()
   this->_geometry.pushUv(glm::vec2(1.0f, 1.0f));
   this->_geometry.pushUv(glm::vec2(0.0f, 1.0f));
 
-  this->_geometry.setColor(glm::vec4(153.0 / 255.0, 51 / 255.0, 0, 1));
+  //this->_geometry.setColor(glm::vec4(153.0 / 255.0, 51 / 255.0, 0, 1));
   this->_geometry.pushVertex(glm::vec3(-0.5, -0.5, 0.5));
   this->_geometry.pushVertex(glm::vec3(-0.5, 0.5, 0.5));
   this->_geometry.pushVertex(glm::vec3(-0.5, 0.5, -0.5));
@@ -92,7 +92,7 @@ bool			Cube::initialize()
   this->_geometry.pushUv(glm::vec2(1.0f, 1.0f));
   this->_geometry.pushUv(glm::vec2(0.0f, 1.0f));
 
-  this->_geometry.setColor(glm::vec4(0, 1, 0, 1));
+  //this->_geometry.setColor(glm::vec4(0, 1, 0, 1));
   this->_geometry.pushVertex(glm::vec3(0.5, 0.5, 0.5));
   this->_geometry.pushVertex(glm::vec3(0.5, 0.5, -0.5));
   this->_geometry.pushVertex(glm::vec3(-0.5, 0.5, -0.5));
@@ -102,7 +102,7 @@ bool			Cube::initialize()
   this->_geometry.pushUv(glm::vec2(1.0f, 1.0f));
   this->_geometry.pushUv(glm::vec2(0.0f, 1.0f));
 
-  this->_geometry.setColor(glm::vec4(153.0 / 255.0, 51 / 255.0, 0, 1));
+  //this->_geometry.setColor(glm::vec4(153.0 / 255.0, 51 / 255.0, 0, 1));
   this->_geometry.pushVertex(glm::vec3(0.5, -0.5, -0.5));
   this->_geometry.pushVertex(glm::vec3(0.5, -0.5, 0.5));
   this->_geometry.pushVertex(glm::vec3(-0.5, -0.5, 0.5));

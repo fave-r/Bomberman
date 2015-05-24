@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:27:04 2015 clément jean
-// Last update Sun May 24 14:23:21 2015 polydo_s
+// Last update Sun May 24 14:41:08 2015 polydo_s
 //
 
 #ifndef __AOBJECT_HPP__
@@ -17,6 +17,7 @@
 #include <BasicShader.hh>
 #include <iostream>
 #include <vector>
+#include <Texture.hh>
 
 class AObject
 {
@@ -24,6 +25,7 @@ public:
   AObject(float x, float y);
   virtual ~AObject();
   virtual void		draw(const gdl::AShader &shader) const = 0;
+  //  virtual void          setTexture(const gdl::Texture &old) = 0;
   void			translate(const glm::vec3 &v);
   void			SetPos(const glm::vec3 &v);
   void			rotate(const glm::vec3 &axis, const float &angle);

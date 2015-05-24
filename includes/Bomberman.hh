@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Sun May 24 14:02:32 2015 polydo_s
+// Last update Sun May 24 14:38:00 2015 polydo_s
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -17,6 +17,7 @@
 #include <SdlContext.hh>
 #include <AShader.hh>
 #include <BasicShader.hh>
+#include <Model.hh>
 
 #include "Cube.hh"
 #include "APlayer.hh"
@@ -47,6 +48,10 @@ private:
   gdl::BasicShader				_shader;
   int						_x;
   int						_y;
+
+protected:
+  std::map<const std::string, gdl::Texture>	_textureArray;
+  std::map<const std::string, gdl::Model *>	_modelArray;
 };
 
 #endif
