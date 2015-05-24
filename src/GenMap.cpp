@@ -5,7 +5,7 @@
 // Login   <lhomme_a@epitech.net>
 //
 // Started on  Tue May  5 14:59:51 2015 Arnaud Lhomme
-// Last update Thu May 21 17:42:05 2015 Leo Thevenet
+// Last update Sun May 24 14:34:37 2015 polydo_s
 //
 
 #include "GenMap.hh"
@@ -87,7 +87,7 @@ void	GenMap::setPlayers(int _players)
   this->players = _players;
 }
 
-std::vector<std::vector <AElement * > >	GenMap::getMap() const
+std::vector<std::vector <AObject * > >	GenMap::getMap() const
 {
   return (this->map);
 }

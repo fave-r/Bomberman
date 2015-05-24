@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Wed May  6 00:18:56 2015 clément jean
-// Last update Tue May 19 21:55:38 2015 clément jean
+// Last update Sun May 24 14:31:40 2015 polydo_s
 //
 
 #ifndef __MODEL_HPP__
@@ -19,8 +19,13 @@
 
 class Model : public AObject
 {
+
+private:
+  float _x;
+  float _y;
+
 public:
-  Model();
+  Model(float x, float y);
   virtual ~Model();
   virtual bool		initialize();
   virtual void          update(const gdl::Clock &clock);

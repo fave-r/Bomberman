@@ -5,7 +5,7 @@
 ## Login   <polydo_s@epitech.net>
 ## 
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Thu May 21 17:22:40 2015 Leo Thevenet
+## Last update Sun May 24 14:34:11 2015 polydo_s
 ##
 
 CXX		= g++
@@ -22,7 +22,6 @@ SRC		= src
 
 SRCS		= main.cpp			\
 		  $(SRC)/MapGenerator.cpp	\
-		  $(SRC)/AElement.cpp		\
 		  $(SRC)/APlayer.cpp		\
 		  $(SRC)/PhysicalPlayer.cpp	\
 		  $(SRC)/Box.cpp		\
@@ -32,7 +31,7 @@ SRCS		= main.cpp			\
 		  $(SRC)/AObject.cpp		\
 		  $(SRC)/Cube.cpp		\
 		  $(SRC)/Menu.cpp		\
-		  $(SRC)/GenMap.cpp
+		  $(SRC)/GenMap.cpp		\
 
 OBJS		= $(SRCS:.cpp=.o)
 

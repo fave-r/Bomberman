@@ -5,13 +5,13 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Thu May 21 10:52:22 2015 polydo_s
+// Last update Sun May 24 14:21:24 2015 polydo_s
 //
 
 #include "APlayer.hh"
 
 APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
-  : AElement(x, y), _orientation(orientation)
+  : AObject(x, y), _orientation(orientation)
 {
   static unsigned id = 1;
   this->_id = id++;

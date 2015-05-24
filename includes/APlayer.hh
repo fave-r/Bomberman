@@ -5,16 +5,18 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Thu May 21 10:52:36 2015 polydo_s
+// Last update Sun May 24 14:16:45 2015 polydo_s
 //
 
 #ifndef PLAYER_HH
 #define PLAYER_HH
 
 #include <iostream>
-#include "AElement.hh"
 
-class	APlayer : public AElement {
+#include "AObject.hh"
+#include "IUpdatable.hh"
+
+class	APlayer : public AObject, public IUpdatable {
 
 public:
   enum eOrientation {
@@ -33,6 +35,7 @@ public:
 
 public:
   virtual void	draw() const;
+  virtual void	update(const gdl::Clock &clock, std::vector<std::vector<AObject *> >) = 0;
 
 protected:
   void			move(eOrientation);

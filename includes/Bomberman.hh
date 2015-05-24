@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Thu May 21 17:15:45 2015 Leo Thevenet
+// Last update Sun May 24 14:02:32 2015 polydo_s
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -20,7 +20,7 @@
 
 #include "Cube.hh"
 #include "APlayer.hh"
-#include "AElement.hh"
+#include "AObject.hh"
 #include "MapGenerator.hh"
 
 class	Bomberman : public gdl::Game
@@ -39,13 +39,12 @@ public:
   void	draw();
 
 private:
-  std::vector< std::vector<AElement *> >	_map;
+  std::vector< std::vector<AObject *> >		_map;
   std::list<APlayer *>			       	_playerlist;
   gdl::SdlContext			       	_context;
   gdl::Clock					_clock;
   gdl::Input					_input;
   gdl::BasicShader				_shader;
-  std::vector<AObject*>				_objects;
   int						_x;
   int						_y;
 };

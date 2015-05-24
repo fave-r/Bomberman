@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:59:33 2015 polydo_s
-// Last update Thu May 21 11:00:51 2015 polydo_s
+// Last update Sun May 24 14:22:47 2015 polydo_s
 //
 
 #ifndef PHYSICAL_PLAYER_HH
@@ -17,6 +17,7 @@
 
 #include "Bomberman.hh"
 #include "APlayer.hh"
+#include "AObject.hh"
 
 class	PhysicalPlayer : public APlayer {
 
@@ -28,7 +29,7 @@ public:
   PhysicalPlayer(float, float, APlayer::eOrientation);
 
 public:
-  virtual void	update(std::vector<std::vector<AElement *> >);
+  virtual void	update(const gdl::Clock &clock, std::vector<std::vector<AObject *> >);
 
 public:
   void		setInput(const gdl::Input &input);

@@ -5,12 +5,12 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:49:34 2015 clément jean
-// Last update Wed May 20 00:00:11 2015 polydo_s
+// Last update Sun May 24 14:24:37 2015 polydo_s
 //
 
 #include "Box.hh"
 
-Box::Box(float x, float y) : AElement(x, y)
+Box::Box(float x, float y) : AObject(x, y)
 {
 }
 
@@ -22,6 +22,8 @@ void	Box::draw() const
 {
 }
 
-void	Box::update()
+void	Box::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > map)
 {
+  (void)clock;
+  (void)map;
 }

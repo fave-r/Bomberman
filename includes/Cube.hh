@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:29:04 2015 clément jean
-// Last update Tue May 19 21:50:45 2015 clément jean
+// Last update Sun May 24 14:33:32 2015 polydo_s
 //
 
 #ifndef __CUBE_HPP__
@@ -19,7 +19,7 @@
 class Cube : public AObject
 {
 public:
-  Cube();
+  Cube(float x, float y);
   virtual ~Cube();
   const gdl::Texture	&getTexture() const;
   const gdl::Geometry	&getGeometry() const;

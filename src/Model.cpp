@@ -5,12 +5,12 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:15:50 2015 clément jean
-// Last update Tue May 19 21:57:09 2015 clément jean
+// Last update Sun May 24 14:31:15 2015 polydo_s
 //
 
 #include "Model.hpp"
 
-Model::Model()
+Model::Model(float x, float y) : AObject(x, y)
 {
 }
 

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 13:34:23 2015 clément jean
-// Last update Sun May 17 22:44:45 2015 clément jean
+// Last update Sun May 24 14:07:51 2015 polydo_s
 //
 
 #include "MapGenerator.hh"
@@ -61,7 +61,7 @@ void	MapGenerator::Initialize()
     this->_map[i].resize(this->_width);
 }
 
-const std::vector< std::vector<AElement *> >	&MapGenerator::GetMap()
+const std::vector< std::vector<AObject *> >	&MapGenerator::GetMap() const
 {
   return (this->_map);
 }

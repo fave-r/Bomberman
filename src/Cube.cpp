@@ -5,12 +5,12 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:58:02 2015 clément jean
-// Last update Tue May 19 22:07:36 2015 clément jean
+// Last update Sun May 24 14:33:12 2015 polydo_s
 //
 
 #include "Cube.hh"
 
-Cube::Cube()
+Cube::Cube(float x, float y) : AObject(x, y)
 {
 }
 

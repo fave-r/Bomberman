@@ -5,16 +5,16 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:48:39 2015 clément jean
-// Last update Tue May 19 23:49:19 2015 polydo_s
+// Last update Sun May 24 14:15:19 2015 polydo_s
 //
 
 #ifndef __BOX_HH__
 # define __BOX_HH__
 
 #include <iostream>
-#include "AElement.hh"
+#include "AObject.hh"
 
-class   Box : public AElement
+class   Box : public AObject
 {
 public:
   Box(float, float);
@@ -22,7 +22,7 @@ public:
 
 public:
   void	draw() const;
-  void	update();
+  void	update(const gdl::Clock &clock, std::vector<std::vector<AObject *> >);
 };
 
 #endif

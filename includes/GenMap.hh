@@ -5,7 +5,7 @@
 // Login   <lhomme_a@epitech.net>
 //
 // Started on  Tue May  5 15:00:01 2015 Arnaud Lhomme
-// Last update Thu May 21 17:37:10 2015 Leo Thevenet
+// Last update Sun May 24 14:25:43 2015 polydo_s
 //
 
 #ifndef GENMAP_HH_
@@ -16,7 +16,7 @@
 #include <vector>
 #include <list>
 #include <time.h>
-#include "AElement.hh"
+#include "AObject.hh"
 #include "Wall.hh"
 #include "Box.hh"
 #include "PhysicalPlayer.hh"
@@ -27,7 +27,7 @@ private:
   int					size_x;
   int					size_y;
   int					players;
-  std::vector<std::vector<AElement *> >	map;
+  std::vector<std::vector<AObject *> >	map;
 
 public:
   GenMap(int x, int y, int players);
@@ -39,10 +39,10 @@ public:
   int	getY() const;
   void	setY(int);
 
-  int		getPlayers() const;
-  void		setPlayers(int);
+  int					getPlayers() const;
+  void					setPlayers(int);
 
-  std::vector<std::vector <AElement * >	>getMap() const;
+  std::vector<std::vector <AObject * >	>getMap() const;
 
   void	generate();
 };

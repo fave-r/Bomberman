@@ -5,24 +5,23 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 17:25:07 2015 clément jean
-// Last update Thu May 21 17:40:20 2015 Leo Thevenet
+// Last update Sun May 24 14:20:43 2015 polydo_s
 //
 
 #ifndef __WALL_HH__
 # define __WALL_HH__
 
 #include <iostream>
-#include "AElement.hh"
+#include "AObject.hh"
 
-class   Wall : public AElement
+class   Wall : public AObject
 {
 public:
   Wall(float x, float y);
   ~Wall();
 
 public:
-  void	draw() const;
-  void	update(std::vector<std::vector<AElement *> >);
+  void	draw(const gdl::AShader &shader) const;
 };
 
 #endif
