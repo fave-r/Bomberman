@@ -1,11 +1,10 @@
-//
 // TexturePool.cpp for TexturePool.cpp in /home/jean_c/Tests/Bomberman
 //
 // Made by clément jean
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon May 25 02:15:39 2015 clément jean
-// Last update Mon May 25 02:31:52 2015 clément jean
+// Last update Mon May 25 13:46:45 2015 clément jean
 //
 
 #include "TexturePool.hh"

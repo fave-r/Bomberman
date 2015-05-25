@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon May 25 02:13:06 2015 clément jean
-// Last update Mon May 25 02:21:43 2015 clément jean
+// Last update Mon May 25 13:47:05 2015 clément jean
 //
 
 #ifndef __TEXTUREPOOL_HH__
@@ -14,6 +14,7 @@
 #include <Geometry.hh>
 #include <Texture.hh>
 #include <iostream>
+#include "Cube.hh"
 
 class	TexturePool
 {
@@ -22,7 +23,7 @@ public:
   ~TexturePool();
   bool	init();
   const gdl::Texture      &getBox();
-  const gdl::Texture      &getWall();
+  const gdl::Texture	  &getWall();
   const gdl::Texture      &getGround();
   const gdl::Texture      &getPlayer();
 

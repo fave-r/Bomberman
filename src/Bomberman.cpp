@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Mon May 25 02:35:02 2015 clément jean
+// Last update Mon May 25 15:11:59 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -15,16 +15,6 @@ Bomberman::Bomberman(const unsigned int &x, const unsigned int &y)
 {
   GenMap *map = new GenMap(x, y, 2);
 
-  this->_texturePool = new TexturePool();
-  if (this->_texturePool->init() == false)
-    {
-      std::cout << "TexturePool fail" << std::endl;
-      exit(0);
-    }
-  /* /!\ IMPLEMENT TEXTURE POOL CLASS THAT SAVE ALL TEXTURES IN ITSELF !!!!! */
-
-  //this->_textureArray = MapCreator::create_texture();
-  //  this->_modelArray = MapCreator::create_model();
   this->_x = x;
   this->_y = y;
   map->generate();
@@ -50,6 +40,14 @@ bool	Bomberman::initialize()
       std::cout << "peut pas faire de fenetre" << std::endl;
       return false;
     }
+
+  this->_texturePool = new TexturePool();
+  if (this->_texturePool->init() == false)
+    {
+      std::cout << "TexturePool fail" << std::endl;
+      return false;
+    }
+
   glEnable(GL_DEPTH_TEST);
   if (!this->_shader.load("./lib/shaders/basic.fp", GL_FRAGMENT_SHADER)
       || !this->_shader.load("./lib/shaders/basic.vp", GL_VERTEX_SHADER)
@@ -78,7 +76,7 @@ bool	Bomberman::init_texture()
 
   _cube->initialize();
   //_cube->setTexture(this->_texturePool->getWall());
-  _cube->newTexture();
+  //_cube->newTexture();
   this->_objects.push_back(_cube);
 
   for (size_t i = 0; i < this->_objects.size(); ++i)
@@ -88,7 +86,7 @@ bool	Bomberman::init_texture()
 	  std::cout << "object" << std::endl;
 	  return false;
 	}
-      ((Cube *)this->_objects[i])->setTexture(_cube->_texture);
+      ((Cube *)this->_objects[i])->setTexture(this->_texturePool->getBox());
     }
   draw();
   return true;
