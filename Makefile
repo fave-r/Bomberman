@@ -1,15 +1,15 @@
 ##
 ## Makefile for bomberman in /home/polydo_s/rendu/Bomberman
-## 
+##
 ## Made by Swann polydo_s
 ## Login   <polydo_s@epitech.net>
-## 
+##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Sun May 24 14:38:51 2015 polydo_s
+## Last update Mon May 25 02:39:23 2015 clément jean
 ##
 
 CXX		= g++
-CXXFLAGS	= -W -Wall -Werror -Wextra -std=c++11 -g -g3 -ggdb
+CXXFLAGS	= -W -Wall -Werror -Wextra -std=c++11
 CXXFLAGS	+= -I./includes -I./lib/includes
 LDFLAGS		= -Wl,--rpath=./lib/libs -lgdl_gl -lGL -lGLEW -lrt -lfbxsdk -lSDL2 -lpthread -ldl
 LDLIBS		= -L./lib/libs
@@ -32,6 +32,7 @@ SRCS		= main.cpp			\
 		  $(SRC)/Cube.cpp		\
 		  $(SRC)/Menu.cpp		\
 		  $(SRC)/GenMap.cpp		\
+		  $(SRC)/TexturePool.cpp	\
 
 OBJS		= $(SRCS:.cpp=.o)
 
