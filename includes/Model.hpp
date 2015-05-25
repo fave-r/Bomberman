@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Wed May  6 00:18:56 2015 clément jean
-// Last update Sun May 24 14:31:40 2015 polydo_s
+// Last update Mon May 25 02:37:43 2015 clément jean
 //
 
 #ifndef __MODEL_HPP__
@@ -16,8 +16,9 @@
 #include <Texture.hh>
 #include <Model.hh>
 #include "AObject.hh"
+#include "IUpdatable.hh"
 
-class Model : public AObject
+class Model : public AObject, public IUpdatable
 {
 
 private:
@@ -28,8 +29,8 @@ public:
   Model(float x, float y);
   virtual ~Model();
   virtual bool		initialize();
-  virtual void          update(const gdl::Clock &clock);
   virtual void		draw(gdl::AShader &shader);
+  virtual void		update(const gdl::Clock &clock, std::vector<std::vector<AObject *> >);
 
 private:
   gdl::Texture	_texture;

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:15:50 2015 clément jean
-// Last update Sun May 24 14:31:15 2015 polydo_s
+// Last update Mon May 25 02:38:23 2015 clément jean
 //
 
 #include "Model.hpp"
@@ -35,9 +35,10 @@ bool		Model::initialize()
   return true;
 }
 
-void		Model::update(const gdl::Clock &clock)
+void		Model::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > map)
 {
   (void)clock;
+  (void)map;
 }
 
 void		Model::draw(gdl::AShader &shader)

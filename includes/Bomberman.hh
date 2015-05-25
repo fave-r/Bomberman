@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Sun May 24 14:38:00 2015 polydo_s
+// Last update Mon May 25 02:23:12 2015 clément jean
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -23,6 +23,7 @@
 #include "APlayer.hh"
 #include "AObject.hh"
 #include "MapGenerator.hh"
+#include "TexturePool.hh"
 
 class	Bomberman : public gdl::Game
 {
@@ -42,16 +43,15 @@ public:
 private:
   std::vector< std::vector<AObject *> >		_map;
   std::list<APlayer *>			       	_playerlist;
+  std::vector<AObject*>				_objects;
   gdl::SdlContext			       	_context;
   gdl::Clock					_clock;
   gdl::Input					_input;
   gdl::BasicShader				_shader;
+  TexturePool					*_texturePool;
   int						_x;
   int						_y;
 
-protected:
-  std::map<const std::string, gdl::Texture>	_textureArray;
-  std::map<const std::string, gdl::Model *>	_modelArray;
 };
 
 #endif

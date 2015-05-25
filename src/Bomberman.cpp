@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Sun May 24 14:37:06 2015 polydo_s
+// Last update Mon May 25 02:35:02 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -15,6 +15,12 @@ Bomberman::Bomberman(const unsigned int &x, const unsigned int &y)
 {
   GenMap *map = new GenMap(x, y, 2);
 
+  this->_texturePool = new TexturePool();
+  if (this->_texturePool->init() == false)
+    {
+      std::cout << "TexturePool fail" << std::endl;
+      exit(0);
+    }
   /* /!\ IMPLEMENT TEXTURE POOL CLASS THAT SAVE ALL TEXTURES IN ITSELF !!!!! */
 
   //this->_textureArray = MapCreator::create_texture();
@@ -68,63 +74,67 @@ bool	Bomberman::initialize()
 
 bool	Bomberman::init_texture()
 {
-  // Cube        *_cube = new Cube; /*texture pool*/
+  Cube        *_cube = new Cube(0, 0); /*texture pool*/
 
-  // _cube->initialize();
-  // _cube->newTexture();
-  // this->_objects.push_back(_cube);
+  _cube->initialize();
+  //_cube->setTexture(this->_texturePool->getWall());
+  _cube->newTexture();
+  this->_objects.push_back(_cube);
 
-  // for (size_t i = 0; i < this->_objects.size(); ++i)
-  //   {
-  //     if (this->_objects[i]->initialize() == false)
-  // 	{
-  // 	  std::cout << "object" << std::endl;
-  // 	  return false;
-  // 	}
-  //     ((Cube *)this->_objects[i])->setTexture(_cube->_texture);
-  //   }
-  // draw();
+  for (size_t i = 0; i < this->_objects.size(); ++i)
+    {
+      if (this->_objects[i]->initialize() == false)
+	{
+	  std::cout << "object" << std::endl;
+	  return false;
+	}
+      ((Cube *)this->_objects[i])->setTexture(_cube->_texture);
+    }
+  draw();
   return true;
 }
 
 void	Bomberman::init_map()
 {
-  // AObject        *model;
+  AObject        *model;
 
-  // for (unsigned int i = 0; i < this->_map.size(); i++)
-  //   {
-  //     for (unsigned int j = 0; j < this->_map[i].size(); j++)
-  // 	{
-  // 	  model = new Cube; // sol
-  // 	  model->translate(glm::vec3(j, 0, i));
-  // 	  this->_objects.push_back(model);
-  // 	  if (this->_map[i][j] != NULL) // en fonction
-  // 	    {
-  // 	      model = new Cube; // mur, box...
-  // 	      model->translate(glm::vec3(j, 1, i));
-  // 	      this->_objects.push_back(model);
-  // 	    }
-  // 	}
-  //   }
+  for (unsigned int i = 0; i < this->_map.size(); i++)
+    {
+      for (unsigned int j = 0; j < this->_map[i].size(); j++)
+	{
+	  model = new Cube((float)j, (float)i); // sol
+	  //model->setTexture(this->_texturePool->getGround());
+	  model->translate(glm::vec3(j, 0, i));
+	  this->_objects.push_back(model);
+	  if (this->_map[i][j] != NULL) // en fonction
+	    {
+	      model = new Box((float)j, (float)i);
+	      //model->setTexture(this->_texturePool->getBox());
+	      //model = new Cube((float)j, (float)i); // mur, box...
+	      model->translate(glm::vec3(j, 1, i));
+	      this->_objects.push_back(model);
+	    }
+	}
+    }
 }
 
 void	Bomberman::init_player()
 {
-  // PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, APlayer::DOWN);
-  // PhysicalPlayer *p2 = new PhysicalPlayer(this->_x - 2, this->_y - 2, APlayer::UP);
+  /*  PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, APlayer::DOWN);
+  PhysicalPlayer *p2 = new PhysicalPlayer(this->_x - 2, this->_y - 2, APlayer::UP);
 
-  // Cube        *model;
+  Cube        *model(p1->getX(), p1->getY());
 
-  // this->_playerlist.push_back(p2);
-  // this->_playerlist.push_back(p1);
+  this->_playerlist.push_back(p2);
+  this->_playerlist.push_back(p1);
 
-  // std::list<APlayer *>::const_iterator it;
-  // for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
-  //   {
-  //     model = new Cube;
-  //     model->move((*it)->getY(), 2, (*it)->getX());
-  //     this->_objects.push_back(model);
-  //   }
+  std::list<APlayer *>::const_iterator it;
+  for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
+    {
+      model = new Cube((*it)->getY(), (*it)->getX());
+      model->move((*it)->getY(), 2, (*it)->getX());
+      this->_objects.push_back(model);
+      }*/
 }
 
 bool	Bomberman::update()
@@ -159,15 +169,15 @@ bool	Bomberman::update()
 
 void	Bomberman::draw()
 {
-  // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  // this->_shader.bind();
-  // for (size_t i = 0; i < this->_objects.size(); ++i)
-  //   this->_objects[i]->draw(this->_shader);
-  // this->_context.flush();
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  this->_shader.bind();
+  for (size_t i = 0; i < this->_objects.size(); ++i)
+    this->_objects[i]->draw(this->_shader);
+  this->_context.flush();
 }
 
 Bomberman::~Bomberman()
 {
-  // for (size_t i = 0; i < this->_objects.size(); ++i)
-  //   delete this->_objects[i];
+  for (size_t i = 0; i < this->_objects.size(); ++i)
+    delete this->_objects[i];
 }
