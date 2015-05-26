@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-// Last update Tue May 26 02:29:40 2015 clément jean
+// Last update Tue May 26 16:49:34 2015 polydo_s
 //
 
 #include "PhysicalPlayer.hh"
@@ -33,7 +33,13 @@ void	PhysicalPlayer::update(const gdl::Clock &clock, std::vector<std::vector<AOb
   for (it = this->_actions.begin(); it != this->_actions.end(); ++it)
     {
       if (this->_input.getKey(SDLK_UP))
-  	std::cout << "UP" << std::endl;
+  	this->_y -= 0.02;
+      if (this->_input.getKey(SDLK_DOWN))
+	this->_y += 0.02;
+      if (this->_input.getKey(SDLK_LEFT))
+	this->_x -= 0.02;
+      if (this->_input.getKey(SDLK_RIGHT))
+	this->_x += 0.02;
     }
 }
 
