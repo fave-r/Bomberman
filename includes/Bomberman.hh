@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Mon May 25 02:23:12 2015 clément jean
+// Last update Tue May 26 16:23:09 2015 Leo Thevenet
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -44,6 +44,7 @@ private:
   std::vector< std::vector<AObject *> >		_map;
   std::list<APlayer *>			       	_playerlist;
   std::vector<AObject*>				_objects;
+  std::vector<AObject*>				_objplayers;
   gdl::SdlContext			       	_context;
   gdl::Clock					_clock;
   gdl::Input					_input;

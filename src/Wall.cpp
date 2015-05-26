@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:40:10 2015 clément jean
-// Last update Tue May 26 02:16:43 2015 clément jean
+// Last update Tue May 26 16:17:19 2015 Leo Thevenet
 //
 
 #include "Wall.hh"
@@ -20,7 +20,8 @@ Wall::~Wall()
 
 void	Wall::draw(gdl::AShader &shader)
 {
-  (void)shader;
+  _texture.bind();
+  _geometry.draw(shader, getTransformation(), GL_QUADS);
 }
 
 bool                    Wall::initialize()

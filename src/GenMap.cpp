@@ -5,7 +5,7 @@
 // Login   <lhomme_a@epitech.net>
 //
 // Started on  Tue May  5 14:59:51 2015 Arnaud Lhomme
-// Last update Sun May 24 14:34:37 2015 polydo_s
+// Last update Tue May 26 16:04:52 2015 Leo Thevenet
 //
 
 #include "GenMap.hh"
@@ -40,14 +40,14 @@ void	GenMap::generate()
 	      int rand_value = 0 + (int)((double)rand() / ((double)RAND_MAX + 1) * 99);
 
 	      if ((x == 2 && y == 1) || (x == 1 && y == 2))
-		map[x][y] = NULL;
+	  	map[x][y] = NULL;
 	      else if ((x == this->size_x - 3 && y == this->size_y - 2)
-		       || (x == this->size_x - 2 && y == this->size_y - 3))
-		map[x][y] = NULL;
+	  	       || (x == this->size_x - 2 && y == this->size_y - 3))
+	  	map[x][y] = NULL;
 	      else if (rand_value > 60 && dynamic_cast<Wall *>(map[x + 1][y - 1]) == NULL)
-		map[x][y] = new Wall(x, y);
+	  	map[x][y] = new Wall(x, y);
 	      else
-		map[x][y] = NULL; // NEW BOX
+	  	map[x][y] = new Box(x, y); // NEW BOX
 	    }
 	}
     }
