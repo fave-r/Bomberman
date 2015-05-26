@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:40:10 2015 clément jean
-// Last update Mon May 25 02:36:14 2015 clément jean
+// Last update Tue May 26 02:16:43 2015 clément jean
 //
 
 #include "Wall.hh"
@@ -89,7 +89,7 @@ bool                    Wall::initialize()
   return true;
 }
 
-bool			Wall::newTexture()
+/*bool			Wall::newTexture()
 {
   if (this->_texture.load("./Assets/wall.fbm/Wall.tga") == false)
     {
@@ -98,7 +98,7 @@ bool			Wall::newTexture()
     }
   return true;
 }
-
+*/
 void          Wall::setTexture(const gdl::Texture &old)
 {
   this->_texture = old;

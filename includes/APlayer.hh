@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Sun May 24 14:16:45 2015 polydo_s
+// Last update Tue May 26 02:27:53 2015 clément jean
 //
 
 #ifndef PLAYER_HH
@@ -29,6 +29,8 @@ public:
 protected:
   unsigned int	_id;
   eOrientation	_orientation;
+  float		_x;
+  float		_y;
 
 public:
   APlayer(float, float, APlayer::eOrientation);
@@ -49,6 +51,10 @@ public:
 public:
   unsigned int		getId() const;
   eOrientation		getOrientation() const;
+  float			getY();
+  float			getX();
+  void			setY(float y);
+  void			setX(float x);
 
 public:
   void	setOrientation(eOrientation);

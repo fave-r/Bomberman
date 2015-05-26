@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:49:34 2015 clément jean
-// Last update Mon May 25 02:25:24 2015 clément jean
+// Last update Tue May 26 02:17:13 2015 clément jean
 //
 
 #include "Box.hh"
@@ -95,7 +95,7 @@ bool	Box::initialize()
   this->_geometry.build();
   return true;
 }
-
+/*
 bool                    Box::newTexture()
 {
   if (this->_texture.load("./Assets/box.fbm/box.tga") == false)
@@ -105,7 +105,7 @@ bool                    Box::newTexture()
     }
   return true;
 }
-
+*/
 void          Box::setTexture(const gdl::Texture &old)
 {
   this->_texture = old;

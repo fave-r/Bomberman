@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-// Last update Sun May 24 14:24:51 2015 polydo_s
+// Last update Tue May 26 02:29:40 2015 clément jean
 //
 
 #include "PhysicalPlayer.hh"
@@ -13,7 +13,8 @@
 PhysicalPlayer::PhysicalPlayer(float x, float y, APlayer::eOrientation orientation)
   : APlayer(x, y, orientation)
 {
-  
+  this->_x = x;
+  this->_y = y;
   if (this->_id == 1)
     {
       this->_actions[SDLK_UP] = &APlayer::goUp;
@@ -40,3 +41,19 @@ void	PhysicalPlayer::setInput(const gdl::Input &input)
 {
   this->_input = input;
 }
+
+void	PhysicalPlayer::draw(gdl::AShader &shader)
+{
+  (void)shader;
+}
+
+bool	PhysicalPlayer::initialize()
+{
+  return true;
+}
+
+void	PhysicalPlayer::setTexture(const gdl::Texture &old)
+{
+  (void)old;
+}
+

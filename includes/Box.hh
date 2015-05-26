@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:48:39 2015 clément jean
-// Last update Mon May 25 02:24:41 2015 clément jean
+// Last update Tue May 26 02:17:02 2015 clément jean
 //
 
 #ifndef __BOX_HH__
@@ -27,7 +27,6 @@ public:
   virtual void	draw(gdl::AShader &shader);
   virtual void	update(const gdl::Clock &clock, std::vector<std::vector<AObject *> >);
   virtual bool	initialize();
-  virtual bool  newTexture();
   virtual void  setTexture(const gdl::Texture &old);
 
 private:

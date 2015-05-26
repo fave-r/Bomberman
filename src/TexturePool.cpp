@@ -4,7 +4,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon May 25 02:15:39 2015 clément jean
-// Last update Mon May 25 13:46:45 2015 clément jean
+// Last update Tue May 26 02:37:58 2015 clément jean
 //
 
 #include "TexturePool.hh"
@@ -29,7 +29,11 @@ bool		TexturePool::init()
       std::cerr << "Cannot load the wall texture" << std::endl;
       return (false);
     }
-  //if ()
+  if (this->_texturePlayer.load("./Assets/marvin.fbm/Main_texture_diffuse2.tga") == false)
+    {
+      std::cerr << "Cannot load the player texture" << std::endl;
+      return (false);
+    }
   return true;
 }
 
@@ -52,4 +56,3 @@ const gdl::Texture	&TexturePool::getPlayer()
 {
   return this->_texturePlayer;
 }
-

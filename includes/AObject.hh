@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:27:04 2015 clément jean
-// Last update Mon May 25 02:23:56 2015 clément jean
+// Last update Tue May 26 02:16:20 2015 clément jean
 //
 
 #ifndef __AOBJECT_HPP__
@@ -26,7 +26,6 @@ public:
   virtual ~AObject();
   virtual void		draw(gdl::AShader &shader) = 0;
   virtual bool          initialize() = 0;
-  virtual bool		newTexture() = 0;
   virtual void          setTexture(const gdl::Texture &old) = 0;
   void			translate(const glm::vec3 &v);
   void			SetPos(const glm::vec3 &v);

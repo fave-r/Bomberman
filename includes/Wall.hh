@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 17:25:07 2015 clément jean
-// Last update Mon May 25 02:24:55 2015 clément jean
+// Last update Tue May 26 02:16:53 2015 clément jean
 //
 
 #ifndef __WALL_HH__
@@ -25,7 +25,6 @@ public:
 public:
   virtual void	draw(gdl::AShader &shader);
   virtual bool  initialize();
-  virtual bool	newTexture();
   virtual void  setTexture(const gdl::Texture &old);
 
 private:

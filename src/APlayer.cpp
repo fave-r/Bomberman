@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Sun May 24 14:21:24 2015 polydo_s
+// Last update Tue May 26 02:28:27 2015 clément jean
 //
 
 #include "APlayer.hh"
@@ -15,6 +15,8 @@ APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
 {
   static unsigned id = 1;
   this->_id = id++;
+  this->_x = x;
+  this->_y = y;
 }
 
 void			APlayer::draw() const
@@ -61,4 +63,24 @@ APlayer::eOrientation	APlayer::getOrientation() const
 void			APlayer::setOrientation(eOrientation orientation)
 {
   this->_orientation = orientation;
+}
+
+float			APlayer::getX()
+{
+  return this->_x;
+}
+
+float			APlayer::getY()
+{
+  return this->_y;
+}
+
+void			APlayer::setX(float x)
+{
+  this->_x = x;
+}
+
+void			APlayer::setY(float y)
+{
+  this->_y = y;
 }

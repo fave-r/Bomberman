@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Mon May 25 15:11:59 2015 clément jean
+// Last update Tue May 26 02:39:01 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -86,7 +86,7 @@ bool	Bomberman::init_texture()
 	  std::cout << "object" << std::endl;
 	  return false;
 	}
-      ((Cube *)this->_objects[i])->setTexture(this->_texturePool->getBox());
+      //((Cube *)this->_objects[i])->setTexture(this->_texturePool->getBox());
     }
   draw();
   return true;
@@ -101,13 +101,13 @@ void	Bomberman::init_map()
       for (unsigned int j = 0; j < this->_map[i].size(); j++)
 	{
 	  model = new Cube((float)j, (float)i); // sol
-	  //model->setTexture(this->_texturePool->getGround());
+	  model->setTexture(this->_texturePool->getWall());
 	  model->translate(glm::vec3(j, 0, i));
 	  this->_objects.push_back(model);
 	  if (this->_map[i][j] != NULL) // en fonction
 	    {
 	      model = new Box((float)j, (float)i);
-	      //model->setTexture(this->_texturePool->getBox());
+	      model->setTexture(this->_texturePool->getBox());
 	      //model = new Cube((float)j, (float)i); // mur, box...
 	      model->translate(glm::vec3(j, 1, i));
 	      this->_objects.push_back(model);
@@ -118,10 +118,9 @@ void	Bomberman::init_map()
 
 void	Bomberman::init_player()
 {
-  /*  PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, APlayer::DOWN);
+  PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, APlayer::DOWN);
   PhysicalPlayer *p2 = new PhysicalPlayer(this->_x - 2, this->_y - 2, APlayer::UP);
-
-  Cube        *model(p1->getX(), p1->getY());
+  Cube        *model = new Cube(p1->getX(), p1->getY());
 
   this->_playerlist.push_back(p2);
   this->_playerlist.push_back(p1);
@@ -130,9 +129,10 @@ void	Bomberman::init_player()
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
     {
       model = new Cube((*it)->getY(), (*it)->getX());
-      model->move((*it)->getY(), 2, (*it)->getX());
+      model->setTexture(this->_texturePool->getPlayer());
+      model->move((*it)->getY(), 1, (*it)->getX());
       this->_objects.push_back(model);
-      }*/
+    }
 }
 
 bool	Bomberman::update()
