@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Tue May 26 16:30:51 2015 Leo Thevenet
+// Last update Tue May 26 17:09:57 2015 Leo Thevenet
 //
 
 #include "Bomberman.hh"
@@ -170,7 +170,7 @@ bool	Bomberman::update()
       if (player)
 	player->setInput(this->_input);
       (*it)->update(this->_clock, this->_map);
-      this->_objplayers[i]->SetPos(glm::vec3((*it)->getY(), 1, (*it)->getX()));
+      this->_objplayers[i]->SetPos(glm::vec3((*it)->getX(), 1.001, (*it)->getY()));
       i++;
     }
   this->_shader.bind();
