@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:49:34 2015 clément jean
-// Last update Tue May 26 02:17:13 2015 clément jean
+// Last update Tue May 26 23:36:06 2015 polydo_s
 //
 
 #include "Box.hh"
@@ -24,7 +24,7 @@ void	Box::draw(gdl::AShader &shader)
   _geometry.draw(shader, getTransformation(), GL_QUADS);
 }
 
-void	Box::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > map)
+void	Box::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map)
 {
   (void)clock;
   (void)map;

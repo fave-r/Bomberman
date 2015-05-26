@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Tue May 26 02:27:53 2015 clément jean
+// Last update Tue May 26 23:25:29 2015 polydo_s
 //
 
 #ifndef PLAYER_HH
@@ -36,28 +36,23 @@ public:
   APlayer(float, float, APlayer::eOrientation);
 
 public:
-  virtual void	draw() const;
-  virtual void	update(const gdl::Clock &clock, std::vector<std::vector<AObject *> >) = 0;
+  virtual void		draw() const;
+  virtual void		update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &) = 0;
 
 protected:
-  void			move(eOrientation);
+  void			move(float, float, eOrientation, std::vector<std::vector<AObject *> > &);
 
 public:
-  void			goUp();
-  void			goRight();
-  void			goDown();
-  void			goLeft();
+  void			goUp(std::vector<std::vector<AObject *> > &);
+  void			goRight(std::vector<std::vector<AObject *> > &);
+  void			goDown(std::vector<std::vector<AObject *> > &);
+  void			goLeft(std::vector<std::vector<AObject *> > &);
 
 public:
   unsigned int		getId() const;
   eOrientation		getOrientation() const;
   float			getY();
   float			getX();
-  void			setY(float y);
-  void			setX(float x);
-
-public:
-  void	setOrientation(eOrientation);
 };
 
 #endif

@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Sun May 24 14:08:53 2015 polydo_s
-// Last update Sun May 24 14:14:34 2015 polydo_s
+// Last update Tue May 26 23:35:20 2015 polydo_s
 //
 
 #ifndef IUPDATABLE_HH
@@ -19,7 +19,7 @@
 class IUpdatable {
 
 public:
-  virtual void	update(const gdl::Clock &clock, std::vector<std::vector<AObject *> >) = 0;
+  virtual void	update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &) = 0;
 };
 
 #endif

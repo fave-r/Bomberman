@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-// Last update Tue May 26 16:49:34 2015 polydo_s
+// Last update Tue May 26 23:34:52 2015 polydo_s
 //
 
 #include "PhysicalPlayer.hh"
@@ -24,22 +24,15 @@ PhysicalPlayer::PhysicalPlayer(float x, float y, APlayer::eOrientation orientati
     }
 }
 
-void	PhysicalPlayer::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > map)
+void	PhysicalPlayer::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map)
 {
   (void)clock;
-  (void)map;
-  std::map<int, void(APlayer::*)(void)>::const_iterator it;
+  std::map<int, void(APlayer::*)(std::vector<std::vector<AObject *> > &)>::const_iterator it;
 
   for (it = this->_actions.begin(); it != this->_actions.end(); ++it)
     {
-      if (this->_input.getKey(SDLK_UP))
-  	this->_y -= 0.02;
-      if (this->_input.getKey(SDLK_DOWN))
-	this->_y += 0.02;
-      if (this->_input.getKey(SDLK_LEFT))
-	this->_x -= 0.02;
-      if (this->_input.getKey(SDLK_RIGHT))
-	this->_x += 0.02;
+      if (this->_input.getKey(it->first))
+	(this->*(*it).second)(map);
     }
 }
 

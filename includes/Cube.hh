@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:29:04 2015 clément jean
-// Last update Mon May 25 02:24:23 2015 clément jean
+// Last update Tue May 26 23:35:35 2015 polydo_s
 //
 
 #ifndef __CUBE_HPP__
@@ -30,7 +30,7 @@ public:
   void			move(const int &x, const int &y, const int &z);
   //  virtual void		update(const gdl::Clock &clock);
   virtual void		draw(gdl::AShader &shader);
-  virtual void		update(const gdl::Clock &clock, std::vector<std::vector<AObject *> >);
+  virtual void		update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &);
   virtual bool          initialize();
   // /!\ TO CHANGE
   gdl::Texture	_texture;

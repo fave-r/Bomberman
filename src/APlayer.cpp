@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Tue May 26 02:28:27 2015 clément jean
+// Last update Tue May 26 23:26:19 2015 polydo_s
 //
 
 #include "APlayer.hh"
@@ -15,8 +15,6 @@ APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
 {
   static unsigned id = 1;
   this->_id = id++;
-  this->_x = x;
-  this->_y = y;
 }
 
 void			APlayer::draw() const
@@ -24,45 +22,37 @@ void			APlayer::draw() const
 
 }
 
-void			APlayer::move(eOrientation orientation)
+void			APlayer::move(float x, float y, eOrientation orientation, std::vector<std::vector<AObject *> > &map)
 {
+  (void)map;
   this->_orientation = orientation;
+  this->_x = x;
+  this->_y = y;
 }
 
-void			APlayer::goUp()
+void			APlayer::goUp(std::vector<std::vector<AObject *> > &map)
 {
-  std::cout << "UP" << std::endl;
+  this->move(this->_x, this->_y - 0.02, APlayer::UP, map);
 }
 
-void			APlayer::goRight()
+void			APlayer::goRight(std::vector<std::vector<AObject *> > &map)
 {
-  std::cout << "RIGHT" << std::endl;
+  this->move(this->_x + 0.02, this->_y, APlayer::RIGHT, map);
 }
 
-void			APlayer::goDown()
+void			APlayer::goDown(std::vector<std::vector<AObject *> > &map)
 {
-  std::cout << "DOWN" << std::endl;
+  this->move(this->_x, this->_y + 0.02, APlayer::DOWN, map);
 }
 
-void			APlayer::goLeft()
+void			APlayer::goLeft(std::vector<std::vector<AObject *> > &map)
 {
-  std::cout << "LEFT" << std::endl;
+  this->move(this->_x - 0.02, this->_y, APlayer::LEFT, map);
 }
-
 
 unsigned int		APlayer::getId() const
 {
   return this->_id;
-}
-
-APlayer::eOrientation	APlayer::getOrientation() const
-{
-  return this->_orientation;
-}
-
-void			APlayer::setOrientation(eOrientation orientation)
-{
-  this->_orientation = orientation;
 }
 
 float			APlayer::getX()
@@ -73,14 +63,4 @@ float			APlayer::getX()
 float			APlayer::getY()
 {
   return this->_y;
-}
-
-void			APlayer::setX(float x)
-{
-  this->_x = x;
-}
-
-void			APlayer::setY(float y)
-{
-  this->_y = y;
 }
