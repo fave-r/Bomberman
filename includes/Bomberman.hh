@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Wed May 27 02:08:56 2015 clément jean
+// Last update Wed May 27 22:13:51 2015 clément jean
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -24,6 +24,7 @@
 #include "AObject.hh"
 #include "MapGenerator.hh"
 #include "TexturePool.hh"
+#include "ModelPool.hh"
 #include "Model.hpp"
 
 class	Bomberman : public gdl::Game
@@ -51,6 +52,7 @@ private:
   gdl::Input					_input;
   gdl::BasicShader				_shader;
   TexturePool					*_texturePool;
+  ModelPool					*_modelPool;
   int						_x;
   int						_y;
 

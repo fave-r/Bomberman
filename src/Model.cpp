@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:15:50 2015 clément jean
-// Last update Wed May 27 09:58:25 2015 clément jean
+// Last update Thu May 28 00:37:20 2015 clément jean
 //
 
 #include "Model.hpp"
@@ -21,7 +21,7 @@ Model::~Model()
 bool		Model::initialize()
 {
   this->_speed = 100.0f;
-  if (this->_model.load("./Assets/marvin.fbx") == false)
+  if (this->_model.load("./Assets/marvin.fbx") == false) // EN ATTENDANT DE REGLER LE SETMODEL
     {
       std::cerr << "Cannot load the model" << std::endl;
       return (false);
@@ -47,6 +47,12 @@ void		Model::draw(gdl::AShader &shader)
 void		Model::setTexture(const gdl::Texture &old)
 {
   this->_texture = old;
+}
+
+void		Model::setModel(const gdl::Model &old)
+{
+  (void)old;
+  // this->_model = old;
 }
 
 void            Model::move(const int &x, const int &y, const int &z)

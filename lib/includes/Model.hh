@@ -21,7 +21,6 @@ namespace gdl
 	public:
 		Model();
 		~Model();
-
 		// Pause the current animation
 		void		pause(bool pauseAnim);
 
@@ -57,7 +56,7 @@ namespace gdl
 		void	removeFromManager();
 
 		FbxModel			*_model;
-		SFbxModelHandler	*_modelHandler;
+		SFbxModelHandler		*_modelHandler;
 		bool				_loop;
 		double				_timeSinceLastFrame;
 

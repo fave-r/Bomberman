@@ -5,7 +5,7 @@
 ## Login   <polydo_s@epitech.net>
 ##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Mon May 25 02:39:23 2015 clément jean
+## Last update Wed May 27 22:14:25 2015 clément jean
 ##
 
 CXX		= g++
@@ -33,6 +33,7 @@ SRCS		= main.cpp			\
 		  $(SRC)/Menu.cpp		\
 		  $(SRC)/GenMap.cpp		\
 		  $(SRC)/TexturePool.cpp	\
+		  $(SRC)/ModelPool.cpp		\
 
 OBJS		= $(SRCS:.cpp=.o)
 

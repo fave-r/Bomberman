@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Wed May 27 16:26:44 2015 Leo Thevenet
+// Last update Wed May 27 22:17:15 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -49,12 +49,18 @@ bool	Bomberman::initialize()
   t = clock();
 
   this->_texturePool = new TexturePool();
+  this->_modelPool = new ModelPool();
   t = clock() - t;
   std::cout << "time elapsed : " << ((float)t)/CLOCKS_PER_SEC << std::endl;
   t = clock();
   if (this->_texturePool->init() == false)
     {
       std::cout << "TexturePool fail" << std::endl;
+      return false;
+    }
+  if (this->_modelPool->init() == false)
+    {
+      std::cout << "ModelPool fail" << std::endl;
       return false;
     }
   t = clock() - t;
@@ -183,6 +189,7 @@ void	Bomberman::init_player()
     {
       model = new Model((*it)->getY(), (*it)->getX());
       model->setTexture(this->_texturePool->getPlayer());
+      model->setModel(this->_modelPool->getPhysicalPlayer());
       model->move((*it)->getY(), 1, (*it)->getX());
       this->_objplayers.push_back(model);
     }
