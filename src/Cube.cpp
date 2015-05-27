@@ -5,14 +5,13 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:58:02 2015 clément jean
-// Last update Tue May 26 23:35:45 2015 polydo_s
+// Last update Wed May 27 01:39:09 2015 polydo_s
 //
 
 #include "Cube.hh"
 
-Cube::Cube(float x, float y) : AObject(x, y)
+Cube::Cube(float x, float y) : AObject(x, y, 0.9, 0.9)
 {
-
 }
 
 Cube::~Cube()
@@ -132,4 +131,9 @@ void          Cube::update(const gdl::Clock &clock, std::vector<std::vector<AObj
 {
   (void)clock;
   (void)map;
+}
+
+const std::string	Cube::toString()
+{
+  return "C";
 }

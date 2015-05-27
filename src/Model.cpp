@@ -5,12 +5,12 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:15:50 2015 clément jean
-// Last update Mon May 25 02:38:23 2015 clément jean
+// Last update Wed May 27 01:39:47 2015 polydo_s
 //
 
 #include "Model.hpp"
 
-Model::Model(float x, float y) : AObject(x, y)
+Model::Model(float x, float y) : AObject(x, y, 0.9, 0.9)
 {
 }
 
@@ -45,4 +45,9 @@ void		Model::draw(gdl::AShader &shader)
 {
   this->_texture.bind();
   this->_model.draw(shader, getTransformation(), GL_QUADS);
+}
+
+const std::string	Model::toString()
+{
+  return "M";
 }

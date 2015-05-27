@@ -5,12 +5,12 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:49:34 2015 clément jean
-// Last update Tue May 26 23:36:06 2015 polydo_s
+// Last update Wed May 27 01:39:10 2015 polydo_s
 //
 
 #include "Box.hh"
 
-Box::Box(float x, float y) : AObject(x, y)
+Box::Box(float x, float y) : AObject(x, y, 0.9, 0.9)
 {
 }
 
@@ -109,4 +109,9 @@ bool                    Box::newTexture()
 void          Box::setTexture(const gdl::Texture &old)
 {
   this->_texture = old;
+}
+
+const std::string	Box::toString()
+{
+  return "B";
 }

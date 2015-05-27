@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:48:39 2015 clément jean
-// Last update Tue May 26 23:35:58 2015 polydo_s
+// Last update Wed May 27 01:42:59 2015 polydo_s
 //
 
 #ifndef __BOX_HH__
@@ -32,6 +32,9 @@ public:
 private:
   gdl::Texture  _texture;
   gdl::Geometry _geometry;
+
+public:
+  virtual const std::string	toString();
 };
 
 #endif

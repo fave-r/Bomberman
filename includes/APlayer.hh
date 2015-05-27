@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Tue May 26 23:25:29 2015 polydo_s
+// Last update Wed May 27 01:36:19 2015 polydo_s
 //
 
 #ifndef PLAYER_HH
@@ -29,8 +29,7 @@ public:
 protected:
   unsigned int	_id;
   eOrientation	_orientation;
-  float		_x;
-  float		_y;
+  float		_speed;
 
 public:
   APlayer(float, float, APlayer::eOrientation);
@@ -53,6 +52,9 @@ public:
   eOrientation		getOrientation() const;
   float			getY();
   float			getX();
+
+public:
+  const std::string	toString();
 };
 
 #endif
