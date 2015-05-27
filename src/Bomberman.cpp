@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Wed May 27 02:05:16 2015 clément jean
+// Last update Wed May 27 04:13:43 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -129,7 +129,7 @@ void	Bomberman::init_player()
 {
   PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, APlayer::DOWN);
   PhysicalPlayer *p2 = new PhysicalPlayer(this->_x - 2, this->_y - 2, APlayer::UP);
-  Cube        *model = new Cube(p1->getX(), p1->getY());
+  Model	         *model = new Model(p1->getX(), p1->getY());
 
   this->_playerlist.push_back(p2);
   this->_playerlist.push_back(p1);
@@ -137,7 +137,7 @@ void	Bomberman::init_player()
   std::list<APlayer *>::const_iterator it;
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
     {
-      model = new Cube((*it)->getY(), (*it)->getX());
+      model = new Model((*it)->getY(), (*it)->getX());
       model->setTexture(this->_texturePool->getPlayer());
       model->move((*it)->getY(), 1, (*it)->getX());
       this->_objplayers.push_back(model);
