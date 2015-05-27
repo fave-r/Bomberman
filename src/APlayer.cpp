@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Wed May 27 01:40:55 2015 polydo_s
+// Last update Wed May 27 16:22:19 2015 Leo Thevenet
 //
 
 #include "APlayer.hh"
@@ -74,4 +74,9 @@ float			APlayer::getY()
 const std::string	APlayer::toString()
 {
   return "P";
+}
+
+APlayer::eOrientation		APlayer::getOrientation() const
+{
+  return this->_orientation;
 }

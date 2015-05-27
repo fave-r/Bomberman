@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:27:04 2015 clément jean
-// Last update Wed May 27 01:41:55 2015 polydo_s
+// Last update Wed May 27 16:17:20 2015 Leo Thevenet
 //
 
 #ifndef __AOBJECT_HPP__
@@ -32,6 +32,7 @@ public:
   void			translate(const glm::vec3 &v);
   void			SetPos(const glm::vec3 &v);
   void			rotate(const glm::vec3 &axis, const float &angle);
+  void			resetRotate();
   void			scale(const glm::vec3 &scale);
   const glm::mat4	getTransformation();
 

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:27:19 2015 clément jean
-// Last update Wed May 27 01:42:13 2015 polydo_s
+// Last update Wed May 27 16:18:00 2015 Leo Thevenet
 //
 
 #include "AObject.hh"
@@ -45,10 +45,10 @@ const glm::mat4		AObject::getTransformation()
 {
   glm::mat4		transform(1);
 
+  transform = glm::translate(transform, this->_position);
   transform = glm::rotate(transform, this->_rotation.x, glm::vec3(1, 0, 0));
   transform = glm::rotate(transform, this->_rotation.y, glm::vec3(0, 1, 0));
   transform = glm::rotate(transform, this->_rotation.z, glm::vec3(0, 0, 1));
-  transform = glm::translate(transform, this->_position);
   transform = glm::scale(transform, this->_scale);
   return (transform);
 }
@@ -56,4 +56,9 @@ const glm::mat4		AObject::getTransformation()
 const std::string	AObject::toString()
 {
   return "";
+}
+
+void			AObject::resetRotate()
+{
+  this->_rotation = glm::vec3(0, 0, 0);
 }
