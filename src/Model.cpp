@@ -5,11 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:15:50 2015 clément jean
-<<<<<<< HEAD
-// Last update Wed May 27 03:34:46 2015 clément jean
-=======
-// Last update Wed May 27 01:39:47 2015 polydo_s
->>>>>>> 1fd37cd6da98fca4e54495a2651555695c87ba53
+// Last update Wed May 27 09:58:25 2015 clément jean
 //
 
 #include "Model.hpp"
@@ -48,7 +44,6 @@ void		Model::draw(gdl::AShader &shader)
   this->_model.draw(shader, getTransformation(), GL_QUADS);
 }
 
-<<<<<<< HEAD
 void		Model::setTexture(const gdl::Texture &old)
 {
   this->_texture = old;
@@ -57,9 +52,9 @@ void		Model::setTexture(const gdl::Texture &old)
 void            Model::move(const int &x, const int &y, const int &z)
 {
   translate(glm::vec3(x, y, z));
-=======
+}
+
 const std::string	Model::toString()
 {
   return "M";
->>>>>>> 1fd37cd6da98fca4e54495a2651555695c87ba53
 }
