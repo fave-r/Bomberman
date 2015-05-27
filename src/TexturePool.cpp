@@ -4,7 +4,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon May 25 02:15:39 2015 clément jean
-// Last update Tue May 26 02:37:58 2015 clément jean
+// Last update Wed May 27 02:02:46 2015 clément jean
 //
 
 #include "TexturePool.hh"
@@ -32,6 +32,11 @@ bool		TexturePool::init()
   if (this->_texturePlayer.load("./Assets/marvin.fbm/Main_texture_diffuse2.tga") == false)
     {
       std::cerr << "Cannot load the player texture" << std::endl;
+      return (false);
+    }
+  if (this->_textureGround.load("./Assets/ground.fbm/Grass_tile_B_diffuse.tga") == false)
+    {
+      std::cerr << "Cannot load the ground texture" << std::endl;
       return (false);
     }
   return true;

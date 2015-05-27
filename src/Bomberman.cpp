@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Tue May 26 17:09:57 2015 Leo Thevenet
+// Last update Wed May 27 02:05:16 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -108,8 +108,8 @@ void	Bomberman::init_map()
   for (unsigned int i = 0; i < this->_map.size(); ++i)
     for (unsigned int j = 0; j < this->_map[i].size(); ++j)
       {
-	model = new Cube((float)j, (float)i); // sol
-	model->setTexture(this->_texturePool->getWall());
+	model = new Cube((float)j, (float)i);
+	model->setTexture(this->_texturePool->getGround());
 	model->translate(glm::vec3(j, 0, i));
 	this->_objects.push_back(model);
 	if (this->_map[i][j] != NULL) // en fonction
