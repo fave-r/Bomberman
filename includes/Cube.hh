@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:29:04 2015 clément jean
-// Last update Tue May 26 23:35:35 2015 polydo_s
+// Last update Wed May 27 01:43:12 2015 polydo_s
 //
 
 #ifndef __CUBE_HPP__
@@ -37,6 +37,9 @@ public:
 private:
   gdl::Geometry _geometry;
   float		_speed;
+
+public:
+  virtual const std::string	toString();
 };
 
 #endif

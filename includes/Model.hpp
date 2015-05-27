@@ -5,7 +5,11 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Wed May  6 00:18:56 2015 clément jean
+<<<<<<< HEAD
 // Last update Wed May 27 02:13:13 2015 clément jean
+=======
+// Last update Wed May 27 01:43:15 2015 polydo_s
+>>>>>>> 1fd37cd6da98fca4e54495a2651555695c87ba53
 //
 
 #ifndef __MODEL_HPP__
@@ -37,6 +41,9 @@ private:
   gdl::Texture	_texture;
   gdl::Model	_model;
   float		_speed;
+
+public:
+  virtual const std::string	toString();
 };
 
 #endif

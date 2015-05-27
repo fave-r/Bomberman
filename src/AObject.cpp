@@ -5,13 +5,13 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:27:19 2015 clément jean
-// Last update Sun May 24 14:32:52 2015 polydo_s
+// Last update Wed May 27 01:42:13 2015 polydo_s
 //
 
 #include "AObject.hh"
 
-AObject::AObject(float x, float y)
-  : _x(x), _y(y), _position(0, 0, 0), _rotation(0, 0, 0), _scale(1, 1, 1)
+AObject::AObject(float x, float y, float width, float height)
+  : _x(x), _y(y), _width(width), _height(height), _position(0, 0, 0), _rotation(0, 0, 0), _scale(1, 1, 1)
 {
 }
 
@@ -51,4 +51,9 @@ const glm::mat4		AObject::getTransformation()
   transform = glm::translate(transform, this->_position);
   transform = glm::scale(transform, this->_scale);
   return (transform);
+}
+
+const std::string	AObject::toString()
+{
+  return "";
 }

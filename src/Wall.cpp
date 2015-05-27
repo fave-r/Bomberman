@@ -5,12 +5,12 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:40:10 2015 clément jean
-// Last update Tue May 26 16:17:19 2015 Leo Thevenet
+// Last update Wed May 27 01:40:24 2015 polydo_s
 //
 
 #include "Wall.hh"
 
-Wall::Wall(float x, float y) : AObject(x, y)
+Wall::Wall(float x, float y) : AObject(x, y, 0.9, 0.9)
 {
 }
 
@@ -103,4 +103,9 @@ bool                    Wall::initialize()
 void          Wall::setTexture(const gdl::Texture &old)
 {
   this->_texture = old;
+}
+
+const std::string	Wall::toString()
+{
+  return "W";
 }
