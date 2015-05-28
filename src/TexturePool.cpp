@@ -4,7 +4,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon May 25 02:15:39 2015 clément jean
-// Last update Wed May 27 11:22:22 2015 clément jean
+// Last update Thu May 28 18:10:40 2015 clément jean
 //
 
 #include "TexturePool.hh"
@@ -34,7 +34,7 @@ bool		TexturePool::init()
       std::cerr << "Cannot load the player texture" << std::endl;
       return (false);
     }
-  if (this->_textureGround.load("./Assets/ground.fbm/ground.tga") == false)
+  if (this->_textureGround.load("./Assets/ground.fbm/ground.tga", true) == false)
     {
       std::cerr << "Cannot load the ground texture" << std::endl;
       return (false);
