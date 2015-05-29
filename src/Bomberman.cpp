@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Fri May 29 03:45:30 2015 clément jean
+// Last update Fri May 29 03:48:36 2015 clément jean
 //
 
 #include <time.h>
@@ -120,11 +120,11 @@ bool	Bomberman::init_texture()
       if (this->_map[i][j])
 	if (this->_map[i][j]->initialize() == false)
 	  return false;
-  this->_map[2][2] = new Bomb(2, 2);
+  /*  this->_map[2][2] = new Bomb(2, 2);
   this->_map[2][2]->initialize();
   (*this->_map[2][2]).setTexture(this->_texturePool->getBomb());
   this->_map[2][2]->translate(glm::vec3(2, 1, 2));
-
+  */
   t = clock() - t;
   std::cout << "--time elapsed : " << ((float)t)/CLOCKS_PER_SEC << std::endl;
   t = clock();
