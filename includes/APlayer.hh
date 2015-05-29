@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Fri May 29 00:41:23 2015 polydo_s
+// Last update Fri May 29 18:20:29 2015 polydo_s
 //
 
 #ifndef PLAYER_HH
@@ -30,6 +30,7 @@ public:
 protected:
   unsigned int	_id;
   eOrientation	_orientation;
+  float		_delta;
   float		_speed;
 
 public:
@@ -39,14 +40,11 @@ public:
   virtual void		draw() const;
   virtual void		update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &) = 0;
 
-protected:
-  void			move(float, float, eOrientation, std::vector<std::vector<AObject *> > &);
-
 public:
-  void			goUp(std::vector<std::vector<AObject *> > &);
-  void			goRight(std::vector<std::vector<AObject *> > &);
-  void			goDown(std::vector<std::vector<AObject *> > &);
-  void			goLeft(std::vector<std::vector<AObject *> > &);
+  void			goUp(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
+  void			goRight(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
+  void			goDown(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
+  void			goLeft(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
 
 public:
   unsigned int		getId() const;
