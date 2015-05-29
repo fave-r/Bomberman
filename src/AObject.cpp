@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:27:19 2015 clément jean
-// Last update Fri May 29 14:39:11 2015 polydo_s
+// Last update Fri May 29 22:50:55 2015 clément jean
 //
 
 #include "AObject.hh"

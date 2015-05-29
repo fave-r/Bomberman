@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:18:58 2015 clément jean
-// Last update Fri May 29 02:33:03 2015 clément jean
+// Last update Fri May 29 18:45:03 2015 clément jean
 //
 
 #ifndef __BOMB_HH__
@@ -25,9 +25,10 @@ public:
   virtual void			setTexture(const gdl::Texture &old);
   virtual void			draw(gdl::AShader &shader);
   virtual const std::string     toString();
-
+  /*
 private:
   gdl::Texture	_texture;
   gdl::Model	_model;
+  */
 };
 #endif

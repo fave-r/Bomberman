@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Fri May 29 01:16:44 2015 polydo_s
+// Last update Fri May 29 22:53:21 2015 clément jean
 //
 
 #include "APlayer.hh"
@@ -20,7 +20,6 @@ APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
 
 void			APlayer::draw() const
 {
-  
 }
 
 void			APlayer::goUp(std::vector<std::vector<AObject *> > &map)

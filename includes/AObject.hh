@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:27:04 2015 clément jean
-// Last update Fri May 29 14:33:36 2015 polydo_s
+// Last update Fri May 29 22:51:04 2015 clément jean
 //
 
 #ifndef __AOBJECT_HPP__
@@ -18,7 +18,9 @@
 #include <iostream>
 #include <vector>
 #include <Texture.hh>
-
+#include <Model.hh>
+#include <Geometry.hh>
+#include <Input.hh>
 #include <string>
 
 class AObject
@@ -56,6 +58,9 @@ protected:
   glm::vec3		_rotation;
   glm::vec3		_scale;
   gdl::Input		_input;
+  gdl::Texture		_texture;
+  gdl::Model		_model;
+  gdl::Geometry		_geometry;
 };
 
 #endif

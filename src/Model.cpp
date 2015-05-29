@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:15:50 2015 clément jean
-// Last update Thu May 28 00:37:20 2015 clément jean
+// Last update Fri May 29 22:16:18 2015 clément jean
 //
 
 #include "Model.hpp"
@@ -21,14 +21,17 @@ Model::~Model()
 bool		Model::initialize()
 {
   this->_speed = 100.0f;
-  if (this->_model.load("./Assets/marvin.fbx") == false) // EN ATTENDANT DE REGLER LE SETMODEL
+  if (this->_model.load("./Assets/marvin2.fbx") == false) // EN ATTENDANT DE REGLER LE SETMODEL
     {
       std::cerr << "Cannot load the model" << std::endl;
       return (false);
     }
+  if (this->_model.createSubAnim(0, "wait", 0, 36) == false)
+    std::cout << "MDR" << "\n";
+  if (this->_model.createSubAnim(0, "run", 36, 53) == false)
+    std::cout << "MDR" << "\n";
   glm::vec3 vec(0.002, 0.002, 0.002);
   this->scale(vec);
-  this->_model.pause(true);
   return true;
 }
 
@@ -52,7 +55,7 @@ void		Model::setTexture(const gdl::Texture &old)
 void		Model::setModel(const gdl::Model &old)
 {
   (void)old;
-  // this->_model = old;
+  //this->_model = old;
 }
 
 void            Model::move(const int &x, const int &y, const int &z)

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:29:04 2015 clément jean
-// Last update Fri May 29 17:26:22 2015 clément jean
+// Last update Fri May 29 18:44:25 2015 clément jean
 //
 
 #ifndef __CUBE_HPP__
@@ -34,8 +34,8 @@ public:
   virtual void	        setTexture(const gdl::Texture &old);
 
 private:
-  gdl::Texture	_texture;
-  gdl::Geometry _geometry;
+  /*  gdl::Texture	_texture;
+      gdl::Geometry _geometry;*/
   float		_speed;
 
 public:
