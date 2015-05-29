@@ -5,13 +5,13 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:27:19 2015 clément jean
-// Last update Wed May 27 16:18:00 2015 Leo Thevenet
+// Last update Fri May 29 00:58:17 2015 polydo_s
 //
 
 #include "AObject.hh"
 
-AObject::AObject(float x, float y, float width, float height)
-  : _x(x), _y(y), _width(width), _height(height), _position(0, 0, 0), _rotation(0, 0, 0), _scale(1, 1, 1)
+AObject::AObject(float x, float y, float w, float h)
+  : _x(x), _y(y), _w(w), _h(h), _position(0, 0, 0), _rotation(0, 0, 0), _scale(1, 1, 1)
 {
 }
 

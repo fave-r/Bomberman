@@ -5,17 +5,17 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Wed May 27 16:22:19 2015 Leo Thevenet
+// Last update Fri May 29 01:16:44 2015 polydo_s
 //
 
 #include "APlayer.hh"
 
 APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
-  : AObject(x, y, 0.9, 0.9), _orientation(orientation)
+  : AObject(x, y, 0.85, 0.85), _orientation(orientation)
 {
   static unsigned id = 1;
   this->_id = id++;
-  this->_speed = 0.03;
+  this->_speed = 0.05;
 }
 
 void			APlayer::draw() const
@@ -23,37 +23,60 @@ void			APlayer::draw() const
   
 }
 
-void			APlayer::move(float x, float y, eOrientation orientation, std::vector<std::vector<AObject *> > &map)
-{
-  AObject		*object;
-
-  object = map[static_cast<int>(y)][static_cast<int>(x)];
-  if (object)
-    std::cout << object->toString() << std::endl;
-  (void)map;
-  this->_orientation = orientation;
-  this->_x = x;
-  this->_y = y;
-}
-
 void			APlayer::goUp(std::vector<std::vector<AObject *> > &map)
 {
-  this->move(this->_x, this->_y - this->_speed, APlayer::UP, map);
+  AObject		*object;
+  ICrossable		*crossable;
+
+  object = map[static_cast<int>(this->_y - this->_speed)][static_cast<int>(this->_x)];
+  crossable = dynamic_cast<ICrossable *>(object);
+  if (!object || crossable)
+    {
+      this->_y -= this->_speed;
+    }
+  this->_orientation = APlayer::UP;
 }
 
 void			APlayer::goRight(std::vector<std::vector<AObject *> > &map)
 {
-  this->move(this->_x + this->_speed, this->_y, APlayer::RIGHT, map);
+  AObject		*object;
+  ICrossable		*crossable;
+
+  object = map[static_cast<int>(this->_y + this->_h)][static_cast<int>(this->_x + this->_w + this->_speed)];
+  crossable = dynamic_cast<ICrossable *>(object);
+  if (!object || crossable)
+    {
+      this->_x += this->_speed;
+    }
+  this->_orientation = APlayer::RIGHT;
 }
 
 void			APlayer::goDown(std::vector<std::vector<AObject *> > &map)
 {
-  this->move(this->_x, this->_y + this->_speed, APlayer::DOWN, map);
+  AObject		*object;
+  ICrossable		*crossable;
+
+  object = map[static_cast<int>(this->_y + this->_h + this->_speed)][static_cast<int>(this->_x + this->_w)];
+  crossable = dynamic_cast<ICrossable *>(object);
+  if (!object || crossable)
+    {
+      this->_y += this->_speed;
+    }
+  this->_orientation = APlayer::DOWN;
 }
 
 void			APlayer::goLeft(std::vector<std::vector<AObject *> > &map)
 {
-  this->move(this->_x - this->_speed, this->_y, APlayer::LEFT, map);
+  AObject		*object;
+  ICrossable		*crossable;
+
+  object = map[static_cast<int>(this->_y)][static_cast<int>(this->_x - this->_speed)];
+  crossable = dynamic_cast<ICrossable *>(object);
+  if (!object || crossable)
+    {
+      this->_x -= this->_speed;
+    }
+  this->_orientation = APlayer::LEFT;
 }
 
 unsigned int		APlayer::getId() const
