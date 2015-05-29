@@ -4,7 +4,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon May 25 02:15:39 2015 clément jean
-// Last update Thu May 28 18:10:40 2015 clément jean
+// Last update Fri May 29 02:29:34 2015 clément jean
 //
 
 #include "TexturePool.hh"
@@ -39,6 +39,11 @@ bool		TexturePool::init()
       std::cerr << "Cannot load the ground texture" << std::endl;
       return (false);
     }
+  if (this->_textureBomb.load("./Assets/bomb.fbm/Bomb_texture.tga", true) == false)
+    {
+      std::cerr << "Cannot load the bomb texture" << std::endl;
+      return (false);
+    }
   return true;
 }
 
@@ -60,4 +65,9 @@ const gdl::Texture	&TexturePool::getGround()
 const gdl::Texture	&TexturePool::getPlayer()
 {
   return this->_texturePlayer;
+}
+
+const gdl::Texture	&TexturePool::getBomb()
+{
+  return this->_textureBomb;
 }

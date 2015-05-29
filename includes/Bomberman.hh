@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Wed May 27 22:13:51 2015 clément jean
+// Last update Fri May 29 02:31:00 2015 clément jean
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -26,6 +26,7 @@
 #include "TexturePool.hh"
 #include "ModelPool.hh"
 #include "Model.hpp"
+#include "Bomb.hh"
 
 class	Bomberman : public gdl::Game
 {
