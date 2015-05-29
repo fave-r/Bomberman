@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Wed May 27 01:36:19 2015 polydo_s
+// Last update Fri May 29 00:41:23 2015 polydo_s
 //
 
 #ifndef PLAYER_HH
@@ -14,6 +14,7 @@
 #include <iostream>
 
 #include "AObject.hh"
+#include "ICrossable.hh"
 #include "IUpdatable.hh"
 
 class	APlayer : public AObject, public IUpdatable {

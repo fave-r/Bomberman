@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:27:04 2015 clément jean
-// Last update Wed May 27 16:17:20 2015 Leo Thevenet
+// Last update Fri May 29 00:57:45 2015 polydo_s
 //
 
 #ifndef __AOBJECT_HPP__
@@ -42,8 +42,8 @@ public:
 protected:
   float			_x;
   float			_y;
-  float			_width;
-  float			_height;
+  float			_w;
+  float			_h;
   glm::vec3		_position;
   glm::vec3		_rotation;
   glm::vec3		_scale;

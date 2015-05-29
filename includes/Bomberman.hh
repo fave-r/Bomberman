@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Wed May 27 22:13:51 2015 clément jean
+// Last update Fri May 29 00:31:29 2015 polydo_s
 //
 
 #ifndef __BOMBERMAN_HH__
