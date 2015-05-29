@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:40:10 2015 clément jean
-// Last update Wed May 27 01:40:24 2015 polydo_s
+// Last update Fri May 29 15:09:39 2015 polydo_s
 //
 
 #include "Wall.hh"
@@ -100,12 +100,13 @@ bool                    Wall::initialize()
   return true;
 }
 */
-void          Wall::setTexture(const gdl::Texture &old)
-{
-  this->_texture = old;
-}
 
 const std::string	Wall::toString()
 {
   return "W";
+}
+
+void          Wall::setTexture(const gdl::Texture &old)
+{
+  this->_texture = old;
 }

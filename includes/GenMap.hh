@@ -5,46 +5,48 @@
 // Login   <lhomme_a@epitech.net>
 //
 // Started on  Tue May  5 15:00:01 2015 Arnaud Lhomme
-// Last update Sun May 24 14:25:43 2015 polydo_s
+// Last update Fri May 29 15:03:58 2015 polydo_s
 //
 
 #ifndef GENMAP_HH_
 #define GENMAP_HH_
 
-#include <cstdlib>
 #include <iostream>
+#include <random>
 #include <vector>
 #include <list>
-#include <time.h>
 #include "AObject.hh"
 #include "Wall.hh"
 #include "Box.hh"
 #include "PhysicalPlayer.hh"
 
-class	GenMap
-{
+class	GenMap {
+
 private:
-  int					size_x;
-  int					size_y;
-  int					players;
-  std::vector<std::vector<AObject *> >	map;
+  int					_width;
+  int					_height;
+  int					_players;
+  std::vector<std::vector<AObject *> >	_map;
 
 public:
-  GenMap(int x, int y, int players);
+  GenMap(int width, int height, int players);
   ~GenMap();
 
-  int	getX() const;
-  void	setX(int);
+public:
+  void	generate();
 
-  int	getY() const;
-  void	setY(int);
-
+public:
+  int	getWidth() const;
+  int	getHeight() const;
   int					getPlayers() const;
-  void					setPlayers(int);
-
   std::vector<std::vector <AObject * >	>getMap() const;
 
-  void	generate();
+public:
+  void	setWidth(int width);
+  void	setHeight(int height);
+
+public:
+  void					setPlayers(int);
 };
 
 #endif

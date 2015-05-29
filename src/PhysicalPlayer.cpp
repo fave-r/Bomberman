@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-// Last update Fri May 29 01:02:47 2015 polydo_s
+// Last update Fri May 29 15:08:26 2015 polydo_s
 //
 
 #include "PhysicalPlayer.hh"
@@ -46,11 +46,6 @@ void	PhysicalPlayer::update(const gdl::Clock &clock, std::vector<std::vector<AOb
     }
 }
 
-void	PhysicalPlayer::setInput(const gdl::Input &input)
-{
-  this->_input = input;
-}
-
 void	PhysicalPlayer::draw(gdl::AShader &shader)
 {
   (void)shader;
@@ -59,6 +54,11 @@ void	PhysicalPlayer::draw(gdl::AShader &shader)
 bool	PhysicalPlayer::initialize()
 {
   return true;
+}
+
+void	PhysicalPlayer::setInput(const gdl::Input &input)
+{
+  this->_input = input;
 }
 
 void	PhysicalPlayer::setTexture(const gdl::Texture &old)

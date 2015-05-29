@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:27:19 2015 clément jean
-// Last update Fri May 29 00:58:17 2015 polydo_s
+// Last update Fri May 29 14:39:11 2015 polydo_s
 //
 
 #include "AObject.hh"
@@ -19,16 +19,14 @@ AObject::~AObject()
 {
 }
 
+void			AObject::scale(const glm::vec3 &scale)
+{
+  this->_scale *= scale;
+}
+
 void			AObject::translate(const glm::vec3 &v)
 {
   this->_position += v;
-}
-
-void			AObject::SetPos(const glm::vec3 &v)
-{
-  this->_position.x = v.x;
-  this->_position.y = v.y;
-  this->_position.z = v.z;
 }
 
 void			AObject::rotate(const glm::vec3 &axis, const float &angle)
@@ -36,9 +34,9 @@ void			AObject::rotate(const glm::vec3 &axis, const float &angle)
   this->_rotation += axis * angle;
 }
 
-void			AObject::scale(const glm::vec3 &scale)
+void			AObject::resetRotate()
 {
-  this->_scale *= scale;
+  this->_rotation = glm::vec3(0, 0, 0);
 }
 
 const glm::mat4		AObject::getTransformation()
@@ -53,12 +51,14 @@ const glm::mat4		AObject::getTransformation()
   return (transform);
 }
 
+void			AObject::SetPos(const glm::vec3 &v)
+{
+  this->_position.x = v.x;
+  this->_position.y = v.y;
+  this->_position.z = v.z;
+}
+
 const std::string	AObject::toString()
 {
   return "";
-}
-
-void			AObject::resetRotate()
-{
-  this->_rotation = glm::vec3(0, 0, 0);
 }

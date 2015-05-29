@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:27:04 2015 clément jean
-// Last update Fri May 29 00:57:45 2015 polydo_s
+// Last update Fri May 29 14:33:36 2015 polydo_s
 //
 
 #ifndef __AOBJECT_HPP__
@@ -26,15 +26,23 @@ class AObject
 public:
   AObject(float x, float y, float width, float height);
   virtual ~AObject();
-  virtual void		draw(gdl::AShader &shader) = 0;
+
+public:
   virtual bool          initialize() = 0;
-  virtual void          setTexture(const gdl::Texture &old) = 0;
+
+public:
+  virtual void		draw(gdl::AShader &shader) = 0;
+  void			scale(const glm::vec3 &scale);
   void			translate(const glm::vec3 &v);
-  void			SetPos(const glm::vec3 &v);
   void			rotate(const glm::vec3 &axis, const float &angle);
   void			resetRotate();
-  void			scale(const glm::vec3 &scale);
+
+public:
   const glm::mat4	getTransformation();
+
+public:
+  virtual void          setTexture(const gdl::Texture &old) = 0;
+  void			SetPos(const glm::vec3 &v);
 
 public:
   virtual const std::string	toString();

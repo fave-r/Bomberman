@@ -5,89 +5,88 @@
 // Login   <lhomme_a@epitech.net>
 //
 // Started on  Tue May  5 14:59:51 2015 Arnaud Lhomme
-// Last update Tue May 26 16:04:52 2015 Leo Thevenet
+// Last update Fri May 29 15:33:33 2015 polydo_s
 //
 
 #include "GenMap.hh"
 
-GenMap::GenMap(int x = 15, int y = 15, int players = 1) : size_x(x), size_y(y), players(players)
-{}
+GenMap::GenMap(int width = 10, int height = 10, int players = 1)
+  : _width(width), _height(height), _players(players)
+{
+
+}
 
 GenMap::~GenMap()
-{}
+{
 
-// 'S' = SOL
-// 'W' = MURS INCASSABLES
-// 'E' = MURS CASSABLES
-// 'P' = PLAYER
+}
 
 void	GenMap::generate()
 {
-  srand(time(NULL));
+  std::random_device generator;
+  std::uniform_int_distribution<int> distribution(1, 100);
 
-  this->map.resize(this->size_y);
-  for (int y = 0; y < this->size_y; ++y)
-    this->map[y].resize(this->size_x);
-
-  for (int y = 0; y < this->size_y; ++y)
+  this->_map.resize(this->_height);
+  for (int y = 0; y < this->_height; ++y)
     {
-      for (int x = 0; x < this->size_x; ++x)
+      this->_map[y].resize(this->_width);
+      for (int x = 0; x < this->_width; ++x)
 	{
-	  if (x == this->size_x - 1 || y == this->size_y - 1 || x == 0 || y == 0)
-	    map[x][y] = new Wall(x, y);
+	  if (!x || !y || x == this->_width - 1 || y == this->_height - 1)
+	    this->_map[y][x] = new Wall(x, y);
 	  else
 	    {
-	      int rand_value = 0 + (int)((double)rand() / ((double)RAND_MAX + 1) * 99);
+	      int rand_value = distribution(generator);
 
 	      if ((x == 2 && y == 1) || (x == 1 && y == 2))
-	  	map[x][y] = NULL;
-	      else if ((x == this->size_x - 3 && y == this->size_y - 2)
-	  	       || (x == this->size_x - 2 && y == this->size_y - 3))
-	  	map[x][y] = NULL;
-	      else if (rand_value > 60 && dynamic_cast<Wall *>(map[x + 1][y - 1]) == NULL)
-	  	map[x][y] = new Wall(x, y);
+	  	this->_map[y][x] = NULL;
+	      else if ((x == this->_width - 3 && y == this->_height - 2)
+	  	       || (x == this->_width - 2 && y == this->_height - 3))
+	  	this->_map[y][x] = NULL;
+	      else if (rand_value > 70 && !dynamic_cast<Wall *>(this->_map[y][x - 1]))
+		this->_map[y][x] = new Wall(x, y);
 	      else
-	  	map[x][y] = new Box(x, y); // NEW BOX
+	  	this->_map[y][x] = new Box(x, y);
 	    }
 	}
     }
 
-  map[1][1] = NULL;// NEW PLAYER
-  if (players == 2)
-    map[this->size_x - 2][this->size_y - 2] = NULL; // NEW PLAYER
+  this->_map[1][1] = NULL;// NEW PLAYER
+  if (this->_players == 2)
+    this->_map[this->_height - 2][this->_width - 2] = NULL; // NEW PLAYER
 }
 
-int	GenMap::getX() const
+int	GenMap::getWidth() const
 {
-  return (this->size_x);
+  return (this->_width);
 }
 
-void	GenMap::setX(int _x)
+int	GenMap::getHeight() const
 {
-  this->size_x = _x;
-}
-
-int	GenMap::getY() const
-{
-  return (this->size_y);
-}
-
-void	GenMap::setY(int _y)
-{
-  this->size_y = _y;
+  return (this->_height);
 }
 
 int	GenMap::getPlayers() const
 {
-  return (this->players);
-}
-
-void	GenMap::setPlayers(int _players)
-{
-  this->players = _players;
+  return (this->_players);
 }
 
 std::vector<std::vector <AObject * > >	GenMap::getMap() const
 {
-  return (this->map);
+  return (this->_map);
+}
+
+void	GenMap::setWidth(int width)
+{
+  this->_width = width;
+}
+
+void	GenMap::setHeight(int height)
+{
+  this->_height = height;
+}
+
+void	GenMap::setPlayers(int players)
+{
+  this->_players = players;
 }

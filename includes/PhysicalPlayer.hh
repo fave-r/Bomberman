@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:59:33 2015 polydo_s
-// Last update Tue May 26 23:34:13 2015 polydo_s
+// Last update Fri May 29 15:08:27 2015 polydo_s
 //
 
 #ifndef PHYSICAL_PLAYER_HH
@@ -29,12 +29,12 @@ public:
   PhysicalPlayer(float, float, APlayer::eOrientation);
 
 public:
-  virtual void	update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &);
+  virtual void	update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map);
   virtual void  draw(gdl::AShader &shader);
   virtual bool  initialize();
-  virtual void  setTexture(const gdl::Texture &old);
 
 public:
+  virtual void  setTexture(const gdl::Texture &old);
   void		setInput(const gdl::Input &input);
 
 };
