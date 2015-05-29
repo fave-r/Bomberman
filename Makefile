@@ -5,7 +5,7 @@
 ## Login   <polydo_s@epitech.net>
 ##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Fri May 29 15:15:13 2015 polydo_s
+## Last update Fri May 29 17:35:13 2015 clément jean
 ##
 
 CXX		= g++
@@ -36,6 +36,7 @@ SRCS		= main.cpp			\
 		  $(SRC)/ModelPool.cpp		\
 		  $(SRC)/Parseur.cpp		\
 		  $(SRC)/Bomb.cpp		\
+		  $(SRC)/Fire.cpp		\
 
 OBJS		= $(SRCS:.cpp=.o)
 

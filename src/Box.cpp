@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:49:34 2015 clément jean
-// Last update Wed May 27 01:39:10 2015 polydo_s
+// Last update Fri May 29 17:27:00 2015 clément jean
 //
 
 #include "Box.hh"
@@ -95,17 +95,7 @@ bool	Box::initialize()
   this->_geometry.build();
   return true;
 }
-/*
-bool                    Box::newTexture()
-{
-  if (this->_texture.load("./Assets/box.fbm/box.tga") == false)
-    {
-      std::cerr << "Cannot load the box texture" << std::endl;
-      return (false);
-    }
-  return true;
-}
-*/
+
 void          Box::setTexture(const gdl::Texture &old)
 {
   this->_texture = old;

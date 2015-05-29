@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:29:04 2015 clément jean
-// Last update Wed May 27 01:43:12 2015 polydo_s
+// Last update Fri May 29 17:26:22 2015 clément jean
 //
 
 #ifndef __CUBE_HPP__
@@ -25,16 +25,16 @@ public:
   const gdl::Texture	&getTexture() const;
   const gdl::Geometry	&getGeometry() const;
   void			setGeometry(const gdl::Geometry &old);
-  virtual void	        setTexture(const gdl::Texture &old);
-  virtual bool		newTexture();
   void			move(const int &x, const int &y, const int &z);
-  //  virtual void		update(const gdl::Clock &clock);
+
+public:
   virtual void		draw(gdl::AShader &shader);
   virtual void		update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &);
   virtual bool          initialize();
-  // /!\ TO CHANGE
-  gdl::Texture	_texture;
+  virtual void	        setTexture(const gdl::Texture &old);
+
 private:
+  gdl::Texture	_texture;
   gdl::Geometry _geometry;
   float		_speed;
 

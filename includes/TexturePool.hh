@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon May 25 02:13:06 2015 clément jean
-// Last update Fri May 29 02:35:01 2015 clément jean
+// Last update Fri May 29 17:39:53 2015 clément jean
 //
 
 #ifndef __TEXTUREPOOL_HH__
@@ -28,6 +28,7 @@ public:
   const gdl::Texture      &getGround();
   const gdl::Texture      &getPlayer();
   const gdl::Texture	  &getBomb();
+  const gdl::Texture      &getFire();
 
 private:
   gdl::Texture  _textureBox;
@@ -35,6 +36,7 @@ private:
   gdl::Texture  _textureGround;
   gdl::Texture  _texturePlayer;
   gdl::Texture  _textureBomb;
+  gdl::Texture  _textureFire;
 };
 
 #endif
