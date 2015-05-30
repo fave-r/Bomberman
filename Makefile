@@ -5,14 +5,14 @@
 ## Login   <polydo_s@epitech.net>
 ##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Fri May 29 17:35:13 2015 clément jean
+## Last update Sat May 30 17:23:47 2015 Leo Thevenet
 ##
 
 CXX		= g++
 CXXFLAGS	= -W -Wall -Werror -Wextra -std=c++11 -g
 CXXFLAGS	+= -I./includes -I./lib/includes
 LDFLAGS		= -Wl,--rpath=./lib/libs -lgdl_gl -lGL -lGLEW -lrt -lfbxsdk -lSDL2 -lpthread -ldl
-LDLIBS		= -L./lib/libs
+LDLIBS		= -L./lib/libs -lSDL_image -lSDL2_ttf
 
 NAME		= bomberman
 RM		= rm -rf
@@ -37,6 +37,7 @@ SRCS		= main.cpp			\
 		  $(SRC)/Parseur.cpp		\
 		  $(SRC)/Bomb.cpp		\
 		  $(SRC)/Fire.cpp		\
+                  $(SRC)/Options.cpp            \
 
 OBJS		= $(SRCS:.cpp=.o)
 

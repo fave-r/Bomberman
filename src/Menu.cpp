@@ -5,10 +5,11 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Tue May 26 17:09:21 2015 Leo Thevenet
+// Last update Sat May 30 17:09:07 2015 Leo Thevenet
 //
 
 #include "Menu.hh"
+#include "Options.hh"
 
 Menu::Menu()
 {
@@ -20,13 +21,21 @@ Menu::~Menu()
 
 bool		Menu::initialize()
 {
-  this->_Main_Window = SDL_CreateWindow("SDL_RenderCopy Example",
-				  SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1050, 0);
-  this->_Main_Renderer = SDL_CreateRenderer(this->_Main_Window, -1, SDL_RENDERER_ACCELERATED);
-  this->_path = "./Assets/start_fond.bmp";
-  this->_BackGroundS = SDL_LoadBMP(this->_path.c_str());
-  this->_BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, this->_BackGroundS);
-  SDL_FreeSurface(this->_BackGroundS);
+  if(SDL_Init(SDL_INIT_VIDEO) < 0)
+    {
+      std::cout << "SDL could not initialize!" << std::endl;
+      return false;
+    }
+  else
+    { /*faut vérifier les retours*/
+      this->_Main_Window = SDL_CreateWindow("Bomberman",
+					    SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1050, 0);
+      this->_Main_Renderer = SDL_CreateRenderer(this->_Main_Window, -1, SDL_RENDERER_ACCELERATED);
+      this->_path = "./Assets/start_fond.bmp";
+      this->_BackGroundS = SDL_LoadBMP(this->_path.c_str());
+      this->_BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, this->_BackGroundS);
+      SDL_FreeSurface(this->_BackGroundS);
+    }
   return true;
 }
 
@@ -62,7 +71,7 @@ bool          Menu::Check_Path()
 {
   if (this->_path == "./Assets/start_fond.bmp")
     {
-      Bomberman       bomberman(20, 20);
+      Bomberman       bomberman(Parseur::getX(), Parseur::getY());
 
       if (bomberman.initialize() == false)
 	return false;
@@ -72,10 +81,13 @@ bool          Menu::Check_Path()
   else
     {
       /* /!\ TO IMPLEMENT /!\ */
-      _path = "./Assets/start_fond.bmp";
-      _BackGroundS = SDL_LoadBMP(this->_path.c_str());
-      _BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, this->_BackGroundS);
-      SDL_FreeSurface(this->_BackGroundS);
+      // _path = "./Assets/start_fond.bmp";
+      // _BackGroundS = SDL_LoadBMP(this->_path.c_str());
+      // _BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, this->_BackGroundS);
+      // SDL_FreeSurface(this->_BackGroundS);
+      Options *opt = new Options(this->_Main_Window, this->_BackGroundS, this->_Main_Renderer, &(this->event));
+      opt->FirstView();
+      // draw();
       return true;
     }
   return false;
@@ -86,4 +98,3 @@ void          Menu::draw()
   SDL_RenderCopy(this->_Main_Renderer, this->_BackGroundT, NULL, NULL);
   SDL_RenderPresent(this->_Main_Renderer);
 }
-
