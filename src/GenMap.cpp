@@ -5,21 +5,17 @@
 // Login   <lhomme_a@epitech.net>
 //
 // Started on  Tue May  5 14:59:51 2015 Arnaud Lhomme
-// Last update Fri May 29 15:33:33 2015 polydo_s
+// Last update Sun May 31 15:50:26 2015 Leo Thevenet
 //
 
 #include "GenMap.hh"
 
 GenMap::GenMap(int width = 10, int height = 10, int players = 1)
   : _width(width), _height(height), _players(players)
-{
-
-}
+{}
 
 GenMap::~GenMap()
-{
-
-}
+{}
 
 void	GenMap::generate()
 {
@@ -43,7 +39,7 @@ void	GenMap::generate()
 	      else if ((x == this->_width - 3 && y == this->_height - 2)
 	  	       || (x == this->_width - 2 && y == this->_height - 3))
 	  	this->_map[y][x] = NULL;
-	      else if (rand_value > 70 && !dynamic_cast<Wall *>(this->_map[y][x - 1]))
+	      else if (rand_value > (100 - Parseur::getDensite()) && !dynamic_cast<Wall *>(this->_map[y][x - 1]) && !dynamic_cast<Wall *>(this->_map[y - 1][x + 1]))
 		this->_map[y][x] = new Wall(x, y);
 	      else
 	  	this->_map[y][x] = new Box(x, y);

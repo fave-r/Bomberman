@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Thu May 28 15:44:49 2015 Leo Thevenet
-// Last update Thu May 28 16:57:51 2015 Leo Thevenet
+// Last update Sun May 31 15:52:22 2015 Leo Thevenet
 //
 
 #include <fstream>
@@ -70,7 +70,7 @@ namespace	Parseur
   	fichier.close();
       }
     else
-      p = 1;
+      p = 2; //remettre 1 quand Bomberman.cpp sera patch
     return p;
   }
 

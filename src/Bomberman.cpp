@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Fri May 29 22:50:49 2015 clément jean
+// Last update Sun May 31 15:46:13 2015 Leo Thevenet
 //
 
 #include <time.h>
@@ -13,12 +13,13 @@
 #include "Bomberman.hh"
 #include "GenMap.hh"
 
-Bomberman::Bomberman(const unsigned int &x, const unsigned int &y)
+Bomberman::Bomberman(const unsigned int &x, const unsigned int &y, const unsigned int &p)
 {
-  GenMap *map = new GenMap(x, y, 2);
+  GenMap *map = new GenMap(x, y, p);
 
   this->_x = x;
   this->_y = y;
+  this->_players = p;
   map->generate();
   this->_map = map->getMap();
 
@@ -171,7 +172,7 @@ void	Bomberman::init_map()
 	if (this->_map[i][j] != NULL) // en fonction
 	  {
 	    if (dynamic_cast<Wall *>(this->_map[i][j]))
- 	      this->_map[i][j]->setTexture(this->_texturePool->getWall());
+	      this->_map[i][j]->setTexture(this->_texturePool->getWall());
 	    else if (dynamic_cast<Box *>(this->_map[i][j]))
 	      this->_map[i][j]->setTexture(this->_texturePool->getBox());
 	    else
@@ -185,10 +186,15 @@ void	Bomberman::init_player()
 {
   PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, APlayer::DOWN);
   PhysicalPlayer *p2 = new PhysicalPlayer(this->_x - 2, this->_y - 2, APlayer::UP);
-  Model	         *model = new Model(p1->getX(), p1->getY());
+  Model		 *model;// = new Model(p1->getX(), p1->getY());
 
   this->_playerlist.push_back(p1);
   this->_playerlist.push_back(p2);
+  // for (int i = 0; i < this->_players, ++i)
+  //   {
+
+  //   } faut trouver un moyen de foutre plus de deux joueurs
+
 
   std::list<APlayer *>::const_iterator it;
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
@@ -262,4 +268,11 @@ Bomberman::~Bomberman()
     for (unsigned int j = 0; j < this->_map[i].size(); j++)
       if (this->_map[i][j])
 	delete this->_map[i][j];
+  std::list<APlayer *>::iterator it;
+  for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
+    delete (*it);
+  for (size_t i = 0; i < this->_objplayers.size(); ++i)
+    delete this->_objplayers[i];
+  delete this->_texturePool;
+  delete this->_modelPool;
 }

@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Fri May 29 14:48:30 2015 Leo Thevenet
-// Last update Sat May 30 17:08:14 2015 Leo Thevenet
+// Last update Sun May 31 15:21:45 2015 Leo Thevenet
 //
 
 #include "Options.hh"
@@ -29,7 +29,9 @@ Options::Options(SDL_Window *windows, SDL_Surface *screen, SDL_Renderer *_Main_R
 
 Options::~Options()
 {
-  TTF_CloseFont(this->_font);
+  if (this->_font)
+    TTF_CloseFont(this->_font);
+  TTF_Quit();
 }
 
 void Options::MakeScreen()

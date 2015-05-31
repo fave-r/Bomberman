@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Fri May 29 17:35:25 2015 clément jean
+// Last update Sun May 31 15:28:15 2015 Leo Thevenet
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -32,7 +32,7 @@
 class	Bomberman : public gdl::Game
 {
 public:
-  Bomberman(const unsigned int &, const unsigned int &);
+  Bomberman(const unsigned int &, const unsigned int &, const unsigned int &);
   ~Bomberman();
 
 public:
@@ -57,7 +57,7 @@ private:
   ModelPool					*_modelPool;
   int						_x;
   int						_y;
-
+  int						_players;
 };
 
 #endif

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Sat May 30 17:09:07 2015 Leo Thevenet
+// Last update Sun May 31 15:55:53 2015 Leo Thevenet
 //
 
 #include "Menu.hh"
@@ -71,12 +71,13 @@ bool          Menu::Check_Path()
 {
   if (this->_path == "./Assets/start_fond.bmp")
     {
-      Bomberman       bomberman(Parseur::getX(), Parseur::getY());
+      Bomberman *bomberman = new Bomberman(Parseur::getX(), Parseur::getY(), Parseur::getPlayer());
 
-      if (bomberman.initialize() == false)
+      if (bomberman->initialize() == false)
 	return false;
-      while (bomberman.update() == true)
-	bomberman.draw();
+      while (bomberman->update() == true)
+	bomberman->draw();
+      delete bomberman;
     }
   else
     {
@@ -87,7 +88,7 @@ bool          Menu::Check_Path()
       // SDL_FreeSurface(this->_BackGroundS);
       Options *opt = new Options(this->_Main_Window, this->_BackGroundS, this->_Main_Renderer, &(this->event));
       opt->FirstView();
-      // draw();
+      delete opt;
       return true;
     }
   return false;

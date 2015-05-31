@@ -5,7 +5,7 @@
 // Login   <lhomme_a@epitech.net>
 //
 // Started on  Tue May  5 15:00:01 2015 Arnaud Lhomme
-// Last update Fri May 29 15:03:58 2015 polydo_s
+// Last update Sun May 31 15:34:53 2015 Leo Thevenet
 //
 
 #ifndef GENMAP_HH_
@@ -19,6 +19,7 @@
 #include "Wall.hh"
 #include "Box.hh"
 #include "PhysicalPlayer.hh"
+#include "Parseur.hh"
 
 class	GenMap {
 
