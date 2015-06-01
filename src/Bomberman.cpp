@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Mon Jun  1 18:18:34 2015 Leo Thevenet
+// Last update Mon Jun  1 18:23:16 2015 Leo Thevenet
 
 #include <time.h>
 
@@ -252,7 +252,6 @@ void	Bomberman::draw()
     {
       x += (*it)->getX();
       y += (*it)->getY();
-      ++it;
     }
   for (unsigned int i = 0; i < this->_map.size(); ++i)
     for (unsigned int j = 0; j < this->_map[i].size(); ++j)
