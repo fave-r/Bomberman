@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Wed May  6 00:18:56 2015 clément jean
-// Last update Fri May 29 22:09:34 2015 clément jean
+// Last update Mon Jun  1 15:06:19 2015 clément jean
 //
 
 #ifndef __MODEL_HPP__
@@ -33,7 +33,6 @@ public:
   virtual void		update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &);
   virtual void          setTexture(const gdl::Texture &old);
   void                  move(const int &x, const int &y, const int &z);
-  void			setModel(const gdl::Model &old);
 
 private:
   float		_speed;

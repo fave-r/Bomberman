@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:15:50 2015 clément jean
-// Last update Mon Jun  1 14:17:38 2015 clément jean
+// Last update Mon Jun  1 15:06:10 2015 clément jean
 //
 
 #include "Model.hpp"
@@ -52,12 +52,6 @@ void		Model::draw(gdl::AShader &shader)
 void		Model::setTexture(const gdl::Texture &old)
 {
   this->_texture = old;
-}
-
-void		Model::setModel(const gdl::Model &old)
-{
-  (void)old;
-  //this->_model = old;
 }
 
 void            Model::move(const int &x, const int &y, const int &z)

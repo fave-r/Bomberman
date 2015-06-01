@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Mon Jun  1 13:56:39 2015 clément jean
+// Last update Mon Jun  1 15:04:56 2015 clément jean
 //
 
 #include <time.h>
@@ -50,7 +50,6 @@ bool	Bomberman::initialize()
   t = clock();
 
   this->_texturePool = new TexturePool();
-  //  this->_modelPool = new ModelPool();
   t = clock() - t;
   std::cout << "time elapsed : " << ((float)t)/CLOCKS_PER_SEC << std::endl;
   t = clock();
@@ -59,11 +58,6 @@ bool	Bomberman::initialize()
       std::cout << "TexturePool fail" << std::endl;
       return false;
     }
-  /*if (this->_modelPool->init() == false)
-    {
-      std::cout << "ModelPool fail" << std::endl;
-      return false;
-      }*/
   t = clock() - t;
   std::cout << "time elapsed : " << ((float)t)/CLOCKS_PER_SEC << std::endl;
   t = clock();
@@ -201,7 +195,6 @@ void	Bomberman::init_player()
     {
       model = new Model((*it)->getY(), (*it)->getX());
       model->setTexture(this->_texturePool->getPlayer());
-      //model->setModel(this->_modelPool->getPhysicalPlayer());
       model->move((*it)->getY(), 1, (*it)->getX());
       this->_objplayers.push_back(model);
     }
@@ -274,5 +267,4 @@ Bomberman::~Bomberman()
   for (size_t i = 0; i < this->_objplayers.size(); ++i)
     delete this->_objplayers[i];
   delete this->_texturePool;
-  //delete this->_modelPool;
 }
