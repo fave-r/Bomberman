@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Thu May 28 15:44:49 2015 Leo Thevenet
-// Last update Sun May 31 15:52:22 2015 Leo Thevenet
+// Last update Mon Jun  1 16:36:30 2015 Leo Thevenet
 //
 
 #include <fstream>
@@ -16,13 +16,13 @@
 
 namespace	Parseur
 {
-  void		setConf(int largeur, int longueur, int joueur, int densite)
+  void		setConf(int largeur, int longueur, int joueur, int IA, int densite)
   {
     std::ofstream fichier(".conf", std::ofstream::out | std::ofstream::trunc);
 
     if(fichier)
       {
-    	fichier << largeur << std::endl << longueur << std::endl << joueur << std::endl << densite << std::endl;
+    	fichier << largeur << std::endl << longueur << std::endl << joueur << std::endl << IA << std::endl << densite << std::endl;
     	fichier.close();
       }
     else
@@ -38,6 +38,7 @@ namespace	Parseur
       {
   	fichier >> x;
   	fichier.close();
+	x = (x < 10) ? 10 : x;
       }
     else
       x = 20;
@@ -47,12 +48,13 @@ namespace	Parseur
   int		getY()
   {
     std::ifstream fichier(".conf", std::ifstream::in);
-    int x, y;
+    int y;
 
     if(fichier)
       {
-  	fichier >> x >> y;
+  	fichier >> y >> y;
   	fichier.close();
+	y = (y < 10) ? 10 : y;
       }
     else
       y = 20;
@@ -62,26 +64,43 @@ namespace	Parseur
   int		getPlayer()
   {
     std::ifstream fichier(".conf", std::ifstream::in);
-    int x, y, p;
+    int p;
 
     if(fichier)
       {
-  	fichier >> x >> y >> p;
+  	fichier >> p >> p >> p;
   	fichier.close();
+	p = (p < 1) ? 1 : (p > 2) ? 2 : p;
       }
     else
       p = 2; //remettre 1 quand Bomberman.cpp sera patch
     return p;
   }
 
-  int		getDensite()
+  int		getIA()
   {
     std::ifstream fichier(".conf", std::ifstream::in);
-    int x, y, p, d;
+    int ia;
 
     if(fichier)
       {
-  	fichier >> x >> y >> p >> d;
+  	fichier >> ia >> ia >> ia >> ia;
+  	fichier.close();
+	ia = (ia < 0) ? 0 : ia;
+      }
+    else
+      ia = 0; //remettre 1 quand Bomberman.cpp sera patch
+    return ia;
+  }
+
+  int		getDensite()
+  {
+    std::ifstream fichier(".conf", std::ifstream::in);
+    int d;
+
+    if(fichier)
+      {
+  	fichier >> d >> d >> d >> d >> d;
   	fichier.close();
       }
     else

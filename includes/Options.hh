@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Fri May 29 14:48:51 2015 Leo Thevenet
-// Last update Sat May 30 16:55:28 2015 Leo Thevenet
+// Last update Mon Jun  1 16:25:08 2015 Leo Thevenet
 //
 
 #ifndef __OPTIONS_HH__
@@ -24,7 +24,7 @@ class	Options
   SDL_Renderer  *_Main_Renderer;
   SDL_Event	*_event;
   int		select;
-  int		x, y, player, densite;
+  int		x, y, player, densite, ia;
  public:
   Options(SDL_Window *, SDL_Surface *, SDL_Renderer *, SDL_Event *);
   ~Options();

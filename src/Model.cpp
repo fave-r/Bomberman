@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:15:50 2015 clément jean
-// Last update Fri May 29 22:16:18 2015 clément jean
+// Last update Mon Jun  1 11:33:28 2015 Leo Thevenet
 //
 
 #include "Model.hpp"

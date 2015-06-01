@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Sun May 31 15:46:13 2015 Leo Thevenet
+// Last update Mon Jun  1 17:10:55 2015 Leo Thevenet
 //
 
 #include <time.h>
@@ -245,6 +245,9 @@ bool	Bomberman::update()
 
 void	Bomberman::draw()
 {
+  float	x = 0, y = 0;
+  glm::mat4 transformation;
+
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   this->_shader.bind();
 
@@ -252,11 +255,29 @@ void	Bomberman::draw()
     this->_objects[i]->draw(this->_shader); // a virer
   for (size_t i = 0; i < this->_objplayers.size(); ++i)
     this->_objplayers[i]->draw(this->_shader); // a virer
-
+  std::list<APlayer *>::iterator it;
+  for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
+    {
+      x += (*it)->getX();
+      y += (*it)->getY();
+      ++it;
+    }
   for (unsigned int i = 0; i < this->_map.size(); ++i)
     for (unsigned int j = 0; j < this->_map[i].size(); ++j)
       if (this->_map[i][j])
 	this->_map[i][j]->draw(this->_shader);
+  if (this->_players == 2)
+    transformation = glm::lookAt(glm::vec3(x / 2.0, (x + y) / 2.4, y / 1.99),
+				 glm::vec3(x / 2.0, 0, y / 2.0),
+				 glm::vec3(0, 1, 0));
+  else
+    transformation = glm::lookAt(glm::vec3(x, 12, y / 0.99),
+				 glm::vec3(x, 0, y),
+				 glm::vec3(0, 1, 0));
+
+  this->_shader.bind();
+  this->_shader.setUniform("view", transformation);
+
   this->_context.flush();
 }
 

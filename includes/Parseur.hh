@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Thu May 28 15:41:54 2015 Leo Thevenet
-// Last update Thu May 28 16:56:54 2015 Leo Thevenet
+// Last update Mon Jun  1 16:31:09 2015 Leo Thevenet
 //
 
 #ifndef __PARSEUR_HH__
@@ -13,10 +13,11 @@
 
 namespace	Parseur
 {
-  void		setConf(int, int, int, int);
+  void		setConf(int, int, int, int, int);
   int		getX();
   int		getY();
   int		getPlayer();
+  int		getIA();
   int		getDensite();
 };
 

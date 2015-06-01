@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Fri May 29 14:48:30 2015 Leo Thevenet
-// Last update Sun May 31 15:21:45 2015 Leo Thevenet
+// Last update Mon Jun  1 16:38:02 2015 Leo Thevenet
 //
 
 #include "Options.hh"
@@ -25,6 +25,7 @@ Options::Options(SDL_Window *windows, SDL_Surface *screen, SDL_Renderer *_Main_R
   this->y = Parseur::getY();
   this->player = Parseur::getPlayer();
   this->densite = Parseur::getDensite();
+  this->ia = Parseur::getIA();;
 }
 
 Options::~Options()
@@ -40,7 +41,7 @@ void Options::MakeScreen()
   SDL_Color fg = {255, 255, 255, 255};
   SDL_Color sl = {255, 55, 55, 255};
   r.x = 600;
-  r.y = 100;
+  r.y = 50;
   r.w = 700;
   r.h = 150;
   SDL_RenderClear(this->_Main_Renderer);
@@ -49,13 +50,15 @@ void Options::MakeScreen()
   r.y += 150;
   PutStringOnScreen((this->select == 1) ? sl : fg, r, "Longueur Y -> ", this->y);
   r.y += 150;
-  PutStringOnScreen((this->select == 2) ? sl : fg, r, "Joueurs ->    ", this->player);
+  PutStringOnScreen((this->select == 2) ? sl : fg, r, "Mode de jeu ->", this->player);
   r.y += 150;
-  PutStringOnScreen((this->select == 3) ? sl : fg, r, "Densite ->    ", this->densite);
-  r.y += 300;
+  PutStringOnScreen((this->select == 3) ? sl : fg, r, "IA            ->", this->ia);
+  r.y += 150;
+  PutStringOnScreen((this->select == 4) ? sl : fg, r, "Densite ->    ", this->densite);
+  r.y += 200;
   r.x = 750;
   r.w = 450;
-  PutStringOnScreen((this->select == 4) ? sl : fg, r, "Sauvegarder", -1);
+  PutStringOnScreen((this->select == 5) ? sl : fg, r, "Sauvegarder", -1);
   SDL_RenderPresent(this->_Main_Renderer);
 }
 
@@ -77,8 +80,8 @@ void Options::FirstView()
 void Options::MoveCursor(int where)
 {
   this->select += where;
-  this->select = (this->select < 0) ? 4 : this->select;
-  this->select = (this->select > 4) ? 0 : this->select;
+  this->select = (this->select < 0) ? 5 : this->select;
+  this->select = (this->select > 5) ? 0 : this->select;
 }
 
 void Options::ChangeValue(int nb)
@@ -88,8 +91,10 @@ void Options::ChangeValue(int nb)
   else if (this->select == 1)
     this->y += (this->y + nb < 10) ? 0 : nb;
   else if (this->select == 2)
-    this->player += (this->player + nb < 1) ? 0 : nb;
+    this->player += (this->player + nb < 1) ? 0 : (this->player + nb > 2) ? 0 : nb;
   else if (this->select == 3)
+    this->ia += (this->ia + nb < 0) ? 0 : nb;
+  else if (this->select == 4)
     this->densite += (this->densite + nb < 0) ? 0 : (this->densite + nb > 80) ? 0 : nb;
 }
 
@@ -106,11 +111,12 @@ bool Options::getKey()
 	case SDLK_ESCAPE:
 	  return false;
 	case SDLK_RETURN:
-	  if (this->select == 4)
+	  if (this->select == 5)
 	    {
-	      Parseur::setConf(this->x, this->y, this->player, this->densite);
+	      Parseur::setConf(this->x, this->y, this->player, this->ia, this->densite);
 	      return false;
 	    }
+	  break;
 	case SDLK_LEFT:
 	  ChangeValue(-1);
 	  break;
