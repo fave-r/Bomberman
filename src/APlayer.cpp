@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Fri May 29 22:55:07 2015 clément jean
+// Last update Mon Jun  1 14:16:48 2015 clément jean
 //
 
 #include "APlayer.hh"
