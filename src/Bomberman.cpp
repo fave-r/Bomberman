@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Tue Jun  2 11:41:43 2015 Leo Thevenet
+// Last update Tue Jun  2 16:00:49 2015 clément jean
 
 #include <time.h>
 
@@ -27,9 +27,10 @@ bool	Bomberman::initialize()
 {
   glm::mat4 projection;
   glm::mat4 transformation;
-  Music              test;
-  test.createSound(&(this->son), "pokemon.mp3");
-  test.playSound(this->son, false);
+  Music              SoundPlayer;
+
+  SoundPlayer.createSound(&(this->son), "./Assets/Sounds/BackgroundSound.wav");
+  SoundPlayer.playSound(this->son, false);
 
   if (!this->_context.start(1920, 1080, "My bomberman!"))
     {
