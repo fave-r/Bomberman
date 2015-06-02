@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Mon Jun  1 18:23:16 2015 Leo Thevenet
+// Last update Wed Jun  3 00:51:20 2015 clément jean
 
 #include <time.h>
 
@@ -21,46 +21,28 @@ Bomberman::Bomberman(const unsigned int &x, const unsigned int &y, const unsigne
   this->_players = p;
   map->generate();
   this->_map = map->getMap();
-
-  // Visual *game = new Visual(x, y);
-
-  // if (game->initialize() == false)
-  //   return;// false;
-  // while (game->update() == true)
-  //   game->draw();
-
-  // this->ShowMap();
 }
 
 bool	Bomberman::initialize()
 {
   glm::mat4 projection;
   glm::mat4 transformation;
+  Music              SoundPlayer;
 
-  clock_t t;
-  t = clock();
+  SoundPlayer.createSound(&(this->son), "./Assets/Sounds/BackgroundSound.wav");
+  SoundPlayer.playSound(this->son, false);
+
   if (!this->_context.start(1920, 1080, "My bomberman!"))
     {
       std::cout << "peut pas faire de fenetre" << std::endl;
       return false;
     }
-  t = clock() - t;
-  std::cout << "time elapsed : " << ((float)t)/CLOCKS_PER_SEC << std::endl;
-  t = clock();
-
   this->_texturePool = new TexturePool();
-  t = clock() - t;
-  std::cout << "time elapsed : " << ((float)t)/CLOCKS_PER_SEC << std::endl;
-  t = clock();
   if (this->_texturePool->init() == false)
     {
       std::cout << "TexturePool fail" << std::endl;
       return false;
     }
-  t = clock() - t;
-  std::cout << "time elapsed : " << ((float)t)/CLOCKS_PER_SEC << std::endl;
-  t = clock();
-
   glEnable(GL_DEPTH_TEST);
   if (!this->_shader.load("./lib/shaders/basic.fp", GL_FRAGMENT_SHADER)
       || !this->_shader.load("./lib/shaders/basic.vp", GL_VERTEX_SHADER)
@@ -69,9 +51,6 @@ bool	Bomberman::initialize()
       std::cout << "shader erreur" << std::endl;
       return false;
     }
-  t = clock() - t;
-  std::cout << "time elapsed : " << ((float)t)/CLOCKS_PER_SEC << std::endl;
-  t = clock();
   projection = glm::perspective(70.0f, 1920.0f / 1080.0f, 0.1f, 1000.0f);
   transformation = glm::lookAt(glm::vec3(this->_x / 2, (this->_x + this->_y) / 2, this->_y / 2),
 			       glm::vec3(this->_x / 2, 0, this->_y / 2 - 0.0001),
@@ -79,75 +58,34 @@ bool	Bomberman::initialize()
   this->_shader.bind();
   this->_shader.setUniform("view", transformation);
   this->_shader.setUniform("projection", projection);
-  t = clock() - t;
-  std::cout << "time elapsed : " << ((float)t)/CLOCKS_PER_SEC << std::endl;
-  t = clock();
   init_map();
-  t = clock() - t;
-  std::cout << "time elapsed : " << ((float)t)/CLOCKS_PER_SEC << std::endl;
-  t = clock();
   init_player();
-  t = clock() - t;
-  std::cout << "time elapsed : " << ((float)t)/CLOCKS_PER_SEC << std::endl;
-  t = clock();
   if (init_texture() == false)
     return false;
-  t = clock() - t;
-  std::cout << "time elapsed : " << ((float)t)/CLOCKS_PER_SEC << std::endl;
-  t = clock();
   return true;
 }
 
 bool	Bomberman::init_texture()
 {
-  // Cube        *_cube = new Cube(0, 0); /*texture pool*/
-
-  // _cube->initialize();
-  //_cube->setTexture(this->_texturePool->getWall());
-  //_cube->newTexture();
-  // this->_objects.push_back(_cube);
-  clock_t t;
-
-  t = clock();
   for (unsigned int i = 0; i < this->_map.size(); ++i)
     for (unsigned int j = 0; j < this->_map[i].size(); ++j)
       if (this->_map[i][j])
 	if (this->_map[i][j]->initialize() == false)
 	  return false;
-  /*
-  this->_map[2][2] = new Fire(2, 2);
-  this->_map[2][2]->initialize();
-  (*this->_map[2][2]).setTexture(this->_texturePool->getFire());
-  this->_map[2][2]->translate(glm::vec3(2, 1, 2));
-  */
-  t = clock() - t;
-  std::cout << "--time elapsed : " << ((float)t)/CLOCKS_PER_SEC << std::endl;
-  t = clock();
-
   for (size_t i = 0; i < this->_objects.size(); ++i)
     if (this->_objects[i]->initialize() == false)
       {
 	std::cout << "object" << std::endl;
 	return false;
       }
-  t = clock() - t;
-  std::cout << "--time elapsed : " << ((float)t)/CLOCKS_PER_SEC << std::endl;
-  t = clock();
-
-  for (size_t i = 0; i < this->_objplayers.size(); ++i)
+  
+  /*  for (size_t i = 0; i < this->_objplayers.size(); ++i)
     if (this->_objplayers[i]->initialize() == false)
       {
 	std::cout << "object" << std::endl;
 	return false;
-      }
-
-  t = clock() - t;
-  std::cout << "--time elapsed : " << ((float)t)/CLOCKS_PER_SEC << std::endl;
-  t = clock();
+	}*/
   draw();
-  t = clock() - t;
-  std::cout << "--time elapsed : " << ((float)t)/CLOCKS_PER_SEC << std::endl;
-  t = clock();
   return true;
 }
 
@@ -162,7 +100,7 @@ void	Bomberman::init_map()
 	model->setTexture(this->_texturePool->getGround());
 	model->translate(glm::vec3(j, 0, i));
 	this->_objects.push_back(model);
-	if (this->_map[i][j] != NULL) // en fonction
+	if (this->_map[i][j] != NULL)
 	  {
 	    if (dynamic_cast<Wall *>(this->_map[i][j]))
 	      this->_map[i][j]->setTexture(this->_texturePool->getWall());
@@ -179,7 +117,7 @@ void	Bomberman::init_player()
 {
   PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, APlayer::DOWN);
   PhysicalPlayer *p2 = new PhysicalPlayer(this->_x - 2, this->_y - 2, APlayer::UP);
-  Model		 *model;// = new Model(p1->getX(), p1->getY());
+  //Model		 *model;
 
   this->_playerlist.push_back(p1);
   this->_playerlist.push_back(p2);
@@ -192,10 +130,10 @@ void	Bomberman::init_player()
   std::list<APlayer *>::const_iterator it;
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
     {
-      model = new Model((*it)->getY(), (*it)->getX());
-      model->setTexture(this->_texturePool->getPlayer());
-      model->move((*it)->getY(), 1, (*it)->getX());
-      this->_objplayers.push_back(model);
+      //model = new Model((*it)->getY(), (*it)->getX());
+      (*it)->setTexture(this->_texturePool->getPlayer());
+      (*it)->move((*it)->getY(), 1, (*it)->getX());
+      //this->_objplayers.push_back(model);
     }
 }
 
@@ -225,10 +163,10 @@ bool	Bomberman::update()
       if (player)
 	player->setInput(this->_input);
       (*it)->update(this->_clock, this->_map);
-      this->_objplayers[i]->resetRotate();
+      (*it)->resetRotate();
       int rot = ((*it)->getOrientation() % 2 == 0) ? (*it)->getOrientation() * 90 - 180 : (*it)->getOrientation() * 90;
-      this->_objplayers[i]->rotate(glm::vec3(0, 1, 0), rot);
-      this->_objplayers[i]->SetPos(glm::vec3((*it)->getX(), 1.001, (*it)->getY()));
+      (*it)->rotate(glm::vec3(0, 1, 0), rot);
+      (*it)->SetPos(glm::vec3((*it)->getX(), 1.001, (*it)->getY()));
       i++;
     }
   this->_shader.bind();
@@ -245,20 +183,21 @@ void	Bomberman::draw()
 
   for (size_t i = 0; i < this->_objects.size(); ++i)
     this->_objects[i]->draw(this->_shader); // a virer
-  for (size_t i = 0; i < this->_objplayers.size(); ++i)
-    this->_objplayers[i]->draw(this->_shader); // a virer
+  /*for (size_t i = 0; i < this->_objplayers.size(); ++i)
+    this->_objplayers[i]->draw(this->_shader); // a virer*/
   std::list<APlayer *>::iterator it;
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
     {
       x += (*it)->getX();
       y += (*it)->getY();
+      (*it)->draw(this->_shader);
     }
   for (unsigned int i = 0; i < this->_map.size(); ++i)
     for (unsigned int j = 0; j < this->_map[i].size(); ++j)
       if (this->_map[i][j])
 	this->_map[i][j]->draw(this->_shader);
   if (this->_players == 2)
-    transformation = glm::lookAt(glm::vec3(x / 2.0, (x + y) / 2.4, y / 1.99),
+    transformation = glm::lookAt(glm::vec3(x / 2.0, (x + y) / 2.2, y / 1.99),
 				 glm::vec3(x / 2.0, 0, y / 2.0),
 				 glm::vec3(0, 1, 0));
   else
@@ -283,7 +222,8 @@ Bomberman::~Bomberman()
   std::list<APlayer *>::iterator it;
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
     delete (*it);
-  for (size_t i = 0; i < this->_objplayers.size(); ++i)
-    delete this->_objplayers[i];
+  //for (size_t i = 0; i < this->_objplayers.size(); ++i)
+  //delete this->_objplayers[i];
   delete this->_texturePool;
+  this->son->release();
 }

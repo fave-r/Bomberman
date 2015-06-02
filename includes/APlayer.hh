@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Fri May 29 22:55:28 2015 clément jean
+// Last update Wed Jun  3 00:45:34 2015 clément jean
 //
 
 #ifndef PLAYER_HH
@@ -32,12 +32,14 @@ protected:
   eOrientation	_orientation;
   float		_delta;
   float		_speed;
+  gdl::Texture	_texture;
+  gdl::Model	_model;
 
 public:
   APlayer(float, float, APlayer::eOrientation);
 
 public:
-  virtual void		draw() const;
+  virtual void		draw(gdl::AShader &shader);
   virtual void		update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &) = 0;
 
 public:
@@ -45,12 +47,16 @@ public:
   void			goRight(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
   void			goDown(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
   void			goLeft(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
+  void                  move(const int &x, const int &y, const int &z);
 
 public:
   unsigned int		getId() const;
   eOrientation		getOrientation() const;
   float			getY();
   float			getX();
+
+public:
+  virtual void		setTexture(const gdl::Texture &old);
 
 public:
   const std::string	toString();

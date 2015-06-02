@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Mon Jun  1 14:16:48 2015 clément jean
+// Last update Wed Jun  3 00:45:16 2015 clément jean
 //
 
 #include "APlayer.hh"
@@ -15,10 +15,25 @@ APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
 {
   static unsigned id = 1;
   this->_id = id++;
+  if (this->_model.load("./Assets/Player/marvin.fbx") == false)
+    std::cerr << "Cannot load the model" << std::endl;
+  if (this->_model.createSubAnim(0, "wait", 0, 0) == false)
+    std::cout << "MDR" << "\n";
+  if (this->_model.createSubAnim(0, "run", 36, 53) == false)
+    std::cout << "MDR" << "\n";
+  glm::vec3 vec(0.002, 0.002, 0.002);
+  this->scale(vec);
 }
 
-void			APlayer::draw() const
+void			APlayer::draw(gdl::AShader &shader)
 {
+  this->_texture.bind();
+  this->_model.draw(shader, getTransformation(), 0.03);
+}
+
+void			APlayer::move(const int &x, const int &y, const int &z)
+{
+  translate(glm::vec3(x, y, z));
 }
 
 void			APlayer::goUp(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock)
@@ -100,4 +115,9 @@ const std::string	APlayer::toString()
 APlayer::eOrientation		APlayer::getOrientation() const
 {
   return this->_orientation;
+}
+
+void				APlayer::setTexture(const gdl::Texture &old)
+{
+  this->_texture = old;
 }

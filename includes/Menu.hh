@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:36:11 2015 clément jean
-// Last update Tue May 19 21:52:11 2015 clément jean
+// Last update Tue Jun  2 11:35:53 2015 Leo Thevenet
 //
 
 #ifndef __MENU_HH__
@@ -20,6 +20,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <cstdlib>
 #include "Bomberman.hh"
+#include "Music.hh"
 
 class Menu : public gdl::Game
 {
@@ -38,6 +39,7 @@ private:
   SDL_Renderer	*_Main_Renderer;
   SDL_Surface	*_BackGroundS;
   SDL_Texture	*_BackGroundT;
+  FMOD::Sound	*son;
 };
 
 #endif

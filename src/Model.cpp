@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:15:50 2015 clément jean
-// Last update Mon Jun  1 18:19:27 2015 Leo Thevenet
+// Last update Tue Jun  2 10:21:35 2015 clément jean
 //
 
 #include "Model.hpp"
@@ -21,7 +21,7 @@ Model::~Model()
 bool		Model::initialize()
 {
   this->_speed = 100.0f;
-  if (this->_model.load("./Assets/marvin.fbx") == false) // EN ATTENDANT DE REGLER LE SETMODEL
+  if (this->_model.load("./Assets/Player/marvin.fbx") == false) // EN ATTENDANT DE REGLER LE SETMODEL
     {
       std::cerr << "Cannot load the model" << std::endl;
       return (false);
@@ -30,8 +30,6 @@ bool		Model::initialize()
     std::cout << "MDR" << "\n";
   if (this->_model.createSubAnim(0, "run", 36, 53) == false)
     std::cout << "MDR" << "\n";
-  /*if (this->_model.setCurrentSubAnim("run") == false)
-    std::cout << "MDR LOL" << "\n";*/
   glm::vec3 vec(0.002, 0.002, 0.002);
   this->scale(vec);
   return true;
