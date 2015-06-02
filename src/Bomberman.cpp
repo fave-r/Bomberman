@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Mon Jun  1 18:23:16 2015 Leo Thevenet
+// Last update Tue Jun  2 11:37:28 2015 Leo Thevenet
 
 #include <time.h>
 
@@ -36,6 +36,9 @@ bool	Bomberman::initialize()
 {
   glm::mat4 projection;
   glm::mat4 transformation;
+  Music              test;
+  test.createSound(&(this->son), "pokemon.mp3");
+  test.playSound(this->son, false);
 
   clock_t t;
   t = clock();
@@ -286,4 +289,5 @@ Bomberman::~Bomberman()
   for (size_t i = 0; i < this->_objplayers.size(); ++i)
     delete this->_objplayers[i];
   delete this->_texturePool;
+  this->son->release();
 }

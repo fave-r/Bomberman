@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Mon Jun  1 15:05:06 2015 clément jean
+// Last update Tue Jun  2 11:38:12 2015 Leo Thevenet
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -27,6 +27,7 @@
 #include "Model.hpp"
 #include "Bomb.hh"
 #include "Fire.hh"
+#include "Music.hh"
 
 class	Bomberman : public gdl::Game
 {
@@ -56,6 +57,7 @@ private:
   int						_x;
   int						_y;
   int						_players;
+  FMOD::Sound					*son;
 };
 
 #endif
