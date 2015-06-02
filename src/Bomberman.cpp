@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Wed Jun  3 00:08:38 2015 clément jean
+// Last update Wed Jun  3 00:51:20 2015 clément jean
 
 #include <time.h>
 
@@ -78,12 +78,13 @@ bool	Bomberman::init_texture()
 	std::cout << "object" << std::endl;
 	return false;
       }
-  for (size_t i = 0; i < this->_objplayers.size(); ++i)
+  
+  /*  for (size_t i = 0; i < this->_objplayers.size(); ++i)
     if (this->_objplayers[i]->initialize() == false)
       {
 	std::cout << "object" << std::endl;
 	return false;
-      }
+	}*/
   draw();
   return true;
 }
@@ -116,7 +117,7 @@ void	Bomberman::init_player()
 {
   PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, APlayer::DOWN);
   PhysicalPlayer *p2 = new PhysicalPlayer(this->_x - 2, this->_y - 2, APlayer::UP);
-  Model		 *model;
+  //Model		 *model;
 
   this->_playerlist.push_back(p1);
   this->_playerlist.push_back(p2);
@@ -129,10 +130,10 @@ void	Bomberman::init_player()
   std::list<APlayer *>::const_iterator it;
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
     {
-      model = new Model((*it)->getY(), (*it)->getX());
-      model->setTexture(this->_texturePool->getPlayer());
-      model->move((*it)->getY(), 1, (*it)->getX());
-      this->_objplayers.push_back(model);
+      //model = new Model((*it)->getY(), (*it)->getX());
+      (*it)->setTexture(this->_texturePool->getPlayer());
+      (*it)->move((*it)->getY(), 1, (*it)->getX());
+      //this->_objplayers.push_back(model);
     }
 }
 
@@ -162,10 +163,10 @@ bool	Bomberman::update()
       if (player)
 	player->setInput(this->_input);
       (*it)->update(this->_clock, this->_map);
-      this->_objplayers[i]->resetRotate();
+      (*it)->resetRotate();
       int rot = ((*it)->getOrientation() % 2 == 0) ? (*it)->getOrientation() * 90 - 180 : (*it)->getOrientation() * 90;
-      this->_objplayers[i]->rotate(glm::vec3(0, 1, 0), rot);
-      this->_objplayers[i]->SetPos(glm::vec3((*it)->getX(), 1.001, (*it)->getY()));
+      (*it)->rotate(glm::vec3(0, 1, 0), rot);
+      (*it)->SetPos(glm::vec3((*it)->getX(), 1.001, (*it)->getY()));
       i++;
     }
   this->_shader.bind();
@@ -182,13 +183,14 @@ void	Bomberman::draw()
 
   for (size_t i = 0; i < this->_objects.size(); ++i)
     this->_objects[i]->draw(this->_shader); // a virer
-  for (size_t i = 0; i < this->_objplayers.size(); ++i)
-    this->_objplayers[i]->draw(this->_shader); // a virer
+  /*for (size_t i = 0; i < this->_objplayers.size(); ++i)
+    this->_objplayers[i]->draw(this->_shader); // a virer*/
   std::list<APlayer *>::iterator it;
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
     {
       x += (*it)->getX();
       y += (*it)->getY();
+      (*it)->draw(this->_shader);
     }
   for (unsigned int i = 0; i < this->_map.size(); ++i)
     for (unsigned int j = 0; j < this->_map[i].size(); ++j)
@@ -220,8 +222,8 @@ Bomberman::~Bomberman()
   std::list<APlayer *>::iterator it;
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
     delete (*it);
-  for (size_t i = 0; i < this->_objplayers.size(); ++i)
-    delete this->_objplayers[i];
+  //for (size_t i = 0; i < this->_objplayers.size(); ++i)
+  //delete this->_objplayers[i];
   delete this->_texturePool;
   this->son->release();
 }

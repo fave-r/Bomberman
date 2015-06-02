@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:59:33 2015 polydo_s
-// Last update Fri May 29 22:55:17 2015 clément jean
+// Last update Wed Jun  3 00:36:22 2015 clément jean
 //
 
 #ifndef PHYSICAL_PLAYER_HH
@@ -34,7 +34,6 @@ public:
   virtual bool  initialize();
 
 public:
-  virtual void  setTexture(const gdl::Texture &old);
   void		setInput(const gdl::Input &input);
 
 };

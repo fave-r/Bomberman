@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-// Last update Fri May 29 22:54:54 2015 clément jean
+// Last update Wed Jun  3 00:36:09 2015 clément jean
 //
 
 #include "PhysicalPlayer.hh"
@@ -59,9 +59,3 @@ void	PhysicalPlayer::setInput(const gdl::Input &input)
 {
   this->_input = input;
 }
-
-void	PhysicalPlayer::setTexture(const gdl::Texture &old)
-{
-  (void)old;
-}
-
