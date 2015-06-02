@@ -4,7 +4,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon May 25 02:15:39 2015 clément jean
-// Last update Tue Jun  2 10:21:14 2015 clément jean
+// Last update Tue Jun  2 17:08:31 2015 clément jean
 //
 
 #include "TexturePool.hh"
@@ -19,7 +19,7 @@ TexturePool::~TexturePool()
 
 bool		TexturePool::init()
 {
-  if (this->_textureBox.load("./Assets/Map/box.fbm/box.tga") == false)
+  if (this->_textureBox.load("./Assets/Map/box.fbm/box.tga", true) == false)
     {
       std::cerr << "Cannot load the box texture" << std::endl;
       return (false);
