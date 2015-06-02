@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Wed May  6 00:18:56 2015 clément jean
-// Last update Tue Jun  2 17:31:42 2015 clément jean
+// Last update Wed Jun  3 00:18:51 2015 clément jean
 //
 
 #ifndef __MODEL_HPP__
@@ -21,10 +21,6 @@
 class Model : public AObject, public IUpdatable
 {
 
-private:
-  float _x;
-  float _y;
-
 public:
   Model(float x, float y);
   virtual ~Model();
@@ -34,11 +30,16 @@ public:
   virtual void          setTexture(const gdl::Texture &old);
   void                  move(const int &x, const int &y, const int &z);
 
-private:
-  float		_speed;
-
 public:
   virtual const std::string	toString();
+
+private:
+  float _x;
+  float _y;
+  float _speed;
+  gdl::Texture	_texture;
+  gdl::Model	_model;
+
 };
 
 #endif

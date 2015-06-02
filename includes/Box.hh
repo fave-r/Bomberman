@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:48:39 2015 clément jean
-// Last update Fri May 29 18:44:37 2015 clément jean
+// Last update Wed Jun  3 00:15:57 2015 clément jean
 //
 
 #ifndef __BOX_HH__
@@ -29,10 +29,10 @@ public:
   virtual bool	initialize();
   virtual void  setTexture(const gdl::Texture &old);
 
-  /*private:
+private:
   gdl::Texture  _texture;
   gdl::Geometry _geometry;
-  */
+
 public:
   virtual const std::string	toString();
 };
