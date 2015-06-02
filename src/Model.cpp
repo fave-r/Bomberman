@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:15:50 2015 clément jean
-// Last update Mon Jun  1 18:19:27 2015 Leo Thevenet
+// Last update Tue Jun  2 00:06:00 2015 clément jean
 //
 
 #include "Model.hpp"
@@ -30,8 +30,6 @@ bool		Model::initialize()
     std::cout << "MDR" << "\n";
   if (this->_model.createSubAnim(0, "run", 36, 53) == false)
     std::cout << "MDR" << "\n";
-  /*if (this->_model.setCurrentSubAnim("run") == false)
-    std::cout << "MDR LOL" << "\n";*/
   glm::vec3 vec(0.002, 0.002, 0.002);
   this->scale(vec);
   return true;
