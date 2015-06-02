@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:36:11 2015 clément jean
-// Last update Tue Jun  2 11:35:53 2015 Leo Thevenet
+// Last update Wed Jun  3 01:10:59 2015 polydo_s
 //
 
 #ifndef __MENU_HH__
@@ -19,6 +19,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <cstdlib>
+
 #include "Bomberman.hh"
 #include "Music.hh"
 

@@ -5,16 +5,17 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Fri May 29 14:48:51 2015 Leo Thevenet
-// Last update Mon Jun  1 16:25:08 2015 Leo Thevenet
+// Last update Wed Jun  3 01:35:26 2015 polydo_s
 //
 
 #ifndef __OPTIONS_HH__
 #define __OPTIONS_HH__
 
+#include <SDL2/SDL_ttf.h>
+#include <string>
+
 #include "Menu.hh"
 #include "Parseur.hh"
-#include <SDL/SDL_ttf.h>
-#include <string>
 
 class	Options
 {

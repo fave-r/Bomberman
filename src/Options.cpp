@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Fri May 29 14:48:30 2015 Leo Thevenet
-// Last update Mon Jun  1 16:38:02 2015 Leo Thevenet
+// Last update Wed Jun  3 01:38:21 2015 polydo_s
 //
 
 #include "Options.hh"
@@ -104,6 +104,7 @@ bool Options::getKey()
   switch ((*this->_event).type)
     {
     case SDL_QUIT:
+      std::cout << "CLOSE" << std::endl;
       return false;
     case SDL_KEYDOWN:
       switch ((*this->_event).key.keysym.sym)
@@ -129,7 +130,10 @@ bool Options::getKey()
 	case SDLK_DOWN:
 	  MoveCursor(1);
 	  break;
+	default:
+	  break;
 	}
+    default:
       break;
     }
   return true;
