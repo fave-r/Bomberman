@@ -4,7 +4,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon May 25 02:15:39 2015 clément jean
-// Last update Tue Jun  2 17:08:31 2015 clément jean
+// Last update Wed Jun  3 01:05:21 2015 polydo_s
 //
 
 #include "TexturePool.hh"
