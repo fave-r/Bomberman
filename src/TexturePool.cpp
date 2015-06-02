@@ -4,7 +4,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon May 25 02:15:39 2015 clément jean
-// Last update Fri May 29 17:39:22 2015 clément jean
+// Last update Mon Jun  1 23:04:23 2015 polydo_s
 //
 
 #include "TexturePool.hh"
@@ -24,7 +24,7 @@ bool		TexturePool::init()
       std::cerr << "Cannot load the box texture" << std::endl;
       return (false);
     }
-  if (this->_textureWall.load("./Assets/wall.fbm/Wall.tga") == false)
+  if (this->_textureWall.load("./Assets/wall.fbm/Wall.tga", true) == false)
     {
       std::cerr << "Cannot load the wall texture" << std::endl;
       return (false);
