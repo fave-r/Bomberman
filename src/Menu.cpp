@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Tue Jun  2 16:00:27 2015 clément jean
+// Last update Wed Jun  3 01:38:26 2015 clément jean
 //
 
 #include "Menu.hh"
@@ -76,7 +76,7 @@ bool          Menu::Check_Path()
   if (this->_path == "./Assets/Menu/start_fond.bmp")
     {
       this->son->release();
-
+      SDL_Quit();
       Bomberman *bomberman = new Bomberman(Parseur::getX(), Parseur::getY(), Parseur::getPlayer());
 
       if (bomberman->initialize() == false)
