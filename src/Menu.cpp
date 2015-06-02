@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Tue Jun  2 10:22:37 2015 clément jean
+// Last update Tue Jun  2 15:50:30 2015 clément jean
 //
 
 #include "Menu.hh"
@@ -21,6 +21,9 @@ Menu::~Menu()
 
 bool		Menu::initialize()
 {
+  Music              test;
+  test.createSound(&(this->son), "pokemon.mp3");
+  test.playSound(this->son, false);
   if(SDL_Init(SDL_INIT_VIDEO) < 0)
     {
       std::cout << "SDL could not initialize!" << std::endl;
@@ -71,6 +74,8 @@ bool          Menu::Check_Path()
 {
   if (this->_path == "./Assets/Menu/start_fond.bmp")
     {
+      this->son->release();
+
       Bomberman *bomberman = new Bomberman(Parseur::getX(), Parseur::getY(), Parseur::getPlayer());
 
       if (bomberman->initialize() == false)
