@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Fri May 29 02:35:26 2015 clément jean
+// Last update Tue Jun  2 10:18:53 2015 clément jean
 //
 
 #include "Bomb.hh"
@@ -20,7 +20,7 @@ Bomb::~Bomb()
 
 bool                  Bomb::initialize()
 {
-  if (this->_model.load("./Assets/bomb.fbx") == false) // EN ATTENDANT DE REGLER LE SETMODEL
+  if (this->_model.load("./Assets/Map/bomb.fbx") == false) // EN ATTENDANT DE REGLER LE SETMODEL
     {
       std::cerr << "Cannot load the bomb" << std::endl;
       return (false);

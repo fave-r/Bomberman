@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Sun May 31 15:55:53 2015 Leo Thevenet
+// Last update Tue Jun  2 10:22:37 2015 clément jean
 //
 
 #include "Menu.hh"
@@ -31,7 +31,7 @@ bool		Menu::initialize()
       this->_Main_Window = SDL_CreateWindow("Bomberman",
 					    SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1050, 0);
       this->_Main_Renderer = SDL_CreateRenderer(this->_Main_Window, -1, SDL_RENDERER_ACCELERATED);
-      this->_path = "./Assets/start_fond.bmp";
+      this->_path = "./Assets/Menu/start_fond.bmp";
       this->_BackGroundS = SDL_LoadBMP(this->_path.c_str());
       this->_BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, this->_BackGroundS);
       SDL_FreeSurface(this->_BackGroundS);
@@ -56,7 +56,7 @@ bool		Menu::update()
 	    return false;
 	  break;
 	case SDLK_LEFT: case SDLK_RIGHT:
-	  _path = (_path == "./Assets/start_fond.bmp") ? "./Assets/options_fond.bmp" : "./Assets/start_fond.bmp";
+	  _path = (_path == "./Assets/Menu/start_fond.bmp") ? "./Assets/Menu/options_fond.bmp" : "./Assets/Menu/start_fond.bmp";
 	  _BackGroundS = SDL_LoadBMP(_path.c_str());
 	  _BackGroundT = SDL_CreateTextureFromSurface(_Main_Renderer, _BackGroundS);
 	  SDL_FreeSurface(_BackGroundS);
@@ -69,7 +69,7 @@ bool		Menu::update()
 
 bool          Menu::Check_Path()
 {
-  if (this->_path == "./Assets/start_fond.bmp")
+  if (this->_path == "./Assets/Menu/start_fond.bmp")
     {
       Bomberman *bomberman = new Bomberman(Parseur::getX(), Parseur::getY(), Parseur::getPlayer());
 

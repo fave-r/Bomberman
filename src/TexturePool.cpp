@@ -4,7 +4,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon May 25 02:15:39 2015 clément jean
-// Last update Tue Jun  2 00:06:45 2015 clément jean
+// Last update Tue Jun  2 10:21:14 2015 clément jean
 //
 
 #include "TexturePool.hh"
@@ -19,32 +19,32 @@ TexturePool::~TexturePool()
 
 bool		TexturePool::init()
 {
-  if (this->_textureBox.load("./Assets/box.fbm/box.tga") == false)
+  if (this->_textureBox.load("./Assets/Map/box.fbm/box.tga") == false)
     {
       std::cerr << "Cannot load the box texture" << std::endl;
       return (false);
     }
-  if (this->_textureWall.load("./Assets/wall.fbm/Wall.tga", true) == false)
+  if (this->_textureWall.load("./Assets/Map/wall.fbm/Wall.tga", true) == false)
     {
       std::cerr << "Cannot load the wall texture" << std::endl;
       return (false);
     }
-  if (this->_texturePlayer.load("./Assets/marvin.fbm/Main_texture_diffuse2.tga") == false)
+  if (this->_texturePlayer.load("./Assets/Player/marvin.fbm/Main_texture_diffuse2.tga") == false)
     {
       std::cerr << "Cannot load the player texture" << std::endl;
       return (false);
     }
-  if (this->_textureGround.load("./Assets/ground.fbm/ground.tga", true) == false)
+  if (this->_textureGround.load("./Assets/Map/ground.fbm/ground.tga", true) == false)
     {
       std::cerr << "Cannot load the ground texture" << std::endl;
       return (false);
     }
-  if (this->_textureBomb.load("./Assets/bomb.fbm/Bomb_texture.tga", true) == false)
+  if (this->_textureBomb.load("./Assets/Map/bomb.fbm/Bomb_texture.tga", true) == false)
     {
       std::cerr << "Cannot load the bomb texture" << std::endl;
       return (false);
     }
-  if (this->_textureFire.load("./Assets/fire.fbm/XPlosion.tga") == false)
+  if (this->_textureFire.load("./Assets/Map/fire.fbm/XPlosion.tga") == false)
     {
       std::cerr << "Cannot load the fire texture" << std::endl;
       return (false);

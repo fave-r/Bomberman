@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:15:50 2015 clément jean
-// Last update Tue Jun  2 00:06:00 2015 clément jean
+// Last update Tue Jun  2 10:21:35 2015 clément jean
 //
 
 #include "Model.hpp"
@@ -21,7 +21,7 @@ Model::~Model()
 bool		Model::initialize()
 {
   this->_speed = 100.0f;
-  if (this->_model.load("./Assets/marvin.fbx") == false) // EN ATTENDANT DE REGLER LE SETMODEL
+  if (this->_model.load("./Assets/Player/marvin.fbx") == false) // EN ATTENDANT DE REGLER LE SETMODEL
     {
       std::cerr << "Cannot load the model" << std::endl;
       return (false);
