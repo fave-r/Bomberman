@@ -5,11 +5,12 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Wed Jun  3 14:52:26 2015 Leo Thevenet
+// Last update Wed Jun  3 18:42:01 2015 clément jean
 //
 
 #include "Menu.hh"
 #include "Options.hh"
+#include "SDL/SDL_image.h"
 
 Menu::Menu()
 {
@@ -37,7 +38,7 @@ bool		Menu::initialize()
 					    SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1050, 0);
       this->_Main_Renderer = SDL_CreateRenderer(this->_Main_Window, -1, SDL_RENDERER_ACCELERATED);
       this->_path = "./Assets/Menu/start_fond.bmp";
-      this->_BackGroundS = SDL_LoadBMP(this->_path.c_str());
+      this->_BackGroundS = IMG_Load(this->_path.c_str());
       this->_BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, this->_BackGroundS);
       SDL_FreeSurface(this->_BackGroundS);
     }
@@ -60,9 +61,9 @@ bool		Menu::update()
 	  if (Check_Path() == false)
 	    return false;
 	  break;
-	case SDLK_LEFT: case SDLK_RIGHT:
+	case SDLK_DOWN: case SDLK_UP:
 	  _path = (_path == "./Assets/Menu/start_fond.bmp") ? "./Assets/Menu/options_fond.bmp" : "./Assets/Menu/start_fond.bmp";
-	  _BackGroundS = SDL_LoadBMP(_path.c_str());
+	  _BackGroundS = IMG_Load(_path.c_str());
 	  _BackGroundT = SDL_CreateTextureFromSurface(_Main_Renderer, _BackGroundS);
 	  SDL_FreeSurface(_BackGroundS);
 	  break;
