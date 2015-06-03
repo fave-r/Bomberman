@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Wed Jun  3 14:53:17 2015 Leo Thevenet
+// Last update Wed Jun  3 18:53:52 2015 polydo_s
 
 #include <time.h>
 
@@ -195,7 +195,7 @@ void	Bomberman::draw()
       if (this->_map[i][j])
 	this->_map[i][j]->draw(this->_shader);
   if (this->_players == 2)
-    transformation = glm::lookAt(glm::vec3(x / 2.0, (x + y) / 2.2, y / 1.99),
+    transformation = glm::lookAt(glm::vec3(x / 2.0, (x + y) / 2, y / 1.99),
 				 glm::vec3(x / 2.0, 0, y / 2.0),
 				 glm::vec3(0, 1, 0));
   else

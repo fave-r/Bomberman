@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Wed Jun  3 00:45:34 2015 clément jean
+// Last update Wed Jun  3 02:49:42 2015 polydo_s
 //
 
 #ifndef PLAYER_HH
@@ -32,6 +32,7 @@ protected:
   eOrientation	_orientation;
   float		_delta;
   float		_speed;
+  bool		_inAnim;
   gdl::Texture	_texture;
   gdl::Model	_model;
 

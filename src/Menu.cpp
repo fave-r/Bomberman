@@ -5,12 +5,12 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Wed Jun  3 18:42:01 2015 clément jean
+// Last update Wed Jun  3 18:52:04 2015 polydo_s
 //
 
 #include "Menu.hh"
 #include "Options.hh"
-#include "SDL/SDL_image.h"
+#include "SDL2/SDL_image.h"
 
 Menu::Menu()
 {

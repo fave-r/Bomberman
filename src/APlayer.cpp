@@ -5,13 +5,13 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Wed Jun  3 02:27:45 2015 clément jean
+// Last update Wed Jun  3 03:24:49 2015 polydo_s
 //
 
 #include "APlayer.hh"
 
 APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
-  : AObject(x, y, 0.85, 0.85), _orientation(orientation), _delta(0.05), _speed(2)
+  : AObject(x, y, 0.90, 0.90), _orientation(orientation), _delta(0.01), _speed(2), _inAnim(false)
 {
   static unsigned id = 1;
   this->_id = id++;
@@ -42,6 +42,8 @@ void			APlayer::goUp(std::vector<std::vector<AObject *> > &map, const gdl::Clock
   AObject		*dest;
   ICrossable		*crossable;
 
+  if (!this->_inAnim)
+    this->_inAnim = this->_model.setCurrentSubAnim("run");
   dest = map[static_cast<int>(this->_y - this->_delta)][static_cast<int>(this->_x)];
   crossable = dynamic_cast<ICrossable *>(dest);
   if (!dest || crossable)
@@ -56,6 +58,8 @@ void			APlayer::goRight(std::vector<std::vector<AObject *> > &map, const gdl::Cl
   AObject		*dest;
   ICrossable		*crossable;
 
+  if (!this->_inAnim)
+    this->_inAnim = this->_model.setCurrentSubAnim("run");
   dest = map[static_cast<int>(this->_y + this->_h)][static_cast<int>(this->_x + this->_w + this->_delta)];
   crossable = dynamic_cast<ICrossable *>(dest);
   if (!dest || crossable)
@@ -70,11 +74,13 @@ void			APlayer::goDown(std::vector<std::vector<AObject *> > &map, const gdl::Clo
   AObject		*dest;
   ICrossable		*crossable;
 
+  if (!this->_inAnim)
+    this->_inAnim = this->_model.setCurrentSubAnim("run");
   dest = map[static_cast<int>(this->_y + this->_h + this->_delta)][static_cast<int>(this->_x + this->_w)];
   crossable = dynamic_cast<ICrossable *>(dest);
   if (!dest || crossable)
     {
-      this->_y += static_cast<float>(clock.getElapsed() * this->_speed);
+      this->_y += static_cast<float>(clock.getElapsed() * this->_speed + this->_delta);
     }
   this->_orientation = APlayer::DOWN;
 }
@@ -84,6 +90,8 @@ void			APlayer::goLeft(std::vector<std::vector<AObject *> > &map, const gdl::Clo
   AObject		*dest;
   ICrossable		*crossable;
 
+  if (!this->_inAnim)
+    this->_inAnim = this->_model.setCurrentSubAnim("run");
   dest = map[static_cast<int>(this->_y)][static_cast<int>(this->_x - this->_delta)];
   crossable = dynamic_cast<ICrossable *>(dest);
   if (!dest || crossable)
