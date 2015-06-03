@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 17:17:08 2015 clément jean
-// Last update Wed Jun  3 00:16:49 2015 clément jean
+// Last update Wed Jun  3 16:24:01 2015 Leo Thevenet
 //
 
 #ifndef __FIRE_HH__
@@ -31,7 +31,8 @@ public:
 
 private:
   gdl::Texture		_texture;
-  gdl::Geometry		_geometry;
+  static gdl::Geometry _geometry;
+  static bool _i;
 };
 
 #endif

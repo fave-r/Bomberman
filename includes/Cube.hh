@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:29:04 2015 clément jean
-// Last update Wed Jun  3 00:19:54 2015 clément jean
+// Last update Wed Jun  3 16:18:24 2015 Leo Thevenet
 //
 
 #ifndef __CUBE_HPP__
@@ -38,7 +38,8 @@ public:
 
 private:
   gdl::Texture	_texture;
-  gdl::Geometry _geometry;
+  static gdl::Geometry _geometry;
+  static bool _i;
 };
 
 #endif

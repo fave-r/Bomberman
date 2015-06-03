@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 17:25:07 2015 clément jean
-// Last update Wed Jun  3 00:16:26 2015 clément jean
+// Last update Wed Jun  3 16:12:59 2015 Leo Thevenet
 //
 
 #ifndef __WALL_HH__
@@ -34,8 +34,8 @@ public:
 
 private:
   gdl::Texture  _texture;
-  gdl::Geometry _geometry;
-
+  static gdl::Geometry _geometry;
+  static bool _i;
 };
 
 #endif
