@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Wed Jun  3 00:45:16 2015 clément jean
+// Last update Wed Jun  3 02:27:45 2015 clément jean
 //
 
 #include "APlayer.hh"
@@ -27,6 +27,7 @@ APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
 
 void			APlayer::draw(gdl::AShader &shader)
 {
+  ///NE SERT A RIEN
   this->_texture.bind();
   this->_model.draw(shader, getTransformation(), 0.03);
 }

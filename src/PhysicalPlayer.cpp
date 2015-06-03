@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-// Last update Wed Jun  3 00:36:09 2015 clément jean
+// Last update Wed Jun  3 02:16:55 2015 clément jean
 //
 
 #include "PhysicalPlayer.hh"
@@ -47,11 +47,13 @@ void	PhysicalPlayer::update(const gdl::Clock &clock, std::vector<std::vector<AOb
 
 void	PhysicalPlayer::draw(gdl::AShader &shader)
 {
-  (void)shader;
+  this->_texture.bind();
+  this->_model.draw(shader, getTransformation(), 0.03);
 }
 
 bool	PhysicalPlayer::initialize()
 {
+  ///NE SERT A RIEN
   return true;
 }
 

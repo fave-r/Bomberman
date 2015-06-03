@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Wed Jun  3 00:51:20 2015 clément jean
+// Last update Wed Jun  3 02:29:04 2015 clément jean
 
 #include <time.h>
 
@@ -156,7 +156,6 @@ bool	Bomberman::update()
       }
 
   std::list<APlayer *>::iterator it;
-  int i = 0;
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
     {
       PhysicalPlayer *player = dynamic_cast<PhysicalPlayer *>(*it);
@@ -167,7 +166,6 @@ bool	Bomberman::update()
       int rot = ((*it)->getOrientation() % 2 == 0) ? (*it)->getOrientation() * 90 - 180 : (*it)->getOrientation() * 90;
       (*it)->rotate(glm::vec3(0, 1, 0), rot);
       (*it)->SetPos(glm::vec3((*it)->getX(), 1.001, (*it)->getY()));
-      i++;
     }
   this->_shader.bind();
   return true;
