@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:58:02 2015 clément jean
-// Last update Fri May 29 17:34:49 2015 clément jean
+// Last update Wed Jun  3 03:03:22 2015 clément jean
 //
 
 #include "Cube.hh"
