@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Wed Jun  3 02:29:04 2015 clément jean
+// Last update Wed Jun  3 14:53:17 2015 Leo Thevenet
 
 #include <time.h>
 
@@ -21,16 +21,14 @@ Bomberman::Bomberman(const unsigned int &x, const unsigned int &y, const unsigne
   this->_players = p;
   map->generate();
   this->_map = map->getMap();
+  this->_SoundPlayer = new Music();
 }
 
 bool	Bomberman::initialize()
 {
   glm::mat4 projection;
   glm::mat4 transformation;
-  Music              SoundPlayer;
-
-  SoundPlayer.createSound(&(this->son), "./Assets/Sounds/BackgroundSound.wav");
-  SoundPlayer.playSound(this->son, false);
+  FMOD::Sound	*son;
 
   if (!this->_context.start(1920, 1080, "My bomberman!"))
     {
@@ -62,6 +60,8 @@ bool	Bomberman::initialize()
   init_player();
   if (init_texture() == false)
     return false;
+  this->_SoundPlayer->createSound(&son, "./Assets/Sounds/BackgroundSound.wav");
+  this->_SoundPlayer->playSound(son, true);
   return true;
 }
 
@@ -78,7 +78,7 @@ bool	Bomberman::init_texture()
 	std::cout << "object" << std::endl;
 	return false;
       }
-  
+
   /*  for (size_t i = 0; i < this->_objplayers.size(); ++i)
     if (this->_objplayers[i]->initialize() == false)
       {
@@ -223,5 +223,5 @@ Bomberman::~Bomberman()
   //for (size_t i = 0; i < this->_objplayers.size(); ++i)
   //delete this->_objplayers[i];
   delete this->_texturePool;
-  this->son->release();
+  delete this->_SoundPlayer;
 }

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Wed Jun  3 00:42:18 2015 clément jean
+// Last update Wed Jun  3 14:49:15 2015 Leo Thevenet
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -57,7 +57,7 @@ private:
   int						_x;
   int						_y;
   int						_players;
-  FMOD::Sound					*son;
+  Music						*_SoundPlayer;
 };
 
 #endif

@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  2 09:49:05 2015 Leo Thevenet
-// Last update Tue Jun  2 11:34:34 2015 Leo Thevenet
+// Last update Wed Jun  3 14:50:04 2015 Leo Thevenet
 //
 
 #include "Music.hh"
@@ -13,21 +13,25 @@
 
 Music::Music()
 {
-  if (FMOD::System_Create(&(this->sys)) != FMOD_OK)
+  if (FMOD::System_Create(&(this->_sys)) != FMOD_OK)
     return;
   int driverCount = 0;
-  this->sys->getNumDrivers(&driverCount);
+  this->_sys->getNumDrivers(&driverCount);
   if (driverCount == 0)
       return;
-  this->sys->init(36, FMOD_INIT_NORMAL, NULL);
+  this->_sys->init(42, FMOD_INIT_NORMAL, NULL);
 }
 
 Music::~Music()
-{}
+{
+  for (size_t i = 0; i < this->_sons.size(); ++i)
+    this->_sons[i]->release();
+}
 
 void Music::createSound(FMOD::Sound **pSound, const char* pFile)
 {
-  this->sys->createSound(pFile, FMOD_DEFAULT, 0, pSound);
+  this->_sys->createSound(pFile, FMOD_DEFAULT, 0, pSound);
+  this->_sons.push_back(*pSound);
 }
 
 void Music::playSound(FMOD::Sound *pSound, bool bLoop = false)
@@ -39,5 +43,5 @@ void Music::playSound(FMOD::Sound *pSound, bool bLoop = false)
       pSound->setMode(FMOD_LOOP_NORMAL);
       pSound->setLoopCount(-1);
     }
-  this->sys->playSound(pSound, NULL, false, 0);
+  this->_sys->playSound(pSound, NULL, false, 0);
 }

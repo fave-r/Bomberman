@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:36:11 2015 clément jean
-// Last update Wed Jun  3 01:10:59 2015 polydo_s
+// Last update Wed Jun  3 14:51:05 2015 Leo Thevenet
 //
 
 #ifndef __MENU_HH__
@@ -40,7 +40,7 @@ private:
   SDL_Renderer	*_Main_Renderer;
   SDL_Surface	*_BackGroundS;
   SDL_Texture	*_BackGroundT;
-  FMOD::Sound	*son;
+  Music		*_SoundPlayer;
 };
 
 #endif

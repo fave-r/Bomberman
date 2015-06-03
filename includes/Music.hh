@@ -5,17 +5,19 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  2 09:48:39 2015 Leo Thevenet
-// Last update Tue Jun  2 10:46:34 2015 Leo Thevenet
+// Last update Wed Jun  3 14:48:29 2015 Leo Thevenet
 //
 
 #ifndef __MUSIC_HH__
 #define __MUSIC_HH__
 
+#include <vector>
 #include "fmod.hpp"
 
 class Music
 {
-  FMOD::System *sys;
+  FMOD::System			*_sys;
+  std::vector<FMOD::Sound*>	_sons;
 public:
   Music();
   ~Music();
