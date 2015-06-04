@@ -5,13 +5,13 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Wed Jun  3 19:56:06 2015 polydo_s
+// Last update Thu Jun  4 18:51:35 2015 polydo_s
 //
 
 #include "APlayer.hh"
 
 APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
-  : AObject(x, y, 0.90, 0.90), _orientation(orientation), _delta(0.01), _speed(2), _inAnim(false)
+  : AObject(x, y, 0.90, 0.90), _orientation(orientation), _delta(0.1), _speed(2), _inAnim(false)
 {
   static unsigned id = 1;
   this->_id = id++;
@@ -39,8 +39,8 @@ void			APlayer::move(const int &x, const int &y, const int &z)
 
 void			APlayer::putBomb(std::vector<std::vector<AObject *> >&map, const gdl::Clock &clock)
 {
-  int			x = this->_x + 0.5;
-  int			y = this->_y + 0.5;
+  int x = this->_x + 0.5;
+  int y = this->_y + 0.5;
 
   (void)clock;
   switch (this->_orientation)
@@ -59,12 +59,7 @@ void			APlayer::putBomb(std::vector<std::vector<AObject *> >&map, const gdl::Clo
       break;
     }
   if (!map[y][x])
-    {
-      std::cout << "Put a bomb in " << x << " " << y << std::endl;
-      Bomb *bomb = new Bomb(x, y);
-      bomb->initialize();
-      map[y][x] = bomb;
-    }
+    map[y][x] = new Bomb(x, y);
 }
 
 void			APlayer::goUp(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock)
@@ -77,9 +72,7 @@ void			APlayer::goUp(std::vector<std::vector<AObject *> > &map, const gdl::Clock
   dest = map[static_cast<int>(this->_y - this->_delta)][static_cast<int>(this->_x)];
   crossable = dynamic_cast<ICrossable *>(dest);
   if (!dest || crossable)
-    {
-      this->_y -= static_cast<float>(clock.getElapsed() * this->_speed);
-    }
+    this->_y -= static_cast<float>(clock.getElapsed() * this->_speed);
   this->_orientation = APlayer::UP;
 }
 
@@ -93,9 +86,7 @@ void			APlayer::goRight(std::vector<std::vector<AObject *> > &map, const gdl::Cl
   dest = map[static_cast<int>(this->_y + this->_h)][static_cast<int>(this->_x + this->_w + this->_delta)];
   crossable = dynamic_cast<ICrossable *>(dest);
   if (!dest || crossable)
-    {
-      this->_x += static_cast<float>(clock.getElapsed() * this->_speed);
-    }
+    this->_x += static_cast<float>(clock.getElapsed() * this->_speed);
   this->_orientation = APlayer::RIGHT;
 }
 
@@ -109,9 +100,7 @@ void			APlayer::goDown(std::vector<std::vector<AObject *> > &map, const gdl::Clo
   dest = map[static_cast<int>(this->_y + this->_h + this->_delta)][static_cast<int>(this->_x + this->_w)];
   crossable = dynamic_cast<ICrossable *>(dest);
   if (!dest || crossable)
-    {
-      this->_y += static_cast<float>(clock.getElapsed() * this->_speed + this->_delta);
-    }
+    this->_y += static_cast<float>(clock.getElapsed() * this->_speed);
   this->_orientation = APlayer::DOWN;
 }
 
@@ -125,38 +114,11 @@ void			APlayer::goLeft(std::vector<std::vector<AObject *> > &map, const gdl::Clo
   dest = map[static_cast<int>(this->_y)][static_cast<int>(this->_x - this->_delta)];
   crossable = dynamic_cast<ICrossable *>(dest);
   if (!dest || crossable)
-    {
-      this->_x -= static_cast<float>(clock.getElapsed() * this->_speed);
-    }
+    this->_x -= static_cast<float>(clock.getElapsed() * this->_speed);
   this->_orientation = APlayer::LEFT;
-}
-
-unsigned int		APlayer::getId() const
-{
-  return this->_id;
-}
-
-float			APlayer::getX()
-{
-  return this->_x;
-}
-
-float			APlayer::getY()
-{
-  return this->_y;
-}
-
-const std::string	APlayer::toString()
-{
-  return "P";
 }
 
 APlayer::eOrientation		APlayer::getOrientation() const
 {
   return this->_orientation;
-}
-
-void				APlayer::setTexture(const gdl::Texture &old)
-{
-  this->_texture = old;
 }

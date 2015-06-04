@@ -5,34 +5,20 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:15:50 2015 clément jean
-// Last update Tue Jun  2 10:21:35 2015 clément jean
+// Last update Thu Jun  4 19:08:18 2015 polydo_s
 //
 
 #include "Model.hpp"
 
 Model::Model(float x, float y) : AObject(x, y, 0.9, 0.9)
 {
-}
-
-Model::~Model()
-{
-}
-
-bool		Model::initialize()
-{
-  this->_speed = 100.0f;
-  if (this->_model.load("./Assets/Player/marvin.fbx") == false) // EN ATTENDANT DE REGLER LE SETMODEL
-    {
-      std::cerr << "Cannot load the model" << std::endl;
-      return (false);
-    }
+  if (this->_model.load("./Assets/Player/marvin.fbx") == false)
+    throw std::runtime_error("Cannot load the model");
   if (this->_model.createSubAnim(0, "wait", 0, 0) == false)
-    std::cout << "MDR" << "\n";
+    throw std::runtime_error("Cannot create wait animation");
   if (this->_model.createSubAnim(0, "run", 36, 53) == false)
-    std::cout << "MDR" << "\n";
-  glm::vec3 vec(0.002, 0.002, 0.002);
-  this->scale(vec);
-  return true;
+    throw std::runtime_error("Cannot create run animation");
+  this->scale(glm::vec3(0.002, 0.002, 0.002));
 }
 
 void		Model::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map)
@@ -45,19 +31,4 @@ void		Model::draw(gdl::AShader &shader)
 {
   this->_texture.bind();
   this->_model.draw(shader, getTransformation(), 0.03);
-}
-
-void		Model::setTexture(const gdl::Texture &old)
-{
-  this->_texture = old;
-}
-
-void            Model::move(const int &x, const int &y, const int &z)
-{
-  translate(glm::vec3(x, y, z));
-}
-
-const std::string	Model::toString()
-{
-  return "M";
 }

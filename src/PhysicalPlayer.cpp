@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-// Last update Thu Jun  4 17:08:18 2015 Leo Thevenet
+// Last update Thu Jun  4 19:02:33 2015 polydo_s
 //
 
 #include "PhysicalPlayer.hh"
@@ -58,12 +58,6 @@ void	PhysicalPlayer::draw(gdl::AShader &shader)
 {
   this->_texture.bind();
   this->_model.draw(shader, getTransformation(), 0.03);
-}
-
-bool	PhysicalPlayer::initialize()
-{
-  ///NE SERT A RIEN
-  return true;
 }
 
 void	PhysicalPlayer::setInput(const gdl::Input &input)

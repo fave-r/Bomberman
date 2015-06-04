@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:36:11 2015 clément jean
-// Last update Wed Jun  3 14:51:05 2015 Leo Thevenet
+// Last update Thu Jun  4 22:59:26 2015 polydo_s
 //
 
 #ifndef __MENU_HH__
@@ -23,12 +23,12 @@
 #include "Bomberman.hh"
 #include "Music.hh"
 
-class Menu : public gdl::Game
+class Menu
 {
 public:
   Menu();
   ~Menu();
-  bool		initialize();
+  void		initialize();
   bool		update();
   bool		Check_Path();
   void		draw();

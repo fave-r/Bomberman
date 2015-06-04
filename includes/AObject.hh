@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:27:04 2015 clément jean
-// Last update Wed Jun  3 00:17:23 2015 clément jean
+// Last update Thu Jun  4 23:44:30 2015 polydo_s
 //
 
 #ifndef __AOBJECT_HPP__
@@ -25,29 +25,6 @@
 
 class AObject
 {
-public:
-  AObject(float x, float y, float width, float height);
-  virtual ~AObject();
-
-public:
-  virtual bool          initialize() = 0;
-
-public:
-  virtual void		draw(gdl::AShader &shader) = 0;
-  void			scale(const glm::vec3 &scale);
-  void			translate(const glm::vec3 &v);
-  void			rotate(const glm::vec3 &axis, const float &angle);
-  void			resetRotate();
-
-public:
-  const glm::mat4	getTransformation();
-
-public:
-  virtual void          setTexture(const gdl::Texture &old) = 0;
-  void			SetPos(const glm::vec3 &v);
-
-public:
-  virtual const std::string	toString();
 
 protected:
   float			_x;
@@ -57,8 +34,27 @@ protected:
   glm::vec3		_position;
   glm::vec3		_rotation;
   glm::vec3		_scale;
-  gdl::Input		_input;
   gdl::Texture		_texture;
+
+public:
+  AObject(float x, float y, float width, float height);
+  virtual ~AObject();
+
+public:
+  virtual void		draw(gdl::AShader &shader) = 0;
+  void			scale(const glm::vec3 &scale);
+  void			translate(const glm::vec3 &v);
+  void			rotate(const glm::vec3 &axis, const float &angle);
+  void			resetRotate();
+
+public:
+  int			getX() const;
+  int			getY() const;
+  const glm::mat4	getTransformation();
+
+public:
+  void			setTexture(const gdl::Texture &old);
+  void			SetPos(const glm::vec3 &v);
 };
 
 #endif

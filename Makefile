@@ -3,14 +3,14 @@
 ##
 ## Made by Swann polydo_s
 ## Login   <polydo_s@epitech.net>
-##
+#1;2802;0c#
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Wed Jun  3 01:32:35 2015 polydo_s
+## Last update Thu Jun  4 23:53:30 2015 polydo_s
 ##
 
 CXX		= g++
 
-CXXFLAGS	= -W -Wall -Werror -Wextra -std=c++11
+CXXFLAGS	= -W -Wall -Werror -Wextra -std=c++11 -g
 
 CXXFLAGS	+= -I./includes -I./lib/includes
 
@@ -27,7 +27,6 @@ BIN		= bin
 SRC		= src
 
 SRCS		= main.cpp			\
-		  $(SRC)/MapGenerator.cpp	\
 		  $(SRC)/APlayer.cpp		\
 		  $(SRC)/PhysicalPlayer.cpp	\
 		  $(SRC)/Box.cpp		\
@@ -37,7 +36,7 @@ SRCS		= main.cpp			\
 		  $(SRC)/AObject.cpp		\
 		  $(SRC)/Cube.cpp		\
 		  $(SRC)/Menu.cpp		\
-		  $(SRC)/GenMap.cpp		\
+		  $(SRC)/Map.cpp		\
 		  $(SRC)/TexturePool.cpp	\
 		  $(SRC)/Parseur.cpp		\
 		  $(SRC)/Bomb.cpp		\

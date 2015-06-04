@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Wed Jun  3 18:52:04 2015 polydo_s
+// Last update Thu Jun  4 23:54:29 2015 polydo_s
 //
 
 #include "Menu.hh"
@@ -19,30 +19,24 @@ Menu::Menu()
 
 Menu::~Menu()
 {
+  delete this->_SoundPlayer;
 }
 
-bool		Menu::initialize()
+void		Menu::initialize()
 {
   FMOD::Sound	*son;
 
   this->_SoundPlayer->createSound(&son, "./Assets/Sounds/MenuSound.wav");
   this->_SoundPlayer->playSound(son, true);
   if(SDL_Init(SDL_INIT_VIDEO) < 0)
-    {
-      std::cout << "SDL could not initialize!" << std::endl;
-      return false;
-    }
-  else
-    { /*faut vérifier les retours*/
-      this->_Main_Window = SDL_CreateWindow("Bomberman",
-					    SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1050, 0);
-      this->_Main_Renderer = SDL_CreateRenderer(this->_Main_Window, -1, SDL_RENDERER_ACCELERATED);
-      this->_path = "./Assets/Menu/start_fond.bmp";
-      this->_BackGroundS = IMG_Load(this->_path.c_str());
-      this->_BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, this->_BackGroundS);
-      SDL_FreeSurface(this->_BackGroundS);
-    }
-  return true;
+    throw std::runtime_error("SDL could not initialize!");
+  this->_Main_Window = SDL_CreateWindow("Bomberman",
+					SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1050, 0);
+  this->_Main_Renderer = SDL_CreateRenderer(this->_Main_Window, -1, SDL_RENDERER_ACCELERATED);
+  this->_path = "./Assets/Menu/start_fond.bmp";
+  this->_BackGroundS = IMG_Load(this->_path.c_str());
+  this->_BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, this->_BackGroundS);
+  SDL_FreeSurface(this->_BackGroundS);
 }
 
 bool		Menu::update()
@@ -79,10 +73,18 @@ bool          Menu::Check_Path()
     {
       delete _SoundPlayer;
       SDL_Quit();
-      Bomberman *bomberman = new Bomberman(Parseur::getX(), Parseur::getY(), Parseur::getPlayer());
 
-      if (bomberman->initialize() == false)
-	return false;
+      Bomberman *bomberman = new Bomberman(Parseur::getX(), Parseur::getY(), Parseur::getPlayer());
+      try
+	{
+	  bomberman->initialize();
+	}
+      catch (const std::runtime_error &e)
+	{
+	  std::cerr << e.what() << std::endl;
+	  return (false);
+	}
+
       while (bomberman->update() == true)
 	bomberman->draw();
       delete bomberman;

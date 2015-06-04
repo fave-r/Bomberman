@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:27:19 2015 clément jean
-// Last update Fri May 29 22:50:55 2015 clément jean
+// Last update Thu Jun  4 18:46:38 2015 polydo_s
 //
 
 #include "AObject.hh"
@@ -39,6 +39,16 @@ void			AObject::resetRotate()
   this->_rotation = glm::vec3(0, 0, 0);
 }
 
+int			AObject::getX() const
+{
+  return this->_x;
+}
+
+int			AObject::getY() const
+{
+  return this->_y;
+}
+
 const glm::mat4		AObject::getTransformation()
 {
   glm::mat4		transform(1);
@@ -56,9 +66,4 @@ void			AObject::SetPos(const glm::vec3 &v)
   this->_position.x = v.x;
   this->_position.y = v.y;
   this->_position.z = v.z;
-}
-
-const std::string	AObject::toString()
-{
-  return "";
 }

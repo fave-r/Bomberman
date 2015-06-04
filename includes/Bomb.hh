@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:18:58 2015 clément jean
-// Last update Wed Jun  3 00:16:09 2015 clément jean
+// Last update Thu Jun  4 23:43:08 2015 polydo_s
 //
 
 #ifndef __BOMB_HH__
@@ -21,14 +21,11 @@ class	Bomb : public AObject
 public:
   Bomb(float x, float y);
   ~Bomb();
-  virtual bool			initialize();
-  virtual void			setTexture(const gdl::Texture &old);
+
+public:
   virtual void			draw(gdl::AShader &shader);
-  virtual const std::string     toString();
 
 private:
-  gdl::Texture	_texture;
   gdl::Model	_model;
-
 };
 #endif

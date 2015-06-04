@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Wed Jun  3 14:49:15 2015 Leo Thevenet
+// Last update Thu Jun  4 22:59:51 2015 polydo_s
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -19,25 +19,25 @@
 #include <BasicShader.hh>
 #include <Model.hh>
 
+#include "Map.hh"
 #include "Cube.hh"
 #include "APlayer.hh"
 #include "AObject.hh"
-#include "MapGenerator.hh"
 #include "TexturePool.hh"
 #include "Model.hpp"
 #include "Bomb.hh"
 #include "Fire.hh"
 #include "Music.hh"
 
-class	Bomberman : public gdl::Game
+class Bomberman
 {
 public:
-  Bomberman(const unsigned int &, const unsigned int &, const unsigned int &);
+  Bomberman(unsigned int, unsigned int, unsigned int);
   ~Bomberman();
 
 public:
   void	ShowMap();
-  bool	initialize();
+  void	initialize();
   void	init_player();
   void	init_map();
   bool	init_texture();
@@ -46,9 +46,7 @@ public:
 
 private:
   std::vector< std::vector<AObject *> >		_map;
-  std::list<APlayer *>			       	_playerlist;
   std::vector<AObject*>				_objects;
-  //  std::vector<AObject*>				_objplayers;
   gdl::SdlContext			       	_context;
   gdl::Clock					_clock;
   gdl::Input					_input;
@@ -56,7 +54,6 @@ private:
   TexturePool					*_texturePool;
   int						_x;
   int						_y;
-  int						_players;
   Music						*_SoundPlayer;
 };
 

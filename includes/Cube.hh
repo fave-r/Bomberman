@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:29:04 2015 clément jean
-// Last update Wed Jun  3 16:18:24 2015 Leo Thevenet
+// Last update Fri Jun  5 00:00:29 2015 polydo_s
 //
 
 #ifndef __CUBE_HPP__
@@ -17,11 +17,17 @@
 #include "AObject.hh"
 #include "IUpdatable.hh"
 
-class Cube : public AObject, public IUpdatable
+class Cube : public AObject
 {
+
+private:
+  gdl::Geometry _geometry;
+
 public:
   Cube(float x, float y);
-  virtual ~Cube();
+  ~Cube();
+
+public:
   const gdl::Texture	&getTexture() const;
   const gdl::Geometry	&getGeometry() const;
   void			setGeometry(const gdl::Geometry &old);
@@ -29,17 +35,6 @@ public:
 
 public:
   virtual void		draw(gdl::AShader &shader);
-  virtual void		update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &);
-  virtual bool          initialize();
-  virtual void	        setTexture(const gdl::Texture &old);
-
-public:
-  virtual const std::string	toString();
-
-private:
-  gdl::Texture	_texture;
-  static gdl::Geometry _geometry;
-  static bool _i;
 };
 
 #endif

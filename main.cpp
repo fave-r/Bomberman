@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 13:51:26 2015 polydo_s
-// Last update Tue Jun  2 11:33:21 2015 Leo Thevenet
+// Last update Thu Jun  4 23:22:45 2015 polydo_s
 //
 
 #include "Menu.hh"
@@ -14,8 +14,15 @@ int	main()
 {
   Menu          menu;
 
-  if (menu.initialize() == false)
-    return (EXIT_FAILURE);
+  try
+    {
+      menu.initialize();
+    }
+  catch (const std::runtime_error &e)
+    {
+      std::cerr << e.what() << std::endl;
+      return (EXIT_FAILURE);
+    }
   while (menu.update() == true)
     menu.draw();
   return (0);

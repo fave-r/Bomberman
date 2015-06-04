@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:48:39 2015 clément jean
-// Last update Wed Jun  3 16:15:50 2015 Leo Thevenet
+// Last update Fri Jun  5 00:01:21 2015 polydo_s
 //
 
 #ifndef __BOX_HH__
@@ -19,23 +19,16 @@
 
 class   Box : public AObject, public IUpdatable
 {
+
+private:
+  gdl::Geometry	_geometry;
+
 public:
   Box(float, float);
-  ~Box();
 
 public:
   virtual void	draw(gdl::AShader &shader);
   virtual void	update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &);
-  virtual bool	initialize();
-  virtual void  setTexture(const gdl::Texture &old);
-
-private:
-  gdl::Texture  _texture;
-  static gdl::Geometry _geometry;
-  static bool _i;
-
-public:
-  virtual const std::string	toString();
 };
 
 #endif

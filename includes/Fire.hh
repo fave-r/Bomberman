@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 17:17:08 2015 clément jean
-// Last update Wed Jun  3 16:24:01 2015 Leo Thevenet
+// Last update Fri Jun  5 00:01:10 2015 polydo_s
 //
 
 #ifndef __FIRE_HH__
@@ -19,20 +19,17 @@
 
 class	Fire : public AObject, public ICrossable
 {
+
+private:
+  gdl::Texture		_texture;
+  gdl::Geometry		_geometry;
+
 public:
   Fire(float x, float y);
   ~Fire();
 
 public:
-  virtual bool			initialize();
   virtual void			draw(gdl::AShader &shader);
-  virtual void			setTexture(const gdl::Texture &old);
-  virtual const std::string     toString();
-
-private:
-  gdl::Texture		_texture;
-  static gdl::Geometry _geometry;
-  static bool _i;
 };
 
 #endif

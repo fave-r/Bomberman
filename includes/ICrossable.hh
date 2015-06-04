@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 29 00:32:40 2015 polydo_s
-// Last update Fri May 29 00:43:00 2015 polydo_s
+// Last update Thu Jun  4 18:30:48 2015 polydo_s
 //
 
 #ifndef ICROSSABLE_HH
@@ -18,7 +18,7 @@ class APlayer;
 class	ICrossable {
 
 public:
-  void	action(APlayer &player);
+  void	affect(APlayer &player);
 };
 
 #endif

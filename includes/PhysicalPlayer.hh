@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:59:33 2015 polydo_s
-// Last update Wed Jun  3 00:36:22 2015 clément jean
+// Last update Thu Jun  4 23:42:46 2015 polydo_s
 //
 
 #ifndef PHYSICAL_PLAYER_HH
@@ -31,7 +31,6 @@ public:
 public:
   virtual void	update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map);
   virtual void  draw(gdl::AShader &shader);
-  virtual bool  initialize();
 
 public:
   void		setInput(const gdl::Input &input);
