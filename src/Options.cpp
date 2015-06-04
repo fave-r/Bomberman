@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Fri May 29 14:48:30 2015 Leo Thevenet
-// Last update Wed Jun  3 01:38:21 2015 polydo_s
+// Last update Thu Jun  4 17:27:40 2015 Leo Thevenet
 //
 
 #include "Options.hh"
@@ -14,7 +14,7 @@ Options::Options(SDL_Window *windows, SDL_Surface *screen, SDL_Renderer *_Main_R
 {
   if (TTF_Init() == -1)
     std::cout << "ttf error" << std::endl;
-  if (!(this->_font = TTF_OpenFont("font/BebasNeue.otf", 150)))
+  if (!(this->_font = TTF_OpenFont("font/simple.ttf", 150)))
     std::cout << TTF_GetError() << std::endl;// balancer exeption
   this->windows = windows;
   this->screen = screen;
@@ -40,21 +40,21 @@ void Options::MakeScreen()
   SDL_Rect r;
   SDL_Color fg = {255, 255, 255, 255};
   SDL_Color sl = {255, 55, 55, 255};
-  r.x = 600;
+  r.x = 150;
   r.y = 50;
-  r.w = 700;
-  r.h = 150;
+  r.w = 1100;
+  r.h = 130;
   SDL_RenderClear(this->_Main_Renderer);
 
-  PutStringOnScreen((this->select == 0) ? sl : fg, r, "Largeur X ->  ", this->x);
+  PutStringOnScreen((this->select == 0) ? sl : fg, r, "Largeur X    -> ", this->x);
   r.y += 150;
-  PutStringOnScreen((this->select == 1) ? sl : fg, r, "Longueur Y -> ", this->y);
+  PutStringOnScreen((this->select == 1) ? sl : fg, r, "Longueur Y   -> ", this->y);
   r.y += 150;
-  PutStringOnScreen((this->select == 2) ? sl : fg, r, "Mode de jeu ->", this->player);
+  PutStringOnScreen((this->select == 2) ? sl : fg, r, "Mode de jeu -> ", this->player);
   r.y += 150;
-  PutStringOnScreen((this->select == 3) ? sl : fg, r, "IA            ->", this->ia);
+  PutStringOnScreen((this->select == 3) ? sl : fg, r, "IA                  -> ", this->ia);
   r.y += 150;
-  PutStringOnScreen((this->select == 4) ? sl : fg, r, "Densite ->    ", this->densite);
+  PutStringOnScreen((this->select == 4) ? sl : fg, r, "Densite         -> ", this->densite);
   r.y += 200;
   r.x = 750;
   r.w = 450;
