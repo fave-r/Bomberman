@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Wed Jun  3 03:24:49 2015 polydo_s
+// Last update Wed Jun  3 19:56:06 2015 polydo_s
 //
 
 #include "APlayer.hh"
@@ -35,6 +35,36 @@ void			APlayer::draw(gdl::AShader &shader)
 void			APlayer::move(const int &x, const int &y, const int &z)
 {
   translate(glm::vec3(x, y, z));
+}
+
+void			APlayer::putBomb(std::vector<std::vector<AObject *> >&map, const gdl::Clock &clock)
+{
+  int			x = this->_x + 0.5;
+  int			y = this->_y + 0.5;
+
+  (void)clock;
+  switch (this->_orientation)
+    {
+    case APlayer::UP:
+      y -= 1;
+      break;
+    case APlayer::RIGHT:
+      x += 1;
+      break;
+    case APlayer::DOWN:
+      y += 1;
+      break;
+    case APlayer::LEFT:
+      x -= 1;
+      break;
+    }
+  if (!map[y][x])
+    {
+      std::cout << "Put a bomb in " << x << " " << y << std::endl;
+      Bomb *bomb = new Bomb(x, y);
+      bomb->initialize();
+      map[y][x] = bomb;
+    }
 }
 
 void			APlayer::goUp(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock)

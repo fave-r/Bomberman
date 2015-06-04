@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Wed Jun  3 02:49:42 2015 polydo_s
+// Last update Wed Jun  3 19:36:53 2015 polydo_s
 //
 
 #ifndef PLAYER_HH
@@ -14,6 +14,7 @@
 #include <iostream>
 
 #include "AObject.hh"
+#include "Bomb.hh"
 #include "ICrossable.hh"
 #include "IUpdatable.hh"
 
@@ -44,6 +45,7 @@ public:
   virtual void		update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &) = 0;
 
 public:
+  void			putBomb(std::vector<std::vector<AObject *> >&map, const gdl::Clock &clock);
   void			goUp(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
   void			goRight(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
   void			goDown(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
