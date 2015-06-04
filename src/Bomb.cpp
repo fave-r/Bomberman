@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Tue Jun  2 10:18:53 2015 clément jean
+// Last update Thu Jun  4 15:46:08 2015 clément jean
 //
 
 #include "Bomb.hh"
@@ -25,6 +25,8 @@ bool                  Bomb::initialize()
       std::cerr << "Cannot load the bomb" << std::endl;
       return (false);
     }
+  glm::vec3 v(this->_x, 1, this->_y);
+  translate(v);
   return true;
 }
 
