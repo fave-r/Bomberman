@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Fri May 29 14:48:30 2015 Leo Thevenet
-// Last update Fri Jun  5 10:22:03 2015 Leo Thevenet
+// Last update Fri Jun  5 20:19:15 2015 clément jean
 //
 
 #include "Options.hh"
@@ -109,7 +109,6 @@ bool Options::getKey()
   switch ((*this->_event).type)
     {
     case SDL_QUIT:
-      std::cout << "CLOSE" << std::endl;
       return false;
     case SDL_KEYDOWN:
       switch ((*this->_event).key.keysym.sym)
