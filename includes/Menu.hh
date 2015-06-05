@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:36:11 2015 clément jean
-// Last update Thu Jun  4 22:59:26 2015 polydo_s
+// Last update Fri Jun  5 10:25:31 2015 Leo Thevenet
 //
 
 #ifndef __MENU_HH__
@@ -19,6 +19,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <cstdlib>
+#include <SDL2/SDL_ttf.h>
 
 #include "Bomberman.hh"
 #include "Music.hh"
@@ -32,15 +33,17 @@ public:
   bool		update();
   bool		Check_Path();
   void		draw();
-
+  void		SetScreen();
+  void		PutStringOnScreen(SDL_Color, SDL_Rect, std::string);
+  void		MoveCursor(int);
 private:
   std::string	_path;
   SDL_Event	event;
   SDL_Window	*_Main_Window;
   SDL_Renderer	*_Main_Renderer;
-  SDL_Surface	*_BackGroundS;
-  SDL_Texture	*_BackGroundT;
   Music		*_SoundPlayer;
+  int		_select;
+  TTF_Font	*_font;
 };
 
 #endif

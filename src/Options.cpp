@@ -5,19 +5,19 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Fri May 29 14:48:30 2015 Leo Thevenet
-// Last update Thu Jun  4 17:27:40 2015 Leo Thevenet
+// Last update Fri Jun  5 10:22:03 2015 Leo Thevenet
 //
 
 #include "Options.hh"
+#include "SDL2/SDL_image.h"
 
-Options::Options(SDL_Window *windows, SDL_Surface *screen, SDL_Renderer *_Main_Renderer, SDL_Event *event)
+Options::Options(SDL_Window *windows, SDL_Renderer *_Main_Renderer, SDL_Event *event)
 {
   if (TTF_Init() == -1)
     std::cout << "ttf error" << std::endl;
   if (!(this->_font = TTF_OpenFont("font/simple.ttf", 150)))
     std::cout << TTF_GetError() << std::endl;// balancer exeption
   this->windows = windows;
-  this->screen = screen;
   this->_Main_Renderer = _Main_Renderer;
   this->_event = event;
   this->select = 0;
@@ -45,6 +45,11 @@ void Options::MakeScreen()
   r.w = 1100;
   r.h = 130;
   SDL_RenderClear(this->_Main_Renderer);
+
+
+  SDL_Surface *_BackGroundS = IMG_Load("./Assets/Menu/start_fond.bmp");
+  SDL_Texture *_BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, _BackGroundS);
+  SDL_RenderCopy(this->_Main_Renderer, _BackGroundT, NULL, NULL);
 
   PutStringOnScreen((this->select == 0) ? sl : fg, r, "Largeur X    -> ", this->x);
   r.y += 150;

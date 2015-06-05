@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Fri May 29 14:48:51 2015 Leo Thevenet
-// Last update Wed Jun  3 01:35:26 2015 polydo_s
+// Last update Fri Jun  5 10:22:23 2015 Leo Thevenet
 //
 
 #ifndef __OPTIONS_HH__
@@ -19,15 +19,14 @@
 
 class	Options
 {
-  SDL_Window *windows;
-  SDL_Surface *screen;
-  TTF_Font *_font;
+  SDL_Window	*windows;
+  TTF_Font	*_font;
   SDL_Renderer  *_Main_Renderer;
   SDL_Event	*_event;
   int		select;
   int		x, y, player, densite, ia;
  public:
-  Options(SDL_Window *, SDL_Surface *, SDL_Renderer *, SDL_Event *);
+  Options(SDL_Window *, SDL_Renderer *, SDL_Event *);
   ~Options();
   void FirstView();
   bool getKey();
