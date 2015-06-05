@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Thu Jun  4 23:40:58 2015 polydo_s
+// Last update Fri Jun  5 02:37:20 2015 clément jean
 //
 
 #include "Bomb.hh"
@@ -23,4 +23,9 @@ void                  Bomb::draw(gdl::AShader &shader)
 {
   this->_texture.bind();
   this->_model.draw(shader, getTransformation(), GL_QUADS);
+}
+
+void	Bomb::setModel(const gdl::Geometry &geo)
+{
+  (void)geo;
 }

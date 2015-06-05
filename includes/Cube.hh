@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:29:04 2015 clément jean
-// Last update Fri Jun  5 00:00:29 2015 polydo_s
+// Last update Fri Jun  5 02:32:39 2015 clément jean
 //
 
 #ifndef __CUBE_HPP__
@@ -32,7 +32,7 @@ public:
   const gdl::Geometry	&getGeometry() const;
   void			setGeometry(const gdl::Geometry &old);
   void			move(const int &x, const int &y, const int &z);
-
+  void			setModel(const gdl::Geometry &);
 public:
   virtual void		draw(gdl::AShader &shader);
 };

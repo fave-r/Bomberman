@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Thu Jun  4 22:59:51 2015 polydo_s
+// Last update Fri Jun  5 02:24:43 2015 clément jean
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -28,6 +28,7 @@
 #include "Bomb.hh"
 #include "Fire.hh"
 #include "Music.hh"
+#include "ModelPool.hh"
 
 class Bomberman
 {
@@ -52,8 +53,11 @@ private:
   gdl::Input					_input;
   gdl::BasicShader				_shader;
   TexturePool					*_texturePool;
+  ModelPool					*_modelPool;
   int						_x;
   int						_y;
+  int						_p;
+  std::list<APlayer *>				_playerlist;
   Music						*_SoundPlayer;
 };
 

@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Thu Jun  4 22:36:52 2015 polydo_s
-// Last update Fri Jun  5 00:11:14 2015 polydo_s
+// Last update Fri Jun  5 02:21:42 2015 clément jean
 //
 
 #include "Map.hh"
@@ -21,7 +21,7 @@ std::vector<std::vector<AObject *> >	Map::generate(unsigned int width, unsigned 
       for (unsigned int x = 0; x < width; ++x)
 	{
 	  if (!x || !y || x == width - 1 || y == height - 1)
-	    map[y][x] = NULL;
+	    map[y][x] = new Wall(x, y);
 	  else
 	  {
 	      int rand_value = distribution(generator);
@@ -33,9 +33,9 @@ std::vector<std::vector<AObject *> >	Map::generate(unsigned int width, unsigned 
 	  	map[y][x] = NULL;
 	      else if (rand_value > (100 - Parseur::getDensite()) && !dynamic_cast<Wall *>(map[y][x - 1]) &&
 		       !dynamic_cast<Wall *>(map[y - 1][x + 1]))
-		map[y][x] = new Wall(x, y);
+		  map[y][x] = new Wall(x, y);
 	      else
-	  	map[y][x] = new Box(x, y);
+		map[y][x] = new Box(x, y);
 	  }
 	}
     }

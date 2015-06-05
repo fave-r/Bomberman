@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  2 09:49:05 2015 Leo Thevenet
-// Last update Wed Jun  3 14:50:04 2015 Leo Thevenet
+// Last update Fri Jun  5 02:11:27 2015 clément jean
 //
 
 #include "Music.hh"

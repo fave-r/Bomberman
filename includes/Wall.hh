@@ -5,15 +5,13 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 17:25:07 2015 clément jean
-// Last update Fri Jun  5 00:06:46 2015 polydo_s
+// Last update Fri Jun  5 02:23:29 2015 clément jean
 //
 
 #ifndef __WALL_HH__
 # define __WALL_HH__
 
 #include <iostream>
-#include <Texture.hh>
-#include <Geometry.hh>
 #include "AObject.hh"
 
 class   Wall : public AObject
@@ -24,7 +22,8 @@ private:
 
 public:
   Wall(float x, float y);
-
+  void	initialize();
+  void	setModel(const gdl::Geometry &geo);
 public:
   virtual void	draw(gdl::AShader &shader);
 };

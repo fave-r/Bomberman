@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:48:39 2015 clément jean
-// Last update Fri Jun  5 00:01:21 2015 polydo_s
+// Last update Fri Jun  5 02:23:48 2015 clément jean
 //
 
 #ifndef __BOX_HH__
@@ -25,7 +25,8 @@ private:
 
 public:
   Box(float, float);
-
+  void	initialize();
+  void	setModel(const gdl::Geometry &geo);
 public:
   virtual void	draw(gdl::AShader &shader);
   virtual void	update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &);

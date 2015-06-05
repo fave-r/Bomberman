@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Thu Jun  4 23:54:29 2015 polydo_s
+// Last update Fri Jun  5 02:11:20 2015 clément jean
 //
 
 #include "Menu.hh"
@@ -14,20 +14,20 @@
 
 Menu::Menu()
 {
-  this->_SoundPlayer = new Music();
+  //this->_SoundPlayer = new Music();
 }
 
 Menu::~Menu()
 {
-  delete this->_SoundPlayer;
+  //delete this->_SoundPlayer;
 }
 
 void		Menu::initialize()
 {
-  FMOD::Sound	*son;
+  //FMOD::Sound	*son;
 
-  this->_SoundPlayer->createSound(&son, "./Assets/Sounds/MenuSound.wav");
-  this->_SoundPlayer->playSound(son, true);
+  //this->_SoundPlayer->createSound(&son, "./Assets/Sounds/MenuSound.wav");
+  //this->_SoundPlayer->playSound(son, true);
   if(SDL_Init(SDL_INIT_VIDEO) < 0)
     throw std::runtime_error("SDL could not initialize!");
   this->_Main_Window = SDL_CreateWindow("Bomberman",
@@ -71,7 +71,7 @@ bool          Menu::Check_Path()
 {
   if (this->_path == "./Assets/Menu/start_fond.bmp")
     {
-      delete _SoundPlayer;
+      //  delete this->_SoundPlayer;
       SDL_Quit();
 
       Bomberman *bomberman = new Bomberman(Parseur::getX(), Parseur::getY(), Parseur::getPlayer());

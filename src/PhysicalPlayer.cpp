@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-// Last update Thu Jun  4 19:02:33 2015 polydo_s
+// Last update Fri Jun  5 02:38:26 2015 clément jean
 //
 
 #include "PhysicalPlayer.hh"
@@ -63,4 +63,9 @@ void	PhysicalPlayer::draw(gdl::AShader &shader)
 void	PhysicalPlayer::setInput(const gdl::Input &input)
 {
   this->_input = input;
+}
+
+void	PhysicalPlayer::setModel(const gdl::Geometry &geo)
+{
+  (void)geo;
 }

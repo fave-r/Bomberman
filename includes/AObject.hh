@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:27:04 2015 clément jean
-// Last update Thu Jun  4 23:44:30 2015 polydo_s
+// Last update Fri Jun  5 02:28:51 2015 clément jean
 //
 
 #ifndef __AOBJECT_HPP__
@@ -23,9 +23,8 @@
 #include <Input.hh>
 #include <string>
 
-class AObject
+class	AObject
 {
-
 protected:
   float			_x;
   float			_y;
@@ -55,6 +54,7 @@ public:
 public:
   void			setTexture(const gdl::Texture &old);
   void			SetPos(const glm::vec3 &v);
+  virtual void		setModel(const gdl::Geometry &) = 0;
 };
 
 #endif

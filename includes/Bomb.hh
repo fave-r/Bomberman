@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:18:58 2015 clément jean
-// Last update Thu Jun  4 23:43:08 2015 polydo_s
+// Last update Fri Jun  5 02:36:53 2015 clément jean
 //
 
 #ifndef __BOMB_HH__
@@ -24,7 +24,7 @@ public:
 
 public:
   virtual void			draw(gdl::AShader &shader);
-
+  void				setModel(const gdl::Geometry &);
 private:
   gdl::Model	_model;
 };

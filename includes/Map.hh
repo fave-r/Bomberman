@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Thu Jun  4 22:37:22 2015 polydo_s
-// Last update Thu Jun  4 23:17:44 2015 polydo_s
+// Last update Fri Jun  5 00:46:10 2015 clément jean
 //
 
 #ifndef GENMAP_HH_
@@ -18,11 +18,10 @@
 #include "Box.hh"
 #include "Parseur.hh"
 #include "PhysicalPlayer.hh"
+#include "ModelPool.hh"
 
-class Map {
-
-public:
-  static std::vector<std::vector <AObject * > >	generate(unsigned int, unsigned int, unsigned int);
+namespace Map {
+  std::vector<std::vector <AObject * > >	generate(unsigned int, unsigned int, unsigned int);
 };
 
 #endif
