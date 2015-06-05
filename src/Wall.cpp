@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:40:10 2015 clément jean
-// Last update Fri Jun  5 02:22:27 2015 clément jean
+// Last update Fri Jun  5 02:54:06 2015 clément jean
 //
 
 #include "Wall.hh"
@@ -13,73 +13,6 @@
 Wall::Wall(float x, float y) : AObject(x, y, 0.9, 0.9)
 {
 
-}
-
-void	Wall::initialize()
-{
-  //static bool isInstanciated = false;
-
-  //if (!isInstanciated)
-  //{
-  //  isInstanciated = true;
-
-      this->_geometry.pushVertex(glm::vec3(0.5, -0.5, 0.5));
-      this->_geometry.pushVertex(glm::vec3(0.5, 0.5, 0.5));
-      this->_geometry.pushVertex(glm::vec3(-0.5, 0.5, 0.5));
-      this->_geometry.pushVertex(glm::vec3(-0.5, -0.5, 0.5));
-
-      this->_geometry.pushUv(glm::vec2(0.0f, 0.0f));
-      this->_geometry.pushUv(glm::vec2(1.0f, 0.0f));
-      this->_geometry.pushUv(glm::vec2(1.0f, 1.0f));
-      this->_geometry.pushUv(glm::vec2(0.0f, 1.0f));
-
-      this->_geometry.pushVertex(glm::vec3(0.5, -0.5, -0.5));
-      this->_geometry.pushVertex(glm::vec3(0.5, 0.5, -0.5));
-      this->_geometry.pushVertex(glm::vec3(-0.5, 0.5, -0.5));
-      this->_geometry.pushVertex(glm::vec3(-0.5, -0.5, -0.5));
-      this->_geometry.pushUv(glm::vec2(0.0f, 0.0f));
-      this->_geometry.pushUv(glm::vec2(1.0f, 0.0f));
-      this->_geometry.pushUv(glm::vec2(1.0f, 1.0f));
-      this->_geometry.pushUv(glm::vec2(0.0f, 1.0f));
-
-      this->_geometry.pushVertex(glm::vec3(0.5, -0.5, -0.5));
-      this->_geometry.pushVertex(glm::vec3(0.5, 0.5, -0.5));
-      this->_geometry.pushVertex(glm::vec3(0.5, 0.5, 0.5));
-      this->_geometry.pushVertex(glm::vec3(0.5, -0.5, 0.5));
-      this->_geometry.pushUv(glm::vec2(0.0f, 0.0f));
-      this->_geometry.pushUv(glm::vec2(1.0f, 0.0f));
-      this->_geometry.pushUv(glm::vec2(1.0f, 1.0f));
-      this->_geometry.pushUv(glm::vec2(0.0f, 1.0f));
-
-      this->_geometry.pushVertex(glm::vec3(-0.5, -0.5, 0.5));
-      this->_geometry.pushVertex(glm::vec3(-0.5, 0.5, 0.5));
-      this->_geometry.pushVertex(glm::vec3(-0.5, 0.5, -0.5));
-      this->_geometry.pushVertex(glm::vec3(-0.5, -0.5, -0.5));
-      this->_geometry.pushUv(glm::vec2(0.0f, 0.0f));
-      this->_geometry.pushUv(glm::vec2(1.0f, 0.0f));
-      this->_geometry.pushUv(glm::vec2(1.0f, 1.0f));
-      this->_geometry.pushUv(glm::vec2(0.0f, 1.0f));
-
-      this->_geometry.pushVertex(glm::vec3(0.5, 0.5, 0.5));
-      this->_geometry.pushVertex(glm::vec3(0.5, 0.5, -0.5));
-      this->_geometry.pushVertex(glm::vec3(-0.5, 0.5, -0.5));
-      this->_geometry.pushVertex(glm::vec3(-0.5, 0.5, 0.5));
-      this->_geometry.pushUv(glm::vec2(0.0f, 0.0f));
-      this->_geometry.pushUv(glm::vec2(1.0f, 0.0f));
-      this->_geometry.pushUv(glm::vec2(1.0f, 1.0f));
-      this->_geometry.pushUv(glm::vec2(0.0f, 1.0f));
-
-      this->_geometry.pushVertex(glm::vec3(0.5, -0.5, -0.5));
-      this->_geometry.pushVertex(glm::vec3(0.5, -0.5, 0.5));
-      this->_geometry.pushVertex(glm::vec3(-0.5, -0.5, 0.5));
-      this->_geometry.pushVertex(glm::vec3(-0.5, -0.5, -0.5));
-      this->_geometry.pushUv(glm::vec2(0.0f, 0.0f));
-      this->_geometry.pushUv(glm::vec2(1.0f, 0.0f));
-      this->_geometry.pushUv(glm::vec2(1.0f, 1.0f));
-      this->_geometry.pushUv(glm::vec2(0.0f, 1.0f));
-
-      this->_geometry.build();
-      //}
 }
 
 void	Wall::draw(gdl::AShader &shader)
