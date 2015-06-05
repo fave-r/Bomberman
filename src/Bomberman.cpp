@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Fri Jun  5 02:48:24 2015 clément jean
+// Last update Fri Jun  5 22:26:26 2015 clément jean
 
 #include "Bomberman.hh"
 
@@ -129,7 +129,7 @@ bool Bomberman::update()
  	    if (aplayer)
 	      {
 	      }
-	    //	    updatable->update(this->_clock, this->_map);
+	    updatable->update(this->_clock, this->_map);
  	  }
       }
 
