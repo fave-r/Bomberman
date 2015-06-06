@@ -5,8 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Fri Jun  5 11:25:30 2015 Leo Thevenet
-//
+// Last update Sat Jun  6 17:09:09 2015 Leo Thevenet
 
 #include "Menu.hh"
 #include "Options.hh"
@@ -36,7 +35,7 @@ void		Menu::initialize()
   this->_Main_Window = SDL_CreateWindow("Bomberman",
 					SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1050, 0);
   this->_Main_Renderer = SDL_CreateRenderer(this->_Main_Window, -1, SDL_RENDERER_ACCELERATED);
-  this->_path = "./Assets/Menu/start_fond.bmp";
+  this->_path = "./Assets/Menu/BackgroundMenu.jpg";
   if (TTF_Init() == -1)
     std::cout << "ttf error" << std::endl;
   if (!(this->_font = TTF_OpenFont("font/simple.ttf", 150)))
@@ -88,7 +87,7 @@ bool		Menu::update()
   switch (event.type)
     {
     case SDL_QUIT:
-      exit(0);
+      return false;//exit(0);
     case SDL_KEYDOWN:
       switch (event.key.keysym.sym)
 	{

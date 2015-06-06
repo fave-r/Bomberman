@@ -3,14 +3,14 @@
 ##
 ## Made by Swann polydo_s
 ## Login   <polydo_s@epitech.net>
-#1;2802;0c#
+##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Fri Jun  5 11:22:03 2015 Leo Thevenet
+## Last update Sat Jun  6 17:11:26 2015 Leo Thevenet
 ##
 
 CXX		= g++
 
-CXXFLAGS	= -W -Wall -Werror -Wextra -std=c++11 -g -g3 -ggdb
+CXXFLAGS	= -W -Wall -Werror -Wextra -std=c++11
 
 CXXFLAGS	+= -I./includes -I./lib/includes
 

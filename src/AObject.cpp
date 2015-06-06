@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:27:19 2015 clément jean
-// Last update Fri Jun  5 01:27:52 2015 clément jean
+// Last update Fri Jun  5 22:23:40 2015 polydo_s
 //
 
 #include "AObject.hh"
@@ -39,12 +39,12 @@ void			AObject::resetRotate()
   this->_rotation = glm::vec3(0, 0, 0);
 }
 
-int			AObject::getX() const
+float			AObject::getX() const
 {
   return this->_x;
 }
 
-int			AObject::getY() const
+float			AObject::getY() const
 {
   return this->_y;
 }

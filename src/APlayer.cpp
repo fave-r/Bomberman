@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Thu Jun  4 18:51:35 2015 polydo_s
+// Last update Fri Jun  5 22:21:04 2015 polydo_s
 //
 
 #include "APlayer.hh"
@@ -74,6 +74,7 @@ void			APlayer::goUp(std::vector<std::vector<AObject *> > &map, const gdl::Clock
   if (!dest || crossable)
     this->_y -= static_cast<float>(clock.getElapsed() * this->_speed);
   this->_orientation = APlayer::UP;
+  std::cout << this->_x << ":" << this->_y << std::endl;
 }
 
 void			APlayer::goRight(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock)
@@ -88,6 +89,7 @@ void			APlayer::goRight(std::vector<std::vector<AObject *> > &map, const gdl::Cl
   if (!dest || crossable)
     this->_x += static_cast<float>(clock.getElapsed() * this->_speed);
   this->_orientation = APlayer::RIGHT;
+  std::cout << this->_x << ":" << this->_y << std::endl;
 }
 
 void			APlayer::goDown(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock)
@@ -102,6 +104,7 @@ void			APlayer::goDown(std::vector<std::vector<AObject *> > &map, const gdl::Clo
   if (!dest || crossable)
     this->_y += static_cast<float>(clock.getElapsed() * this->_speed);
   this->_orientation = APlayer::DOWN;
+  std::cout << this->_x << ":" << this->_y << std::endl;
 }
 
 void			APlayer::goLeft(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock)
@@ -116,6 +119,7 @@ void			APlayer::goLeft(std::vector<std::vector<AObject *> > &map, const gdl::Clo
   if (!dest || crossable)
     this->_x -= static_cast<float>(clock.getElapsed() * this->_speed);
   this->_orientation = APlayer::LEFT;
+  std::cout << this->_x << ":" << this->_y << std::endl;
 }
 
 APlayer::eOrientation		APlayer::getOrientation() const
