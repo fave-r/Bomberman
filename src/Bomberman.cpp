@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Fri Jun  5 02:48:24 2015 clément jean
+// Last update Fri Jun  5 14:53:42 2015 Leo Thevenet
 
 #include "Bomberman.hh"
 
@@ -41,7 +41,7 @@ void	Bomberman::initialize()
     throw std::runtime_error("shader erreur");
 
   projection = glm::perspective(70.0f, 1920.0f / 1080.0f, 0.1f, 1000.0f);
-  transformation = glm::lookAt(glm::vec3(this->_x / 2, (this->_x + this->_y) / 2, this->_y / 2),
+  transformation = glm::lookAt(glm::vec3(this->_x / 2, ((this->_x + this->_y) / 2 < 10) ? 10 : (this->_x + this->_y) / 2, this->_y / 2),
 			       glm::vec3(this->_x / 2, 0, this->_y / 2 - 0.0001),
 			       glm::vec3(0, 1, 0));
 

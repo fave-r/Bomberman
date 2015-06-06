@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Fri Jun  5 10:58:21 2015 Leo Thevenet
+// Last update Fri Jun  5 11:25:30 2015 Leo Thevenet
 //
 
 #include "Menu.hh"
@@ -103,10 +103,6 @@ bool		Menu::update()
 	  break;
 	case SDLK_UP:
 	  MoveCursor(-1);
-	  // _path = (_path == "./Assets/Menu/start_fond.bmp") ? "./Assets/Menu/options_fond.bmp" : "./Assets/Menu/start_fond.bmp";
-	  // _BackGroundS = IMG_Load(_path.c_str());
-	  // _BackGroundT = SDL_CreateTextureFromSurface(_Main_Renderer, _BackGroundS);
-	  // SDL_FreeSurface(_BackGroundS);
 	  break;
 	}
       break;
