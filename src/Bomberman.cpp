@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Sat Jun  6 17:10:47 2015 Leo Thevenet
+// Last update Sat Jun  6 17:23:21 2015 Leo Thevenet
 
 #include "Bomberman.hh"
 
@@ -18,13 +18,13 @@ void	Bomberman::initialize()
 {
   glm::mat4 projection;
   glm::mat4 transformation;
-  //  FMOD::Sound	*son;
+   FMOD::Sound	*son;
 
   if (!this->_context.start(1920, 1080, "My bomberman!"))
     throw std::runtime_error("Cannot instanciate the window");
 
   this->_map = Map::generate(this->_x, this->_y, this->_p);
-  //this->_SoundPlayer = new Music();
+  this->_SoundPlayer = new Music();
   this->_texturePool = new TexturePool();
   this->_modelPool = new ModelPool();
 
@@ -51,8 +51,8 @@ void	Bomberman::initialize()
   init_map();
   init_player();
   draw();
-  //this->_SoundPlayer->createSound(&son, "./Assets/Sounds/BackgroundSound.wav");
-  //this->_SoundPlayer->playSound(son, true);
+  this->_SoundPlayer->createSound(&son, "./Assets/Sounds/BackgroundSound.wav");
+  this->_SoundPlayer->playSound(son, true);
 }
 
 void	Bomberman::init_map()
@@ -199,5 +199,5 @@ Bomberman::~Bomberman()
     delete (*it);
   delete this->_texturePool;
   delete this->_modelPool;
-  //  delete this->_SoundPlayer;
+  delete this->_SoundPlayer;
 }

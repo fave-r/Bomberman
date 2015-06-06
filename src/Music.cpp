@@ -5,12 +5,12 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  2 09:49:05 2015 Leo Thevenet
-// Last update Fri Jun  5 02:11:27 2015 clément jean
+// Last update Sat Jun  6 17:23:37 2015 Leo Thevenet
 //
 
 #include "Music.hh"
 #include <stdlib.h>
-
+#include <iostream>
 Music::Music()
 {
   if (FMOD::System_Create(&(this->_sys)) != FMOD_OK)

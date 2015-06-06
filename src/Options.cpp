@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Fri May 29 14:48:30 2015 Leo Thevenet
-// Last update Fri Jun  5 20:19:15 2015 clément jean
+// Last update Sat Jun  6 17:14:17 2015 Leo Thevenet
 //
 
 #include "Options.hh"
@@ -47,7 +47,7 @@ void Options::MakeScreen()
   SDL_RenderClear(this->_Main_Renderer);
 
 
-  SDL_Surface *_BackGroundS = IMG_Load("./Assets/Menu/start_fond.bmp");
+  SDL_Surface *_BackGroundS = IMG_Load("./Assets/Menu/BackgroundMenu.jpg");
   SDL_Texture *_BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, _BackGroundS);
   SDL_RenderCopy(this->_Main_Renderer, _BackGroundT, NULL, NULL);
 
@@ -61,7 +61,7 @@ void Options::MakeScreen()
   r.y += 150;
   PutStringOnScreen((this->select == 4) ? sl : fg, r, "Densite         -> ", this->densite);
   r.y += 200;
-  r.x = 750;
+  r.x = 500;
   r.w = 450;
   PutStringOnScreen((this->select == 5) ? sl : fg, r, "Sauvegarder", -1);
   SDL_RenderPresent(this->_Main_Renderer);
