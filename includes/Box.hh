@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:48:39 2015 clément jean
-// Last update Fri Jun  5 02:54:24 2015 clément jean
+// Last update Sat Jun  6 01:06:17 2015 polydo_s
 //
 
 #ifndef __BOX_HH__
@@ -17,7 +17,7 @@
 #include "AObject.hh"
 #include "IUpdatable.hh"
 
-class   Box : public AObject, public IUpdatable
+class Box : public AObject, public IUpdatable
 {
 
 private:
@@ -25,11 +25,13 @@ private:
 
 public:
   Box(float, float);
-  void	setModel(const gdl::Geometry &geo);
 
 public:
   virtual void	draw(gdl::AShader &shader);
   virtual void	update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &);
+
+public:
+  void		setModel(const gdl::Geometry &geo);
 };
 
 #endif

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 17:17:08 2015 clément jean
-// Last update Fri Jun  5 02:29:39 2015 clément jean
+// Last update Sat Jun  6 01:06:16 2015 polydo_s
 //
 
 #ifndef __FIRE_HH__
@@ -26,11 +26,12 @@ private:
 
 public:
   Fire(float x, float y);
-  ~Fire();
-  void          setModel(const gdl::Geometry &);
 
 public:
-  virtual void			draw(gdl::AShader &shader);
+  virtual void	draw(gdl::AShader &shader);
+
+public:
+  void          setModel(const gdl::Geometry &);
 };
 
 #endif

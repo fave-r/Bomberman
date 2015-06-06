@@ -5,12 +5,12 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Fri Jun  5 22:26:26 2015 clément jean
+// Last update Sat Jun  6 02:41:29 2015 polydo_s
 
 #include "Bomberman.hh"
 
-Bomberman::Bomberman(unsigned int x, unsigned int y, unsigned int p)
-  : _x(x), _y(y), _p(p)
+Bomberman::Bomberman(unsigned int w, unsigned int h, unsigned int p)
+  : _w(w), _h(h), _p(p)
 {
 }
 
@@ -23,7 +23,7 @@ void	Bomberman::initialize()
   if (!this->_context.start(1920, 1080, "My bomberman!"))
     throw std::runtime_error("Cannot instanciate the window");
 
-  this->_map = Map::generate(this->_x, this->_y, this->_p);
+  this->_map = Map::generate(this->_w, this->_h, this->_p);
   //this->_SoundPlayer = new Music();
   this->_texturePool = new TexturePool();
   this->_modelPool = new ModelPool();
@@ -41,8 +41,8 @@ void	Bomberman::initialize()
     throw std::runtime_error("shader erreur");
 
   projection = glm::perspective(70.0f, 1920.0f / 1080.0f, 0.1f, 1000.0f);
-  transformation = glm::lookAt(glm::vec3(this->_x / 2, (this->_x + this->_y) / 2, this->_y / 2),
-			       glm::vec3(this->_x / 2, 0, this->_y / 2 - 0.0001),
+  transformation = glm::lookAt(glm::vec3(this->_w / 2, (this->_w + this->_h) / 2, this->_h / 2),
+			       glm::vec3(this->_w / 2, 0, this->_h / 2 - 0.0001),
 			       glm::vec3(0, 1, 0));
 
   this->_shader.bind();
@@ -92,7 +92,7 @@ void	Bomberman::init_map()
 void	Bomberman::init_player()
 {
   PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, APlayer::DOWN);
-  PhysicalPlayer *p2 = new PhysicalPlayer(this->_x - 2, this->_y - 2, APlayer::UP);
+  PhysicalPlayer *p2 = new PhysicalPlayer(this->_w - 2, this->_h - 2, APlayer::UP);
 
   this->_playerlist.push_back(p1);
   this->_playerlist.push_back(p2);
@@ -120,17 +120,7 @@ bool Bomberman::update()
       {
  	IUpdatable *updatable = dynamic_cast<IUpdatable *>(this->_map[i][j]);
  	if (updatable)
- 	  {
- 	    PhysicalPlayer *physicalPlayer = dynamic_cast<PhysicalPlayer *>(updatable);
- 	    if (physicalPlayer)
- 	      physicalPlayer->setInput(this->_input);
- 	    APlayer *aplayer = dynamic_cast<APlayer *>(updatable);
- 	    updatable->update(this->_clock, this->_map);
- 	    if (aplayer)
-	      {
-	      }
-	    updatable->update(this->_clock, this->_map);
- 	  }
+	  updatable->update(this->_clock, this->_map);
       }
 
   std::list<APlayer *>::iterator it;

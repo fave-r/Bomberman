@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 17:27:42 2015 clément jean
-// Last update Fri Jun  5 02:53:33 2015 clément jean
+// Last update Sat Jun  6 01:17:30 2015 polydo_s
 //
 
 #include "Fire.hh"
@@ -13,8 +13,6 @@
 Fire::Fire(float x, float y) : AObject(x, y, 0.99, 0.99)
 {
 }
-
-Fire::~Fire() {}
 
 void		Fire::draw(gdl::AShader &shader)
 {

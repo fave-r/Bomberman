@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Fri Jun  5 01:45:06 2015 clément jean
+// Last update Sat Jun  6 01:41:24 2015 polydo_s
 //
 
 #ifndef PLAYER_HH
@@ -39,10 +39,14 @@ protected:
 
 public:
   APlayer(float, float, APlayer::eOrientation);
+  virtual ~APlayer();
 
 public:
   virtual void		draw(gdl::AShader &shader);
   virtual void		update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &) = 0;
+
+public:
+  void			wait();
 
 public:
   void			putBomb(std::vector<std::vector<AObject *> >&map, const gdl::Clock &clock);

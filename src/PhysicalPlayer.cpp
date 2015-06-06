@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-// Last update Fri Jun  5 02:38:26 2015 clément jean
+// Last update Sat Jun  6 01:41:21 2015 polydo_s
 //
 
 #include "PhysicalPlayer.hh"
@@ -35,23 +35,20 @@ PhysicalPlayer::PhysicalPlayer(float x, float y, APlayer::eOrientation orientati
 
 void	PhysicalPlayer::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map)
 {
-  bool	inMap = false;
+  bool	validKey = false;
   std::map<int, void(APlayer::*)(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock)>::const_iterator it;
 
   for (it = this->_actions.begin(); it != this->_actions.end(); ++it)
     {
       if (this->_input.getKey(it->first))
 	{
-	  inMap = true;
+	  validKey = true;
 	  (this->*(*it).second)(map, clock);
 	  break;
 	}
     }
-  if (!inMap)
-    {
-      this->_inAnim = false;
-      this->_model.setCurrentSubAnim("wait");
-    }
+  if (!validKey)
+    this->wait();
 }
 
 void	PhysicalPlayer::draw(gdl::AShader &shader)

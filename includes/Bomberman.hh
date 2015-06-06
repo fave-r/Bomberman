@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Fri Jun  5 02:24:43 2015 clément jean
+// Last update Fri Jun  5 22:42:15 2015 polydo_s
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -54,8 +54,8 @@ private:
   gdl::BasicShader				_shader;
   TexturePool					*_texturePool;
   ModelPool					*_modelPool;
-  int						_x;
-  int						_y;
+  int						_w;
+  int						_h;
   int						_p;
   std::list<APlayer *>				_playerlist;
   Music						*_SoundPlayer;
