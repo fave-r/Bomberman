@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Sat Jun  6 02:41:29 2015 polydo_s
+// Last update Sat Jun  6 18:12:56 2015 polydo_s
 
 #include "Bomberman.hh"
 
@@ -18,13 +18,13 @@ void	Bomberman::initialize()
 {
   glm::mat4 projection;
   glm::mat4 transformation;
-  //  FMOD::Sound	*son;
+   FMOD::Sound	*son;
 
   if (!this->_context.start(1920, 1080, "My bomberman!"))
     throw std::runtime_error("Cannot instanciate the window");
 
-  this->_map = Map::generate(this->_w, this->_h, this->_p);
-  //this->_SoundPlayer = new Music();
+  this->_map = Map::generate(this->_x, this->_y, this->_p);
+  this->_SoundPlayer = new Music();
   this->_texturePool = new TexturePool();
   this->_modelPool = new ModelPool();
 
@@ -41,8 +41,8 @@ void	Bomberman::initialize()
     throw std::runtime_error("shader erreur");
 
   projection = glm::perspective(70.0f, 1920.0f / 1080.0f, 0.1f, 1000.0f);
-  transformation = glm::lookAt(glm::vec3(this->_w / 2, (this->_w + this->_h) / 2, this->_h / 2),
-			       glm::vec3(this->_w / 2, 0, this->_h / 2 - 0.0001),
+  transformation = glm::lookAt(glm::vec3(this->_x / 2, ((this->_x + this->_y) / 2 < 10) ? 10 : (this->_x + this->_y) / 2, this->_y / 2),
+			       glm::vec3(this->_x / 2, 0, this->_y / 2 - 0.0001),
 			       glm::vec3(0, 1, 0));
 
   this->_shader.bind();
@@ -51,8 +51,8 @@ void	Bomberman::initialize()
   init_map();
   init_player();
   draw();
-  //this->_SoundPlayer->createSound(&son, "./Assets/Sounds/BackgroundSound.wav");
-  //this->_SoundPlayer->playSound(son, true);
+  this->_SoundPlayer->createSound(&son, "./Assets/Sounds/BackgroundSound.wav");
+  this->_SoundPlayer->playSound(son, true);
 }
 
 void	Bomberman::init_map()
@@ -189,5 +189,5 @@ Bomberman::~Bomberman()
     delete (*it);
   delete this->_texturePool;
   delete this->_modelPool;
-  //  delete this->_SoundPlayer;
+  delete this->_SoundPlayer;
 }

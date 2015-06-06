@@ -5,8 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Fri Jun  5 20:18:41 2015 clément jean
-//
+// Last update Sat Jun  6 17:20:49 2015 Leo Thevenet
 
 #include "Menu.hh"
 #include "Options.hh"
@@ -14,12 +13,11 @@
 
 Menu::Menu()
 {
-  //this->_SoundPlayer = new Music();
+  this->_SoundPlayer = new Music();
 }
 
 Menu::~Menu()
 {
-  //delete this->_SoundPlayer;
   if (this->_font)
     TTF_CloseFont(this->_font);
   TTF_Quit();
@@ -27,10 +25,10 @@ Menu::~Menu()
 
 void		Menu::initialize()
 {
-  //FMOD::Sound	*son;
+  FMOD::Sound	*son;
 
-  //this->_SoundPlayer->createSound(&son, "./Assets/Sounds/MenuSound.wav");
-  //this->_SoundPlayer->playSound(son, true);
+  this->_SoundPlayer->createSound(&son, "./Assets/Sounds/MenuSound.wav");
+  this->_SoundPlayer->playSound(son, true);
   if(SDL_Init(SDL_INIT_VIDEO) < 0)
     throw std::runtime_error("SDL could not initialize!");
   this->_Main_Window = SDL_CreateWindow("Bomberman",
@@ -103,10 +101,6 @@ bool		Menu::update()
 	  break;
 	case SDLK_UP:
 	  MoveCursor(-1);
-	  // _path = (_path == "./Assets/Menu/start_fond.bmp") ? "./Assets/Menu/options_fond.bmp" : "./Assets/Menu/start_fond.bmp";
-	  // _BackGroundS = IMG_Load(_path.c_str());
-	  // _BackGroundT = SDL_CreateTextureFromSurface(_Main_Renderer, _BackGroundS);
-	  // SDL_FreeSurface(_BackGroundS);
 	  break;
 	}
       break;
@@ -119,7 +113,7 @@ bool          Menu::Check_Path()
 {
   if (this->_select == 0)
     {
-      //  delete this->_SoundPlayer;
+       delete this->_SoundPlayer;
       SDL_Quit();
 
       Bomberman *bomberman = new Bomberman(Parseur::getX(), Parseur::getY(), Parseur::getPlayer());

@@ -3,9 +3,9 @@
 ##
 ## Made by Swann polydo_s
 ## Login   <polydo_s@epitech.net>
-#1;2802;0c#
+##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Fri Jun  5 20:08:56 2015 clément jean
+## Last update Sat Jun  6 17:11:26 2015 Leo Thevenet
 ##
 
 CXX		= g++
