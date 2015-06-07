@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Sun Jun  7 02:27:04 2015 polydo_s
+// Last update Sun Jun  7 17:02:47 2015 polydo_s
 //
 
 #include <unistd.h>
@@ -30,19 +30,64 @@ void			Bomb::destroy(std::vector<std::vector<AObject *> > &map)
   int	x = this->_x;
   int	y = this->_y;
 
+  map[y][x] = NULL;
   for (int i = y - 1, j = this->_power; j >= 0; --i, --j)
     {
-      if (map[i][x])
+      IDestroyable *destroyable = dynamic_cast<IDestroyable *>(map[i][x]);
+      if (destroyable)
 	{
-	  IDestroyable *destroyable = dynamic_cast<IDestroyable *>(map[i][x]);
-	  if (destroyable)
-	    this->destroy(map);
+	  map[i][x] = new Fire(x, i);
+	  destroyable->destroy(map);
 	  break;
 	}
-      else
+      else if (!map[i][x])
 	map[i][x] = new Fire(x, i);
+      else if (map[i][x] && !dynamic_cast<ICrossable *>(map[i][x]))
+	break;
+      std::cout << "LOLOL" << std::endl;
     }
-  map[y][x] = NULL;
+  for (int i = x + 1, j = this->_power; j >= 0; ++i, --j)
+    {
+      IDestroyable *destroyable = dynamic_cast<IDestroyable *>(map[y][i]);
+      if (destroyable)
+  	{
+  	  map[y][i] = new Fire(i, y);
+  	  destroyable->destroy(map);
+	  break;
+  	}
+      else if (!map[y][i])
+	map[y][i] = new Fire(i, x);
+      else if (map[y][i] && !dynamic_cast<ICrossable *>(map[y][i]))
+	break;
+    }
+  for (int i = y + 1, j = this->_power; j >= 0; ++i, --j)
+    {
+      IDestroyable *destroyable = dynamic_cast<IDestroyable *>(map[i][x]);
+      if (destroyable)
+  	{
+  	  map[i][x] = new Fire(x, i);
+  	  destroyable->destroy(map);
+	  break;
+  	}
+      else if (!map[i][x])
+	map[i][x] = new Fire(x, i);
+      else if (map[i][x] && !dynamic_cast<ICrossable *>(map[i][x]))
+	break;
+    }
+  for (int i = x - 1, j = this->_power; j >= 0; --i, --j)
+    {
+      IDestroyable *destroyable = dynamic_cast<IDestroyable *>(map[y][i]);
+      if (destroyable)
+  	{
+  	  map[y][i] = new Fire(i, y);
+  	  destroyable->destroy(map);
+	  break;
+  	}
+      else if (!map[y][i])
+	map[y][i] = new Fire(i, y);
+      else if (map[y][i] && !dynamic_cast<ICrossable *>(map[y][i]))
+	break;
+    }
   delete this;
 }
 
