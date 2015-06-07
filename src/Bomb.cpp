@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Sun Jun  7 17:02:47 2015 polydo_s
+// Last update Sun Jun  7 17:36:42 2015 polydo_s
 //
 
 #include <unistd.h>
@@ -30,7 +30,7 @@ void			Bomb::destroy(std::vector<std::vector<AObject *> > &map)
   int	x = this->_x;
   int	y = this->_y;
 
-  map[y][x] = NULL;
+  map[y][x] = new Fire(x, y);
   for (int i = y - 1, j = this->_power; j >= 0; --i, --j)
     {
       IDestroyable *destroyable = dynamic_cast<IDestroyable *>(map[i][x]);
@@ -44,7 +44,6 @@ void			Bomb::destroy(std::vector<std::vector<AObject *> > &map)
 	map[i][x] = new Fire(x, i);
       else if (map[i][x] && !dynamic_cast<ICrossable *>(map[i][x]))
 	break;
-      std::cout << "LOLOL" << std::endl;
     }
   for (int i = x + 1, j = this->_power; j >= 0; ++i, --j)
     {

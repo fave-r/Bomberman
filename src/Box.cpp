@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:49:34 2015 clément jean
-// Last update Sun Jun  7 17:30:44 2015 clément jean
+// Last update Mon Jun  8 01:28:10 2015 polydo_s
 //
 
 #include "Box.hh"
@@ -25,7 +25,6 @@ void	Box::destroy(std::vector<std::vector<AObject *> > &map)
   (void)map;
   std::cout << x << ":" << y << std::endl;
   map[y][x] = NULL;
-  //  this->~Box();
 }
 
 void	Box::draw(gdl::AShader &shader)

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 17:27:42 2015 clément jean
-// Last update Sun Jun  7 18:12:11 2015 clément jean
+// Last update Mon Jun  8 01:27:54 2015 polydo_s
 //
 
 #include "Fire.hh"
