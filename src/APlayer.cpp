@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Sat Jun  6 01:41:22 2015 polydo_s
+// Last update Sun Jun  7 02:01:49 2015 polydo_s
 //
 
 #include "APlayer.hh"
@@ -67,7 +67,7 @@ void			APlayer::putBomb(std::vector<std::vector<AObject *> >&map, const gdl::Clo
     }
   if (!map[y][x])
     {
-      map[y][x] = new Bomb(x, y, clock);
+      map[y][x] = new Bomb(x, y, this, clock, 3);
       this->wait();
     }
 }

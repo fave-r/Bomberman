@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:18:58 2015 clément jean
-// Last update Sat Jun  6 00:58:12 2015 polydo_s
+// Last update Sun Jun  7 02:14:58 2015 polydo_s
 //
 
 #ifndef __BOMB_HH__
@@ -16,18 +16,25 @@
 #include <Model.hh>
 
 #include "AObject.hh"
+#include "APlayer.hh"
+#include "Fire.hh"
 #include "IUpdatable.hh"
+#include "IDestroyable.hh"
 
-class Bomb : public AObject, public IUpdatable
+class APlayer;
+
+class Bomb : public AObject, public IUpdatable, public IDestroyable
 {
 
 private:
   gdl::Model   	_model;
   double	_elapsed;
   float		_livespan;
+  APlayer	*_player;
+  int		_power;
 
 public:
-  Bomb(float x, float y, const gdl::Clock &clock);
+  Bomb(float x, float y, APlayer *player, const gdl::Clock &clock, int power);
   ~Bomb();
 
 public:
@@ -43,4 +50,5 @@ public:
 public:
   void				setModel(const gdl::Geometry &);
 };
+
 #endif
