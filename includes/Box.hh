@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:48:39 2015 clément jean
-// Last update Sat Jun  6 01:06:17 2015 polydo_s
+// Last update Sun Jun  7 16:59:40 2015 polydo_s
 //
 
 #ifndef __BOX_HH__
@@ -14,10 +14,12 @@
 #include <iostream>
 #include <Texture.hh>
 #include <Geometry.hh>
+
 #include "AObject.hh"
+#include "IDestroyable.hh"
 #include "IUpdatable.hh"
 
-class Box : public AObject, public IUpdatable
+class Box : public AObject, public IUpdatable, public IDestroyable
 {
 
 private:
@@ -25,6 +27,10 @@ private:
 
 public:
   Box(float, float);
+  ~Box();
+
+public:
+  virtual void	destroy(std::vector<std::vector<AObject *> > &map);
 
 public:
   virtual void	draw(gdl::AShader &shader);
