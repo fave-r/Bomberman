@@ -5,22 +5,25 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 17:27:42 2015 clément jean
-// Last update Sat Jun  6 01:17:30 2015 polydo_s
+// Last update Sun Jun  7 02:23:13 2015 clément jean
 //
 
 #include "Fire.hh"
 
 Fire::Fire(float x, float y) : AObject(x, y, 0.99, 0.99)
 {
+  if (this->_model.load("./Assets/Map/fire.fbx") == false)
+    throw std::runtime_error("Cannot load the bomb");
+  this->translate(glm::vec3(this->_x, 1, this->_y));
 }
 
 void		Fire::draw(gdl::AShader &shader)
 {
-  _texture.bind();
-  this->_geometry.draw(shader, getTransformation(), GL_QUADS);
+  this->_texture.bind();
+  this->_model.draw(shader, getTransformation(), 0.02);
 }
 
 void          Fire::setModel(const gdl::Geometry &geo)
 {
-  this->_geometry = geo;
+  (void)geo;
 }

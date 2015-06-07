@@ -5,7 +5,7 @@
 ## Login   <polydo_s@epitech.net>
 ##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Sat Jun  6 17:11:26 2015 Leo Thevenet
+## Last update Sun Jun  7 02:26:23 2015 clément jean
 ##
 
 CXX		= g++
@@ -14,11 +14,11 @@ CXXFLAGS	= -W -Wall -Werror -Wextra -std=c++11
 
 CXXFLAGS	+= -I./includes -I./lib/includes
 
-LDFLAGS		= -Wl,--rpath=./lib/libs -lgdl_gl -lGL -lGLEW -lrt -lfbxsdk -lSDL2 -lpthread -ldl -lSDL2_image -lSDL2_ttf
+LDFLAGS		= -Wl,--rpath=./lib/libs -lgdl_gl -lGL -lGLEW -lrt -lfbxsdk -lpthread -ldl -lSDL2 -lSDL2_image -lSDL2_ttf -lvpx
 
 FMOD		= ./lib/fmod/libfmod.so
 
-LDLIBS		= -L./lib/libs -Wl,--rpath=./lib/fmod $(FMOD)
+LDLIBS		= -L./libvpx.a -L./lib/libs -Wl,--rpath=./lib/fmod $(FMOD)
 
 NAME		= bomberman
 RM		= rm -rf

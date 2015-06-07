@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 13:51:26 2015 polydo_s
-// Last update Thu Jun  4 23:22:45 2015 polydo_s
+// Last update Sun Jun  7 02:27:39 2015 clément jean
 //
 
 #include "Menu.hh"
@@ -24,6 +24,6 @@ int	main()
       return (EXIT_FAILURE);
     }
   while (menu.update() == true)
-    menu.draw();
+  menu.draw();
   return (0);
 }
