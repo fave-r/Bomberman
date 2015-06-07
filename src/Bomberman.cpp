@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Sun Jun  7 04:03:52 2015 clément jean
+// Last update Sun Jun  7 17:05:59 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -162,7 +162,15 @@ void Bomberman::draw()
   for (unsigned int i = 0; i < this->_map.size(); ++i)
     for (unsigned int j = 0; j < this->_map[i].size(); ++j)
       if (this->_map[i][j])
-	this->_map[i][j]->draw(this->_shader);
+	{
+	  Fire	*fire = dynamic_cast<Fire *>(this->_map[i][j]);
+	  if (fire)
+	    {
+	      this->_map[i][j]->setModel(this->_modelPool->getGeometry());
+	      this->_map[i][j]->setTexture(this->_texturePool->getFire());
+	    }
+	  this->_map[i][j]->draw(this->_shader);
+	}
   //  if (this->_players == 2)
     transformation = glm::lookAt(glm::vec3(x / 2.0, (x + y) / 2, y / 1.99),
 				 glm::vec3(x / 2.0, 0, y / 2.0),
@@ -173,7 +181,6 @@ void Bomberman::draw()
     //				 glm::vec3(0, 1, 0));
   this->_shader.bind();
   this->_shader.setUniform("view", transformation);
-
   this->_context.flush();
 }
 

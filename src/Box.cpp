@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:49:34 2015 clément jean
-// Last update Fri Jun  5 02:54:32 2015 clément jean
+// Last update Sun Jun  7 17:02:42 2015 clément jean
 //
 
 #include "Box.hh"
@@ -17,7 +17,7 @@ Box::Box(float x, float y) : AObject(x, y, 0.9, 0.9)
 
 void	Box::draw(gdl::AShader &shader)
 {
-  _texture.bind();
+  this->_texture.bind();
   this->_geometry.draw(shader, getTransformation(), GL_QUADS);
 }
 
