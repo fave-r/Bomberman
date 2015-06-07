@@ -4,7 +4,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon May 25 02:15:39 2015 clément jean
-// Last update Sat Jun  6 01:32:33 2015 polydo_s
+// Last update Sun Jun  7 19:10:52 2015 clément jean
 //
 
 #include "TexturePool.hh"
@@ -44,9 +44,14 @@ bool		TexturePool::init()
       std::cerr << "Cannot load the bomb texture" << std::endl;
       return (false);
     }
-  if (this->_textureFire.load("./Assets/Map/fire.fbm/XPlosion.tga") == false)
+  if (this->_textureFire.load("./Assets/Map/fire.fbm/XPlosion.tga", true) == false)
     {
       std::cerr << "Cannot load the fire texture" << std::endl;
+      return (false);
+    }
+  if (this->_textureGold.load("./Assets/Map/Bonus.fbm/gold.tga", true) == false)
+    {
+      std::cerr << "Cannot load the gold texture" << std::endl;
       return (false);
     }
   return true;
@@ -80,4 +85,9 @@ const gdl::Texture	&TexturePool::getBomb()
 const gdl::Texture	&TexturePool::getFire()
 {
   return this->_textureFire;
+}
+
+const gdl::Texture	&TexturePool::getGold()
+{
+  return this->_textureGold;
 }

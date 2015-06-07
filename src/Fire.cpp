@@ -5,16 +5,12 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 17:27:42 2015 clément jean
-<<<<<<< HEAD
-// Last update Sun Jun  7 17:06:52 2015 clément jean
-=======
-// Last update Sun Jun  7 15:05:44 2015 polydo_s
->>>>>>> ee857cd89e5eadf8cefa32d4829f225a72434410
+// Last update Sun Jun  7 18:12:11 2015 clément jean
 //
 
 #include "Fire.hh"
 
-Fire::Fire(float x, float y) : AObject(x + 0.5, y - 0.5, 0.99, 0.99)
+Fire::Fire(float x, float y) : AObject(x, y, 0.99, 0.99)
 {
   this->scale(glm::vec3(1, 1, 1));
   this->translate(glm::vec3(this->_x, 1, this->_y));
@@ -29,4 +25,9 @@ void		Fire::draw(gdl::AShader &shader)
 void          Fire::setModel(const gdl::Geometry &geo)
 {
   this->_geometry = geo;
+}
+
+void          Fire::affect(APlayer &player)
+{
+  (void)player;
 }

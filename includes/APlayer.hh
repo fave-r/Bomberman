@@ -5,11 +5,11 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Sat Jun  6 01:41:24 2015 polydo_s
+// Last update Sun Jun  7 17:58:53 2015 clément jean
 //
 
 #ifndef PLAYER_HH
-#define PLAYER_HH
+# define PLAYER_HH
 
 #include <iostream>
 
