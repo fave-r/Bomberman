@@ -4,7 +4,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon May 25 02:15:39 2015 clément jean
-// Last update Sun Jun  7 19:10:52 2015 clément jean
+// Last update Mon Jun  8 14:29:09 2015 clément jean
 //
 
 #include "TexturePool.hh"
@@ -49,7 +49,7 @@ bool		TexturePool::init()
       std::cerr << "Cannot load the fire texture" << std::endl;
       return (false);
     }
-  if (this->_textureGold.load("./Assets/Map/Bonus.fbm/gold.tga", true) == false)
+  if (this->_textureGold.load("./Assets/Map/Bonus.fbm/rocher_or.tga", true) == false)
     {
       std::cerr << "Cannot load the gold texture" << std::endl;
       return (false);

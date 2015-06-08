@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon Jun  8 01:23:10 2015 clément jean
-// Last update Mon Jun  8 01:25:30 2015 clément jean
+// Last update Mon Jun  8 14:55:20 2015 clément jean
 //
 
 #include "BonusBomb.hh"
@@ -16,6 +16,9 @@ BonusBomb::BonusBomb(float x, float y) : ABonus(x, y)
     throw std::runtime_error("Cannot load the bomb bonus");
   this->scale(glm::vec3(0.01, 0.01, 0.01));
   this->translate(glm::vec3(x - 0.1, 1, y - 0.1));
+  if (this->_model.createSubAnim(0, "rotate", 0, 36) == false)
+    throw std::runtime_error("Can't load bonus bomb's animation");
+  this->_model.setCurrentSubAnim("rotate");
 }
 
 BonusBomb::~BonusBomb()

@@ -5,8 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Mon Jun  8 18:18:30 2015 Leo Thevenet
-//
+// Last update Mon Jun  8 18:20:48 2015 Leo Thevenet
 
 #include "Bomberman.hh"
 #include "MapSaver.hh"
@@ -22,8 +21,7 @@ Bomberman::Bomberman(unsigned int w, unsigned int h, unsigned int p)
 }
 
 Bomberman::Bomberman(const std::string & NamedMap) : _namedMap(NamedMap)
-{
-}
+{}
 
 void	Bomberman::getMap()
 {
