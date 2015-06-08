@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Mon Jun  8 01:25:50 2015 clément jean
+// Last update Mon Jun  8 18:09:28 2015 Leo Thevenet
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -18,6 +18,7 @@
 #include <AShader.hh>
 #include <BasicShader.hh>
 #include <Model.hh>
+#include <tuple>
 
 #include "Map.hh"
 #include "Cube.hh"
@@ -34,21 +35,23 @@ class Bomberman
 {
 public:
   Bomberman(unsigned int, unsigned int, unsigned int);
+  Bomberman(const std::string &);
   ~Bomberman();
 
 public:
   void	ShowMap();
   void	initialize();
   void	init_player();
+  void  end_init_player();
   void	init_map();
   bool	init_texture();
   bool	update();
   void	draw();
-
+  void	getMap();
 private:
   std::vector< std::vector<AObject *> >		_map;
   std::vector<AObject*>				_objects;
-  gdl::SdlContext			       	_context;
+  gdl::SdlContext				_context;
   gdl::Clock					_clock;
   gdl::Input					_input;
   gdl::BasicShader				_shader;
@@ -59,6 +62,7 @@ private:
   int						_p;
   std::list<APlayer *>				_playerlist;
   Music						*_SoundPlayer;
+  std::string					_namedMap;
 };
 
 #endif

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Mon Jun  8 11:53:03 2015 Leo Thevenet
+// Last update Mon Jun  8 18:18:08 2015 Leo Thevenet
 
 #include "Menu.hh"
 #include "Options.hh"
@@ -107,27 +107,46 @@ bool		Menu::update()
   return true;
 }
 
+void		Menu::launchBomberman(Bomberman *bomberman)
+{
+  while (bomberman->update() == true)
+    bomberman->draw();
+  delete bomberman;
+}
+
 bool          Menu::Check_Path()
 {
   if (this->_select == 0)
     {
-       delete this->_SoundPlayer;
-      SDL_Quit();
-
       Bomberman *bomberman = new Bomberman(Parseur::getX(), Parseur::getY(), Parseur::getPlayer());
+      delete this->_SoundPlayer;
+      SDL_Quit();
       try
 	{
 	  bomberman->initialize();
+	  launchBomberman(bomberman);
 	}
       catch (const std::runtime_error &e)
 	{
 	  std::cerr << e.what() << std::endl;
 	  return (false);
 	}
-
-      while (bomberman->update() == true)
-	bomberman->draw();
-      delete bomberman;
+    }
+  else if (this->_select == 2)
+    {
+      delete this->_SoundPlayer;
+      SDL_Quit();
+      try
+	{
+	  Bomberman *bomberman = new Bomberman(".saved");
+	  bomberman->initialize();
+	  launchBomberman(bomberman);
+	}
+      catch (const std::runtime_error &e)
+	{
+	  std::cerr << e.what() << std::endl;
+	  return (false);
+	}
     }
   else
     {

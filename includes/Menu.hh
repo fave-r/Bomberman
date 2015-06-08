@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:36:11 2015 clément jean
-// Last update Fri Jun  5 10:25:31 2015 Leo Thevenet
+// Last update Mon Jun  8 17:20:47 2015 Leo Thevenet
 //
 
 #ifndef __MENU_HH__
@@ -36,6 +36,7 @@ public:
   void		SetScreen();
   void		PutStringOnScreen(SDL_Color, SDL_Rect, std::string);
   void		MoveCursor(int);
+  void		launchBomberman(Bomberman *);
 private:
   std::string	_path;
   SDL_Event	event;
