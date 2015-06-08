@@ -5,12 +5,13 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  2 09:49:05 2015 Leo Thevenet
-// Last update Sat Jun  6 17:23:37 2015 Leo Thevenet
+// Last update Mon Jun  8 11:55:15 2015 Leo Thevenet
 //
 
 #include "Music.hh"
 #include <stdlib.h>
 #include <iostream>
+
 Music::Music()
 {
   if (FMOD::System_Create(&(this->_sys)) != FMOD_OK)
@@ -24,24 +25,27 @@ Music::Music()
 
 Music::~Music()
 {
-  for (size_t i = 0; i < this->_sons.size(); ++i)
-    this->_sons[i]->release();
+  std::map<std::string, FMOD::Sound*>::iterator it;
+  for (it = this->_sons.begin(); it != this->_sons.end(); ++it)
+    (*it).second->release();
 }
 
-void Music::createSound(FMOD::Sound **pSound, const char* pFile)
+void Music::createSound(const char* pFile, const char* id)
 {
-  this->_sys->createSound(pFile, FMOD_DEFAULT, 0, pSound);
-  this->_sons.push_back(*pSound);
+  FMOD::Sound	*son;
+
+  this->_sys->createSound(pFile, FMOD_DEFAULT, 0, &son);
+  this->_sons[id] = son;
 }
 
-void Music::playSound(FMOD::Sound *pSound, bool bLoop = false)
+void Music::playSound(const char* id, bool bLoop = false)
 {
   if (!bLoop)
-    pSound->setMode(FMOD_LOOP_OFF);
+    this->_sons[id]->setMode(FMOD_LOOP_OFF);
   else
     {
-      pSound->setMode(FMOD_LOOP_NORMAL);
-      pSound->setLoopCount(-1);
+      this->_sons[id]->setMode(FMOD_LOOP_NORMAL);
+      this->_sons[id]->setLoopCount(-1);
     }
-  this->_sys->playSound(pSound, NULL, false, 0);
+  this->_sys->playSound(this->_sons[id], NULL, false, 0);
 }

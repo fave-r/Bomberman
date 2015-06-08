@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:27:04 2015 clément jean
-// Last update Fri Jun  5 22:23:41 2015 polydo_s
+// Last update Mon Jun  8 12:42:07 2015 Leo Thevenet
 //
 
 #ifndef __AOBJECT_HPP__
@@ -22,6 +22,7 @@
 #include <Geometry.hh>
 #include <Input.hh>
 #include <string>
+#include "Music.hh"
 
 class	AObject
 {
@@ -34,7 +35,7 @@ protected:
   glm::vec3		_rotation;
   glm::vec3		_scale;
   gdl::Texture		_texture;
-
+  static Music		*_SoundPlayer;
 public:
   AObject(float x, float y, float width, float height);
   virtual ~AObject();

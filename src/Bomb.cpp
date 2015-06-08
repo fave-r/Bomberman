@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Mon Jun  8 14:31:26 2015 clément jean
+// Last update Mon Jun  8 15:52:33 2015 clément jean
 //
 
 #include <unistd.h>
@@ -21,6 +21,7 @@ Bomb::Bomb(float x, float y, APlayer *player, const gdl::Clock &clock, int power
     throw std::runtime_error("Can't load bomb's animation");
   this->scale(glm::vec3(0.7, 0.7, 0.7));
   this->_model.setCurrentSubAnim("run");
+  this->_SoundPlayer->playSound("bombstart", false);
 }
 
 Bomb::~Bomb() {}
@@ -30,7 +31,7 @@ void			Bomb::destroy(std::vector<std::vector<AObject *> > &map)
   int	x = this->_x;
   int	y = this->_y;
 
-  map[y][x] = NULL;
+  map[y][x] = new Fire(x, y);
   for (int i = y - 1, j = this->_power; j >= 0; --i, --j)
     {
       IDestroyable *destroyable = dynamic_cast<IDestroyable *>(map[i][x]);
@@ -44,7 +45,6 @@ void			Bomb::destroy(std::vector<std::vector<AObject *> > &map)
 	map[i][x] = new Fire(x, i);
       else if (map[i][x] && !dynamic_cast<ICrossable *>(map[i][x]))
 	break;
-      std::cout << "LOLOL" << std::endl;
     }
   for (int i = x + 1, j = this->_power; j >= 0; ++i, --j)
     {
@@ -88,6 +88,7 @@ void			Bomb::destroy(std::vector<std::vector<AObject *> > &map)
       else if (map[y][i] && !dynamic_cast<ICrossable *>(map[y][i]))
 	break;
     }
+  this->_SoundPlayer->playSound("explosion", false);
   delete this;
 }
 

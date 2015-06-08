@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Sat Jun  6 17:20:49 2015 Leo Thevenet
+// Last update Mon Jun  8 11:53:03 2015 Leo Thevenet
 
 #include "Menu.hh"
 #include "Options.hh"
@@ -25,10 +25,8 @@ Menu::~Menu()
 
 void		Menu::initialize()
 {
-  FMOD::Sound	*son;
-
-  this->_SoundPlayer->createSound(&son, "./Assets/Sounds/MenuSound.wav");
-  this->_SoundPlayer->playSound(son, true);
+  this->_SoundPlayer->createSound("./Assets/Sounds/MenuSound.wav", "menu");
+  this->_SoundPlayer->playSound("menu", true);
   if(SDL_Init(SDL_INIT_VIDEO) < 0)
     throw std::runtime_error("SDL could not initialize!");
   this->_Main_Window = SDL_CreateWindow("Bomberman",
