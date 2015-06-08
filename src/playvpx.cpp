@@ -1,13 +1,3 @@
-//
-// playvpx.cpp for playvpx.cpp in /home/jean_c/Bomberman
-// 
-// Made by clément jean
-// Login   <jean_c@epitech.net>
-// 
-// Started on  Mon Jun  8 20:51:42 2015 clément jean
-// Last update Mon Jun  8 21:03:23 2015 clément jean
-//
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -31,12 +21,12 @@ static void playvpx_die(Vpxdata *data,const char *fmt, ...) {
 	printf("\n");
 }
 
-static void playvpx_die_codec(Vpxdata *data, const char *s) {                  //
-    const char *detail = vpx_codec_error_detail(&data->codec);                         //
-//
-    printf("%s: %s\n", s, vpx_codec_error(&data->codec));                              //
-    if(detail)                                                                //
-	printf("    %s\n",detail);                                            //
+static void playvpx_die_codec(Vpxdata *data, const char *s) {
+    const char *detail = vpx_codec_error_detail(&data->codec);
+
+    printf("%s: %s\n", s, vpx_codec_error(&data->codec));
+    if(detail)
+	printf("    %s\n",detail);
 }
 
 void playvpx_(Vpxdata *data,const char *msg) {
@@ -55,20 +45,16 @@ void playvpx_init(Vpxdata *data, const char *_fname) {
 	return;
     }
 
-    /* Read file header */
     if(!(fread(data->file_hdr, 1, IVF_FILE_HDR_SZ, data->infile) == IVF_FILE_HDR_SZ
 	 && data->file_hdr[0]=='D' && data->file_hdr[1]=='K' && data->file_hdr[2]=='I'
 	 && data->file_hdr[3]=='F')) {
 	playvpx_die(data,"this is not an IVF file: '%s'",data->fname);
 	return;
     }
-
-    /* Initialize codec */
     printf("Using %s\n",vpx_codec_iface_name(interface));
     if(vpx_codec_dec_init(&data->codec, interface, NULL, data->flags)) {
-	playvpx_die_codec(data, "Failed to initialize decoder");
-	// NOTE: should we deinit here???
-	return;
+      playvpx_die_codec(data, "Failed to initialize decoder");
+      return;
     }
 
     data->is_init = 1;
@@ -99,18 +85,15 @@ bool playvpx_loop(Vpxdata *data) {
 	return false;
     }
 
-    /* Decode the frame */                                                //
-    if(vpx_codec_decode(&data->codec, data->frame, data->frame_sz, NULL, 0)) {                //
-	playvpx_die_codec(data, "Failed to decode frame");                      //
+    if(vpx_codec_decode(&data->codec, data->frame, data->frame_sz, NULL, 0)) {
+	playvpx_die_codec(data, "Failed to decode frame");
 	data->state = -1;
 	return false;
     }
 
-    /* Write decoded data to disk */
-    // NOTE: if multiple frames come in somehow (not supposed to happen?) this won't handle it properly
     int n = 0;
     vpx_image_t *img;
-    while((img = vpx_codec_get_frame(&data->codec, &data->iter))) {                   //
+    while((img = vpx_codec_get_frame(&data->codec, &data->iter))) {
 	data->img = img;
 	n += 1;
     }
@@ -119,10 +102,6 @@ bool playvpx_loop(Vpxdata *data) {
     return true;
 }
 
-// this is a HUGE bottleneck here ..
-// Shaders would be ideal
-// MMX would be nice
-// but this is what we've got .. and it will work anywhere .. slowly.
 void playvpx_convert_to_rgb(Vpxdata *data) {
     if (!data->is_init) { return ; }
     if (data->state == -1) { return ; }
@@ -253,9 +232,6 @@ void	 VideoPlay() {
     printf("playvpx: our window is set to %d x %d .. you can change this in source\n",ww,hh);
 
     SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER);
-    //int bits = 0;
-    //int sflags = SDL_OPENGL;
-
     SDL_Window *window = SDL_CreateWindow("My Game Window",
 		     SDL_WINDOWPOS_UNDEFINED,
 		     SDL_WINDOWPOS_UNDEFINED,
