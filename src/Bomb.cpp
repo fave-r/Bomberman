@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Mon Jun  8 15:52:33 2015 clément jean
+// Last update Mon Jun  8 16:05:59 2015 clément jean
 //
 
 #include <unistd.h>
@@ -94,7 +94,6 @@ void			Bomb::destroy(std::vector<std::vector<AObject *> > &map)
 
 void			Bomb::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map)
 {
-  (void)map;
   this->_elapsed += clock.getElapsed();
   if (this->isExploding())
     this->destroy(map);

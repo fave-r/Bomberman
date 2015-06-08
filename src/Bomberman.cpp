@@ -5,10 +5,11 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Mon Jun  8 15:52:20 2015 clément jean
+// Last update Mon Jun  8 19:42:34 2015 clément jean
 //
 
 #include "Bomberman.hh"
+#include "BonusForce.hh"
 
 #define ten(x) (x < 10) ? 10 : x
 #define middle(xa, ya, xb, yb) sqrt(pow(xb - xa, 2) + pow(yb - ya, 2))
@@ -90,6 +91,7 @@ void	Bomberman::init_map()
 	    this->_map[i][j]->translate(glm::vec3(j, 1, i));
 	  }
       }
+  this->_map[2][2] = new BonusForce(2, 2);
 }
 
 void	Bomberman::init_player()
