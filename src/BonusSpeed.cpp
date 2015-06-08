@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun  7 18:46:28 2015 clément jean
-// Last update Mon Jun  8 01:14:38 2015 clément jean
+// Last update Mon Jun  8 15:13:09 2015 clément jean
 //
 
 #include "BonusSpeed.hh"
@@ -15,7 +15,10 @@ BonusSpeed::BonusSpeed(float x, float y) : ABonus(x, y)
   if (this->_model.load("./Assets/Map/bonusSpeed.fbx") == false)
     throw std::runtime_error("Cannot load the speed bonus");
   this->scale(glm::vec3(0.01, 0.01, 0.01));
-  this->translate(glm::vec3(x - 0.2, 1, y - 0.2));
+  this->translate(glm::vec3(x, 1, y));
+  if (this->_model.createSubAnim(0, "rotate", 0, 36) == false)
+    throw std::runtime_error("Can't load bonus force's animation");
+  this->_model.setCurrentSubAnim("rotate");
 }
 
 BonusSpeed::~BonusSpeed()
