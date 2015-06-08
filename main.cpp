@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 13:51:26 2015 polydo_s
-// Last update Sun Jun  7 02:27:39 2015 clément jean
+// Last update Mon Jun  8 20:44:41 2015 clément jean
 //
 
 #include "Menu.hh"
@@ -16,6 +16,7 @@ int	main()
 
   try
     {
+      VideoPlay();
       menu.initialize();
     }
   catch (const std::runtime_error &e)

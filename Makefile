@@ -5,7 +5,7 @@
 ## Login   <polydo_s@epitech.net>
 ##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Mon Jun  8 17:05:07 2015 Leo Thevenet
+## Last update Mon Jun  8 20:51:05 2015 clément jean
 ##
 
 CXX		= g++
@@ -14,7 +14,8 @@ CXXFLAGS	= -W -Wall -Werror -Wextra -std=c++11 -g
 
 CXXFLAGS	+= -I./includes -I./lib/includes
 
-LDFLAGS		= -Wl,--rpath=./lib/libs -lgdl_gl -lGL -lpthread -lGLEW -lrt -lfbxsdk -lSDL2 -lSDL2_ttf -lSDL2_image -ldl
+LDFLAGS		= -Wl,--rpath=./lib/libs -lgdl_gl -lGL -lpthread -lGLEW -lrt -lfbxsdk -lSDL2 -lSDL2_ttf
+LDFLAGS		+= -lSDL2_image -ldl -L./lib/libvpx.a -lGLU -lvpx
 
 FMOD		= ./lib/fmod/libfmod.so
 
@@ -49,6 +50,7 @@ SRCS		= main.cpp			\
 		  $(SRC)/BonusForce.cpp		\
 		  $(SRC)/BonusBomb.cpp		\
 		  $(SRC)/MapSaver.cpp		\
+		  $(SRC)/playvpx.cpp		\
 
 OBJS		= $(SRCS:.cpp=.o)
 

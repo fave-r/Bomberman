@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:36:11 2015 clément jean
-// Last update Mon Jun  8 17:20:47 2015 Leo Thevenet
+// Last update Mon Jun  8 20:44:30 2015 clément jean
 //
 
 #ifndef __MENU_HH__
@@ -46,5 +46,7 @@ private:
   int		_select;
   TTF_Font	*_font;
 };
+
+void     VideoPlay();
 
 #endif
