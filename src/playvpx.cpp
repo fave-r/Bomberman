@@ -24,7 +24,7 @@ static void playvpx_die(Vpxdata *data,const char *fmt, ...) {
 static void playvpx_die_codec(Vpxdata *data, const char *s) {
     const char *detail = vpx_codec_error_detail(&data->codec);
 
-    printf("%s: %s\n", s, vpx_codec_error(&data->codec));
+    printf("%s", s);
     if(detail)
 	printf("    %s\n",detail);
 }
@@ -51,7 +51,6 @@ void playvpx_init(Vpxdata *data, const char *_fname) {
 	playvpx_die(data,"this is not an IVF file: '%s'",data->fname);
 	return;
     }
-    printf("Using %s\n",vpx_codec_iface_name(interface));
     if(vpx_codec_dec_init(&data->codec, interface, NULL, data->flags)) {
       playvpx_die_codec(data, "Failed to initialize decoder");
       return;
@@ -190,7 +189,6 @@ int playvpx_get_texture(Vpxdata *data) {
 void playvpx_deinit(Vpxdata *data) {
     if (!data->is_init) { return; }
 
-    printf("Processed %d frames.\n",data->frame_cnt);
     if(vpx_codec_destroy(&data->codec)) {
 	playvpx_die_codec(data, "Failed to destroy codec");
     }
@@ -226,10 +224,6 @@ void	 VideoPlay() {
 
     int ww = 1024;
     int hh = 768;
-
-    printf("playvpx file.ivf\n");
-    printf("playvpx: video should be power-of-two sized (1024x512, or whatever) for best OpenGL results.\n");
-    printf("playvpx: our window is set to %d x %d .. you can change this in source\n",ww,hh);
 
     SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER);
     SDL_Window *window = SDL_CreateWindow("My Game Window",
