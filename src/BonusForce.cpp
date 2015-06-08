@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon Jun  8 01:16:23 2015 clément jean
-// Last update Mon Jun  8 20:04:36 2015 clément jean
+// Last update Mon Jun  8 20:27:46 2015 clément jean
 //
 
 #include "BonusForce.hh"

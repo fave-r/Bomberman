@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Mon Jun  8 20:15:51 2015 clément jean
+// Last update Mon Jun  8 20:29:00 2015 clément jean
 // Last update Mon Jun  8 18:20:48 2015 Leo Thevenet
 
 #include "Bomberman.hh"
@@ -111,7 +111,6 @@ void	Bomberman::init_map()
 	    this->_map[i][j]->translate(glm::vec3(j, 1, i));
 	  }
       }
-  this->_map[2][2] = new BonusForce(2, 2);
 }
 
 void	Bomberman::init_player()
