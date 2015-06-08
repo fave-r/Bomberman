@@ -5,10 +5,11 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Mon Jun  8 13:18:40 2015 Leo Thevenet
+// Last update Mon Jun  8 18:18:30 2015 Leo Thevenet
 //
 
 #include "Bomberman.hh"
+#include "MapSaver.hh"
 
 #define ten(x) (x < 10) ? 10 : x
 #define middle(xa, ya, xb, yb) sqrt(pow(xb - xa, 2) + pow(yb - ya, 2))
@@ -16,6 +17,23 @@
 Bomberman::Bomberman(unsigned int w, unsigned int h, unsigned int p)
   : _w(w), _h(h), _p(p)
 {
+  this->_map = Map::generate(this->_w, this->_h, this->_p);
+  this->_namedMap = "";
+}
+
+Bomberman::Bomberman(const std::string & NamedMap) : _namedMap(NamedMap)
+{
+}
+
+void	Bomberman::getMap()
+{
+  auto TupleMap = MapSaver::getMap(this->_namedMap);
+  if ((this->_w = std::get<0>(TupleMap)) == 0)
+    throw std::runtime_error("No saved map");
+  this->_h = std::get<1>(TupleMap);
+  this->_p = std::get<2>(TupleMap);
+  this->_map = std::get<3>(TupleMap);
+  this->_playerlist = std::get<4>(TupleMap);
 }
 
 void	Bomberman::initialize()
@@ -26,7 +44,6 @@ void	Bomberman::initialize()
   if (!this->_context.start(1920, 1080, "My bomberman!"))
     throw std::runtime_error("Cannot instanciate the window");
 
-  this->_map = Map::generate(this->_w, this->_h, this->_p);
   this->_SoundPlayer = new Music();
   this->_texturePool = new TexturePool();
   this->_modelPool = new ModelPool();
@@ -38,6 +55,8 @@ void	Bomberman::initialize()
 
   glEnable(GL_DEPTH_TEST);
 
+  if (this->_namedMap != "")
+    getMap();
   if (!this->_shader.load("./lib/shaders/basic.fp", GL_FRAGMENT_SHADER)
       || !this->_shader.load("./lib/shaders/basic.vp", GL_VERTEX_SHADER)
       || !this->_shader.build())
@@ -52,7 +71,10 @@ void	Bomberman::initialize()
   this->_shader.setUniform("view", transformation);
   this->_shader.setUniform("projection", projection);
   init_map();
-  init_player();
+  if (this->_playerlist.empty())
+    init_player();
+  else
+    end_init_player();
   draw();
   this->_SoundPlayer->createSound("./Assets/Sounds/BackgroundSound.wav", "game");
   this->_SoundPlayer->playSound("game", true);
@@ -95,13 +117,18 @@ void	Bomberman::init_map()
 void	Bomberman::init_player()
 {
   PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, APlayer::DOWN);
+
+  this->_playerlist.push_back(p1);
   if (this->_p == 2)
     {
       PhysicalPlayer *p2 = new PhysicalPlayer(this->_w - 2, this->_h - 2, APlayer::UP);
       this->_playerlist.push_back(p2);
     }
-  this->_playerlist.push_back(p1);
+  end_init_player();
+}
 
+void	Bomberman::end_init_player()
+{
   std::list<APlayer *>::const_iterator it;
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
     {
@@ -196,6 +223,8 @@ void Bomberman::draw()
 
 Bomberman::~Bomberman()
 {
+  //  MapSaver::saveMap(this->_map, this->_playerlist, this->_w, this->_h, this->_p);
+
   //  for (size_t i = 0; i < this->_objects.size(); ++i)
   //delete this->_objects[i];
   //for (unsigned int i = 0; i < this->_map.size(); i++)

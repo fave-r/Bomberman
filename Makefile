@@ -5,7 +5,7 @@
 ## Login   <polydo_s@epitech.net>
 ##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Mon Jun  8 01:24:09 2015 clément jean
+## Last update Mon Jun  8 17:05:07 2015 Leo Thevenet
 ##
 
 CXX		= g++
@@ -42,12 +42,13 @@ SRCS		= main.cpp			\
 		  $(SRC)/Parseur.cpp		\
 		  $(SRC)/Bomb.cpp		\
 		  $(SRC)/Fire.cpp		\
-                  $(SRC)/Options.cpp            \
+		  $(SRC)/Options.cpp            \
 		  $(SRC)/Music.cpp		\
 		  $(SRC)/ABonus.cpp		\
 		  $(SRC)/BonusSpeed.cpp		\
 		  $(SRC)/BonusForce.cpp		\
 		  $(SRC)/BonusBomb.cpp		\
+		  $(SRC)/MapSaver.cpp		\
 
 OBJS		= $(SRCS:.cpp=.o)
 
