@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Sun Jun  7 17:36:42 2015 polydo_s
+// Last update Mon Jun  8 12:12:03 2015 Leo Thevenet
 //
 
 #include <unistd.h>
@@ -21,6 +21,7 @@ Bomb::Bomb(float x, float y, APlayer *player, const gdl::Clock &clock, int power
     throw std::runtime_error("Can't load bomb's animation");
   this->scale(glm::vec3(0.9, 0.9, 0.9));
   this->_model.setCurrentSubAnim("run");
+  this->_SoundPlayer->playSound("bombstart", false);
 }
 
 Bomb::~Bomb() {}
@@ -87,6 +88,7 @@ void			Bomb::destroy(std::vector<std::vector<AObject *> > &map)
       else if (map[y][i] && !dynamic_cast<ICrossable *>(map[y][i]))
 	break;
     }
+  this->_SoundPlayer->playSound("explosion", false);
   delete this;
 }
 

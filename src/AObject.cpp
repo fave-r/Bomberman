@@ -5,14 +5,22 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:27:19 2015 clément jean
-// Last update Fri Jun  5 22:23:40 2015 polydo_s
+// Last update Mon Jun  8 12:33:54 2015 Leo Thevenet
 //
 
 #include "AObject.hh"
 
+Music *AObject::_SoundPlayer = NULL;
+
 AObject::AObject(float x, float y, float w, float h)
   : _x(x), _y(y), _w(w), _h(h), _position(0, 0, 0), _rotation(0, 0, 0), _scale(1, 1, 1)
 {
+  if (_SoundPlayer == NULL)
+    {
+      this->_SoundPlayer = new Music();
+      this->_SoundPlayer->createSound("./Assets/Sounds/Fuse.mp3", "bombstart");
+      this->_SoundPlayer->createSound("./Assets/Sounds/ExplosionSound.wav", "explosion");
+    }
 }
 
 AObject::~AObject()
