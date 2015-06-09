@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:36:11 2015 clément jean
-// Last update Mon Jun  8 20:44:30 2015 clément jean
+// Last update Tue Jun  9 11:07:23 2015 Leo Thevenet
 //
 
 #ifndef __MENU_HH__
@@ -45,6 +45,8 @@ private:
   Music		*_SoundPlayer;
   int		_select;
   TTF_Font	*_font;
+  SDL_Surface *_BackGroundS;
+  SDL_Texture *_BackGroundT;
 };
 
 void     VideoPlay();

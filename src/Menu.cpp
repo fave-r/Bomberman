@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Mon Jun  8 18:18:08 2015 Leo Thevenet
+// Last update Tue Jun  9 11:09:17 2015 Leo Thevenet
 
 #include "Menu.hh"
 #include "Options.hh"
@@ -36,8 +36,10 @@ void		Menu::initialize()
   if (TTF_Init() == -1)
     std::cout << "ttf error" << std::endl;
   if (!(this->_font = TTF_OpenFont("font/simple.ttf", 150)))
-    std::cout << TTF_GetError() << std::endl;// balancer exeption
+    throw std::runtime_error(TTF_GetError());
   this->_select = 0;
+  this->_BackGroundS = IMG_Load(this->_path.c_str());
+  this->_BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, this->_BackGroundS);
   SetScreen();
 }
 
@@ -47,20 +49,19 @@ void		Menu::SetScreen()
   SDL_Color fg = {255, 255, 255, 255};
   SDL_Color sl = {255, 55, 55, 255};
   r.x = 300;
-  r.y = 300;
+  r.y = 250;
   r.w = 500;
   r.h = 180;
 
   SDL_RenderClear(this->_Main_Renderer);
-
-  SDL_Surface *_BackGroundS = IMG_Load(this->_path.c_str());
-  SDL_Texture *_BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, _BackGroundS);
-  SDL_RenderCopy(this->_Main_Renderer, _BackGroundT, NULL, NULL);
+  SDL_RenderCopy(this->_Main_Renderer, this->_BackGroundT, NULL, NULL);
 
   PutStringOnScreen((this->_select == 0) ? sl : fg, r, "Jouer");
   r.y += 200;
   r.w += 30;
-  PutStringOnScreen((this->_select == 1) ? sl : fg, r, "Options");
+  PutStringOnScreen((this->_select == 1) ? sl : fg, r, "Charger");
+  r.y += 200;
+  PutStringOnScreen((this->_select == 2) ? sl : fg, r, "Options");
   r.y += 200;
 }
 
@@ -69,13 +70,15 @@ void		Menu::PutStringOnScreen(SDL_Color fg, SDL_Rect r, std::string str)
   SDL_Surface *surf = TTF_RenderText_Blended(this->_font, str.c_str(), fg);
   SDL_Texture *_BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, surf);
   SDL_RenderCopy(this->_Main_Renderer, _BackGroundT, NULL, &r);
+  SDL_DestroyTexture(_BackGroundT);
+  SDL_FreeSurface(surf);
 }
 
 void		Menu::MoveCursor(int where)
 {
   this->_select += where;
-  this->_select = (this->_select < 0) ? 1 : this->_select;
-  this->_select = (this->_select > 1) ? 0 : this->_select;
+  this->_select = (this->_select < 0) ? 2 : this->_select;
+  this->_select = (this->_select > 2) ? 0 : this->_select;
 }
 
 bool		Menu::update()
@@ -132,7 +135,7 @@ bool          Menu::Check_Path()
 	  return (false);
 	}
     }
-  else if (this->_select == 2)
+  else if (this->_select == 1)
     {
       delete this->_SoundPlayer;
       SDL_Quit();

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Tue Jun  9 00:36:16 2015 clément jean
+// Last update Tue Jun  9 11:38:46 2015 Leo Thevenet
 // Last update Mon Jun  8 18:20:48 2015 Leo Thevenet
 
 #include "Bomberman.hh"
@@ -138,13 +138,16 @@ void	Bomberman::end_init_player()
 
 bool Bomberman::update()
 {
+  this->_context.updateClock(this->_clock);
+  this->_context.updateInputs(this->_input);
+
   if (this->_input.getKey(SDLK_ESCAPE) || this->_input.getInput(SDL_QUIT))
     {
       std::cout << "Exit" << std::endl;
       return false;
     }
-  this->_context.updateClock(this->_clock);
-  this->_context.updateInputs(this->_input);
+  if (this->_input.getKey(SDLK_F5))
+    MapSaver::saveMap(this->_map, this->_playerlist, this->_w, this->_h, this->_p);
 
   for (unsigned int i = 0; i < this->_map.size(); ++i)
     for (unsigned int j = 0; j < this->_map[i].size(); ++j)
@@ -222,8 +225,6 @@ void Bomberman::draw()
 
 Bomberman::~Bomberman()
 {
-  //  MapSaver::saveMap(this->_map, this->_playerlist, this->_w, this->_h, this->_p);
-
   //  for (size_t i = 0; i < this->_objects.size(); ++i)
   //delete this->_objects[i];
   //for (unsigned int i = 0; i < this->_map.size(); i++)

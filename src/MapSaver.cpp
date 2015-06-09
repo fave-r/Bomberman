@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Mon Jun  8 16:18:51 2015 Leo Thevenet
-// Last update Mon Jun  8 18:16:38 2015 Leo Thevenet
+// Last update Tue Jun  9 11:41:36 2015 Leo Thevenet
 //
 
 #include "MapSaver.hh"
@@ -26,18 +26,23 @@ namespace	MapSaver
 	    fichier << (*it)->getY() << std::endl;
 	  }
 	for (size_t i = 0; i < map.size(); ++i)
-	  for (size_t j = 0; j < map[i].size(); ++j)
-	    {
-	      if (map[i][j] != NULL)
-		{
-		  if (dynamic_cast<Wall *>(map[i][j]))
-		    fichier << 1 << " ";
-		  else if (dynamic_cast<Box *>(map[i][j]))
-		    fichier << 2 << " ";
-		  else
-		    fichier << 0 << " ";
-		}
-	    }
+	  {
+	    for (size_t j = 0; j < map[i].size(); ++j)
+	      {
+		if (map[i][j] != NULL)
+		  {
+		    if (dynamic_cast<Wall *>(map[i][j]))
+		      fichier << 1 << " ";
+		    else if (dynamic_cast<Box *>(map[i][j]))
+		      fichier << 2 << " ";
+		    else
+		      fichier << 0 << " ";
+		  }
+		else
+		  fichier << 0 << " ";
+	      }
+	    fichier << std::endl;
+	  }
 	fichier.close();
       }
     else
@@ -47,51 +52,53 @@ namespace	MapSaver
   std::tuple<int, int, int, std::vector< std::vector<AObject *> >, std::list<APlayer *> > getMap(const std::string & fileName)
   {
     std::ifstream fichier(fileName, std::ifstream::in);
-    std::vector<std::vector<AObject *> > map(20, std::vector<AObject *>(20));
+
+    if(!fichier)
+      throw std::runtime_error("No saved map");
+
+    int p, w, h;
+    float x, y;
+
+    fichier >> w;
+    fichier >> h;
+    fichier >> p;
+    fichier >> x;
+    fichier >> y;
+
     std::list<APlayer *> players;
-    std::tuple<int, int, int, std::vector< std::vector<AObject *> >, std::list<APlayer *> > foo(0, 0, 0, map, players);
-
-    if(fichier)
+    PhysicalPlayer *p1 = new PhysicalPlayer(x, y, APlayer::DOWN);
+    players.push_back(p1);
+    if (p == 2)
       {
-	int p;
-	float x, y;
-
-	fichier >> std::get<0>(foo);
-	fichier >> std::get<1>(foo);
-	fichier >> std::get<2>(foo);
-	p = std::get<2>(foo);
 	fichier >> x;
 	fichier >> y;
-	PhysicalPlayer *p1 = new PhysicalPlayer(x, y, APlayer::DOWN);
-	players.push_back(p1);
-	if (p == 2)
-	  {
-	    fichier >> x;
-	    fichier >> y;
-	    PhysicalPlayer *p2 = new PhysicalPlayer(x, y, APlayer::UP);
-	    players.push_back(p2);
-	  }
-
-	// std::get<3>(foo) = players;
-
-	int a;
-
-	for (int i = 0; i < std::get<0>(foo); ++i)
-	  for (int j = 0; j < std::get<1>(foo); ++j)
-	    {
-	      fichier >> a;
-	      if (a == 1)
-		map[i][j] = new Wall(i, j);
-	      else if (a == 2)
-		map[i][j] = new Box(i, j);
-	      else
-		map[i][j] = NULL;
-	    }
-	// std::get<4>(foo) = map;
-	fichier.close();
+	PhysicalPlayer *p2 = new PhysicalPlayer(x, y, APlayer::UP);
+	players.push_back(p2);
       }
-    else
-      std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
+
+    // std::get<3>(foo) = players;
+
+    int a;
+    std::vector<std::vector<AObject *> > map(w, std::vector<AObject *>(h));
+    std::cout << w << "  " << h << "  " << std::endl;
+    for (int i = 0; i < w; ++i)
+      {
+	for (int j = 0; j < h; ++j)
+	  {
+	    fichier >> a;
+	    std::cout << a << " ";
+	    if (a == 1)
+	      map[i][j] = new Wall(i, j);
+	    else if (a == 2)
+	      map[i][j] = new Box(i, j);
+	    else
+	      map[i][j] = NULL;
+	  }
+	std::cout << std::endl;
+      }
+    std::tuple<int, int, int, std::vector< std::vector<AObject *> >, std::list<APlayer *> > foo(w, h, p, map, players);
+
+    fichier.close();
     return foo;
   }
 };
