@@ -27,20 +27,16 @@ struct Vpxdata {
     unsigned char    frame_hdr[IVF_FRAME_HDR_SZ];
     unsigned char    frame[256*1024];
     vpx_codec_err_t  res;
-    
+
     int               frame_sz;
     vpx_codec_iter_t  iter;
     vpx_image_t      *img;
 
 };
 
-void playvpx_init(Vpxdata *data, const char *_fname) ;
-
-bool playvpx_loop(Vpxdata *data) ;
-
-int playvpx_get_texture(Vpxdata *data) ;
-    
-void playvpx_deinit(Vpxdata *data) ;
+void playvpx_init(Vpxdata *data, const char *_fname);
+bool playvpx_loop(Vpxdata *data);
+int playvpx_get_texture(Vpxdata *data);
+void playvpx_deinit(Vpxdata *data);
 
 #endif
-
