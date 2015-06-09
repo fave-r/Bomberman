@@ -5,11 +5,12 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Tue Jun  9 11:09:17 2015 Leo Thevenet
+// Last update Tue Jun  9 17:03:44 2015 Leo Thevenet
 
 #include "Menu.hh"
 #include "Options.hh"
 #include "SDL2/SDL_image.h"
+#include "HighScore.hh"
 
 Menu::Menu()
 {
@@ -49,9 +50,9 @@ void		Menu::SetScreen()
   SDL_Color fg = {255, 255, 255, 255};
   SDL_Color sl = {255, 55, 55, 255};
   r.x = 300;
-  r.y = 250;
+  r.y = 150;
   r.w = 500;
-  r.h = 180;
+  r.h = 170;
 
   SDL_RenderClear(this->_Main_Renderer);
   SDL_RenderCopy(this->_Main_Renderer, this->_BackGroundT, NULL, NULL);
@@ -61,7 +62,11 @@ void		Menu::SetScreen()
   r.w += 30;
   PutStringOnScreen((this->_select == 1) ? sl : fg, r, "Charger");
   r.y += 200;
-  PutStringOnScreen((this->_select == 2) ? sl : fg, r, "Options");
+  r.w += 30;
+  PutStringOnScreen((this->_select == 2) ? sl : fg, r, "HighScore");
+  r.w -= 30;
+  r.y += 200;
+  PutStringOnScreen((this->_select == 3) ? sl : fg, r, "Options");
   r.y += 200;
 }
 
@@ -77,8 +82,8 @@ void		Menu::PutStringOnScreen(SDL_Color fg, SDL_Rect r, std::string str)
 void		Menu::MoveCursor(int where)
 {
   this->_select += where;
-  this->_select = (this->_select < 0) ? 2 : this->_select;
-  this->_select = (this->_select > 2) ? 0 : this->_select;
+  this->_select = (this->_select < 0) ? 3 : this->_select;
+  this->_select = (this->_select > 3) ? 0 : this->_select;
 }
 
 bool		Menu::update()
@@ -141,7 +146,7 @@ bool          Menu::Check_Path()
       SDL_Quit();
       try
 	{
-	  Bomberman *bomberman = new Bomberman(".saved");
+	  Bomberman *bomberman = new Bomberman("./map/cross");
 	  bomberman->initialize();
 	  launchBomberman(bomberman);
 	}
@@ -150,6 +155,13 @@ bool          Menu::Check_Path()
 	  std::cerr << e.what() << std::endl;
 	  return (false);
 	}
+    }
+  else if (this->_select == 2)
+    {
+      HighScore *hg = new HighScore(this->_Main_Window, this->_Main_Renderer, &(this->event), 2);
+      hg->getKey();
+      delete hg;
+      return true;
     }
   else
     {

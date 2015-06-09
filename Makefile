@@ -5,7 +5,7 @@
 ## Login   <polydo_s@epitech.net>
 ##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Tue Jun  9 02:16:49 2015 clément jean
+## Last update Tue Jun  9 16:29:01 2015 Leo Thevenet
 ##
 
 CXX		= g++
@@ -51,6 +51,8 @@ SRCS		= main.cpp			\
 		  $(SRC)/BonusBomb.cpp		\
 		  $(SRC)/MapSaver.cpp		\
 		  $(SRC)/playvpx.cpp		\
+		  $(SRC)/HighScore.cpp		\
+		  $(SRC)/Score.cpp		\
 
 OBJS		= $(SRCS:.cpp=.o)
 
