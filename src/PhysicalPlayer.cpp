@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-// Last update Sat Jun  6 01:41:21 2015 polydo_s
+// Last update Tue Jun  9 17:59:49 2015 romaric
 //
 
 #include "PhysicalPlayer.hh"
@@ -25,11 +25,13 @@ PhysicalPlayer::PhysicalPlayer(float x, float y, APlayer::eOrientation orientati
     }
   else
     {
+      this->_actions[SDLK_w] = &APlayer::goUp;
       this->_actions[SDLK_z] = &APlayer::goUp;
       this->_actions[SDLK_d] = &APlayer::goRight;
       this->_actions[SDLK_s] = &APlayer::goDown;
       this->_actions[SDLK_q] = &APlayer::goLeft;
-      this->_actions[SDLK_a] = &APlayer::putBomb;
+      this->_actions[SDLK_a] = &APlayer::goLeft;
+      this->_actions[SDLK_e] = &APlayer::putBomb;
     }
 }
 
