@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:27:04 2015 clément jean
-// Last update Fri Jun  5 22:23:41 2015 polydo_s
+// Last update Tue Jun  9 23:28:03 2015 polydo_s
 //
 
 #ifndef __AOBJECT_HPP__
@@ -47,8 +47,13 @@ public:
   void			resetRotate();
 
 public:
+  bool			isColliding(AObject *other) const;
+
+public:
   float			getX() const;
   float			getY() const;
+  float			getWidth() const;
+  float			getHeight() const;
   const glm::mat4	getTransformation();
 
 public:

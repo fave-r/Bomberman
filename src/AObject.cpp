@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:27:19 2015 clément jean
-// Last update Fri Jun  5 22:23:40 2015 polydo_s
+// Last update Wed Jun 10 02:21:24 2015 polydo_s
 //
 
 #include "AObject.hh"
@@ -39,6 +39,16 @@ void			AObject::resetRotate()
   this->_rotation = glm::vec3(0, 0, 0);
 }
 
+bool			AObject::isColliding(AObject *other) const
+{
+  if (this->_x < other->getX() + other->getWidth() &&
+      this->_x + this->_w > other->getX() &&
+      this->_y < other->getY() + other->getHeight() &&
+      this->_y + this->_h > other->getHeight())
+    return (true);
+  return (false);
+}
+
 float			AObject::getX() const
 {
   return this->_x;
@@ -47,6 +57,16 @@ float			AObject::getX() const
 float			AObject::getY() const
 {
   return this->_y;
+}
+
+float			AObject::getWidth() const
+{
+  return this->_w;
+}
+
+float			AObject::getHeight() const
+{
+  return this->_h;
 }
 
 const glm::mat4		AObject::getTransformation()

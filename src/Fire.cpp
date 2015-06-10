@@ -5,15 +5,25 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 17:27:42 2015 clément jean
-// Last update Mon Jun  8 01:27:54 2015 polydo_s
+// Last update Wed Jun 10 00:25:40 2015 polydo_s
 //
 
 #include "Fire.hh"
 
-Fire::Fire(float x, float y) : AObject(x, y, 0.99, 0.99)
+Fire::Fire(float x, float y, double elapsed)
+  :AObject(x, y, 0.99, 0.99), _elapsed(elapsed), _livespan(elapsed + 1)
 {
   this->scale(glm::vec3(1, 1, 1));
   this->translate(glm::vec3(this->_x, 1, this->_y));
+}
+
+Fire::~Fire() {}
+
+void		Fire::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map)
+{
+  this->_elapsed += clock.getElapsed();
+  if (this->_elapsed > this->_livespan)
+    map[this->_y][this->_x] = NULL;
 }
 
 void		Fire::draw(gdl::AShader &shader)
@@ -27,7 +37,8 @@ void          Fire::setModel(const gdl::Geometry &geo)
   this->_geometry = geo;
 }
 
-void          Fire::affect(APlayer &player)
+void          Fire::affect(APlayer *player)
 {
   (void)player;
+  std::cout << "Dans le feu" << std::endl;
 }

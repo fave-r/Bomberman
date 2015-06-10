@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:18:58 2015 clément jean
-// Last update Sun Jun  7 02:14:58 2015 polydo_s
+// Last update Wed Jun 10 02:15:25 2015 polydo_s
 //
 
 #ifndef __BOMB_HH__
@@ -38,14 +38,12 @@ public:
   ~Bomb();
 
 public:
+  bool				damage(std::vector<std::vector<AObject *> > &map, int x, int y);
   void				destroy(std::vector<std::vector<AObject *> > &map);
 
 public:
   virtual void			update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map);
   virtual void			draw(gdl::AShader &shader);
-
-public:
-  bool				isExploding() const;
 
 public:
   void				setModel(const gdl::Geometry &);

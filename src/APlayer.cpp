@@ -5,13 +5,13 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Sun Jun  7 16:19:19 2015 polydo_s
+// Last update Wed Jun 10 00:17:27 2015 polydo_s
 //
 
 #include "APlayer.hh"
 
 APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
-  : AObject(x, y, 0.90, 0.90), _orientation(orientation), _delta(0.06), _speed(2), _inAnim(false)
+  : AObject(x, y, 0.90, 0.90), _orientation(orientation), _delta(0.6), _speed(2), _inAnim(false)
 {
   static unsigned id = 1;
   this->_id = id++;
@@ -35,7 +35,6 @@ void			APlayer::wait()
 
 void			APlayer::draw(gdl::AShader &shader)
 {
-  ///NE SERT A RIEN
   this->_texture.bind();
   this->_model.draw(shader, getTransformation(), 0.03);
 }
@@ -50,21 +49,6 @@ void			APlayer::putBomb(std::vector<std::vector<AObject *> >&map, const gdl::Clo
   int x = this->_x + 0.5;
   int y = this->_y + 0.5;
 
-  switch (this->_orientation)
-    {
-    case APlayer::UP:
-      y -= 1;
-      break;
-    case APlayer::RIGHT:
-      x += 1;
-      break;
-    case APlayer::DOWN:
-      y += 1;
-      break;
-    case APlayer::LEFT:
-      x -= 1;
-      break;
-    }
   if (!map[y][x])
     {
       map[y][x] = new Bomb(x, y, this, clock, 3);
@@ -74,57 +58,92 @@ void			APlayer::putBomb(std::vector<std::vector<AObject *> >&map, const gdl::Clo
 
 void			APlayer::goUp(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock)
 {
-  AObject		*dest;
-  ICrossable		*crossable;
+  float y = this->_y;
+  AObject *src;
+  AObject *dest;
 
   if (!this->_inAnim)
     this->_inAnim = this->_model.setCurrentSubAnim("run");
-  dest = map[static_cast<int>(this->_y - this->_delta)][static_cast<int>(this->_x)];
-  crossable = dynamic_cast<ICrossable *>(dest);
-  if (!dest || crossable)
-    this->_y -= static_cast<float>(clock.getElapsed() * this->_speed);
+  
+  src = map[this->_y + this->_h / 2][this->_x + this->_w / 2];
+  dest = map[this->_y + this->_h / 2 - this->_delta][this->_x + this->_w / 2];
+  this->_y -= clock.getElapsed() * this->_speed;
+  if (dest && dest != src)
+    {
+      ICrossable *crossable = dynamic_cast<ICrossable *>(dest);
+      if (crossable)
+	crossable->affect(this);
+      else if (this->isColliding(dest))
+	this->_y = y;
+    }
   this->_orientation = APlayer::UP;
 }
 
 void			APlayer::goRight(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock)
 {
-  AObject		*dest;
-  ICrossable		*crossable;
+  float x = this->_x;
+  AObject *src;
+  AObject *dest;
 
   if (!this->_inAnim)
     this->_inAnim = this->_model.setCurrentSubAnim("run");
-  dest = map[static_cast<int>(this->_y + this->_h)][static_cast<int>(this->_x + this->_w + this->_delta)];
-  crossable = dynamic_cast<ICrossable *>(dest);
-  if (!dest || crossable)
-    this->_x += static_cast<float>(clock.getElapsed() * this->_speed);
+
+  src = map[this->_y + this->_h / 2][this->_x + this->_w / 2];
+  dest = map[this->_y + this->_h / 2][this->_x + this->_w / 2 + this->_delta];
+  this->_x += clock.getElapsed() * this->_speed;
+  if (dest && dest != src)
+    {
+      ICrossable *crossable = dynamic_cast<ICrossable *>(dest);
+      if (crossable)
+	crossable->affect(this);
+      else if (this->isColliding(dest))
+	  this->_x = x;
+    }
   this->_orientation = APlayer::RIGHT;
 }
 
 void			APlayer::goDown(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock)
 {
-  AObject		*dest;
-  ICrossable		*crossable;
+  float y = this->_y;
+  AObject *src;
+  AObject *dest;
 
   if (!this->_inAnim)
     this->_inAnim = this->_model.setCurrentSubAnim("run");
-  dest = map[static_cast<int>(this->_y + this->_h + this->_delta)][static_cast<int>(this->_x + this->_w)];
-  crossable = dynamic_cast<ICrossable *>(dest);
-  if (!dest || crossable)
-    this->_y += static_cast<float>(clock.getElapsed() * this->_speed);
+
+  src = map[this->_y + this->_h / 2][this->_x + this->_w / 2];
+  dest = map[this->_y + this->_h / 2 + this->_delta][this->_x + this->_w / 2];
+  this->_y += clock.getElapsed() * this->_speed;
+  if (dest && dest != src)
+    {
+      ICrossable *crossable = dynamic_cast<ICrossable *>(dest);
+      if (crossable)
+	crossable->affect(this);
+      else if (this->isColliding(dest))
+	this->_y = y;
+    }
   this->_orientation = APlayer::DOWN;
 }
 
 void			APlayer::goLeft(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock)
 {
-  AObject		*dest;
-  ICrossable		*crossable;
+  float x = this->_x;
+  AObject *src;
+  AObject *dest;
 
   if (!this->_inAnim)
     this->_inAnim = this->_model.setCurrentSubAnim("run");
-  dest = map[static_cast<int>(this->_y)][static_cast<int>(this->_x - this->_delta)];
-  crossable = dynamic_cast<ICrossable *>(dest);
-  if (!dest || crossable)
-    this->_x -= static_cast<float>(clock.getElapsed() * this->_speed);
+  src = map[this->_y + this->_h / 2][this->_x + this->_w / 2];
+  dest = map[this->_y + this->_h / 2][this->_x + this->_w / 2 - this->_delta];
+  this->_x -= clock.getElapsed() * this->_speed;
+  if (dest && dest != src)
+    {
+      ICrossable *crossable = dynamic_cast<ICrossable *>(dest);
+      if (crossable)
+	crossable->affect(this);
+      else if (this->isColliding(dest))
+	this->_x = x;
+    }
   this->_orientation = APlayer::LEFT;
 }
 
