@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  9 15:39:29 2015 Leo Thevenet
-// Last update Tue Jun  9 17:11:59 2015 Leo Thevenet
+// Last update Wed Jun 10 10:16:53 2015 Leo Thevenet
 //
 
 #include "HighScore.hh"
@@ -30,6 +30,7 @@ HighScore::HighScore(SDL_Window *windows, SDL_Renderer *_Main_Renderer, SDL_Even
   init(windows, _Main_Renderer, event);
   this->_y = 150;
   showAllScore();
+  SDL_RenderPresent(this->_Main_Renderer);
 }
 
 HighScore::HighScore(SDL_Window *windows, SDL_Renderer *_Main_Renderer, SDL_Event *event, const int &p)
