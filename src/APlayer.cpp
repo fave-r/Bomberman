@@ -5,7 +5,11 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
+<<<<<<< HEAD
 // Last update Wed Jun 10 00:17:27 2015 polydo_s
+=======
+// Last update Wed Jun 10 05:32:10 2015 clément jean
+>>>>>>> ec6aa9191970d65097f2e549208f53e0c22de69a
 //
 
 #include "APlayer.hh"
@@ -23,6 +27,7 @@ APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
     std::cout << "MDR" << "\n";
   glm::vec3 vec(0.002, 0.002, 0.002);
   this->scale(vec);
+
 }
 
 APlayer::~APlayer() {}

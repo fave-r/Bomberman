@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Fri May 29 14:48:30 2015 Leo Thevenet
-// Last update Sat Jun  6 17:14:17 2015 Leo Thevenet
+// Last update Tue Jun  9 16:13:41 2015 Leo Thevenet
 //
 
 #include "Options.hh"
@@ -26,10 +26,14 @@ Options::Options(SDL_Window *windows, SDL_Renderer *_Main_Renderer, SDL_Event *e
   this->player = Parseur::getPlayer();
   this->densite = Parseur::getDensite();
   this->ia = Parseur::getIA();;
+  this->_backS = IMG_Load("./Assets/Menu/BackgroundMenu.jpg");
+  this->_backT = SDL_CreateTextureFromSurface(this->_Main_Renderer, this->_backS);
 }
 
 Options::~Options()
 {
+  SDL_DestroyTexture(this->_backT);
+  SDL_FreeSurface(this->_backS);
   if (this->_font)
     TTF_CloseFont(this->_font);
   TTF_Quit();
@@ -45,11 +49,7 @@ void Options::MakeScreen()
   r.w = 1100;
   r.h = 130;
   SDL_RenderClear(this->_Main_Renderer);
-
-
-  SDL_Surface *_BackGroundS = IMG_Load("./Assets/Menu/BackgroundMenu.jpg");
-  SDL_Texture *_BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, _BackGroundS);
-  SDL_RenderCopy(this->_Main_Renderer, _BackGroundT, NULL, NULL);
+  SDL_RenderCopy(this->_Main_Renderer, this->_backT, NULL, NULL);
 
   PutStringOnScreen((this->select == 0) ? sl : fg, r, "Largeur X    -> ", this->x);
   r.y += 150;
@@ -73,6 +73,8 @@ void Options::PutStringOnScreen(SDL_Color fg, SDL_Rect r, std::string str, int n
   SDL_Surface *surf = TTF_RenderText_Blended(this->_font, str.c_str(), fg);
   SDL_Texture *_BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, surf);
   SDL_RenderCopy(this->_Main_Renderer, _BackGroundT, NULL, &r);
+  SDL_DestroyTexture(_BackGroundT);
+  SDL_FreeSurface(surf);
 }
 
 void Options::FirstView()

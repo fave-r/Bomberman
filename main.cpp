@@ -5,17 +5,24 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 13:51:26 2015 polydo_s
-// Last update Sun Jun  7 02:27:39 2015 clément jean
+// Last update Wed Jun 10 04:45:54 2015 clément jean
 //
 
 #include "Menu.hh"
+#include "Music.hh"
 
 int	main()
 {
   Menu          menu;
+  Music		*SoundPlayer = new Music();
+
+  SoundPlayer->createSound("./Assets/Sounds/intro.mp3", "intro");
+  SoundPlayer->playSound("intro", true);
 
   try
     {
+      VideoPlay();
+      delete SoundPlayer;
       menu.initialize();
     }
   catch (const std::runtime_error &e)
@@ -24,6 +31,6 @@ int	main()
       return (EXIT_FAILURE);
     }
   while (menu.update() == true)
-  menu.draw();
+    menu.draw();
   return (0);
 }

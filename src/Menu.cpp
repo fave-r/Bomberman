@@ -5,11 +5,12 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Sat Jun  6 17:20:49 2015 Leo Thevenet
+// Last update Wed Jun 10 11:09:23 2015 Leo Thevenet
 
 #include "Menu.hh"
 #include "Options.hh"
 #include "SDL2/SDL_image.h"
+#include "HighScore.hh"
 
 Menu::Menu()
 {
@@ -25,10 +26,8 @@ Menu::~Menu()
 
 void		Menu::initialize()
 {
-  FMOD::Sound	*son;
-
-  this->_SoundPlayer->createSound(&son, "./Assets/Sounds/MenuSound.wav");
-  this->_SoundPlayer->playSound(son, true);
+  this->_SoundPlayer->createSound("./Assets/Sounds/MenuSound.wav", "menu");
+  this->_SoundPlayer->playSound("menu", true);
   if(SDL_Init(SDL_INIT_VIDEO) < 0)
     throw std::runtime_error("SDL could not initialize!");
   this->_Main_Window = SDL_CreateWindow("Bomberman",
@@ -38,8 +37,11 @@ void		Menu::initialize()
   if (TTF_Init() == -1)
     std::cout << "ttf error" << std::endl;
   if (!(this->_font = TTF_OpenFont("font/simple.ttf", 150)))
-    std::cout << TTF_GetError() << std::endl;// balancer exeption
+    throw std::runtime_error(TTF_GetError());
   this->_select = 0;
+  this->_BackGroundS = IMG_Load(this->_path.c_str());
+  this->_BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, this->_BackGroundS);
+  GetAllMap();
   SetScreen();
 }
 
@@ -48,21 +50,31 @@ void		Menu::SetScreen()
   SDL_Rect r;
   SDL_Color fg = {255, 255, 255, 255};
   SDL_Color sl = {255, 55, 55, 255};
-  r.x = 300;
-  r.y = 300;
+  r.x = 250;
+  r.y = 150;
   r.w = 500;
-  r.h = 180;
+  r.h = 170;
 
   SDL_RenderClear(this->_Main_Renderer);
-
-  SDL_Surface *_BackGroundS = IMG_Load(this->_path.c_str());
-  SDL_Texture *_BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, _BackGroundS);
-  SDL_RenderCopy(this->_Main_Renderer, _BackGroundT, NULL, NULL);
+  SDL_RenderCopy(this->_Main_Renderer, this->_BackGroundT, NULL, NULL);
 
   PutStringOnScreen((this->_select == 0) ? sl : fg, r, "Jouer");
   r.y += 200;
   r.w += 30;
-  PutStringOnScreen((this->_select == 1) ? sl : fg, r, "Options");
+  PutStringOnScreen((this->_select == 1) ? sl : fg, r, "Charger");
+  r.x += 600;
+  r.w = 350;
+  r.h = 150;
+  PutStringOnScreen(fg, r, this->_allMap[this->_selectMap]);
+  r.x -= 600;
+  r.w = 500;
+  r.h = 170;
+  r.y += 200;
+  r.w += 30;
+  PutStringOnScreen((this->_select == 2) ? sl : fg, r, "HighScore");
+  r.w -= 30;
+  r.y += 200;
+  PutStringOnScreen((this->_select == 3) ? sl : fg, r, "Options");
   r.y += 200;
 }
 
@@ -71,13 +83,37 @@ void		Menu::PutStringOnScreen(SDL_Color fg, SDL_Rect r, std::string str)
   SDL_Surface *surf = TTF_RenderText_Blended(this->_font, str.c_str(), fg);
   SDL_Texture *_BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, surf);
   SDL_RenderCopy(this->_Main_Renderer, _BackGroundT, NULL, &r);
+  SDL_DestroyTexture(_BackGroundT);
+  SDL_FreeSurface(surf);
 }
 
 void		Menu::MoveCursor(int where)
 {
   this->_select += where;
-  this->_select = (this->_select < 0) ? 1 : this->_select;
-  this->_select = (this->_select > 1) ? 0 : this->_select;
+  this->_select = (this->_select < 0) ? 3 : this->_select;
+  this->_select = (this->_select > 3) ? 0 : this->_select;
+}
+
+void		Menu::GetAllMap()
+{
+  DIR		*dpdf;
+  struct dirent	*epdf;
+
+  dpdf = opendir("./map/");
+  if (dpdf != NULL)
+    while ((epdf = readdir(dpdf)))
+      if (epdf->d_name[0] != '.')
+	this->_allMap.push_back(epdf->d_name);
+  this->_selectMap = 0;
+  if (this->_allMap.empty())
+    this->_allMap.push_back("No saved map");
+}
+
+void		Menu::MoveForLoad(int i)
+{
+  this->_selectMap += i;
+  this->_selectMap = (this->_selectMap < 0) ? this->_allMap.size() -1 : this->_selectMap;
+  this->_selectMap = (this->_selectMap >= (int)this->_allMap.size()) ? 0 : this->_selectMap;
 }
 
 bool		Menu::update()
@@ -102,6 +138,14 @@ bool		Menu::update()
 	case SDLK_UP:
 	  MoveCursor(-1);
 	  break;
+	case SDLK_RIGHT:
+	  if (this->_select == 1)
+	    MoveForLoad(1);
+	  break;
+	case SDLK_LEFT:
+	  if (this->_select == 1)
+	    MoveForLoad(-1);
+	  break;
 	}
       break;
     }
@@ -109,27 +153,53 @@ bool		Menu::update()
   return true;
 }
 
+void		Menu::launchBomberman(Bomberman *bomberman)
+{
+  while (bomberman->update() == true)
+    bomberman->draw();
+  delete bomberman;
+}
+
 bool          Menu::Check_Path()
 {
   if (this->_select == 0)
     {
-       delete this->_SoundPlayer;
-      SDL_Quit();
-
       Bomberman *bomberman = new Bomberman(Parseur::getX(), Parseur::getY(), Parseur::getPlayer());
+      delete this->_SoundPlayer;
+      SDL_Quit();
       try
 	{
 	  bomberman->initialize();
+	  launchBomberman(bomberman);
 	}
       catch (const std::runtime_error &e)
 	{
 	  std::cerr << e.what() << std::endl;
 	  return (false);
 	}
-
-      while (bomberman->update() == true)
-	bomberman->draw();
-      delete bomberman;
+    }
+  else if (this->_select == 1)
+    {
+      delete this->_SoundPlayer;
+      SDL_Quit();
+      try
+	{
+	  Bomberman *bomberman = new Bomberman("./map/" + this->_allMap[this->_selectMap]);
+	  bomberman->initialize();
+	  launchBomberman(bomberman);
+	}
+      catch (const std::runtime_error &e)
+	{
+	  std::cerr << e.what() << std::endl;
+	  return (false);
+	}
+    }
+  else if (this->_select == 2)
+    {
+      HighScore *hg = new HighScore(this->_Main_Window, this->_Main_Renderer, &(this->event), 1);
+      hg->getKey();
+      delete hg;
+      return true;
     }
   else
     {

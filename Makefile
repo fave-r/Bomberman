@@ -5,16 +5,17 @@
 ## Login   <polydo_s@epitech.net>
 ##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Mon Jun  8 01:24:09 2015 clément jean
+## Last update Tue Jun  9 16:29:01 2015 Leo Thevenet
 ##
 
 CXX		= g++
 
-CXXFLAGS	= -W -Wall -Werror -Wextra -std=c++11 -g
+CXXFLAGS	= -W -Wall -Werror -Wextra -std=c++11
 
 CXXFLAGS	+= -I./includes -I./lib/includes
 
-LDFLAGS		= -Wl,--rpath=./lib/libs -lgdl_gl -lGL -lpthread -lGLEW -lrt -lfbxsdk -lSDL2 -lSDL2_ttf -lSDL2_image -ldl
+LDFLAGS		= -Wl,--rpath=./lib/libs -lgdl_gl -lGL -lpthread -lGLEW -lrt -lfbxsdk -lSDL2 -lSDL2_ttf
+LDFLAGS		+= -lSDL2_image -ldl -L./lib/libvpx.a -lGLU -lvpx
 
 FMOD		= ./lib/fmod/libfmod.so
 
@@ -42,12 +43,16 @@ SRCS		= main.cpp			\
 		  $(SRC)/Parseur.cpp		\
 		  $(SRC)/Bomb.cpp		\
 		  $(SRC)/Fire.cpp		\
-                  $(SRC)/Options.cpp            \
+		  $(SRC)/Options.cpp            \
 		  $(SRC)/Music.cpp		\
 		  $(SRC)/ABonus.cpp		\
 		  $(SRC)/BonusSpeed.cpp		\
 		  $(SRC)/BonusForce.cpp		\
 		  $(SRC)/BonusBomb.cpp		\
+		  $(SRC)/MapSaver.cpp		\
+		  $(SRC)/playvpx.cpp		\
+		  $(SRC)/HighScore.cpp		\
+		  $(SRC)/Score.cpp		\
 
 OBJS		= $(SRCS:.cpp=.o)
 

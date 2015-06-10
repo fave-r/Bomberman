@@ -5,7 +5,11 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
+<<<<<<< HEAD
 // Last update Wed Jun 10 02:27:53 2015 polydo_s
+=======
+// Last update Mon Jun  8 16:05:59 2015 clément jean
+>>>>>>> ec6aa9191970d65097f2e549208f53e0c22de69a
 //
 
 #include <unistd.h>
@@ -19,8 +23,13 @@ Bomb::Bomb(float x, float y, APlayer *player, const gdl::Clock &clock, int power
   this->translate(glm::vec3(this->_x, 1, this->_y));
   if (this->_model.createSubAnim(0, "run", 0, 60) == false)
     throw std::runtime_error("Can't load bomb's animation");
+<<<<<<< HEAD
   this->scale(glm::vec3(0.6, 0.6, 0.6));
+=======
+  this->scale(glm::vec3(0.7, 0.7, 0.7));
+>>>>>>> ec6aa9191970d65097f2e549208f53e0c22de69a
   this->_model.setCurrentSubAnim("run");
+  this->_SoundPlayer->playSound("bombstart", false);
 }
 
 Bomb::~Bomb() {}
@@ -38,6 +47,7 @@ bool			Bomb::damage(std::vector<std::vector<AObject *> > &map, int x, int y)
       map[y][x] = new Fire(x, y, this->_elapsed);
       return (true);
     }
+<<<<<<< HEAD
   return (false);
 }
 
@@ -56,6 +66,10 @@ void			Bomb::destroy(std::vector<std::vector<AObject *> > &map)
   for (int i = this->_x - 1, j = this->_power; j > 0; --i, --j)
     if (!this->damage(map, i, this->_y))
       break;
+=======
+  this->_SoundPlayer->playSound("explosion", false);
+  delete this;
+>>>>>>> ec6aa9191970d65097f2e549208f53e0c22de69a
 }
 
 void			Bomb::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map)

@@ -4,7 +4,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon May 25 02:15:39 2015 clément jean
-// Last update Sun Jun  7 19:10:52 2015 clément jean
+// Last update Wed Jun 10 03:56:15 2015 clément jean
 //
 
 #include "TexturePool.hh"
@@ -29,11 +29,11 @@ bool		TexturePool::init()
       std::cerr << "Cannot load the wall texture" << std::endl;
       return (false);
     }
-  if (this->_texturePlayer.load("./Assets/Player/marvin.fbm/Main_texture_diffuse2.tga") == false)
+  /*  if (this->_texturePlayer.load("./Assets/Player/marvin.fbm/Main_texture_diffuse2.tga") == false)
     {
       std::cerr << "Cannot load the player texture" << std::endl;
       return (false);
-    }
+      }*/
   if (this->_textureGround.load("./Assets/Map/ground.fbm/ground.tga", true) == false)
     {
       std::cerr << "Cannot load the ground texture" << std::endl;
@@ -49,7 +49,7 @@ bool		TexturePool::init()
       std::cerr << "Cannot load the fire texture" << std::endl;
       return (false);
     }
-  if (this->_textureGold.load("./Assets/Map/Bonus.fbm/gold.tga", true) == false)
+  if (this->_textureGold.load("./Assets/Map/Bonus.fbm/rocher_or.tga", true) == false)
     {
       std::cerr << "Cannot load the gold texture" << std::endl;
       return (false);
