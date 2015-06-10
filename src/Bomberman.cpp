@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Tue Jun  9 11:38:46 2015 Leo Thevenet
+// Last update Wed Jun 10 04:09:44 2015 clément jean
 // Last update Mon Jun  8 18:20:48 2015 Leo Thevenet
 
 #include "Bomberman.hh"
@@ -116,7 +116,7 @@ void	Bomberman::init_map()
 void	Bomberman::init_player()
 {
   PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, APlayer::DOWN);
-
+  p1->setTexture(this->_texturePool->getPlayer());
   this->_playerlist.push_back(p1);
   if (this->_p == 2)
     {

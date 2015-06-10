@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Sun Jun  7 16:19:19 2015 polydo_s
+// Last update Wed Jun 10 05:32:10 2015 clément jean
 //
 
 #include "APlayer.hh"
@@ -23,6 +23,7 @@ APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
     std::cout << "MDR" << "\n";
   glm::vec3 vec(0.002, 0.002, 0.002);
   this->scale(vec);
+
 }
 
 APlayer::~APlayer() {}
@@ -35,7 +36,6 @@ void			APlayer::wait()
 
 void			APlayer::draw(gdl::AShader &shader)
 {
-  ///NE SERT A RIEN
   this->_texture.bind();
   this->_model.draw(shader, getTransformation(), 0.03);
 }

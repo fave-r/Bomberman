@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon Jun  8 01:16:23 2015 clément jean
-// Last update Mon Jun  8 20:27:46 2015 clément jean
+// Last update Wed Jun 10 03:12:58 2015 clément jean
 //
 
 #include "BonusForce.hh"
@@ -14,11 +14,8 @@ BonusForce::BonusForce(float x, float y) : ABonus(x, y)
 {
   if (this->_model.load("./Assets/Map/bonusForce.fbx") == false)
     throw std::runtime_error("Cannot load the force bonus");
-  this->scale(glm::vec3(0.01, 0.01, 0.01));
-  this->translate(glm::vec3(x, 1, y));
-  if (this->_model.createSubAnim(0, "rotate", 0, 36) == false)
-    throw std::runtime_error("Can't load bonus force's animation");
-  this->_model.setCurrentSubAnim("rotate");
+  this->scale(glm::vec3(0.04, 0.04, 0.04));
+  this->translate(glm::vec3(x, 1.5, y));
 }
 
 BonusForce::~BonusForce()
