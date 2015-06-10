@@ -5,11 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:49:34 2015 clément jean
-<<<<<<< HEAD
-// Last update Wed Jun 10 00:03:40 2015 polydo_s
-=======
-// Last update Mon Jun  8 15:52:09 2015 clément jean
->>>>>>> ec6aa9191970d65097f2e549208f53e0c22de69a
+// Last update Wed Jun 10 22:43:57 2015 polydo_s
 //
 
 #include "Box.hh"

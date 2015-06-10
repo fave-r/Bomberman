@@ -5,11 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:27:04 2015 clément jean
-<<<<<<< HEAD
-// Last update Tue Jun  9 23:28:03 2015 polydo_s
-=======
-// Last update Mon Jun  8 12:42:07 2015 Leo Thevenet
->>>>>>> ec6aa9191970d65097f2e549208f53e0c22de69a
+// Last update Wed Jun 10 22:40:31 2015 polydo_s
 //
 
 #ifndef __AOBJECT_HPP__

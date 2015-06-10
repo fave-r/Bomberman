@@ -5,11 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-<<<<<<< HEAD
-// Last update Wed Jun 10 00:23:45 2015 polydo_s
-=======
-// Last update Wed Jun 10 04:07:14 2015 clément jean
->>>>>>> ec6aa9191970d65097f2e549208f53e0c22de69a
+// Last update Wed Jun 10 22:44:13 2015 polydo_s
 //
 
 #include "PhysicalPlayer.hh"
