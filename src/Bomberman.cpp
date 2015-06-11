@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Fri Jun 12 00:56:12 2015 clément jean
+// Last update Fri Jun 12 01:02:04 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -154,20 +154,23 @@ bool Bomberman::update()
       {
 	IUpdatable *updatable = dynamic_cast<IUpdatable *>(this->_map[i][j]);
 	if (updatable)
-	  updatable->update(this->_clock, this->_map);
+	  updatable->update(this->_clock, this->_map, this->_playerlist);
       }
 
   std::list<APlayer *>::iterator it;
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
     {
-      PhysicalPlayer *player = dynamic_cast<PhysicalPlayer *>(*it);
-      if (player)
-	player->setInput(this->_input);
-      (*it)->update(this->_clock, this->_map);
-      (*it)->resetRotate();
-      int rot = ((*it)->getOrientation() % 2 == 0) ? (*it)->getOrientation() * 90 - 180 : (*it)->getOrientation() * 90;
-      (*it)->rotate(glm::vec3(0, 1, 0), rot);
-      (*it)->SetPos(glm::vec3((*it)->getX(), 1.001, (*it)->getY()));
+      if (!(*it)->isDead())
+	{
+	  PhysicalPlayer *player = dynamic_cast<PhysicalPlayer *>(*it);
+	  if (player)
+	    player->setInput(this->_input);
+	  (*it)->update(this->_clock, this->_map, this->_playerlist);
+	  (*it)->resetRotate();
+	  int rot = ((*it)->getOrientation() % 2 == 0) ? (*it)->getOrientation() * 90 - 180 : (*it)->getOrientation() * 90;
+	  (*it)->rotate(glm::vec3(0, 1, 0), rot);
+	  (*it)->SetPos(glm::vec3((*it)->getX(), 1.001, (*it)->getY()));
+	}
     }
   this->_shader.bind();
   return true;
@@ -182,15 +185,10 @@ void Bomberman::draw()
 
   for (size_t i = 0; i < this->_objects.size(); ++i)
     this->_objects[i]->draw(this->_shader); // a virer
-  /*for (size_t i = 0; i < this->_objplayers.size(); ++i)
-    this->_objplayers[i]->draw(this->_shader); // a virer*/
   std::list<APlayer *>::iterator it;
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
-    {
-      // x += (*it)->getX();
-      // y += (*it)->getY();
+    if (!(*it)->isDead())
       (*it)->draw(this->_shader);
-    }
   for (unsigned int i = 0; i < this->_map.size(); ++i)
     for (unsigned int j = 0; j < this->_map[i].size(); ++j)
       if (this->_map[i][j])

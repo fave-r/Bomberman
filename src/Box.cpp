@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:49:34 2015 clément jean
-// Last update Wed Jun 10 23:31:48 2015 clément jean
+// Last update Fri Jun 12 00:47:59 2015 polydo_s
 //
 
 #include "Box.hh"
@@ -19,10 +19,14 @@ Box::~Box() {}
 
 void	Box::destroy(std::vector<std::vector<AObject *> > &map, APlayer *player)
 {
-  int	x = this->_x;
-  int	y = this->_y;
+  // std::random_device generator;
+  // std::uniform_int_distribution<int> distribution(1, 10);
 
-  map[y][x] = NULL;
+  // int rand_value = distribution(generator);
+  // if (rand_value == 10)
+  //   map[this->_y][this->_x] = new BonusForce(this->_x, this->_y);
+  // else
+    map[this->_y][this->_x] = NULL;
   player->updateScore(1);
 }
 
@@ -30,12 +34,6 @@ void	Box::draw(gdl::AShader &shader)
 {
   this->_texture.bind();
   this->_geometry.draw(shader, getTransformation(), GL_QUADS);
-}
-
-void	Box::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map)
-{
-  (void)clock;
-  (void)map;
 }
 
 void	Box::setModel(const gdl::Geometry &geo)

@@ -5,17 +5,14 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-// Last update Thu Jun 11 18:35:34 2015 Leo Thevenet
+// Last update Fri Jun 12 00:35:31 2015 polydo_s
 //
 
 #include "PhysicalPlayer.hh"
 
 PhysicalPlayer::PhysicalPlayer(float x, float y, APlayer::eOrientation orientation)
-  : APlayer(x, y, orientation)
+  : APlayer(x, y, orientation), _elapse(0)
 {
-  this->_x = x;
-  this->_y = y;
-  this->_elapse = 0;
   if (this->_id == 1)
     {
       this->_actions[SDLK_UP] = &APlayer::goUp;
@@ -31,12 +28,10 @@ PhysicalPlayer::PhysicalPlayer(float x, float y, APlayer::eOrientation orientati
     }
   else
     {
-      this->_actions[SDLK_w] = &APlayer::goUp;
       this->_actions[SDLK_z] = &APlayer::goUp;
       this->_actions[SDLK_d] = &APlayer::goRight;
       this->_actions[SDLK_s] = &APlayer::goDown;
       this->_actions[SDLK_q] = &APlayer::goLeft;
-      this->_actions[SDLK_a] = &APlayer::goLeft;
       this->_actions[SDLK_e] = &APlayer::putBomb;
       this->_actions[4] = &APlayer::goUp;
       this->_actions[5] = &APlayer::goRight;
@@ -46,8 +41,9 @@ PhysicalPlayer::PhysicalPlayer(float x, float y, APlayer::eOrientation orientati
     }
 }
 
-void	PhysicalPlayer::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map)
+void	PhysicalPlayer::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map, std::list<APlayer *> &players)
 {
+  (void)players;
   bool	validKey = false;
   std::map<int, void(APlayer::*)(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock)>::const_iterator it;
 
