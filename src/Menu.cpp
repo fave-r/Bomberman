@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Thu Jun 11 15:34:41 2015 Leo Thevenet
+// Last update Thu Jun 11 18:59:23 2015 Leo Thevenet
 
 #include "Menu.hh"
 #include "Options.hh"
@@ -28,7 +28,7 @@ void		Menu::initialize()
 {
   this->_SoundPlayer->createSound("./Assets/Sounds/MenuSound.wav", "menu");
   this->_SoundPlayer->playSound("menu", true);
-  if(SDL_Init(SDL_INIT_VIDEO) < 0)
+  if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) < 0)
     throw std::runtime_error("SDL could not initialize!");
   this->_Main_Window = SDL_CreateWindow("Bomberman",
 					SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1050, 0);
@@ -118,11 +118,37 @@ void		Menu::MoveForLoad(int i)
 
 bool		Menu::update()
 {
+  SDL_Joystick *aa = SDL_JoystickOpen(0);
+  int a = 10000;
+
+  if (SDL_JoystickGetButton(aa, 4) == 1)
+    MoveCursor(-1);
+  else if (SDL_JoystickGetButton(aa, 6) == 1)
+    MoveCursor(1);
+  else if (SDL_JoystickGetButton(aa, 5) == 1)
+    {
+      if (this->_select == 1)
+	MoveForLoad(1);
+    }
+  else if (SDL_JoystickGetButton(aa, 7) == 1)
+    {
+      if (this->_select == 1)
+	MoveForLoad(1);
+    }
+  else if (SDL_JoystickGetButton(aa, 14) == 1)
+    {
+      if (Check_Path() == false)
+	return false;
+    }
+  else
+    a = 0;
+  usleep(a);
+
   SDL_WaitEvent(&event);
   switch (event.type)
     {
     case SDL_QUIT:
-      return false;//exit(0);
+      return false;
     case SDL_KEYDOWN:
       switch (event.key.keysym.sym)
 	{

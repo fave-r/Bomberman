@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:59:33 2015 polydo_s
-// Last update Wed Jun 10 04:07:41 2015 clément jean
+// Last update Thu Jun 11 17:47:49 2015 Leo Thevenet
 //
 
 #ifndef PHYSICAL_PLAYER_HH
@@ -23,8 +23,8 @@ class	PhysicalPlayer : public APlayer {
 
 private:
   std::map<int, void(APlayer::*)(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock)>	_actions;
-  gdl::Input												_input;
-
+  gdl::Input		_input;
+  float			_elapse;
 public:
   PhysicalPlayer(float, float, APlayer::eOrientation);
 

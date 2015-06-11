@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Fri May 29 14:48:30 2015 Leo Thevenet
-// Last update Thu Jun 11 15:36:44 2015 Leo Thevenet
+// Last update Thu Jun 11 18:56:23 2015 Leo Thevenet
 //
 
 #include "Options.hh"
@@ -107,6 +107,29 @@ void Options::ChangeValue(int nb)
 
 bool Options::getKey()
 {
+  SDL_Joystick *aa = SDL_JoystickOpen(0);
+  int a = 10000;
+
+  if (SDL_JoystickGetButton(aa, 4) == 1)
+    MoveCursor(-1);
+  else if (SDL_JoystickGetButton(aa, 6) == 1)
+    MoveCursor(1);
+  else if (SDL_JoystickGetButton(aa, 5) == 1)
+    ChangeValue(1);
+  else if (SDL_JoystickGetButton(aa, 7) == 1)
+    ChangeValue(-1);
+  else if (SDL_JoystickGetButton(aa, 14) == 1)
+    {
+      if (this->select == 5)
+	{
+	  Parseur::setConf(this->x, this->y, this->player, this->ia, this->densite);
+	  return false;
+	}
+    }
+  else
+    a = 0;
+  usleep(a);
+
   SDL_WaitEvent(this->_event);
   switch ((*this->_event).type)
     {

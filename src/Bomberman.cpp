@@ -5,13 +5,13 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Thu Jun 11 15:40:24 2015 Leo Thevenet
+// Last update Thu Jun 11 18:25:55 2015 Leo Thevenet
 //
 
 #include "Bomberman.hh"
 #include "MapSaver.hh"
 
-#define ten(x) (x < 10) ? 10 : x
+#define ten(x) (x < 15) ? 15 : x
 #define middle(xa, ya, xb, yb) sqrt(pow(xb - xa, 2) + pow(yb - ya, 2))
 
 Bomberman::Bomberman(unsigned int w, unsigned int h, unsigned int p)
@@ -43,6 +43,18 @@ void	Bomberman::initialize()
   if (!this->_context.start(1920, 1080, "My bomberman!"))
     throw std::runtime_error("Cannot instanciate the window");
 
+  SDL_Init(SDL_INIT_JOYSTICK);
+
+
+  int nJoysticks = SDL_NumJoysticks();
+  int nGameControllers = 0;
+  for ( int i = 0; i < nJoysticks; i++ ) {
+    if ( SDL_IsGameController(i) ) {
+      nGameControllers++;
+    }
+  }
+
+  std::cout << "controller " << nGameControllers << " " << SDL_NumJoysticks() << std::endl;
   this->_SoundPlayer = new Music();
   this->_texturePool = new TexturePool();
   this->_modelPool = new ModelPool();
