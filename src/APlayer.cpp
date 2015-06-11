@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Fri Jun 12 01:02:21 2015 clément jean
+// Last update Fri Jun 12 01:03:03 2015 clément jean
 //
 
 #include "APlayer.hh"
@@ -168,6 +168,7 @@ bool				APlayer::isDead() const
 void				APlayer::kill()
 {
   this->_dead = true;
+  this->_SoundPlayer->playSound("Death", false);
 }
 
 APlayer::eOrientation		APlayer::getOrientation() const
@@ -182,6 +183,6 @@ void				APlayer::decreaseCurrentBombs()
 
 void				APlayer::updateScore(int nb)
 {
-.  this->_score += nb;
+ this->_score += nb;
   std::cout << this->_score << "\n";
 }
