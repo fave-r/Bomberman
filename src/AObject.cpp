@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:27:19 2015 clément jean
-// Last update Wed Jun 10 22:43:45 2015 polydo_s
+// Last update Thu Jun 11 15:21:56 2015 Leo Thevenet
 //
 
 #include "AObject.hh"
@@ -53,8 +53,8 @@ bool			AObject::isColliding(AObject *other) const
       this->_x + this->_w > other->getX() &&
       this->_y < other->getY() + other->getHeight() &&
       this->_y + this->_h > other->getHeight())
-    return (true);
-  return (false);
+    return true;
+  return false;
 }
 
 float			AObject::getX() const

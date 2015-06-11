@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:27:04 2015 clément jean
-// Last update Wed Jun 10 22:40:31 2015 polydo_s
+// Last update Thu Jun 11 15:25:50 2015 Leo Thevenet
 //
 
 #ifndef __AOBJECT_HPP__
@@ -23,6 +23,7 @@
 #include <Input.hh>
 #include <string>
 #include "Music.hh"
+#include "Error.hh"
 
 class	AObject
 {
@@ -40,14 +41,12 @@ public:
   AObject(float x, float y, float width, float height);
   virtual ~AObject();
 
-public:
   virtual void		draw(gdl::AShader &shader) = 0;
   void			scale(const glm::vec3 &scale);
   void			translate(const glm::vec3 &v);
   void			rotate(const glm::vec3 &axis, const float &angle);
-  void			resetRotate();
-
 public:
+  void			resetRotate();
   bool			isColliding(AObject *other) const;
 
 public:

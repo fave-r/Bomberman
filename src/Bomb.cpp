@@ -5,10 +5,9 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Wed Jun 10 23:29:53 2015 clément jean
+// Last update Thu Jun 11 15:29:39 2015 Leo Thevenet
 //
 
-#include <unistd.h>
 #include "Bomb.hh"
 
 Bomb::Bomb(float x, float y, APlayer *player, const gdl::Clock &clock, int power)
@@ -18,7 +17,7 @@ Bomb::Bomb(float x, float y, APlayer *player, const gdl::Clock &clock, int power
     throw std::runtime_error("Cannot load the bomb");
   this->translate(glm::vec3(this->_x, 1, this->_y));
   if (this->_model.createSubAnim(0, "run", 0, 60) == false)
-    throw std::runtime_error("Can't load bomb's animation");
+    throw loading_error("Can't load bomb's animation");
   this->scale(glm::vec3(0.6, 0.6, 0.6));
   this->_model.setCurrentSubAnim("run");
   this->_SoundPlayer->playSound("bombstart", false);

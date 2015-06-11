@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Thu May 28 15:44:49 2015 Leo Thevenet
-// Last update Tue Jun  9 17:07:51 2015 Leo Thevenet
+// Last update Thu Jun 11 15:37:50 2015 Leo Thevenet
 //
 
 #include <fstream>
@@ -26,7 +26,7 @@ namespace	Parseur
     	fichier.close();
       }
     else
-      std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
+      throw loading_error("Parseur : can't set conf");
   }
 
   int		getX()
@@ -73,7 +73,7 @@ namespace	Parseur
 	p = (p < 1) ? 1 : (p > 2) ? 2 : p;
       }
     else
-      p = 2; //remettre 1 quand Bomberman.cpp sera patch
+      p = 2;
     return p;
   }
 
@@ -89,7 +89,7 @@ namespace	Parseur
 	ia = (ia < 0) ? 0 : ia;
       }
     else
-      ia = 0; //remettre 1 quand Bomberman.cpp sera patch
+      ia = 0;
     return ia;
   }
 

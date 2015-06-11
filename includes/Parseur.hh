@@ -5,11 +5,13 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Thu May 28 15:41:54 2015 Leo Thevenet
-// Last update Mon Jun  1 16:31:09 2015 Leo Thevenet
+// Last update Thu Jun 11 15:41:15 2015 Leo Thevenet
 //
 
 #ifndef __PARSEUR_HH__
 #define __PARSEUR_HH__
+
+#include "Error.hh"
 
 namespace	Parseur
 {

@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  9 15:39:29 2015 Leo Thevenet
-// Last update Wed Jun 10 10:16:53 2015 Leo Thevenet
+// Last update Thu Jun 11 15:31:55 2015 Leo Thevenet
 //
 
 #include "HighScore.hh"
@@ -13,9 +13,9 @@
 void HighScore::init(SDL_Window *windows, SDL_Renderer *_Main_Renderer, SDL_Event *event)
 {
   if (TTF_Init() == -1)
-    std::cout << "ttf error" << std::endl;
+    throw loading_error("HighScore : TTF error");
   if (!(this->_font = TTF_OpenFont("font/simple.ttf", 150)))
-    std::cout << TTF_GetError() << std::endl;// balancer exeption
+    throw loading_error(TTF_GetError());
   this->windows = windows;
   this->_Main_Renderer = _Main_Renderer;
   this->_event = event;
@@ -71,21 +71,14 @@ void HighScore::showWinner(std::string str)
 
 void HighScore::showAllScore()
 {
-  std::vector<int> _all = Score::getAllScore();
-  if (_all.empty())
-    {
-      std::string str = "No score";
-      putOneScore(str);
-    }
-  else
-    {
-      std::string str = "First score = ";
-      str += std::to_string(_all.front());
-      putOneScore(str);
-      str = "Last score = ";
-      str += std::to_string(_all.back());
-      putOneScore(str);
-    }
+  std::pair<int, int> _all = Score::getAllScore();
+
+  std::string str = "Player 1 : ";
+  str += std::to_string(_all.first);
+  putOneScore(str);
+  str = "Player 2 : ";
+  str += std::to_string(_all.second);
+  putOneScore(str);
 }
 
 void HighScore::putOneScore(std::string str)

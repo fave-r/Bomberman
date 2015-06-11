@@ -5,8 +5,8 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Wed Jun 10 10:57:43 2015 Leo Thevenet
-// Last update Mon Jun  8 18:20:48 2015 Leo Thevenet
+// Last update Thu Jun 11 15:40:24 2015 Leo Thevenet
+//
 
 #include "Bomberman.hh"
 #include "MapSaver.hh"
@@ -26,7 +26,7 @@ Bomberman::Bomberman(const std::string & NamedMap) : _namedMap(NamedMap)
 
 void	Bomberman::getMap()
 {
-  auto TupleMap = MapSaver::getMap(this->_namedMap);
+  std::tuple<int, int, int, std::vector< std::vector<AObject *> >, std::list<APlayer *> > TupleMap = MapSaver::getMap(this->_namedMap);
   if ((this->_w = std::get<0>(TupleMap)) == 0)
     throw std::runtime_error("No saved map");
   this->_h = std::get<1>(TupleMap);
@@ -47,10 +47,8 @@ void	Bomberman::initialize()
   this->_texturePool = new TexturePool();
   this->_modelPool = new ModelPool();
 
-  if (this->_texturePool->init() == false)
-    throw std::runtime_error("TexturePool fail");
-  if (this->_modelPool->init() == false)
-    throw std::runtime_error("ModelPool fail");
+  this->_texturePool->init();
+  this->_modelPool->init();
 
   glEnable(GL_DEPTH_TEST);
 
@@ -142,10 +140,7 @@ bool Bomberman::update()
   this->_context.updateInputs(this->_input);
 
   if (this->_input.getKey(SDLK_ESCAPE) || this->_input.getInput(SDL_QUIT))
-    {
-      std::cout << "Exit" << std::endl;
-      return false;
-    }
+    return false;
   if (this->_input.getKey(SDLK_F5))
     MapSaver::saveMap(this->_map, this->_playerlist, this->_w, this->_h, this->_p);
 

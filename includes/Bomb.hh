@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:18:58 2015 clément jean
-// Last update Wed Jun 10 23:20:17 2015 clément jean
+// Last update Thu Jun 11 15:25:02 2015 Leo Thevenet
 //
 
 #ifndef __BOMB_HH__
@@ -14,6 +14,7 @@
 #include <iostream>
 #include <Texture.hh>
 #include <Model.hh>
+#include <unistd.h>
 
 #include "IDestroyable.hh"
 #include "IUpdatable.hh"

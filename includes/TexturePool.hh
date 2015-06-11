@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon May 25 02:13:06 2015 clément jean
-// Last update Sun Jun  7 18:59:16 2015 clément jean
+// Last update Thu Jun 11 15:40:00 2015 Leo Thevenet
 //
 
 #ifndef __TEXTUREPOOL_HH__
@@ -22,7 +22,7 @@ class	TexturePool
 public:
   TexturePool();
   ~TexturePool();
-  bool	init();
+  void	init();
   const gdl::Texture      &getBox();
   const gdl::Texture	  &getWall();
   const gdl::Texture      &getGround();

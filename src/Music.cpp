@@ -5,12 +5,10 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  2 09:49:05 2015 Leo Thevenet
-// Last update Mon Jun  8 11:55:15 2015 Leo Thevenet
+// Last update Thu Jun 11 15:00:00 2015 Leo Thevenet
 //
 
 #include "Music.hh"
-#include <stdlib.h>
-#include <iostream>
 
 Music::Music()
 {
@@ -19,7 +17,7 @@ Music::Music()
   int driverCount = 0;
   this->_sys->getNumDrivers(&driverCount);
   if (driverCount == 0)
-      return;
+    throw exec_error("Can't launch music");
   this->_sys->init(42, FMOD_INIT_NORMAL, NULL);
 }
 
@@ -34,7 +32,8 @@ void Music::createSound(const char* pFile, const char* id)
 {
   FMOD::Sound	*son;
 
-  this->_sys->createSound(pFile, FMOD_DEFAULT, 0, &son);
+  if (this->_sys->createSound(pFile, FMOD_DEFAULT, 0, &son) != FMOD_OK)
+    throw exec_error("Can't create the music");
   this->_sons[id] = son;
 }
 
@@ -47,5 +46,6 @@ void Music::playSound(const char* id, bool bLoop = false)
       this->_sons[id]->setMode(FMOD_LOOP_NORMAL);
       this->_sons[id]->setLoopCount(-1);
     }
-  this->_sys->playSound(this->_sons[id], NULL, false, 0);
+  if (this->_sys->playSound(this->_sons[id], NULL, false, 0) != FMOD_OK)
+    throw exec_error("Can't play the music");
 }
