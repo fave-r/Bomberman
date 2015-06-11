@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Thu Jun 11 17:34:41 2015 polydo_s
+// Last update Fri Jun 12 00:54:08 2015 polydo_s
 //
 
 #include "APlayer.hh"
@@ -13,7 +13,8 @@
 
 APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
   : AObject(x, y, 0.90, 0.90),
-    _dead(false), _orientation(orientation), _delta(0.3), _speed(2),
+    _dead(false), _orientation(orientation), _delta(0.3),
+    _speed(2), _power(1), _currentBombs(0), _maxBombs(1),
     _inAnim(false), _score(0)
 {
   static unsigned id = 1;
@@ -60,9 +61,10 @@ void			APlayer::putBomb(std::vector<std::vector<AObject *> >&map, const gdl::Clo
   int x = this->_x + 0.5;
   int y = this->_y + 0.5;
 
-  if (!map[y][x])
+  if (!map[y][x] && this->_currentBombs < this->_maxBombs)
     {
-      map[y][x] = new Bomb(x, y, this, clock, 3);
+      map[y][x] = new Bomb(x, y, this, clock, this->_power);
+      this->_currentBombs++;
       this->wait();
     }
 }
@@ -171,6 +173,11 @@ void				APlayer::kill()
 APlayer::eOrientation		APlayer::getOrientation() const
 {
   return this->_orientation;
+}
+
+void				APlayer::decreaseCurrentBombs()
+{
+  this->_currentBombs--;
 }
 
 void				APlayer::updateScore(int nb)

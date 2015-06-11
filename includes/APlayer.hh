@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Thu Jun 11 16:36:00 2015 polydo_s
+// Last update Fri Jun 12 00:53:25 2015 polydo_s
 //
 
 #ifndef PLAYER_HH
@@ -33,6 +33,9 @@ protected:
   eOrientation		_orientation;
   float			_delta;
   float			_speed;
+  int			_power;
+  int			_currentBombs;
+  int			_maxBombs;
   bool			_inAnim;
   gdl::Texture		_texture;
   gdl::Model		_model;
@@ -65,6 +68,7 @@ public:
 
 public:
   void			kill();
+  void			decreaseCurrentBombs();
 };
 
 #endif

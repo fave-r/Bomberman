@@ -6,7 +6,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 17:27:42 2015 clément jean
-// Last update Thu Jun 11 16:30:29 2015 polydo_s
+// Last update Fri Jun 12 00:58:03 2015 polydo_s
 //
 
 #include "Fire.hh"
@@ -41,6 +41,5 @@ void          Fire::setModel(const gdl::Geometry &geo)
 
 void          Fire::affect(APlayer *player)
 {
-  (void)player;
-  std::cout << "Dans le feu" << std::endl;
+  player->kill();
 }
