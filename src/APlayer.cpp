@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Fri Jun 12 01:02:21 2015 clément jean
+// Last update Fri Jun 12 01:09:48 2015 polydo_s
 //
 
 #include "APlayer.hh"
@@ -182,6 +182,5 @@ void				APlayer::decreaseCurrentBombs()
 
 void				APlayer::updateScore(int nb)
 {
-.  this->_score += nb;
-  std::cout << this->_score << "\n";
+  this->_score += nb;
 }
