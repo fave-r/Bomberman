@@ -5,7 +5,7 @@
 ## Login   <polydo_s@epitech.net>
 ##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Tue Jun  9 16:29:01 2015 Leo Thevenet
+## Last update Wed Jun 10 22:44:31 2015 clément jean
 ##
 
 CXX		= g++
@@ -33,7 +33,6 @@ SRCS		= main.cpp			\
 		  $(SRC)/Box.cpp		\
 		  $(SRC)/Wall.cpp		\
 		  $(SRC)/Bomberman.cpp		\
-		  $(SRC)/Model.cpp		\
 		  $(SRC)/AObject.cpp		\
 		  $(SRC)/Cube.cpp		\
 		  $(SRC)/Menu.cpp		\

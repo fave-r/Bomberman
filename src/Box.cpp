@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:49:34 2015 clément jean
-// Last update Wed Jun 10 22:43:57 2015 polydo_s
+// Last update Wed Jun 10 23:31:48 2015 clément jean
 //
 
 #include "Box.hh"
@@ -17,12 +17,13 @@ Box::Box(float x, float y) : AObject(x, y, 1.0, 1.0)
 
 Box::~Box() {}
 
-void	Box::destroy(std::vector<std::vector<AObject *> > &map)
+void	Box::destroy(std::vector<std::vector<AObject *> > &map, APlayer *player)
 {
   int	x = this->_x;
   int	y = this->_y;
 
   map[y][x] = NULL;
+  player->updateScore(1);
 }
 
 void	Box::draw(gdl::AShader &shader)

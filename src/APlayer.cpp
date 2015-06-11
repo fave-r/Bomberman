@@ -5,25 +5,34 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Wed Jun 10 22:39:12 2015 polydo_s
+// Last update Thu Jun 11 02:06:33 2015 clément jean
 //
 
 #include "APlayer.hh"
+#include "Bomb.hh"
 
 APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
   : AObject(x, y, 0.90, 0.90), _orientation(orientation), _delta(0.6), _speed(2), _inAnim(false)
 {
   static unsigned id = 1;
+  this->_score = 0;
   this->_id = id++;
-  if (this->_model.load("./Assets/Player/marvin.fbx") == false)
-    std::cerr << "Cannot load the model" << std::endl;
+  if (this->_id == 1)
+    {
+      if (this->_model.load("./Assets/Player/marvin.dae") == false)
+	std::cerr << "Cannot load the model" << std::endl;
+    }
+  else
+    {
+      if (this->_model.load("./Assets/Player/marvin2.dae") == false)
+	std::cerr << "Cannot load the model" << std::endl;
+    }
   if (this->_model.createSubAnim(0, "wait", 0, 0) == false)
     std::cout << "MDR" << "\n";
   if (this->_model.createSubAnim(0, "run", 36, 53) == false)
     std::cout << "MDR" << "\n";
   glm::vec3 vec(0.002, 0.002, 0.002);
   this->scale(vec);
-
 }
 
 APlayer::~APlayer() {}
@@ -65,7 +74,7 @@ void			APlayer::goUp(std::vector<std::vector<AObject *> > &map, const gdl::Clock
 
   if (!this->_inAnim)
     this->_inAnim = this->_model.setCurrentSubAnim("run");
-  
+
   src = map[this->_y + this->_h / 2][this->_x + this->_w / 2];
   dest = map[this->_y + this->_h / 2 - this->_delta][this->_x + this->_w / 2];
   this->_y -= clock.getElapsed() * this->_speed;
@@ -151,4 +160,10 @@ void			APlayer::goLeft(std::vector<std::vector<AObject *> > &map, const gdl::Clo
 APlayer::eOrientation		APlayer::getOrientation() const
 {
   return this->_orientation;
+}
+
+void				APlayer::updateScore(int nb)
+{
+  this->_score += nb;
+  std::cout << this->_score << "\n";
 }

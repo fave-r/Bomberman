@@ -5,18 +5,19 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Sun Jun  7 01:30:35 2015 polydo_s
-// Last update Sun Jun  7 01:41:40 2015 polydo_s
+// Last update Wed Jun 10 23:25:32 2015 clément jean
 //
 
 #ifndef IDESTROYABLE_HH
 #define IDESTROYABLE_HH
 
 #include "AObject.hh"
+#include "APlayer.hh"
 
 class IDestroyable {
 
  public:
-  virtual void	destroy(std::vector<std::vector<AObject *> > &map) = 0;
+  virtual void	destroy(std::vector<std::vector<AObject *> > &map, APlayer *) = 0;
 };
 
 #endif

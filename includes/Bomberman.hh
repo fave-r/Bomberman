@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Mon Jun  8 20:44:23 2015 clément jean
+// Last update Wed Jun 10 22:44:10 2015 clément jean
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -25,7 +25,6 @@
 #include "APlayer.hh"
 #include "AObject.hh"
 #include "TexturePool.hh"
-#include "Model.hpp"
 #include "Bomb.hh"
 #include "Fire.hh"
 #include "Music.hh"

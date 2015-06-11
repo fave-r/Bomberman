@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:18:58 2015 clément jean
-// Last update Wed Jun 10 02:15:25 2015 polydo_s
+// Last update Wed Jun 10 23:20:17 2015 clément jean
 //
 
 #ifndef __BOMB_HH__
@@ -15,11 +15,11 @@
 #include <Texture.hh>
 #include <Model.hh>
 
-#include "AObject.hh"
-#include "APlayer.hh"
-#include "Fire.hh"
-#include "IUpdatable.hh"
 #include "IDestroyable.hh"
+#include "IUpdatable.hh"
+#include "Fire.hh"
+#include "APlayer.hh"
+#include "AObject.hh"
 
 class APlayer;
 
@@ -39,7 +39,7 @@ public:
 
 public:
   bool				damage(std::vector<std::vector<AObject *> > &map, int x, int y);
-  void				destroy(std::vector<std::vector<AObject *> > &map);
+  void				destroy(std::vector<std::vector<AObject *> > &map, APlayer *);
 
 public:
   virtual void			update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map);

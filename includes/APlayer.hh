@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Sun Jun  7 17:58:53 2015 clément jean
+// Last update Wed Jun 10 23:27:53 2015 clément jean
 //
 
 #ifndef PLAYER_HH
@@ -14,7 +14,6 @@
 #include <iostream>
 
 #include "AObject.hh"
-#include "Bomb.hh"
 #include "ICrossable.hh"
 #include "IUpdatable.hh"
 
@@ -36,6 +35,7 @@ protected:
   bool		_inAnim;
   gdl::Texture	_texture;
   gdl::Model	_model;
+  int		_score;
 
 public:
   APlayer(float, float, APlayer::eOrientation);
@@ -47,6 +47,7 @@ public:
 
 public:
   void			wait();
+  void			updateScore(int);
 
 public:
   void			putBomb(std::vector<std::vector<AObject *> >&map, const gdl::Clock &clock);

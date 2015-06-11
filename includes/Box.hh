@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:48:39 2015 clément jean
-// Last update Sun Jun  7 16:59:40 2015 polydo_s
+// Last update Wed Jun 10 23:25:16 2015 clément jean
 //
 
 #ifndef __BOX_HH__
@@ -19,6 +19,8 @@
 #include "IDestroyable.hh"
 #include "IUpdatable.hh"
 
+class IDestroyable;
+
 class Box : public AObject, public IUpdatable, public IDestroyable
 {
 
@@ -30,7 +32,7 @@ public:
   ~Box();
 
 public:
-  virtual void	destroy(std::vector<std::vector<AObject *> > &map);
+  virtual void	destroy(std::vector<std::vector<AObject *> > &map, APlayer *);
 
 public:
   virtual void	draw(gdl::AShader &shader);

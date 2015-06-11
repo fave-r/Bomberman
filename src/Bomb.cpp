@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Wed Jun 10 22:43:22 2015 polydo_s
+// Last update Wed Jun 10 23:29:53 2015 clément jean
 //
 
 #include <unistd.h>
@@ -31,7 +31,7 @@ bool			Bomb::damage(std::vector<std::vector<AObject *> > &map, int x, int y)
   IDestroyable *destroyable = dynamic_cast<IDestroyable *>(map[y][x]);
   if (destroyable)
     {
-      destroyable->destroy(map);
+      destroyable->destroy(map, this->_player);
       map[y][x] = new Fire(x, y, this->_elapsed);
     }
   else if (!map[y][x])
@@ -42,8 +42,9 @@ bool			Bomb::damage(std::vector<std::vector<AObject *> > &map, int x, int y)
   return (false);
 }
 
-void			Bomb::destroy(std::vector<std::vector<AObject *> > &map)
+void			Bomb::destroy(std::vector<std::vector<AObject *> > &map, APlayer *player)
 {
+  (void)player;
   map[this->_y][this->_x] = new Fire(this->_x, this->_y, this->_elapsed);
   for (int i = this->_y - 1, j = this->_power; j > 0; --i, --j)
     if (!this->damage(map, this->_x, i))
@@ -65,7 +66,7 @@ void			Bomb::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> 
 {
   this->_elapsed += clock.getElapsed();
   if (this->_elapsed > this->_livespan)
-    this->destroy(map);
+    this->destroy(map, this->_player);
 }
 
 void			Bomb::draw(gdl::AShader &shader)
