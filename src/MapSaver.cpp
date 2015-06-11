@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Mon Jun  8 16:18:51 2015 Leo Thevenet
-// Last update Thu Jun 11 15:33:51 2015 Leo Thevenet
+// Last update Thu Jun 11 15:54:21 2015 clément jean
 //
 
 #include "MapSaver.hh"
@@ -86,9 +86,9 @@ namespace	MapSaver
 	    fichier >> a;
 	    std::cout << a << " ";
 	    if (a == 1)
-	      map[i][j] = new Wall(i, j);
+	      map[i][j] = new Wall(j, i);
 	    else if (a == 2)
-	      map[i][j] = new Box(i, j);
+	      map[i][j] = new Box(j, i);
 	    else
 	      map[i][j] = NULL;
 	  }
