@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:48:39 2015 clément jean
-// Last update Wed Jun 10 23:25:16 2015 clément jean
+// Last update Thu Jun 11 16:18:09 2015 polydo_s
 //
 
 #ifndef __BOX_HH__
@@ -21,7 +21,7 @@
 
 class IDestroyable;
 
-class Box : public AObject, public IUpdatable, public IDestroyable
+class Box : public AObject, public IDestroyable
 {
 
 private:
@@ -36,7 +36,6 @@ public:
 
 public:
   virtual void	draw(gdl::AShader &shader);
-  virtual void	update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &);
 
 public:
   void		setModel(const gdl::Geometry &geo);

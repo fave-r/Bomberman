@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:49:34 2015 clément jean
-// Last update Wed Jun 10 23:31:48 2015 clément jean
+// Last update Thu Jun 11 16:43:15 2015 polydo_s
 //
 
 #include "Box.hh"
@@ -30,12 +30,6 @@ void	Box::draw(gdl::AShader &shader)
 {
   this->_texture.bind();
   this->_geometry.draw(shader, getTransformation(), GL_QUADS);
-}
-
-void	Box::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map)
-{
-  (void)clock;
-  (void)map;
 }
 
 void	Box::setModel(const gdl::Geometry &geo)

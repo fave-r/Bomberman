@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:29:04 2015 clément jean
-// Last update Sat Jun  6 01:06:15 2015 polydo_s
+// Last update Thu Jun 11 16:17:10 2015 polydo_s
 //
 
 #ifndef __CUBE_HPP__
@@ -15,7 +15,6 @@
 #include <Geometry.hh>
 #include <Texture.hh>
 #include "AObject.hh"
-#include "IUpdatable.hh"
 
 class Cube : public AObject
 {

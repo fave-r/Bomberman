@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Wed Jun 10 23:27:53 2015 clément jean
+// Last update Thu Jun 11 16:36:00 2015 polydo_s
 //
 
 #ifndef PLAYER_HH
@@ -28,14 +28,16 @@ public:
   };
 
 protected:
-  unsigned int	_id;
-  eOrientation	_orientation;
-  float		_delta;
-  float		_speed;
-  bool		_inAnim;
-  gdl::Texture	_texture;
-  gdl::Model	_model;
-  int		_score;
+  unsigned int		_id;
+  bool			_dead;
+  eOrientation		_orientation;
+  float			_delta;
+  float			_speed;
+  bool			_inAnim;
+  gdl::Texture		_texture;
+  gdl::Model		_model;
+  int			_score;
+  std::list<APlayer *>	_playerList;
 
 public:
   APlayer(float, float, APlayer::eOrientation);
@@ -43,7 +45,7 @@ public:
 
 public:
   virtual void		draw(gdl::AShader &shader);
-  virtual void		update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &) = 0;
+  virtual void		update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map, std::list<APlayer *> &players) = 0;
 
 public:
   void			wait();
@@ -58,7 +60,11 @@ public:
   void                  move(const int &x, const int &y, const int &z);
 
 public:
+  bool			isDead() const;
   eOrientation		getOrientation() const;
+
+public:
+  void			kill();
 };
 
 #endif

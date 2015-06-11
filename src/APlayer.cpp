@@ -5,17 +5,18 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Thu Jun 11 02:06:33 2015 clément jean
+// Last update Thu Jun 11 16:46:47 2015 polydo_s
 //
 
 #include "APlayer.hh"
 #include "Bomb.hh"
 
 APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
-  : AObject(x, y, 0.90, 0.90), _orientation(orientation), _delta(0.6), _speed(2), _inAnim(false)
+  : AObject(x, y, 0.90, 0.90),
+    _dead(false), _orientation(orientation), _delta(0.3), _speed(2),
+    _inAnim(false), _score(0)
 {
   static unsigned id = 1;
-  this->_score = 0;
   this->_id = id++;
   if (this->_id == 1)
     {
@@ -155,6 +156,16 @@ void			APlayer::goLeft(std::vector<std::vector<AObject *> > &map, const gdl::Clo
 	this->_x = x;
     }
   this->_orientation = APlayer::LEFT;
+}
+
+bool				APlayer::isDead() const
+{
+  return this->_dead;
+}
+
+void				APlayer::kill()
+{
+  this->_dead = true;
 }
 
 APlayer::eOrientation		APlayer::getOrientation() const

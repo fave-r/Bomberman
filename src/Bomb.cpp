@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Wed Jun 10 23:29:53 2015 clément jean
+// Last update Thu Jun 11 17:24:37 2015 polydo_s
 //
 
 #include <unistd.h>
@@ -26,47 +26,55 @@ Bomb::Bomb(float x, float y, APlayer *player, const gdl::Clock &clock, int power
 
 Bomb::~Bomb() {}
 
-bool			Bomb::damage(std::vector<std::vector<AObject *> > &map, int x, int y)
+bool			Bomb::damage(std::vector<std::vector<AObject *> > &map, APlayer *player, int x, int y)
 {
-  IDestroyable *destroyable = dynamic_cast<IDestroyable *>(map[y][x]);
-  if (destroyable)
+  std::list<APlayer *>::iterator it;
+  for (it = this->_players.begin(); it != this->_players.end(); ++it)
     {
-      destroyable->destroy(map, this->_player);
-      map[y][x] = new Fire(x, y, this->_elapsed);
+      if (!(*it)->isDead())
+	if (static_cast<int>((*it)->getX()) == x && y == static_cast<int>((*it)->getY()))
+	  (*it)->kill();
     }
-  else if (!map[y][x])
+
+  if (!map[y][x])
     {
       map[y][x] = new Fire(x, y, this->_elapsed);
       return (true);
     }
+  IDestroyable *destroyable = dynamic_cast<IDestroyable *>(map[y][x]);
+  if (destroyable)
+    destroyable->destroy(map, player);
   return (false);
 }
 
 void			Bomb::destroy(std::vector<std::vector<AObject *> > &map, APlayer *player)
 {
-  (void)player;
   map[this->_y][this->_x] = new Fire(this->_x, this->_y, this->_elapsed);
+  this->damage(map, player, this->_x, this->_y);
   for (int i = this->_y - 1, j = this->_power; j > 0; --i, --j)
-    if (!this->damage(map, this->_x, i))
+    if (!this->damage(map, player, this->_x, i))
       break;
   for (int i = this->_x + 1, j = this->_power; j > 0; ++i, --j)
-    if (!this->damage(map, i, this->_y))
+    if (!this->damage(map, player, i, this->_y))
       break;
   for (int i = this->_y + 1, j = this->_power; j > 0; ++i, --j)
-    if (!this->damage(map, this->_x, i))
+    if (!this->damage(map, player, this->_x, i))
       break;
   for (int i = this->_x - 1, j = this->_power; j > 0; --i, --j)
-    if (!this->damage(map, i, this->_y))
+    if (!this->damage(map, player, i, this->_y))
       break;
   this->_SoundPlayer->playSound("explosion", false);
   delete this;
 }
 
-void			Bomb::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map)
+void			Bomb::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map, std::list<APlayer *> &players)
 {
   this->_elapsed += clock.getElapsed();
   if (this->_elapsed > this->_livespan)
-    this->destroy(map, this->_player);
+    {
+      this->_players = players;
+      this->destroy(map, this->_player);
+    }
 }
 
 void			Bomb::draw(gdl::AShader &shader)

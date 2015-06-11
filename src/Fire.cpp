@@ -1,3 +1,4 @@
+
 //
 // Fire.cpp for Fire.cpp in /home/jean_c/Tests/Bomberman/src
 //
@@ -5,7 +6,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 17:27:42 2015 clément jean
-// Last update Wed Jun 10 00:25:40 2015 polydo_s
+// Last update Thu Jun 11 16:30:29 2015 polydo_s
 //
 
 #include "Fire.hh"
@@ -19,8 +20,9 @@ Fire::Fire(float x, float y, double elapsed)
 
 Fire::~Fire() {}
 
-void		Fire::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map)
+void		Fire::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map, std::list<APlayer *> &players)
 {
+  (void)players;
   this->_elapsed += clock.getElapsed();
   if (this->_elapsed > this->_livespan)
     map[this->_y][this->_x] = NULL;
