@@ -5,20 +5,18 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Thu Jun 11 18:25:55 2015 Leo Thevenet
+// Last update Fri Jun 12 00:56:12 2015 clément jean
 //
 
 #include "Bomberman.hh"
 #include "MapSaver.hh"
-
-#define ten(x) (x < 15) ? 15 : x
-#define middle(xa, ya, xb, yb) sqrt(pow(xb - xa, 2) + pow(yb - ya, 2))
 
 Bomberman::Bomberman(unsigned int w, unsigned int h, unsigned int p)
   : _w(w), _h(h), _p(p)
 {
   this->_map = Map::generate(this->_w, this->_h, this->_p);
   this->_namedMap = "";
+  this->_numberOfSave = 0;
 }
 
 Bomberman::Bomberman(const std::string & NamedMap) : _namedMap(NamedMap)
@@ -42,19 +40,9 @@ void	Bomberman::initialize()
 
   if (!this->_context.start(1920, 1080, "My bomberman!"))
     throw std::runtime_error("Cannot instanciate the window");
+  if (SDL_Init(SDL_INIT_JOYSTICK | SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) < 0)
+    throw loading_error("Bomberman : Joystick error");
 
-  SDL_Init(SDL_INIT_JOYSTICK);
-
-
-  int nJoysticks = SDL_NumJoysticks();
-  int nGameControllers = 0;
-  for ( int i = 0; i < nJoysticks; i++ ) {
-    if ( SDL_IsGameController(i) ) {
-      nGameControllers++;
-    }
-  }
-
-  std::cout << "controller " << nGameControllers << " " << SDL_NumJoysticks() << std::endl;
   this->_SoundPlayer = new Music();
   this->_texturePool = new TexturePool();
   this->_modelPool = new ModelPool();
@@ -154,8 +142,13 @@ bool Bomberman::update()
   if (this->_input.getKey(SDLK_ESCAPE) || this->_input.getInput(SDL_QUIT))
     return false;
   if (this->_input.getKey(SDLK_F5))
-    MapSaver::saveMap(this->_map, this->_playerlist, this->_w, this->_h, this->_p);
-
+    {
+      MapSaver::saveMap(this->_map, this->_playerlist, this->_w, this->_h, this->_p);
+      std::stringstream ss;
+      this->_numberOfSave++;
+      ss << "Save" << this->_numberOfSave << ".tga";
+      saveScreenshot(ss.str(), 1920, 1080);
+    }
   for (unsigned int i = 0; i < this->_map.size(); ++i)
     for (unsigned int j = 0; j < this->_map[i].size(); ++j)
       {

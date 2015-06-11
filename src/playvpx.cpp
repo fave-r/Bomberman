@@ -274,3 +274,32 @@ void	 VideoPlay() {
   playvpx_deinit(&data);
   SDL_Quit();
 }
+
+bool	saveScreenshot(std::string filename, int w, int h)
+{
+  glPixelStorei(GL_PACK_ALIGNMENT, 1);
+
+  int nSize = w * h * 3;
+  char* dataBuffer = (char*)malloc(nSize*sizeof(char));
+
+  if (!dataBuffer) return false;
+
+  glReadPixels((GLint)0, (GLint)0,
+	       (GLint)w, (GLint)h,
+	       GL_BGR, GL_UNSIGNED_BYTE, dataBuffer);
+
+  FILE *filePtr = fopen(filename.c_str(), "wb");
+  if (!filePtr) return false;
+
+
+  unsigned char TGAheader[12]={0,0,2,0,0,0,0,0,0,0,0,0};
+  unsigned char header[6] = { (unsigned char)(w % 256),(unsigned char)(w / 256),
+			      (unsigned char)(h % 256),(unsigned char)(h / 256),
+			      24,0};
+
+  fwrite(TGAheader,sizeof(unsigned char),12,filePtr);
+  fwrite(header,sizeof(unsigned char),6,filePtr);
+  fwrite(dataBuffer,sizeof(GLubyte),nSize,filePtr);
+  fclose(filePtr);
+  return true;
+}

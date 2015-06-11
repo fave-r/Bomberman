@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Thu Jun 11 17:35:49 2015 Leo Thevenet
+// Last update Fri Jun 12 00:59:46 2015 clément jean
 //
 
 #include "APlayer.hh"
@@ -164,6 +164,6 @@ APlayer::eOrientation		APlayer::getOrientation() const
 
 void				APlayer::updateScore(int nb)
 {
-  this->_score += nb;
+.  this->_score += nb;
   std::cout << this->_score << "\n";
 }

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Wed Jun 10 22:44:10 2015 clément jean
+// Last update Fri Jun 12 00:48:54 2015 clément jean
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -19,6 +19,7 @@
 #include <BasicShader.hh>
 #include <Model.hh>
 #include <tuple>
+#include <sstream>
 
 #include "Map.hh"
 #include "Cube.hh"
@@ -29,6 +30,9 @@
 #include "Fire.hh"
 #include "Music.hh"
 #include "ModelPool.hh"
+
+#define ten(x) (x < 15) ? 15 : x
+#define middle(xa, ya, xb, yb) sqrt(pow(xb - xa, 2) + pow(yb - ya, 2))
 
 class Bomberman
 {
@@ -47,6 +51,7 @@ public:
   bool	update();
   void	draw();
   void	getMap();
+
 private:
   std::vector< std::vector<AObject *> >		_map;
   std::vector<AObject*>				_objects;
@@ -62,6 +67,7 @@ private:
   std::list<APlayer *>				_playerlist;
   Music						*_SoundPlayer;
   std::string					_namedMap;
+  int						_numberOfSave;
 };
 
 #endif
