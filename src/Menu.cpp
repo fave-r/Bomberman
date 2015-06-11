@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Wed Jun 10 11:09:23 2015 Leo Thevenet
+// Last update Thu Jun 11 15:34:41 2015 Leo Thevenet
 
 #include "Menu.hh"
 #include "Options.hh"
@@ -35,7 +35,7 @@ void		Menu::initialize()
   this->_Main_Renderer = SDL_CreateRenderer(this->_Main_Window, -1, SDL_RENDERER_ACCELERATED);
   this->_path = "./Assets/Menu/BackgroundMenu.jpg";
   if (TTF_Init() == -1)
-    std::cout << "ttf error" << std::endl;
+    throw loading_error("HighScore : TTF error");
   if (!(this->_font = TTF_OpenFont("font/simple.ttf", 150)))
     throw std::runtime_error(TTF_GetError());
   this->_select = 0;
@@ -164,11 +164,11 @@ bool          Menu::Check_Path()
 {
   if (this->_select == 0)
     {
-      Bomberman *bomberman = new Bomberman(Parseur::getX(), Parseur::getY(), Parseur::getPlayer());
       delete this->_SoundPlayer;
       SDL_Quit();
       try
 	{
+	  Bomberman *bomberman = new Bomberman(Parseur::getX(), Parseur::getY(), Parseur::getPlayer());
 	  bomberman->initialize();
 	  launchBomberman(bomberman);
 	}

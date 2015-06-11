@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Mon Jun  8 16:18:51 2015 Leo Thevenet
-// Last update Thu Jun 11 16:06:17 2015 polydo_s
+// Last update Thu Jun 11 17:34:08 2015 polydo_s
 //
 
 #include "MapSaver.hh"
@@ -46,7 +46,7 @@ namespace	MapSaver
 	fichier.close();
       }
     else
-      std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
+      throw loading_error("Can save the map");
   }
 
   std::tuple<int, int, int, std::vector< std::vector<AObject *> >, std::list<APlayer *> > getMap(const std::string & fileName)
@@ -54,7 +54,7 @@ namespace	MapSaver
     std::ifstream fichier(fileName, std::ifstream::in);
 
     if(!fichier)
-      throw std::runtime_error("No saved map");
+      throw loading_error("No saved map");
 
     int p, w, h;
     float x, y;
@@ -76,8 +76,6 @@ namespace	MapSaver
 	players.push_back(p2);
       }
 
-    // std::get<3>(foo) = players;
-
     int a;
     std::vector<std::vector<AObject *> > map(w, std::vector<AObject *>(h));
     std::cout << w << "  " << h << "  " << std::endl;
@@ -88,9 +86,9 @@ namespace	MapSaver
 	    fichier >> a;
 	    std::cout << a << " ";
 	    if (a == 1)
-	      map[i][j] = new Wall(i, j);
+	      map[i][j] = new Wall(j, i);
 	    else if (a == 2)
-	      map[i][j] = new Box(i, j);
+	      map[i][j] = new Box(j, i);
 	    else
 	      map[i][j] = NULL;
 	  }

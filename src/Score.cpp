@@ -5,40 +5,41 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  9 16:13:55 2015 Leo Thevenet
-// Last update Tue Jun  9 17:12:02 2015 Leo Thevenet
+// Last update Thu Jun 11 10:50:24 2015 Leo Thevenet
 //
 
 #include "Score.hh"
+#include "Error.hh"
 
 namespace	Score
 {
-  void		addNewScore(const int &s)
+  void		addNewScore(const int &s, const int &p)
   {
-    std::ofstream fichier(".score", std::ofstream::out | std::ofstream::app);
+    std::pair<int, int> a = Score::getAllScore();
+    std::ofstream fichier(".score", std::ofstream::out | std::ofstream::trunc);
 
     if(fichier)
       {
-	fichier << s << std::endl;
+	if (p == 1)
+	  a.first += s;
+	else
+	  a.second += s;
+	fichier << a.first << std::endl << a.second << std::endl;
 	fichier.close();
       }
     else
-      throw std::runtime_error("No score");
+      throw loading_error("Can't acces file .score");
   }
 
-  std::vector<int> getAllScore()
+  std::pair<int, int> getAllScore()
   {
     std::ifstream fichier(".score", std::ifstream::in);
-    std::vector<int> _all;
+    int		a, b;
 
     if(!fichier)
-      return _all;
-
-    int a;
-    while (fichier.good())
-      {
-	fichier >> a;
-	_all.push_back(a);
-      }
-    return _all;
+      return std::make_pair(0, 0);
+    fichier >> a >> b;
+    fichier.close();
+    return std::make_pair(a, b);
   }
 };

@@ -4,7 +4,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon May 25 02:15:39 2015 clément jean
-// Last update Wed Jun 10 03:56:15 2015 clément jean
+// Last update Thu Jun 11 15:40:41 2015 Leo Thevenet
 //
 
 #include "TexturePool.hh"
@@ -17,44 +17,20 @@ TexturePool::~TexturePool()
 {
 }
 
-bool		TexturePool::init()
+void		TexturePool::init()
 {
   if (this->_textureBox.load("./Assets/Map/box.fbm/box.tga", true) == false)
-    {
-      std::cerr << "Cannot load the box texture" << std::endl;
-      return (false);
-    }
+    throw loading_error("TexturePool : Cannot load Box texture");
   if (this->_textureWall.load("./Assets/Map/wall.fbm/Wall.tga", true) == false)
-    {
-      std::cerr << "Cannot load the wall texture" << std::endl;
-      return (false);
-    }
-  /*  if (this->_texturePlayer.load("./Assets/Player/marvin.fbm/Main_texture_diffuse2.tga") == false)
-    {
-      std::cerr << "Cannot load the player texture" << std::endl;
-      return (false);
-      }*/
+    throw loading_error("TexturePool : Cannot load Wall texture");
   if (this->_textureGround.load("./Assets/Map/ground.fbm/ground.tga", true) == false)
-    {
-      std::cerr << "Cannot load the ground texture" << std::endl;
-      return (false);
-    }
+    throw loading_error("TexturePool : Cannot load Ground texture");
   if (this->_textureBomb.load("./Assets/Map/bomb.fbm/Bomb_texture.tga", true) == false)
-    {
-      std::cerr << "Cannot load the bomb texture" << std::endl;
-      return (false);
-    }
+    throw loading_error("TexturePool : Cannot load Bomb texture");
   if (this->_textureFire.load("./Assets/Map/fire.fbm/XPlosion.tga", true) == false)
-    {
-      std::cerr << "Cannot load the fire texture" << std::endl;
-      return (false);
-    }
+    throw loading_error("TexturePool : Cannot load Fire texture");
   if (this->_textureGold.load("./Assets/Map/Bonus.fbm/rocher_or.tga", true) == false)
-    {
-      std::cerr << "Cannot load the gold texture" << std::endl;
-      return (false);
-    }
-  return true;
+    throw loading_error("TexturePool : Cannot load Gold texture");
 }
 
 const gdl::Texture	&TexturePool::getBox()

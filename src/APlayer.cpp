@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Thu Jun 11 16:46:47 2015 polydo_s
+// Last update Thu Jun 11 17:34:41 2015 polydo_s
 //
 
 #include "APlayer.hh"
@@ -21,17 +21,17 @@ APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
   if (this->_id == 1)
     {
       if (this->_model.load("./Assets/Player/marvin.dae") == false)
-	std::cerr << "Cannot load the model" << std::endl;
+	throw exec_error("APlayer : Cannot load the model");
     }
   else
     {
       if (this->_model.load("./Assets/Player/marvin2.dae") == false)
-	std::cerr << "Cannot load the model" << std::endl;
+	throw exec_error("APlayer : Cannot load the model");
     }
   if (this->_model.createSubAnim(0, "wait", 0, 0) == false)
-    std::cout << "MDR" << "\n";
+    throw exec_error("APlayer : Cannot wait");
   if (this->_model.createSubAnim(0, "run", 36, 53) == false)
-    std::cout << "MDR" << "\n";
+    throw exec_error("APlayer : Cannot run");
   glm::vec3 vec(0.002, 0.002, 0.002);
   this->scale(vec);
 }

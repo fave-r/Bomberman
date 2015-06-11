@@ -5,22 +5,22 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 13:51:26 2015 polydo_s
-// Last update Wed Jun 10 04:45:54 2015 clément jean
+// Last update Thu Jun 11 15:06:58 2015 Leo Thevenet
 //
 
+#include "Error.hh"
 #include "Menu.hh"
 #include "Music.hh"
 
 int	main()
 {
-  Menu          menu;
-  Music		*SoundPlayer = new Music();
-
-  SoundPlayer->createSound("./Assets/Sounds/intro.mp3", "intro");
-  SoundPlayer->playSound("intro", true);
-
+      Menu		menu;
   try
     {
+      Music		*SoundPlayer = new Music();
+
+      SoundPlayer->createSound("./Assets/Sounds/intro.mp3", "intro");
+      SoundPlayer->playSound("intro", true);
       VideoPlay();
       delete SoundPlayer;
       menu.initialize();

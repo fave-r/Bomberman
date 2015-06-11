@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Fri May 29 14:48:30 2015 Leo Thevenet
-// Last update Tue Jun  9 16:13:41 2015 Leo Thevenet
+// Last update Thu Jun 11 15:36:44 2015 Leo Thevenet
 //
 
 #include "Options.hh"
@@ -14,9 +14,9 @@
 Options::Options(SDL_Window *windows, SDL_Renderer *_Main_Renderer, SDL_Event *event)
 {
   if (TTF_Init() == -1)
-    std::cout << "ttf error" << std::endl;
+    throw loading_error("HighScore : TTF error");
   if (!(this->_font = TTF_OpenFont("font/simple.ttf", 150)))
-    std::cout << TTF_GetError() << std::endl;// balancer exeption
+    throw loading_error(TTF_GetError());
   this->windows = windows;
   this->_Main_Renderer = _Main_Renderer;
   this->_event = event;
