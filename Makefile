@@ -5,7 +5,7 @@
 ## Login   <polydo_s@epitech.net>
 ##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Fri Jun 12 01:21:21 2015 polydo_s
+## Last update Fri Jun 12 03:02:43 2015 clément jean
 ##
 
 CXX		= g++
@@ -52,6 +52,7 @@ SRCS		= main.cpp			\
 		  $(SRC)/playvpx.cpp		\
 		  $(SRC)/HighScore.cpp		\
 		  $(SRC)/Score.cpp		\
+		  $(SRC)/Skybox.cpp		\
 
 OBJS		= $(SRCS:.cpp=.o)
 
