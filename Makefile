@@ -5,17 +5,17 @@
 ## Login   <polydo_s@epitech.net>
 ##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Fri Jun 12 22:13:39 2015 clément jean
+## Last update Fri Jun 12 22:21:38 2015 clément jean
 ##
 
 CXX		= g++
 
 CXXFLAGS	= -W -Wall -Werror -Wextra -std=c++11
 
-CXXFLAGS	+= -I./includes -I./Ressources/lib/includes
+CXXFLAGS	+= -I./Includes -I./Ressources/lib/includes
 
-LDFLAGS		= -Wl,--rpath=./Ressourceslib/libs -lgdl_gl -lGL -lpthread -lGLEW -lrt -lfbxsdk -lSDL2 -lSDL2_ttf
-LDFLAGS		+= -lSDL2_image -ldl -L./Ressourceslib/libvpx.a -lGLU -lvpx
+LDFLAGS		= -Wl,--rpath=./Ressources/lib/libs -lgdl_gl -lGL -lpthread -lGLEW -lrt -lfbxsdk -lSDL2 -lSDL2_ttf
+LDFLAGS		+= -lSDL2_image -ldl -L./Ressources/lib/libvpx.a -lGLU -lvpx
 
 FMOD		= ./Ressources/lib/fmod/libfmod.so
 
@@ -25,7 +25,7 @@ NAME		= bomberman
 RM		= rm -rf
 
 BIN		= bin
-SRC		= src
+SRC		= Sources
 
 SRCS		= main.cpp			\
 		  $(SRC)/APlayer.cpp		\

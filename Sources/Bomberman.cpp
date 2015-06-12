@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Fri Jun 12 22:04:12 2015 clément jean
+// Last update Fri Jun 12 22:22:16 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -54,8 +54,8 @@ void	Bomberman::initialize()
 
   if (this->_namedMap != "")
     getMap();
-  if (!this->_shader.load("./lib/shaders/basic.fp", GL_FRAGMENT_SHADER)
-      || !this->_shader.load("./lib/shaders/basic.vp", GL_VERTEX_SHADER)
+  if (!this->_shader.load("./Ressources/lib/shaders/basic.fp", GL_FRAGMENT_SHADER)
+      || !this->_shader.load("./Ressources/lib/shaders/basic.vp", GL_VERTEX_SHADER)
       || !this->_shader.build())
     throw std::runtime_error("shader erreur");
 

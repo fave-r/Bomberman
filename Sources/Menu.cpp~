@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Fri Jun 12 22:11:09 2015 clément jean
+// Last update Fri Jun 12 22:24:58 2015 clément jean
 
 #include "Menu.hh"
 #include "Options.hh"
@@ -99,7 +99,7 @@ void		Menu::GetAllMap()
   DIR		*dpdf;
   struct dirent	*epdf;
 
-  dpdf = opendir("./map/");
+  dpdf = opendir("./Map/");
   if (dpdf != NULL)
     while ((epdf = readdir(dpdf)))
       if (epdf->d_name[0] != '.')

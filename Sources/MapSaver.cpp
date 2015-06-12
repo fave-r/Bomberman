@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Mon Jun  8 16:18:51 2015 Leo Thevenet
-// Last update Thu Jun 11 17:34:08 2015 polydo_s
+// Last update Fri Jun 12 22:23:26 2015 clément jean
 //
 
 #include "MapSaver.hh"
@@ -14,7 +14,7 @@ namespace	MapSaver
 {
   void		saveMap(std::vector< std::vector<AObject *> > map, std::list<APlayer *> player, int w, int h, int p)
   {
-    std::ofstream fichier("./map/user", std::ofstream::out | std::ofstream::trunc);
+    std::ofstream fichier("./Map/user", std::ofstream::out | std::ofstream::trunc);
 
     if(fichier)
       {
