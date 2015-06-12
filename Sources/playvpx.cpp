@@ -252,7 +252,7 @@ void	 VideoPlay() {
   glLoadIdentity();
   Vpxdata data;
   SDL_Event event;
-  playvpx_init(&data, "./Assets/Intro/movie.ivf");
+  playvpx_init(&data, "./Ressources/Intro/movie.ivf");
   while(playvpx_loop(&data)) {
     SDL_PollEvent(&event);
     switch (event.type)
