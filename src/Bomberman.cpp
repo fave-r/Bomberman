@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Fri Jun 12 04:10:52 2015 clément jean
+// Last update Fri Jun 12 20:23:16 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -73,15 +73,14 @@ void	Bomberman::initialize()
   else
     end_init_player();
   draw();
-  //  this->_SoundPlayer->createSound("./Assets/Sounds/BackgroundSound.wav", "game");
-  //this->_SoundPlayer->playSound("game", true);
+  this->_SoundPlayer->createSound("./Assets/Sounds/BackgroundSound.wav", "game");
+  this->_SoundPlayer->playSound("game", true);
 }
 
 void	Bomberman::init_map()
 {
   AObject        *model;
 
-  //this->_objects.push_back(new Skybox(-1, -1));
   for (unsigned int i = 0; i < this->_map.size(); ++i)
     for (unsigned int j = 0; j < this->_map[i].size(); ++j)
       {
