@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Fri Jun 12 20:23:16 2015 clément jean
+// Last update Fri Jun 12 22:00:11 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -146,7 +146,7 @@ bool Bomberman::update()
       MapSaver::saveMap(this->_map, this->_playerlist, this->_w, this->_h, this->_p);
       std::stringstream ss;
       this->_numberOfSave++;
-      ss << "Save" << this->_numberOfSave << ".tga";
+      ss << "Screenshots/Save" << this->_numberOfSave << ".tga";
       saveScreenshot(ss.str(), 1920, 1080);
     }
   for (unsigned int i = 0; i < this->_map.size(); ++i)
