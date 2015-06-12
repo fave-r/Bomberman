@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Fri May 29 14:48:30 2015 Leo Thevenet
-// Last update Thu Jun 11 18:56:23 2015 Leo Thevenet
+// Last update Fri Jun 12 22:11:46 2015 clément jean
 //
 
 #include "Options.hh"
@@ -15,7 +15,7 @@ Options::Options(SDL_Window *windows, SDL_Renderer *_Main_Renderer, SDL_Event *e
 {
   if (TTF_Init() == -1)
     throw loading_error("HighScore : TTF error");
-  if (!(this->_font = TTF_OpenFont("font/simple.ttf", 150)))
+  if (!(this->_font = TTF_OpenFont("Ressources/font/simple.ttf", 150)))
     throw loading_error(TTF_GetError());
   this->windows = windows;
   this->_Main_Renderer = _Main_Renderer;

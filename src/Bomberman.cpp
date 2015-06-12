@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Fri Jun 12 22:00:11 2015 clément jean
+// Last update Fri Jun 12 22:04:12 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -73,7 +73,7 @@ void	Bomberman::initialize()
   else
     end_init_player();
   draw();
-  this->_SoundPlayer->createSound("./Assets/Sounds/BackgroundSound.wav", "game");
+  this->_SoundPlayer->createSound("./Ressources/Sounds/BackgroundSound.wav", "game");
   this->_SoundPlayer->playSound("game", true);
 }
 

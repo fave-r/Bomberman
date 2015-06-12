@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:27:19 2015 clément jean
-// Last update Fri Jun 12 04:08:32 2015 clément jean
+// Last update Fri Jun 12 22:03:49 2015 clément jean
 //
 
 #include "AObject.hh"
@@ -18,12 +18,12 @@ AObject::AObject(float x, float y, float w, float h)
   if (_SoundPlayer == NULL)
     {
       this->_SoundPlayer = new Music();
-      this->_SoundPlayer->createSound("./Assets/Sounds/Fuse.mp3", "bombstart");
-      this->_SoundPlayer->createSound("./Assets/Sounds/ExplosionSound.wav", "explosion");
-      this->_SoundPlayer->createSound("./Assets/Sounds/DeathSound.mp3", "Death");
-      this->_SoundPlayer->createSound("./Assets/Sounds/BombBonusSound.wav", "BonusB");
-      this->_SoundPlayer->createSound("./Assets/Sounds/InvincibleBonusSound.wav", "BonusS");
-      this->_SoundPlayer->createSound("./Assets/Sounds/DeathBonusSound.wav", "BonusF");
+      this->_SoundPlayer->createSound("./Ressources/Sounds/Fuse.mp3", "bombstart");
+      this->_SoundPlayer->createSound("./Ressources/Sounds/ExplosionSound.wav", "explosion");
+      this->_SoundPlayer->createSound("./Ressources/Sounds/DeathSound.mp3", "Death");
+      this->_SoundPlayer->createSound("./Ressources/Sounds/BombBonusSound.wav", "BonusB");
+      this->_SoundPlayer->createSound("./Ressources/Sounds/InvincibleBonusSound.wav", "BonusS");
+      this->_SoundPlayer->createSound("./Ressources/Sounds/DeathBonusSound.wav", "BonusF");
     }
 }
 

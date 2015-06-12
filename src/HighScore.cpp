@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  9 15:39:29 2015 Leo Thevenet
-// Last update Thu Jun 11 15:31:55 2015 Leo Thevenet
+// Last update Fri Jun 12 22:11:31 2015 clément jean
 //
 
 #include "HighScore.hh"
@@ -14,7 +14,7 @@ void HighScore::init(SDL_Window *windows, SDL_Renderer *_Main_Renderer, SDL_Even
 {
   if (TTF_Init() == -1)
     throw loading_error("HighScore : TTF error");
-  if (!(this->_font = TTF_OpenFont("font/simple.ttf", 150)))
+  if (!(this->_font = TTF_OpenFont("Ressources/font/simple.ttf", 150)))
     throw loading_error(TTF_GetError());
   this->windows = windows;
   this->_Main_Renderer = _Main_Renderer;

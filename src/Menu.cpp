@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Thu Jun 11 18:59:23 2015 Leo Thevenet
+// Last update Fri Jun 12 22:11:09 2015 clément jean
 
 #include "Menu.hh"
 #include "Options.hh"
@@ -26,7 +26,7 @@ Menu::~Menu()
 
 void		Menu::initialize()
 {
-  this->_SoundPlayer->createSound("./Assets/Sounds/MenuSound.wav", "menu");
+  this->_SoundPlayer->createSound("./Ressources/Sounds/MenuSound.wav", "menu");
   this->_SoundPlayer->playSound("menu", true);
   if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) < 0)
     throw std::runtime_error("SDL could not initialize!");
@@ -36,7 +36,7 @@ void		Menu::initialize()
   this->_path = "./Assets/Menu/BackgroundMenu.jpg";
   if (TTF_Init() == -1)
     throw loading_error("HighScore : TTF error");
-  if (!(this->_font = TTF_OpenFont("font/simple.ttf", 150)))
+  if (!(this->_font = TTF_OpenFont("Ressources/font/simple.ttf", 150)))
     throw std::runtime_error(TTF_GetError());
   this->_select = 0;
   this->_BackGroundS = IMG_Load(this->_path.c_str());

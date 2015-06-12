@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 13:51:26 2015 polydo_s
-// Last update Thu Jun 11 15:06:58 2015 Leo Thevenet
+// Last update Fri Jun 12 22:10:12 2015 clément jean
 //
 
 #include "Error.hh"
@@ -19,7 +19,7 @@ int	main()
     {
       Music		*SoundPlayer = new Music();
 
-      SoundPlayer->createSound("./Assets/Sounds/intro.mp3", "intro");
+      SoundPlayer->createSound("./Ressources/Sounds/intro.mp3", "intro");
       SoundPlayer->playSound("intro", true);
       VideoPlay();
       delete SoundPlayer;
