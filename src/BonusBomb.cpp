@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon Jun  8 01:23:10 2015 clément jean
-// Last update Wed Jun 10 03:11:49 2015 clément jean
+// Last update Fri Jun 12 02:46:27 2015 polydo_s
 //
 
 #include "BonusBomb.hh"
@@ -25,9 +25,15 @@ BonusBomb::~BonusBomb()
 {
 }
 
-void		BonusBomb::affect(APlayer &player)
+ABonus		*BonusBomb::create(int x, int y)
 {
-  (void)player;
+  return new BonusBomb(x, y);
+}
+
+void		BonusBomb::affect(std::vector<std::vector<AObject *> > &map, APlayer *player)
+{
+  player->increaseMaxBombs();
+  map[this->_y][this->_x] = NULL;
 }
 
 void		BonusBomb::draw(gdl::AShader &shader)

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun  7 18:36:08 2015 clément jean
-// Last update Sun Jun  7 18:51:11 2015 clément jean
+// Last update Fri Jun 12 02:42:59 2015 polydo_s
 //
 
 #ifndef __BONUSSPEED_HH__
@@ -20,7 +20,10 @@ public:
   virtual ~BonusSpeed();
 
 public:
-  virtual void          affect(APlayer &player);
+  static ABonus		*create(int x, int y);
+
+public:
+  virtual void          affect(std::vector<std::vector<AObject *> > &map, APlayer *player);
   virtual void          draw(gdl::AShader &shader);
   virtual void          setModel(const gdl::Geometry &);
 };

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:27:19 2015 clément jean
-// Last update Fri Jun 12 00:59:01 2015 clément jean
+// Last update Fri Jun 12 01:07:15 2015 clément jean
 //
 
 #include "AObject.hh"
@@ -20,7 +20,7 @@ AObject::AObject(float x, float y, float w, float h)
       this->_SoundPlayer = new Music();
       this->_SoundPlayer->createSound("./Assets/Sounds/Fuse.mp3", "bombstart");
       this->_SoundPlayer->createSound("./Assets/Sounds/ExplosionSound.wav", "explosion");
-      this->_SoundPlayer->createSound("./Assets/Sounds/DeathSound.wav", "Death");
+      this->_SoundPlayer->createSound("./Assets/Sounds/DeathSound.mp3", "Death");
     }
 }
 

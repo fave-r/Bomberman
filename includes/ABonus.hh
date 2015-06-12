@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun  7 17:58:20 2015 clément jean
-// Last update Sun Jun  7 19:12:50 2015 clément jean
+// Last update Fri Jun 12 02:40:06 2015 polydo_s
 //
 
 #ifndef __ABONUS_HH__
@@ -14,6 +14,8 @@
 #include <BasicShader.hh>
 #include <Geometry.hh>
 #include <Model.hh>
+#include <random>
+
 #include "AObject.hh"
 #include "APlayer.hh"
 
@@ -26,9 +28,12 @@ public:
   virtual ~ABonus();
 
 public:
-  virtual void		affect(APlayer &player) = 0;
+  virtual void		affect(std::vector<std::vector<AObject *> > &map, APlayer *player) = 0;
   virtual void          draw(gdl::AShader &shader) = 0;
   virtual void          setModel(const gdl::Geometry &) = 0;
+
+public:
+  static ABonus		*createBonus(int x, int y);
 
 protected:
   gdl::Model		_model;

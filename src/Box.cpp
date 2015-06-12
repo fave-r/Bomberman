@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:49:34 2015 clément jean
-// Last update Fri Jun 12 00:47:59 2015 polydo_s
+// Last update Fri Jun 12 02:35:53 2015 polydo_s
 //
 
 #include "Box.hh"
@@ -19,13 +19,13 @@ Box::~Box() {}
 
 void	Box::destroy(std::vector<std::vector<AObject *> > &map, APlayer *player)
 {
-  // std::random_device generator;
-  // std::uniform_int_distribution<int> distribution(1, 10);
+  std::random_device generator;
+  std::uniform_int_distribution<int> distribution(1, 10);
 
-  // int rand_value = distribution(generator);
-  // if (rand_value == 10)
-  //   map[this->_y][this->_x] = new BonusForce(this->_x, this->_y);
-  // else
+  int rand_value = distribution(generator);
+  if (rand_value <= 3)
+    map[this->_y][this->_x] = ABonus::createBonus(this->_x, this->_y);
+  else
     map[this->_y][this->_x] = NULL;
   player->updateScore(1);
 }

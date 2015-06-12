@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 17:17:08 2015 clément jean
-// Last update Thu Jun 11 16:18:45 2015 polydo_s
+// Last update Fri Jun 12 01:34:14 2015 polydo_s
 //
 
 #ifndef __FIRE_HH__
@@ -33,7 +33,7 @@ public:
   ~Fire();
 
 public:
-  virtual void          affect(APlayer *player);
+  virtual void          affect(std::vector<std::vector<AObject *> > &map, APlayer *player);
   virtual void		update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map, std::list<APlayer *> &players);
 
 public:

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:48:39 2015 clément jean
-// Last update Fri Jun 12 00:42:45 2015 polydo_s
+// Last update Fri Jun 12 01:21:28 2015 polydo_s
 //
 
 #ifndef __BOX_HH__
@@ -16,7 +16,7 @@
 #include <Texture.hh>
 #include <Geometry.hh>
 
-#include "BonusForce.hh"
+#include "BonusPower.hh"
 #include "AObject.hh"
 #include "IDestroyable.hh"
 #include "IUpdatable.hh"
