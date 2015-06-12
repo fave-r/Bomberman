@@ -5,7 +5,7 @@
 ## Login   <polydo_s@epitech.net>
 ##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Fri Jun 12 22:21:38 2015 clément jean
+## Last update Fri Jun 12 22:27:44 2015 clément jean
 ##
 
 CXX		= g++
@@ -24,7 +24,7 @@ LDLIBS		= -L./Ressources/lib/libs -Wl,--rpath=./Ressources/lib/fmod $(FMOD)
 NAME		= bomberman
 RM		= rm -rf
 
-BIN		= bin
+BIN		= Bin
 SRC		= Sources
 
 SRCS		= main.cpp			\
