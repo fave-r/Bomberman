@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun  7 18:46:28 2015 clément jean
-// Last update Fri Jun 12 02:42:47 2015 polydo_s
+// Last update Fri Jun 12 04:06:23 2015 clément jean
 //
 
 #include "BonusSpeed.hh"
@@ -29,6 +29,7 @@ ABonus		*BonusSpeed::create(int x, int y)
 
 void		BonusSpeed::affect(std::vector<std::vector<AObject *> > &map, APlayer *player)
 {
+  this->_SoundPlayer->playSound("BonusS", false);
   player->increaseSpeed();
   map[this->_y][this->_x] = NULL;
 }

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Fri Jun 12 00:54:54 2015 polydo_s
+// Last update Fri Jun 12 03:41:23 2015 clément jean
 //
 
 #include "Bomb.hh"
@@ -31,7 +31,7 @@ bool			Bomb::damage(std::vector<std::vector<AObject *> > &map, APlayer *player, 
   for (it = this->_players.begin(); it != this->_players.end(); ++it)
     {
       if (!(*it)->isDead())
-	if (static_cast<int>((*it)->getX()) == x && y == static_cast<int>((*it)->getY()))
+	if (static_cast<int>((*it)->getX() + (*it)->getWidth() / 2) == x && y == static_cast<int>((*it)->getY() + (*it)->getHeight() / 2))
 	  (*it)->kill();
     }
 
@@ -64,7 +64,7 @@ void			Bomb::destroy(std::vector<std::vector<AObject *> > &map, APlayer *player)
       break;
   this->_SoundPlayer->playSound("explosion", false);
   player->decreaseCurrentBombs();
-  delete this;
+  //  delete this;
 }
 
 void			Bomb::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map, std::list<APlayer *> &players)

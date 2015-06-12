@@ -5,15 +5,15 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Fri Jun 12 03:02:26 2015 clément jean
+// Last update Fri Jun 12 03:37:29 2015 clément jean
 //
 
 #include "APlayer.hh"
 #include "Bomb.hh"
 
 APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
-  : AObject(x, y, 0.90, 0.90),
-    _dead(false), _orientation(orientation), _delta(0.4),
+  : AObject(x, y, 0.70, 0.70),
+    _dead(false), _orientation(orientation), _delta(0.5),
     _speed(2), _power(1), _currentBombs(0), _maxBombs(1),
     _inAnim(false), _score(0)
 {

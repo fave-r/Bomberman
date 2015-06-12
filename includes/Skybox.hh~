@@ -1,0 +1,38 @@
+//
+// Skybox.hh for Skybox.hh in /home/jean_c/Bomberman/includes
+//
+// Made by clément jean
+// Login   <jean_c@epitech.net>
+//
+// Started on  Fri Jun 12 01:23:16 2015 clément jean
+// Last update Fri Jun 12 01:24:32 2015 clément jean
+//
+
+#ifndef __SKYBOX_HH__
+# define __SKYBOX_HH__
+
+#include <iostream>
+#include <Texture.hh>
+#include <Model.hh>
+#include <unistd.h>
+
+#include "AObject.hh"
+
+class Skybox : public AObject
+{
+
+private:
+  gdl::Model		_model;
+
+public:
+  Skybox(float x, float y, APlayer *player, const gdl::Clock &clock, int power);
+  ~Skybox();
+
+public:
+  virtual void			draw(gdl::AShader &shader);
+
+public:
+  void				setModel(const gdl::Geometry &);
+};
+
+#endif

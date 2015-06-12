@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-// Last update Fri Jun 12 00:35:31 2015 polydo_s
+// Last update Fri Jun 12 03:18:05 2015 clément jean
 //
 
 #include "PhysicalPlayer.hh"
@@ -56,7 +56,6 @@ void	PhysicalPlayer::update(const gdl::Clock &clock, std::vector<std::vector<AOb
 	{
 	  validKey = true;
 	  (this->*(*it).second)(map, clock);
-	  break;
 	}
     }
   if (!validKey)

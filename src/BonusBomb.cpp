@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon Jun  8 01:23:10 2015 clément jean
-// Last update Fri Jun 12 02:46:27 2015 polydo_s
+// Last update Fri Jun 12 04:06:37 2015 clément jean
 //
 
 #include "BonusBomb.hh"
@@ -32,6 +32,7 @@ ABonus		*BonusBomb::create(int x, int y)
 
 void		BonusBomb::affect(std::vector<std::vector<AObject *> > &map, APlayer *player)
 {
+  this->_SoundPlayer->playSound("BonusB", false);
   player->increaseMaxBombs();
   map[this->_y][this->_x] = NULL;
 }

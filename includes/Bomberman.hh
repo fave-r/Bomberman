@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Fri Jun 12 00:48:54 2015 clément jean
+// Last update Fri Jun 12 01:30:25 2015 clément jean
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -30,6 +30,7 @@
 #include "Fire.hh"
 #include "Music.hh"
 #include "ModelPool.hh"
+#include "Skybox.hh"
 
 #define ten(x) (x < 15) ? 15 : x
 #define middle(xa, ya, xb, yb) sqrt(pow(xb - xa, 2) + pow(yb - ya, 2))

@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri Jun 12 01:20:26 2015 polydo_s
-// Last update Fri Jun 12 02:34:14 2015 polydo_s
+// Last update Fri Jun 12 04:06:03 2015 clément jean
 //
 
 #include "BonusPower.hh"
@@ -29,6 +29,7 @@ ABonus		*BonusPower::create(int x, int y)
 
 void		BonusPower::affect(std::vector<std::vector<AObject *> > &map, APlayer *player)
 {
+  this->_SoundPlayer->playSound("BonusF", false);
   player->increasePower();
   map[this->_y][this->_x] = NULL;
 }
