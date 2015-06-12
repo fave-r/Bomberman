@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Mon Jun  8 16:18:51 2015 Leo Thevenet
-// Last update Fri Jun 12 22:23:26 2015 clément jean
+// Last update Fri Jun 12 23:51:03 2015 Leo Thevenet
 //
 
 #include "MapSaver.hh"
@@ -78,13 +78,11 @@ namespace	MapSaver
 
     int a;
     std::vector<std::vector<AObject *> > map(w, std::vector<AObject *>(h));
-    std::cout << w << "  " << h << "  " << std::endl;
     for (int i = 0; i < w; ++i)
       {
 	for (int j = 0; j < h; ++j)
 	  {
 	    fichier >> a;
-	    std::cout << a << " ";
 	    if (a == 1)
 	      map[i][j] = new Wall(j, i);
 	    else if (a == 2)
@@ -92,7 +90,6 @@ namespace	MapSaver
 	    else
 	      map[i][j] = NULL;
 	  }
-	std::cout << std::endl;
       }
     std::tuple<int, int, int, std::vector< std::vector<AObject *> >, std::list<APlayer *> > foo(w, h, p, map, players);
 
