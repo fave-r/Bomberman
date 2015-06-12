@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun  7 18:46:28 2015 clément jean
-// Last update Wed Jun 10 03:10:51 2015 clément jean
+// Last update Fri Jun 12 02:42:47 2015 polydo_s
 //
 
 #include "BonusSpeed.hh"
@@ -22,9 +22,15 @@ BonusSpeed::~BonusSpeed()
 {
 }
 
-void		BonusSpeed::affect(APlayer &player)
+ABonus		*BonusSpeed::create(int x, int y)
 {
-  (void)player;
+  return new BonusSpeed(x, y);
+}
+
+void		BonusSpeed::affect(std::vector<std::vector<AObject *> > &map, APlayer *player)
+{
+  player->increaseSpeed();
+  map[this->_y][this->_x] = NULL;
 }
 
 void		BonusSpeed::draw(gdl::AShader &shader)

@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Fri Jun 12 02:19:35 2015 clément jean
+// Last update Fri Jun 12 03:02:26 2015 clément jean
 //
 
 #include "APlayer.hh"
@@ -13,7 +13,7 @@
 
 APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
   : AObject(x, y, 0.90, 0.90),
-    _dead(false), _orientation(orientation), _delta(0.3),
+    _dead(false), _orientation(orientation), _delta(0.4),
     _speed(2), _power(1), _currentBombs(0), _maxBombs(1),
     _inAnim(false), _score(0)
 {
@@ -84,7 +84,7 @@ void			APlayer::goUp(std::vector<std::vector<AObject *> > &map, const gdl::Clock
     {
       ICrossable *crossable = dynamic_cast<ICrossable *>(dest);
       if (crossable)
-	crossable->affect(this);
+	crossable->affect(map, this);
       else if (this->isColliding(dest))
 	this->_y = y;
     }
@@ -107,7 +107,7 @@ void			APlayer::goRight(std::vector<std::vector<AObject *> > &map, const gdl::Cl
     {
       ICrossable *crossable = dynamic_cast<ICrossable *>(dest);
       if (crossable)
-	crossable->affect(this);
+	crossable->affect(map, this);
       else if (this->isColliding(dest))
 	  this->_x = x;
     }
@@ -130,7 +130,7 @@ void			APlayer::goDown(std::vector<std::vector<AObject *> > &map, const gdl::Clo
     {
       ICrossable *crossable = dynamic_cast<ICrossable *>(dest);
       if (crossable)
-	crossable->affect(this);
+	crossable->affect(map, this);
       else if (this->isColliding(dest))
 	this->_y = y;
     }
@@ -152,7 +152,7 @@ void			APlayer::goLeft(std::vector<std::vector<AObject *> > &map, const gdl::Clo
     {
       ICrossable *crossable = dynamic_cast<ICrossable *>(dest);
       if (crossable)
-	crossable->affect(this);
+	crossable->affect(map, this);
       else if (this->isColliding(dest))
 	this->_x = x;
     }
@@ -180,8 +180,22 @@ void				APlayer::decreaseCurrentBombs()
   this->_currentBombs--;
 }
 
+void				APlayer::increaseSpeed()
+{
+  this->_speed += 0.5;
+}
+
+void				APlayer::increasePower()
+{
+  this->_power++;
+}
+
+void				APlayer::increaseMaxBombs()
+{
+  this->_maxBombs++;
+}
+
 void				APlayer::updateScore(int nb)
 {
- this->_score += nb;
-  std::cout << this->_score << "\n";
+  this->_score += nb;
 }

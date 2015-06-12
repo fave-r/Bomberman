@@ -5,11 +5,13 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 29 00:32:40 2015 polydo_s
-// Last update Wed Jun 10 00:18:21 2015 polydo_s
+// Last update Fri Jun 12 01:32:18 2015 polydo_s
 //
 
 #ifndef ICROSSABLE_HH
 #define ICROSSABLE_HH
+
+#include <vector>
 
 #include "APlayer.hh"
 
@@ -18,7 +20,7 @@ class APlayer;
 class	ICrossable {
 
 public:
-  virtual void	affect(APlayer *player) = 0;
+  virtual void	affect(std::vector<std::vector<AObject *> > &map, APlayer *player) = 0;
 };
 
 #endif

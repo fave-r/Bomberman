@@ -5,7 +5,7 @@
 ## Login   <polydo_s@epitech.net>
 ##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Fri Jun 12 01:27:40 2015 clément jean
+## Last update Fri Jun 12 03:02:43 2015 clément jean
 ##
 
 CXX		= g++
@@ -46,7 +46,7 @@ SRCS		= main.cpp			\
 		  $(SRC)/Music.cpp		\
 		  $(SRC)/ABonus.cpp		\
 		  $(SRC)/BonusSpeed.cpp		\
-		  $(SRC)/BonusForce.cpp		\
+		  $(SRC)/BonusPower.cpp		\
 		  $(SRC)/BonusBomb.cpp		\
 		  $(SRC)/MapSaver.cpp		\
 		  $(SRC)/playvpx.cpp		\

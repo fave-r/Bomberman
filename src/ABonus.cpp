@@ -5,10 +5,13 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun  7 18:08:50 2015 clément jean
-// Last update Sun Jun  7 18:09:50 2015 clément jean
+// Last update Fri Jun 12 02:46:49 2015 polydo_s
 //
 
 #include "ABonus.hh"
+#include "BonusPower.hh"
+#include "BonusSpeed.hh"
+#include "BonusBomb.hh"
 
 ABonus::ABonus(float x, float y) : AObject(x, y, 0.99, 0.99)
 {
@@ -16,4 +19,18 @@ ABonus::ABonus(float x, float y) : AObject(x, y, 0.99, 0.99)
 
 ABonus::~ABonus()
 {
+}
+
+ABonus	*ABonus::createBonus(int x, int y)
+{
+  std::random_device generator;
+  std::uniform_int_distribution<int> distribution(1, 100);
+
+  std::vector<ABonus *(*)(int, int)> bonus;
+
+  bonus.push_back(&BonusPower::create);
+  bonus.push_back(&BonusSpeed::create);
+  bonus.push_back(&BonusBomb::create);
+
+  return bonus[distribution(generator) % bonus.size()](x, y);
 }
