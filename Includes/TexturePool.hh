@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon May 25 02:13:06 2015 clément jean
-// Last update Thu Jun 11 15:40:00 2015 Leo Thevenet
+// Last update Fri Jun 12 22:48:19 2015 clément jean
 //
 
 #ifndef __TEXTUREPOOL_HH__
@@ -15,7 +15,7 @@
 #include <Texture.hh>
 #include <iostream>
 #include <map>
-#include "Cube.hh"
+#include "Error.hh"
 
 class	TexturePool
 {

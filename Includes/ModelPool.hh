@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri Jun  5 00:16:00 2015 clément jean
-// Last update Thu Jun 11 15:35:48 2015 Leo Thevenet
+// Last update Fri Jun 12 22:39:22 2015 clément jean
 //
 
 #ifndef __MODELPOOL_H__
@@ -20,9 +20,11 @@ public:
   void	init();
   ~ModelPool();
   const gdl::Geometry	&getGeometry() const;
+  const gdl::Geometry	&getGround() const;
 
 private:
   gdl::Geometry	_geometry;
+  gdl::Geometry	_ground;
 };
 
 #endif

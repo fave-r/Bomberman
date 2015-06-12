@@ -1,29 +1,29 @@
 //
-// Cube.hpp for Cube.hpp in /home/jean_c/Graphic
+// Ground.hh for Ground.hh in /home/jean_c/Bomberman/Includes
 //
 // Made by clément jean
 // Login   <jean_c@epitech.net>
 //
-// Started on  Tue May  5 19:29:04 2015 clément jean
-// Last update Thu Jun 11 16:17:10 2015 polydo_s
+// Started on  Fri Jun 12 22:44:42 2015 clément jean
+// Last update Fri Jun 12 22:47:27 2015 clément jean
 //
 
-#ifndef __CUBE_HPP__
-# define __CUBE_HPP__
+#ifndef __GROUND_HPP__
+# define __GROUND_HPP__
 
 #include <iostream>
 #include <Geometry.hh>
 #include <Texture.hh>
 #include "AObject.hh"
 
-class Cube : public AObject
+class Ground : public AObject
 {
 
 private:
   gdl::Geometry _geometry;
 
 public:
-  Cube(float x, float y);
+  Ground(float x, float y);
 
 public:
   const gdl::Texture	&getTexture() const;
