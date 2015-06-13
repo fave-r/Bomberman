@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun  7 17:58:20 2015 clément jean
-// Last update Fri Jun 12 02:40:06 2015 polydo_s
+// Last update Sat Jun 13 05:11:36 2015 clément jean
 //
 
 #ifndef __ABONUS_HH__
@@ -16,7 +16,6 @@
 #include <Model.hh>
 #include <random>
 
-#include "AObject.hh"
 #include "APlayer.hh"
 
 class ICrossable;

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 17:17:08 2015 clément jean
-// Last update Sat Jun 13 04:56:16 2015 clément jean
+// Last update Sat Jun 13 05:13:53 2015 clément jean
 //
 
 #ifndef __FIRE_HH__
@@ -13,7 +13,6 @@
 
 #include <Geometry.hh>
 
-#include "AObject.hh"
 #include "APlayer.hh"
 #include "IUpdatable.hh"
 #include "ICrossable.hh"

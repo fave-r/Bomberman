@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:18:58 2015 clément jean
-// Last update Sat Jun 13 04:54:08 2015 clément jean
+// Last update Sat Jun 13 05:14:08 2015 clément jean
 //
 
 #ifndef __BOMB_HH__
@@ -18,7 +18,6 @@
 #include "IUpdatable.hh"
 #include "Fire.hh"
 #include "APlayer.hh"
-#include "AObject.hh"
 
 class APlayer;
 
