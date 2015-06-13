@@ -232,13 +232,13 @@ void	 VideoPlay() {
 
   int ww = 1024;
   int hh = 768;
-  SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER);
+  if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER) < 0)
+    throw std::runtime_error("SDL could'nt initialize");
   SDL_Window *window = SDL_CreateWindow("Introduction",
 					SDL_WINDOWPOS_UNDEFINED,
 					SDL_WINDOWPOS_UNDEFINED,
 					ww, hh,
 					SDL_WINDOW_FULLSCREEN | SDL_WINDOW_OPENGL);
-
   SDL_GL_CreateContext(window);
   glEnable(GL_TEXTURE_2D);
   glEnableClientState(GL_VERTEX_ARRAY);

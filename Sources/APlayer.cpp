@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Sat Jun 13 18:44:19 2015 clément jean
+// Last update Sun Jun 14 00:15:34 2015 clément jean
 //
 
 #include "APlayer.hh"
@@ -19,7 +19,6 @@ APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
 {
   static unsigned id = 1;
   this->_id = id++;
-  this->scale(glm::vec3(0.002, 0.002, 0.002));
   if (this->_id == 1)
     {
       if (this->_model.load("./Assets/Player/marvin.dae") == false)
@@ -27,10 +26,10 @@ APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
     }
   else
     {
-      if (this->_model.load("./Assets/Player/marvin2.dae") == false)
+      if (this->_model.load("./Assets/Player/marvin.fbx") == false)
 	throw exec_error("APlayer : Cannot load the model");
     }
-  usleep(100000);
+  this->scale(glm::vec3(0.002, 0.002, 0.002));
   if (this->_model.createSubAnim(0, "wait", 0, 0) == false)
     throw exec_error("APlayer : Cannot wait");
   if (this->_model.createSubAnim(0, "run", 36, 53) == false)

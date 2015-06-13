@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include <GL/glu.h>
+#include <stdexcept>
 
 struct Vpxdata {
     int			is_init;

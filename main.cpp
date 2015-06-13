@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 13:51:26 2015 polydo_s
-// Last update Sat Jun 13 18:14:08 2015 Leo Thevenet
+// Last update Sat Jun 13 19:04:00 2015 clément jean
 //
 
 #include "Error.hh"

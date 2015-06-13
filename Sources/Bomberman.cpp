@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Sat Jun 13 18:51:37 2015 clément jean
+// Last update Sun Jun 14 00:05:51 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -43,6 +43,17 @@ void	Bomberman::initialize()
   if (SDL_Init(SDL_INIT_JOYSTICK | SDL_INIT_VIDEO) < 0)
     throw loading_error("Bomberman : Joystick error");
 
+  if (!this->_shader.load("./Ressources/lib/shaders/basic.fp", GL_FRAGMENT_SHADER)
+      || !this->_shader.load("./Ressources/lib/shaders/basic.vp", GL_VERTEX_SHADER)
+      || !this->_shader.build())
+    throw std::runtime_error("shader erreur");
+
+  projection = glm::perspective(70.0f, 1920.0f / 1080.0f, 0.1f, 1000.0f);
+  this->_shader.bind();
+  this->_shader.setUniform("projection", projection);
+  //  this->_shader.setUniform("view", transformation);
+  //this->_context.flush();
+
   this->_SoundPlayer = new Music();
   this->_texturePool = new TexturePool();
   this->_modelPool = new ModelPool();
@@ -54,14 +65,6 @@ void	Bomberman::initialize()
 
   if (this->_namedMap != "")
     getMap();
-  if (!this->_shader.load("./Ressources/lib/shaders/basic.fp", GL_FRAGMENT_SHADER)
-      || !this->_shader.load("./Ressources/lib/shaders/basic.vp", GL_VERTEX_SHADER)
-      || !this->_shader.build())
-    throw std::runtime_error("shader erreur");
-
-  projection = glm::perspective(70.0f, 1920.0f / 1080.0f, 0.1f, 1000.0f);
-  this->_shader.bind();
-  this->_shader.setUniform("projection", projection);
   init_map();
   if (this->_playerlist.empty())
     init_player();
@@ -197,7 +200,7 @@ bool Bomberman::update()
       delete hg;
       return false;
     }
-  this->_shader.bind();
+  // this->_shader.bind();
   return true;
 }
 
@@ -207,7 +210,7 @@ void Bomberman::draw()
   std::list<APlayer *>::iterator it;
 
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  this->_shader.bind();
+  //this->_shader.bind();
 
   for (size_t i = 0; i < this->_objects.size(); ++i)
     this->_objects[i]->draw(this->_shader);
@@ -228,7 +231,7 @@ void Bomberman::draw()
 	  this->_map[i][j]->draw(this->_shader);
 	}
   setCam();
-  this->_shader.bind();
+  //  this->_shader.bind();
   this->_context.flush();
   //delete fire;
 }
@@ -263,7 +266,7 @@ void	Bomberman::setCam()
 				   glm::vec3(0, 1, 0));
     }
   this->_shader.setUniform("view", transformation);
-  this->_context.flush();
+  //this->_context.flush();
 }
 
 Bomberman::~Bomberman()
