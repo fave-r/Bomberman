@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Sat Jun 13 18:44:06 2015 clément jean
+// Last update Sat Jun 13 18:51:37 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -203,13 +203,8 @@ bool Bomberman::update()
 
 void Bomberman::draw()
 {
-<<<<<<< HEAD
-  glm::mat4 transformation;
-  int	nb = 0;
-=======
-  Fire		*fire;
+  //Fire		*fire;
   std::list<APlayer *>::iterator it;
->>>>>>> 077e0932c54d312b841f1bb2bace53239b92e71f
 
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   this->_shader.bind();
@@ -235,7 +230,7 @@ void Bomberman::draw()
   setCam();
   this->_shader.bind();
   this->_context.flush();
-  delete fire;
+  //delete fire;
 }
 
 void	Bomberman::setCam()
@@ -268,10 +263,7 @@ void	Bomberman::setCam()
 				   glm::vec3(0, 1, 0));
     }
   this->_shader.setUniform("view", transformation);
-<<<<<<< HEAD
   this->_context.flush();
-=======
->>>>>>> 077e0932c54d312b841f1bb2bace53239b92e71f
 }
 
 Bomberman::~Bomberman()

@@ -1,1 +1,1 @@
-make fclean; make -j4 ; ./Bin/bomberman
+make -j4 ; ./Bin/bomberman
