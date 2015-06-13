@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Thu Jun  4 22:36:52 2015 polydo_s
-// Last update Fri Jun  5 02:21:42 2015 clément jean
+// Last update Sat Jun 13 13:03:04 2015 clément jean
 //
 
 #include "Map.hh"
@@ -31,8 +31,9 @@ std::vector<std::vector<AObject *> >	Map::generate(unsigned int width, unsigned 
 	      else if ((x == width - 3 && y == height - 2)
 	  	       || (x == width - 2 && y == height - 3))
 	  	map[y][x] = NULL;
-	      else if (rand_value > (100 - Parseur::getDensite()) && !dynamic_cast<Wall *>(map[y][x - 1]) &&
-		       !dynamic_cast<Wall *>(map[y - 1][x + 1]))
+	      else if (rand_value > (100 - Parseur::getDensite()) && map[y][x - 1]
+		       &&  map[y][x - 1]->getType() != "W" && map[y - 1][x + 1]
+		       && map[y - 1][x + 1]->getType() != "W")
 		  map[y][x] = new Wall(x, y);
 	      else
 		map[y][x] = new Box(x, y);

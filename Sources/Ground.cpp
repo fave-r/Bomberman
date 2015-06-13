@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri Jun 12 22:45:22 2015 clément jean
-// Last update Fri Jun 12 22:45:46 2015 clément jean
+// Last update Sat Jun 13 12:20:51 2015 clément jean
 //
 
 #include "Ground.hh"
@@ -23,4 +23,10 @@ void		Ground::draw(gdl::AShader &shader)
 void          Ground::setModel(const gdl::Geometry &geo)
 {
   this->_geometry = geo;
+}
+
+const std::string             &Ground::getType() const
+{
+  static std::string str("G");
+  return(str);
 }

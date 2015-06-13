@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Fri May 29 14:48:30 2015 Leo Thevenet
-// Last update Fri Jun 12 22:11:46 2015 clément jean
+// Last update Sat Jun 13 18:35:11 2015 clément jean
 //
 
 #include "Options.hh"
@@ -67,7 +67,7 @@ void Options::MakeScreen()
   SDL_RenderPresent(this->_Main_Renderer);
 }
 
-void Options::PutStringOnScreen(SDL_Color fg, SDL_Rect r, std::string str, int nb)
+void Options::PutStringOnScreen(const SDL_Color &fg, const SDL_Rect &r, std::string str, int nb)
 {
   str += (nb == -1) ? "" : std::to_string(nb);
   SDL_Surface *surf = TTF_RenderText_Blended(this->_font, str.c_str(), fg);

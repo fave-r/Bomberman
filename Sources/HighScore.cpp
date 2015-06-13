@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  9 15:39:29 2015 Leo Thevenet
-// Last update Fri Jun 12 22:11:31 2015 clément jean
+// Last update Sat Jun 13 18:19:45 2015 clément jean
 //
 
 #include "HighScore.hh"
@@ -53,7 +53,7 @@ HighScore::~HighScore()
   TTF_Quit();
 }
 
-void HighScore::showWinner(std::string str)
+void HighScore::showWinner(const std::string &str)
 {
   SDL_Rect r;
   r.x = 470;
@@ -81,7 +81,7 @@ void HighScore::showAllScore()
   putOneScore(str);
 }
 
-void HighScore::putOneScore(std::string str)
+void HighScore::putOneScore(const std::string &str)
 {
   SDL_Rect r;
   r.x = 660;

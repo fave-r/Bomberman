@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:27:19 2015 clément jean
-// Last update Fri Jun 12 22:03:49 2015 clément jean
+// Last update Sat Jun 13 18:04:41 2015 clément jean
 //
 
 #include "AObject.hh"
@@ -51,7 +51,7 @@ void			AObject::resetRotate()
   this->_rotation = glm::vec3(0, 0, 0);
 }
 
-bool			AObject::isColliding(AObject *other) const
+bool			AObject::isColliding(const AObject *other) const
 {
   if (this->_x < other->getX() + other->getWidth() &&
       this->_x + this->_w > other->getX() &&

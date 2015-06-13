@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri Jun 12 01:19:36 2015 polydo_s
-// Last update Fri Jun 12 02:34:28 2015 polydo_s
+// Last update Sat Jun 13 18:14:12 2015 clément jean
 //
 
 
@@ -21,12 +21,13 @@ public:
   virtual ~BonusPower();
 
 public:
-  static ABonus		*create(int x, int b);
+  static ABonus				*create(int x, int b);
 
 public:
-  virtual void          affect(std::vector<std::vector<AObject *> > &map, APlayer *player);
-  virtual void          draw(gdl::AShader &shader);
-  virtual void          setModel(const gdl::Geometry &);
+  virtual void				affect(std::vector<std::vector<AObject *> > &map, APlayer *player);
+  virtual void				draw(gdl::AShader &shader);
+  virtual void				setModel(const gdl::Geometry &);
+  virtual const std::string             &getType() const;
 };
 
 #endif

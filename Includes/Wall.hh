@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 17:25:07 2015 clément jean
-// Last update Sat Jun 13 04:51:17 2015 clément jean
+// Last update Sat Jun 13 18:40:06 2015 clément jean
 //
 
 #ifndef __WALL_HH__
@@ -17,14 +17,15 @@ class Wall : public AObject
 {
 
 private:
-  gdl::Geometry		_geometry;
+  gdl::Geometry			_geometry;
 
 public:
   Wall(float x, float y);
-  void	setModel(const gdl::Geometry &geo);
+  void				setModel(const gdl::Geometry &geo);
 
 public:
-  virtual void	draw(gdl::AShader &shader);
+  virtual void			draw(gdl::AShader &shader);
+  virtual const std::string     &getType() const;
 };
 
 #endif

@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-// Last update Fri Jun 12 23:55:55 2015 Leo Thevenet
+// Last update Sat Jun 13 12:22:49 2015 clément jean
 //
 
 #include "PhysicalPlayer.hh"
@@ -81,4 +81,10 @@ void	PhysicalPlayer::setModel(const gdl::Geometry &geo)
 void	PhysicalPlayer::setTexture(const gdl::Texture &text)
 {
   this->_texture = text;
+}
+
+const std::string             &PhysicalPlayer::getType() const
+{
+  static std::string str("P");
+  return(str);
 }

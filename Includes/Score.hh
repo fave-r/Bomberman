@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  9 16:14:18 2015 Leo Thevenet
-// Last update Sat Jun 13 05:02:06 2015 clément jean
+// Last update Sat Jun 13 18:38:29 2015 clément jean
 //
 
 #ifndef __SCORE_HH__
@@ -17,8 +17,8 @@
 
 namespace Score
 {
-  void addNewScore(const int &, const int &);
-  std::pair<int, int> getAllScore();
+  void			addNewScore(const int &, const int &);
+  std::pair<int, int>	getAllScore();
 };
 
 #endif

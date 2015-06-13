@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Sat Jun 13 04:41:16 2015 clément jean
+// Last update Sat Jun 13 18:07:50 2015 clément jean
 //
 
 #ifndef PLAYER_HH
@@ -28,50 +28,52 @@ public:
   };
 
 protected:
-  unsigned int		_id;
-  bool			_dead;
-  eOrientation		_orientation;
-  float			_delta;
-  float			_speed;
-  int			_power;
-  int			_currentBombs;
-  int			_maxBombs;
-  bool			_inAnim;
-  gdl::Texture		_texture;
-  gdl::Model		_model;
-  int			_score;
-  std::list<APlayer *>	_playerList;
+  unsigned int				_id;
+  bool					_dead;
+  eOrientation				_orientation;
+  float					_delta;
+  float					_speed;
+  int					_power;
+  int					_currentBombs;
+  int					_maxBombs;
+  bool					_inAnim;
+  gdl::Texture				_texture;
+  gdl::Model				_model;
+  int					_score;
+  std::list<APlayer *>			_playerList;
 
 public:
   APlayer(float, float, APlayer::eOrientation);
   virtual ~APlayer();
 
 public:
-  virtual void		draw(gdl::AShader &shader);
-  virtual void		update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map, std::list<APlayer *> &players) = 0;
+  virtual void				draw(gdl::AShader &shader);
+  virtual void				update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map
+					       , std::list<APlayer *> &players) = 0;
+  virtual const std::string             &getType() const = 0;
 
 public:
-  void			wait();
-  void			updateScore(int);
+  void					wait();
+  void					updateScore(int);
 
 public:
-  void			putBomb(std::vector<std::vector<AObject *> >&map, const gdl::Clock &clock);
-  void			goUp(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
-  void			goRight(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
-  void			goDown(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
-  void			goLeft(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
-  void                  move(const int &x, const int &y, const int &z);
+  void					putBomb(std::vector<std::vector<AObject *> >&map, const gdl::Clock &clock);
+  void					goUp(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
+  void					goRight(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
+  void					goDown(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
+  void					goLeft(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
+  void					move(const int &x, const int &y, const int &z);
 
 public:
-  bool			isDead() const;
-  eOrientation		getOrientation() const;
+  bool					isDead() const;
+  eOrientation				getOrientation() const;
 
 public:
-  void			kill();
-  void			decreaseCurrentBombs();
-  void			increaseSpeed();
-  void			increasePower();
-  void			increaseMaxBombs();
+  void					kill();
+  void					decreaseCurrentBombs();
+  void					increaseSpeed();
+  void					increasePower();
+  void					increaseMaxBombs();
 };
 
 #endif

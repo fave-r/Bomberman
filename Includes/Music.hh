@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  2 09:48:39 2015 Leo Thevenet
-// Last update Thu Jun 11 14:55:47 2015 Leo Thevenet
+// Last update Sat Jun 13 18:30:20 2015 clément jean
 //
 
 #ifndef __MUSIC_HH__
@@ -24,8 +24,10 @@ class Music
 public:
   Music();
   ~Music();
-  void createSound(const char*, const char*);
-  void playSound(const char*, bool);
+
+public:
+  void					createSound(const char*, const char*);
+  void					playSound(const char*, bool);
 };
 
 #endif

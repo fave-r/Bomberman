@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Mon Jun  8 16:03:25 2015 Leo Thevenet
-// Last update Fri Jun 12 00:22:56 2015 clément jean
+// Last update Sat Jun 13 18:23:35 2015 clément jean
 //
 
 #ifndef __MAPSAVER_HH__
@@ -21,8 +21,10 @@
 namespace	MapSaver
 {
   void		saveMap(std::vector< std::vector<AObject *> >, std::list<APlayer *>, int, int, int);
-  std::tuple<int, int, int, std::vector< std::vector<AObject *> >, std::list<APlayer *> > getMap(const std::string &);
+  const std::tuple<int, int, int, std::vector< std::vector<AObject *> >
+		   , std::list<APlayer *> > getMap(const std::string &);
 };
 
-bool     saveScreenshot(std::string filename, int w, int h);
+bool     saveScreenshot(const std::string &filename, int w, int h);
+
 #endif

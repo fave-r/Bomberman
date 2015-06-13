@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon Jun  8 01:23:10 2015 clément jean
-// Last update Fri Jun 12 04:06:37 2015 clément jean
+// Last update Sat Jun 13 12:32:46 2015 clément jean
 //
 
 #include "BonusBomb.hh"
@@ -46,4 +46,10 @@ void		BonusBomb::draw(gdl::AShader &shader)
 void		BonusBomb::setModel(const gdl::Geometry &geo)
 {
   (void)geo;
+}
+
+const std::string             &BonusBomb::getType() const
+{
+  static std::string str("1");
+  return(str);
 }

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Fri Jun 12 22:26:10 2015 clément jean
+// Last update Sat Jun 13 18:27:12 2015 clément jean
 
 #include "Menu.hh"
 #include "Options.hh"
@@ -78,7 +78,7 @@ void		Menu::SetScreen()
   r.y += 200;
 }
 
-void		Menu::PutStringOnScreen(SDL_Color fg, SDL_Rect r, std::string str)
+void		Menu::PutStringOnScreen(const SDL_Color &fg, const SDL_Rect &r, const std::string &str)
 {
   SDL_Surface *surf = TTF_RenderText_Blended(this->_font, str.c_str(), fg);
   SDL_Texture *_BackGroundT = SDL_CreateTextureFromSurface(this->_Main_Renderer, surf);
@@ -179,7 +179,7 @@ bool		Menu::update()
   return true;
 }
 
-void		Menu::launchBomberman(Bomberman *bomberman)
+void		Menu::launchBomberman(Bomberman *&bomberman)
 {
   while (bomberman->update() == true)
     bomberman->draw();

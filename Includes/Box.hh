@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:48:39 2015 clément jean
-// Last update Sat Jun 13 04:53:02 2015 clément jean
+// Last update Sat Jun 13 18:15:13 2015 clément jean
 //
 
 #ifndef __BOX_HH__
@@ -25,20 +25,21 @@ class Box : public AObject, public IDestroyable
 {
 
 private:
-  gdl::Geometry	_geometry;
+  gdl::Geometry				_geometry;
 
 public:
   Box(float, float);
   ~Box();
 
 public:
-  virtual void	destroy(std::vector<std::vector<AObject *> > &map, APlayer *);
+  virtual void				destroy(std::vector<std::vector<AObject *> > &map, APlayer *);
 
 public:
-  virtual void	draw(gdl::AShader &shader);
+  virtual void				draw(gdl::AShader &shader);
+  virtual const std::string             &getType() const;
 
 public:
-  void		setModel(const gdl::Geometry &geo);
+  void					setModel(const gdl::Geometry &geo);
 };
 
 #endif

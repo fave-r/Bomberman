@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun  7 18:46:28 2015 clément jean
-// Last update Fri Jun 12 04:06:23 2015 clément jean
+// Last update Sat Jun 13 18:01:12 2015 clément jean
 //
 
 #include "BonusSpeed.hh"
@@ -43,4 +43,10 @@ void		BonusSpeed::draw(gdl::AShader &shader)
 void		BonusSpeed::setModel(const gdl::Geometry &geo)
 {
   (void)geo;
+}
+
+const std::string             &BonusSpeed::getType() const
+{
+  static std::string str("2");
+  return(str);
 }

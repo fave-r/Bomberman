@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Fri Jun 12 03:41:23 2015 clément jean
+// Last update Sat Jun 13 12:29:41 2015 clément jean
 //
 
 #include "Bomb.hh"
@@ -87,4 +87,10 @@ void			Bomb::draw(gdl::AShader &shader)
 void	Bomb::setModel(const gdl::Geometry &geo)
 {
   (void)geo;
+}
+
+const std::string             &Bomb::getType() const
+{
+  static std::string str("b");
+  return(str);
 }

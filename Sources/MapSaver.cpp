@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Mon Jun  8 16:18:51 2015 Leo Thevenet
-// Last update Fri Jun 12 23:51:03 2015 Leo Thevenet
+// Last update Sat Jun 13 18:23:21 2015 clément jean
 //
 
 #include "MapSaver.hh"
@@ -31,9 +31,9 @@ namespace	MapSaver
 	      {
 		if (map[i][j] != NULL)
 		  {
-		    if (dynamic_cast<Wall *>(map[i][j]))
+		    if (map[i][j]->getType() == "W")
 		      fichier << 1 << " ";
-		    else if (dynamic_cast<Box *>(map[i][j]))
+		    else if (map[i][j]->getType() == "B")
 		      fichier << 2 << " ";
 		    else
 		      fichier << 0 << " ";
@@ -49,7 +49,8 @@ namespace	MapSaver
       throw loading_error("Can save the map");
   }
 
-  std::tuple<int, int, int, std::vector< std::vector<AObject *> >, std::list<APlayer *> > getMap(const std::string & fileName)
+  const std::tuple<int, int, int, std::vector< std::vector<AObject *> >
+		   , std::list<APlayer *> > getMap(const std::string & fileName)
   {
     std::ifstream fichier(fileName, std::ifstream::in);
 

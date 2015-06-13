@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:40:10 2015 clément jean
-// Last update Sun Jun  7 16:16:08 2015 polydo_s
+// Last update Sat Jun 13 12:28:26 2015 clément jean
 //
 
 #include "Wall.hh"
@@ -24,4 +24,10 @@ void	Wall::draw(gdl::AShader &shader)
 void	Wall::setModel(const gdl::Geometry &geo)
 {
   this->_geometry = geo;
+}
+
+const std::string             &Wall::getType() const
+{
+  static std::string str("W");
+  return(str);
 }

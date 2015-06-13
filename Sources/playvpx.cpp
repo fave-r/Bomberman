@@ -275,7 +275,7 @@ void	 VideoPlay() {
   SDL_Quit();
 }
 
-bool	saveScreenshot(std::string filename, int w, int h)
+bool	saveScreenshot(const std::string &filename, int w, int h)
 {
   glPixelStorei(GL_PACK_ALIGNMENT, 1);
 

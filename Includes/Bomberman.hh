@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Sat Jun 13 05:12:42 2015 clément jean
+// Last update Sat Jun 13 18:11:39 2015 clément jean
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -20,6 +20,7 @@
 #include <Model.hh>
 #include <tuple>
 #include <sstream>
+#include <unistd.h>
 
 #include "Map.hh"
 #include "Ground.hh"
@@ -41,15 +42,14 @@ public:
   ~Bomberman();
 
 public:
-  void	ShowMap();
-  void	initialize();
-  void	init_player();
-  void  end_init_player();
-  void	init_map();
-  bool	init_texture();
-  bool	update();
-  void	draw();
-  void	getMap();
+  void						initialize();
+  void						init_player();
+  void						end_init_player();
+  void						init_map();
+  bool						init_texture();
+  bool						update();
+  void						draw();
+  void						getMap();
 
 private:
   std::vector< std::vector<AObject *> >		_map;

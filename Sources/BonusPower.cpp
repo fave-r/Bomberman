@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri Jun 12 01:20:26 2015 polydo_s
-// Last update Fri Jun 12 04:06:03 2015 clément jean
+// Last update Sat Jun 13 18:01:05 2015 clément jean
 //
 
 #include "BonusPower.hh"
@@ -43,4 +43,10 @@ void		BonusPower::draw(gdl::AShader &shader)
 void		BonusPower::setModel(const gdl::Geometry &geo)
 {
   (void)geo;
+}
+
+const std::string             &BonusPower::getType() const
+{
+  static std::string str("3");
+  return(str);
 }

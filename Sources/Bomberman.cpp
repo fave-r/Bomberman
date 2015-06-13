@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Sat Jun 13 04:47:09 2015 clément jean
+// Last update Sat Jun 13 15:55:02 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -90,12 +90,12 @@ void	Bomberman::init_map()
 	this->_objects.push_back(model);
 	if (this->_map[i][j] != NULL)
 	  {
-	    if (dynamic_cast<Wall *>(this->_map[i][j]))
+	    if (this->_map[i][j]->getType() == "W")
 	      {
 		this->_map[i][j]->setModel(this->_modelPool->getGeometry());
 		this->_map[i][j]->setTexture(this->_texturePool->getWall());
 	      }
-	    else if (dynamic_cast<Box *>(this->_map[i][j]))
+	    else if (this->_map[i][j]->getType() == "B")
 	      {
 		this->_map[i][j]->setModel(this->_modelPool->getGeometry());
 		this->_map[i][j]->setTexture(this->_texturePool->getBox());
@@ -135,7 +135,6 @@ void	Bomberman::end_init_player()
 
 bool Bomberman::update()
 {
-  PhysicalPlayer	*player;
   IUpdatable		*updatable;
   int			rot;
 
@@ -151,6 +150,7 @@ bool Bomberman::update()
       this->_numberOfSave++;
       ss << "Screenshots/Save" << this->_numberOfSave << ".tga";
       saveScreenshot(ss.str(), 1920, 1080);
+      usleep(200000);
     }
   for (unsigned int i = 0; i < this->_map.size(); ++i)
     for (unsigned int j = 0; j < this->_map[i].size(); ++j)
@@ -164,8 +164,8 @@ bool Bomberman::update()
     {
       if (!(*it)->isDead())
 	{
-	  if ((player = dynamic_cast<PhysicalPlayer *>(*it)))
-	    player->setInput(this->_input);
+	  if ((*it)->getType() == "P")
+	    static_cast<PhysicalPlayer *>(*it)->setInput(this->_input);
 	  (*it)->update(this->_clock, this->_map, this->_playerlist);
 	  (*it)->resetRotate();
 	  rot = ((*it)->getOrientation() % 2 == 0) ? (*it)->getOrientation() * 90 - 180 : (*it)->getOrientation() * 90;
@@ -181,7 +181,6 @@ void Bomberman::draw()
 {
   glm::mat4 transformation;
   int	nb = 0;
-  Fire  *fire;
 
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   this->_shader.bind();
@@ -199,7 +198,7 @@ void Bomberman::draw()
     for (unsigned int j = 0; j < this->_map[i].size(); ++j)
       if (this->_map[i][j])
 	{
-	  if ((fire = dynamic_cast<Fire *>(this->_map[i][j])))
+	  if (this->_map[i][j]->getType() == "F")
 	    {
 	      this->_map[i][j]->setModel(this->_modelPool->getGeometry());
 	      this->_map[i][j]->setTexture(this->_texturePool->getFire());
@@ -229,7 +228,6 @@ void Bomberman::draw()
   this->_shader.bind();
   this->_shader.setUniform("view", transformation);
   this->_context.flush();
-  delete fire;
 }
 
 Bomberman::~Bomberman()

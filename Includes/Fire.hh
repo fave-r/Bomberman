@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 17:17:08 2015 clément jean
-// Last update Sat Jun 13 05:13:53 2015 clément jean
+// Last update Sat Jun 13 18:17:31 2015 clément jean
 //
 
 #ifndef __FIRE_HH__
@@ -21,23 +21,25 @@ class	Fire : public AObject, public ICrossable, public IUpdatable
 {
 
 private:
-  gdl::Geometry		_geometry;
-  double		_elapsed;
-  float			_livespan;
+  gdl::Geometry				_geometry;
+  double				_elapsed;
+  float					_livespan;
 
 public:
   Fire(float x, float y, double elapsed);
   ~Fire();
 
 public:
-  virtual void          affect(std::vector<std::vector<AObject *> > &map, APlayer *player);
-  virtual void		update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map, std::list<APlayer *> &players);
+  virtual void				affect(std::vector<std::vector<AObject *> > &map, APlayer *player);
+  virtual void				update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map
+					       , std::list<APlayer *> &players);
 
 public:
-  virtual void		draw(gdl::AShader &shader);
+  virtual void				draw(gdl::AShader &shader);
+  virtual const std::string             &getType() const;
 
 public:
-  virtual void          setModel(const gdl::Geometry &);
+  virtual void				setModel(const gdl::Geometry &);
 
 };
 

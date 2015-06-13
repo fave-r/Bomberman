@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:18:58 2015 clément jean
-// Last update Sat Jun 13 05:14:08 2015 clément jean
+// Last update Sat Jun 13 18:12:32 2015 clément jean
 //
 
 #ifndef __BOMB_HH__
@@ -25,12 +25,12 @@ class Bomb : public AObject, public IUpdatable, public IDestroyable
 {
 
 private:
-  gdl::Model	   	_model;
-  double		_elapsed;
-  float			_livespan;
-  APlayer		*_player;
-  int			_power;
-  std::list<APlayer *>	_players;
+  gdl::Model			_model;
+  double			_elapsed;
+  float				_livespan;
+  APlayer			*_player;
+  int				_power;
+  std::list<APlayer *>		_players;
 
 public:
   Bomb(float x, float y, APlayer *player, const gdl::Clock &clock, int power);
@@ -41,8 +41,10 @@ public:
   void				destroy(std::vector<std::vector<AObject *> > &map, APlayer *player);
 
 public:
-  virtual void			update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map, std::list<APlayer *> &players);
+  virtual void			update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map,
+				       std::list<APlayer *> &players);
   virtual void			draw(gdl::AShader &shader);
+  virtual const std::string     &getType() const;
 
 public:
   void				setModel(const gdl::Geometry &);

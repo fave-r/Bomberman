@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun  7 18:08:50 2015 clément jean
-// Last update Sat Jun 13 05:11:55 2015 clément jean
+// Last update Sat Jun 13 17:58:42 2015 clément jean
 //
 
 #include "ABonus.hh"
@@ -21,12 +21,11 @@ ABonus::~ABonus()
 {
 }
 
-ABonus	*ABonus::createBonus(int x, int y)
+ABonus		*ABonus::createBonus(int x, int y)
 {
-  std::random_device generator;
-  std::uniform_int_distribution<int> distribution(1, 100);
-
-  std::vector<ABonus *(*)(int, int)> bonus;
+  std::random_device			generator;
+  std::uniform_int_distribution<int>	distribution(1, 100);
+  std::vector<ABonus *(*)(int, int)>	bonus;
 
   bonus.push_back(&BonusPower::create);
   bonus.push_back(&BonusSpeed::create);
