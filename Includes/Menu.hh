@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:36:11 2015 clément jean
-// Last update Sat Jun 13 05:01:15 2015 clément jean
+// Last update Sat Jun 13 18:13:57 2015 Leo Thevenet
 //
 
 #ifndef __MENU_HH__
@@ -35,6 +35,7 @@ public:
   void		launchBomberman(Bomberman *);
   void		GetAllMap();
   void		MoveForLoad(int);
+  void		launchHighscore(int a = -1);
 private:
   std::string	_path;
   SDL_Event	event;

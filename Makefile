@@ -5,16 +5,17 @@
 ## Login   <polydo_s@epitech.net>
 ##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Sat Jun 13 05:23:31 2015 clément jean
+## Last update Sat Jun 13 17:34:40 2015 Leo Thevenet
 ##
 
 CXX		= g++
 
 CXXFLAGS	= -W -Wall -Werror -Wextra -std=gnu++11
 
-CXXFLAGS	+= -I./Includes -I./Ressources/lib/includes
+CXXFLAGS	+= -I./Includes -I./Ressources/lib/includes -g3
 
 LDFLAGS		= -Wl,--rpath=./Ressources/lib/libs -lgdl_gl -lGL -lpthread -lGLEW -lrt -lfbxsdk -lSDL2 -lSDL2_ttf
+
 LDFLAGS		+= -lSDL2_image -ldl -L./Ressources/lib/libvpx.a -lGLU -lvpx
 
 FMOD		= ./Ressources/lib/fmod/libfmod.so

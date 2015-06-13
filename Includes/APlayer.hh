@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Sat Jun 13 04:41:16 2015 clément jean
+// Last update Sat Jun 13 11:38:23 2015 Leo Thevenet
 //
 
 #ifndef PLAYER_HH
@@ -61,7 +61,8 @@ public:
   void			goDown(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
   void			goLeft(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock);
   void                  move(const int &x, const int &y, const int &z);
-
+  unsigned int		getID() const;
+  int			getScore() const;
 public:
   bool			isDead() const;
   eOrientation		getOrientation() const;

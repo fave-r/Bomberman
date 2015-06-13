@@ -5,10 +5,11 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Sat Jun 13 04:47:09 2015 clément jean
+// Last update Sat Jun 13 18:13:13 2015 Leo Thevenet
 //
 
 #include "Bomberman.hh"
+#include "HighScore.hh"
 
 Bomberman::Bomberman(unsigned int w, unsigned int h, unsigned int p)
   : _w(w), _h(h), _p(p)
@@ -59,12 +60,7 @@ void	Bomberman::initialize()
     throw std::runtime_error("shader erreur");
 
   projection = glm::perspective(70.0f, 1920.0f / 1080.0f, 0.1f, 1000.0f);
-  transformation = glm::lookAt(glm::vec3(this->_w / 2, ten((this->_w + this->_h) / 2), this->_h / 2),
-			       glm::vec3(this->_w / 2, 0, this->_h / 2 - 0.0001),
-			       glm::vec3(0, 1, 0));
-
   this->_shader.bind();
-  this->_shader.setUniform("view", transformation);
   this->_shader.setUniform("projection", projection);
   init_map();
   if (this->_playerlist.empty())
@@ -138,6 +134,8 @@ bool Bomberman::update()
   PhysicalPlayer	*player;
   IUpdatable		*updatable;
   int			rot;
+  unsigned int		iaDead = 0;
+  unsigned int		pDead = 0;
 
   this->_context.updateClock(this->_clock);
   this->_context.updateInputs(this->_input);
@@ -172,6 +170,31 @@ bool Bomberman::update()
 	  (*it)->rotate(glm::vec3(0, 1, 0), rot);
 	  (*it)->SetPos(glm::vec3((*it)->getX(), 1.001, (*it)->getY()));
 	}
+      else
+	if ((*it)->getID() == 0)
+	  iaDead++;
+	else
+	  pDead++;
+    }
+  it = this->_playerlist.begin();
+
+  if (pDead == 2 || (pDead == 1 && (iaDead + this->_p) == this->_playerlist.size()))
+    {
+      int ended = 0;
+      Score::addNewScore((*it)->getScore(), 1);
+      if ((*(it))->isDead() == false)
+	ended = 1;
+      ++it;
+      if ((*it)->getID() != 0)
+	{
+	  Score::addNewScore((*it)->getScore(), 2);
+	  if ((*it)->isDead() == false)
+	    ended = 2;
+	}
+      HighScore *hg = new HighScore(ended);
+      hg->getKey();
+      delete hg;
+      return false;
     }
   this->_shader.bind();
   return true;
@@ -179,22 +202,19 @@ bool Bomberman::update()
 
 void Bomberman::draw()
 {
-  glm::mat4 transformation;
-  int	nb = 0;
-  Fire  *fire;
+  Fire		*fire;
+  std::list<APlayer *>::iterator it;
 
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   this->_shader.bind();
 
   for (size_t i = 0; i < this->_objects.size(); ++i)
     this->_objects[i]->draw(this->_shader);
-  std::list<APlayer *>::iterator it;
+
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
     if (!(*it)->isDead())
-      {
-	(*it)->draw(this->_shader);
-	nb++;
-      }
+      (*it)->draw(this->_shader);
+
   for (unsigned int i = 0; i < this->_map.size(); ++i)
     for (unsigned int j = 0; j < this->_map[i].size(); ++j)
       if (this->_map[i][j])
@@ -206,7 +226,22 @@ void Bomberman::draw()
 	    }
 	  this->_map[i][j]->draw(this->_shader);
 	}
-  it = this->_playerlist.begin();
+  setCam();
+  this->_shader.bind();
+  this->_context.flush();
+  delete fire;
+}
+
+void	Bomberman::setCam()
+{
+  glm::mat4	transformation;
+  int		nb = 0;
+
+  std::list<APlayer *>::iterator it = this->_playerlist.begin();
+  for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
+    if (!(*it)->isDead() && (*it)->getID() != 0)
+      nb++;
+
   if (nb == 2)
     {
       std::list<APlayer *>::iterator itt;
@@ -224,12 +259,8 @@ void Bomberman::draw()
       transformation = glm::lookAt(glm::vec3((*it)->getX(), 15, (*it)->getY() + 5),
 				   glm::vec3((*it)->getX(), 0, (*it)->getY()),
 				   glm::vec3(0, 1, 0));
-
-    }
-  this->_shader.bind();
+   }
   this->_shader.setUniform("view", transformation);
-  this->_context.flush();
-  delete fire;
 }
 
 Bomberman::~Bomberman()
@@ -246,4 +277,5 @@ Bomberman::~Bomberman()
   delete this->_texturePool;
   delete this->_modelPool;
   delete this->_SoundPlayer;
+  this->_context.stop();
 }

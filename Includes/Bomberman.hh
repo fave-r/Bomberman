@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Sat Jun 13 05:12:42 2015 clément jean
+// Last update Sat Jun 13 18:13:32 2015 Leo Thevenet
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -50,6 +50,7 @@ public:
   bool	update();
   void	draw();
   void	getMap();
+  void	setCam();
 
 private:
   std::vector< std::vector<AObject *> >		_map;
