@@ -5,12 +5,12 @@
 ## Login   <polydo_s@epitech.net>
 ##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Sat Jun 13 04:43:23 2015 clément jean
+## Last update Sat Jun 13 05:23:31 2015 clément jean
 ##
 
 CXX		= g++
 
-CXXFLAGS	= -W -Wall -Werror -Wextra -std=c++11
+CXXFLAGS	= -W -Wall -Werror -Wextra -std=gnu++11
 
 CXXFLAGS	+= -I./Includes -I./Ressources/lib/includes
 
