@@ -5,12 +5,10 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Sat Jun 13 04:17:49 2015 clément jean
+// Last update Sat Jun 13 04:47:09 2015 clément jean
 //
 
 #include "Bomberman.hh"
-#include "MapSaver.hh"
-#include <typeinfo>
 
 Bomberman::Bomberman(unsigned int w, unsigned int h, unsigned int p)
   : _w(w), _h(h), _p(p)
@@ -157,8 +155,7 @@ bool Bomberman::update()
   for (unsigned int i = 0; i < this->_map.size(); ++i)
     for (unsigned int j = 0; j < this->_map[i].size(); ++j)
       {
-	updatable = dynamic_cast<IUpdatable *>(this->_map[i][j]);
-	if (updatable)
+	if ((updatable = dynamic_cast<IUpdatable *>(this->_map[i][j])))
 	  updatable->update(this->_clock, this->_map, this->_playerlist);
       }
 
@@ -167,8 +164,7 @@ bool Bomberman::update()
     {
       if (!(*it)->isDead())
 	{
-	  player = dynamic_cast<PhysicalPlayer *>(*it);
-	  if (player)
+	  if ((player = dynamic_cast<PhysicalPlayer *>(*it)))
 	    player->setInput(this->_input);
 	  (*it)->update(this->_clock, this->_map, this->_playerlist);
 	  (*it)->resetRotate();
@@ -203,8 +199,7 @@ void Bomberman::draw()
     for (unsigned int j = 0; j < this->_map[i].size(); ++j)
       if (this->_map[i][j])
 	{
-	  fire = dynamic_cast<Fire *>(this->_map[i][j]);
-	  if (fire)
+	  if ((fire = dynamic_cast<Fire *>(this->_map[i][j])))
 	    {
 	      this->_map[i][j]->setModel(this->_modelPool->getGeometry());
 	      this->_map[i][j]->setTexture(this->_texturePool->getFire());

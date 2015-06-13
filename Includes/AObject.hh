@@ -5,23 +5,22 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:27:04 2015 clément jean
-// Last update Thu Jun 11 15:25:50 2015 Leo Thevenet
+// Last update Sat Jun 13 04:49:29 2015 clément jean
 //
 
 #ifndef __AOBJECT_HPP__
 # define __AOBJECT_HPP__
 
-#include <SdlContext.hh>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <BasicShader.hh>
 #include <iostream>
-#include <vector>
 #include <Texture.hh>
 #include <Model.hh>
 #include <Geometry.hh>
 #include <Input.hh>
 #include <string>
+
 #include "Music.hh"
 #include "Error.hh"
 

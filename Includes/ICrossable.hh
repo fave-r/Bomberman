@@ -5,17 +5,16 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 29 00:32:40 2015 polydo_s
-// Last update Fri Jun 12 01:32:18 2015 polydo_s
+// Last update Sat Jun 13 05:07:22 2015 clément jean
 //
 
 #ifndef ICROSSABLE_HH
 #define ICROSSABLE_HH
 
 #include <vector>
-
 #include "APlayer.hh"
 
-class APlayer;
+class	APlayer;
 
 class	ICrossable {
 

@@ -5,13 +5,12 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 17:25:07 2015 clément jean
-// Last update Sat Jun  6 01:06:17 2015 polydo_s
+// Last update Sat Jun 13 04:51:17 2015 clément jean
 //
 
 #ifndef __WALL_HH__
 # define __WALL_HH__
 
-#include <iostream>
 #include "AObject.hh"
 
 class Wall : public AObject

@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Fri Jun 12 01:22:01 2015 polydo_s
+// Last update Sat Jun 13 04:41:16 2015 clément jean
 //
 
 #ifndef PLAYER_HH

@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:59:33 2015 polydo_s
-// Last update Fri Jun 12 00:36:08 2015 polydo_s
+// Last update Sat Jun 13 04:58:38 2015 clément jean
 //
 
 #ifndef PHYSICAL_PLAYER_HH
@@ -13,9 +13,7 @@
 
 #include <map>
 #include <Input.hh>
-#include <SdlContext.hh>
 
-#include "Bomberman.hh"
 #include "APlayer.hh"
 #include "AObject.hh"
 

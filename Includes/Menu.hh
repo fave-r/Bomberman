@@ -5,22 +5,17 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:36:11 2015 clément jean
-// Last update Fri Jun 12 00:22:45 2015 clément jean
+// Last update Sat Jun 13 05:01:15 2015 clément jean
 //
 
 #ifndef __MENU_HH__
 # define __MENU_HH__
 
-#include <Game.hh>
-#include <SdlContext.hh>
-#include <AShader.hh>
-#include <BasicShader.hh>
-#include <iostream>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <cstdlib>
 #include <SDL2/SDL_ttf.h>
+#include <iostream>
+#include <cstdlib>
 #include <dirent.h>
+#include <unistd.h>
 
 #include "Bomberman.hh"
 #include "Music.hh"

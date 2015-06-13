@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Thu Jun  4 22:37:22 2015 polydo_s
-// Last update Fri Jun  5 00:46:10 2015 clément jean
+// Last update Sat Jun 13 04:50:08 2015 clément jean
 //
 
 #ifndef GENMAP_HH_
@@ -13,6 +13,7 @@
 
 #include <random>
 #include <vector>
+
 #include "AObject.hh"
 #include "Wall.hh"
 #include "Box.hh"

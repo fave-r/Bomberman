@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  9 16:14:18 2015 Leo Thevenet
-// Last update Thu Jun 11 10:20:20 2015 Leo Thevenet
+// Last update Sat Jun 13 05:02:06 2015 clément jean
 //
 
 #ifndef __SCORE_HH__
@@ -13,9 +13,7 @@
 
 #include <fstream>
 #include <iostream>
-#include <string>
 #include <vector>
-#include "Bomberman.hh"
 
 namespace Score
 {

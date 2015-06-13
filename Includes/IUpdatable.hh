@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Sun May 24 14:08:53 2015 polydo_s
-// Last update Thu Jun 11 16:16:09 2015 polydo_s
+// Last update Sat Jun 13 05:06:25 2015 clément jean
 //
 
 #ifndef IUPDATABLE_HH
@@ -14,11 +14,9 @@
 #include <SdlContext.hh>
 #include <list>
 #include <vector>
+#include <Clock.hh>
 
-#include "AObject.hh"
 #include "APlayer.hh"
-
-class APlayer;
 
 class IUpdatable {
 

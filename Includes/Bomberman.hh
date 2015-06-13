@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Fri Jun 12 22:46:30 2015 clément jean
+// Last update Sat Jun 13 04:47:07 2015 clément jean
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -26,10 +26,10 @@
 #include "APlayer.hh"
 #include "AObject.hh"
 #include "TexturePool.hh"
-#include "Bomb.hh"
 #include "Fire.hh"
 #include "Music.hh"
 #include "ModelPool.hh"
+#include "MapSaver.hh"
 
 #define ten(x) (x < 15) ? 15 : x
 #define middle(xa, ya, xb, yb) sqrt(pow(xb - xa, 2) + pow(yb - ya, 2))

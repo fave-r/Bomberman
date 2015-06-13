@@ -5,16 +5,16 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  9 15:38:06 2015 Leo Thevenet
-// Last update Tue Jun  9 17:08:01 2015 Leo Thevenet
+// Last update Sat Jun 13 04:55:23 2015 clément jean
 //
 
 #ifndef __HIGHSCORE_HH__
 #define __HIGHSCORE_HH__
 
+#include "SDL2/SDL_image.h"
 #include <SDL2/SDL_ttf.h>
 #include <string>
 #include <vector>
-#include "SDL2/SDL_image.h"
 
 #include "Menu.hh"
 #include "Score.hh"

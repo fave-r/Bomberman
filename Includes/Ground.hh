@@ -5,15 +5,13 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri Jun 12 22:44:42 2015 clément jean
-// Last update Fri Jun 12 22:47:27 2015 clément jean
+// Last update Sat Jun 13 04:54:58 2015 clément jean
 //
 
 #ifndef __GROUND_HPP__
 # define __GROUND_HPP__
 
-#include <iostream>
 #include <Geometry.hh>
-#include <Texture.hh>
 #include "AObject.hh"
 
 class Ground : public AObject

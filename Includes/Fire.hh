@@ -5,14 +5,12 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 17:17:08 2015 clément jean
-// Last update Fri Jun 12 01:34:14 2015 polydo_s
+// Last update Sat Jun 13 04:56:16 2015 clément jean
 //
 
 #ifndef __FIRE_HH__
 # define __FIRE_HH__
 
-#include <iostream>
-#include <Texture.hh>
 #include <Geometry.hh>
 
 #include "AObject.hh"
