@@ -5,16 +5,17 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 13:51:26 2015 polydo_s
-// Last update Fri Jun 12 22:10:12 2015 clément jean
+// Last update Sat Jun 13 18:14:08 2015 Leo Thevenet
 //
 
 #include "Error.hh"
 #include "Menu.hh"
 #include "Music.hh"
+#include "HighScore.hh"
 
 int	main()
 {
-      Menu		menu;
+  Menu	*menu = new Menu();
   try
     {
       Music		*SoundPlayer = new Music();
@@ -23,14 +24,14 @@ int	main()
       SoundPlayer->playSound("intro", true);
       VideoPlay();
       delete SoundPlayer;
-      menu.initialize();
+      menu->initialize();
     }
   catch (const std::runtime_error &e)
     {
       std::cerr << e.what() << std::endl;
       return (EXIT_FAILURE);
     }
-  while (menu.update() == true)
-    menu.draw();
+  while (menu->update() == true)
+    menu->draw();
   return (0);
 }

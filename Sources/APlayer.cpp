@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Sat Jun 13 11:58:49 2015 clément jean
+// Last update Sat Jun 13 18:44:19 2015 clément jean
 //
 
 #include "APlayer.hh"
@@ -199,4 +199,14 @@ void				APlayer::increaseMaxBombs()
 void				APlayer::updateScore(int nb)
 {
   this->_score += nb;
+}
+
+unsigned int			APlayer::getID() const
+{
+  return this->_id;
+}
+
+int				APlayer::getScore() const
+{
+  return this->_score;
 }

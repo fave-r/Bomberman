@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  9 15:38:06 2015 Leo Thevenet
-// Last update Sat Jun 13 18:20:33 2015 clément jean
+// Last update Sat Jun 13 18:46:10 2015 clément jean
 //
 
 #ifndef __HIGHSCORE_HH__
@@ -30,10 +30,12 @@ class HighScore
   int				_y;
 
 public:
-  HighScore(SDL_Window *windows, SDL_Renderer *_Main_Renderer, SDL_Event *event);
-  HighScore(SDL_Window *windows, SDL_Renderer *_Main_Renderer, SDL_Event *event, const int &);
+  HighScore(SDL_Window *, SDL_Renderer *, SDL_Event *);
+  HighScore(const int &);
   ~HighScore();
-  void				init(SDL_Window *windows, SDL_Renderer *_Main_Renderer, SDL_Event *event);
+
+public:
+  void				init();
   void				showWinner(const std::string &);
   void				getKey();
   void				showAllScore();
