@@ -5,11 +5,12 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Sat Jun 13 02:17:13 2015 clément jean
+// Last update Sat Jun 13 04:17:49 2015 clément jean
 //
 
 #include "Bomberman.hh"
 #include "MapSaver.hh"
+#include <typeinfo>
 
 Bomberman::Bomberman(unsigned int w, unsigned int h, unsigned int p)
   : _w(w), _h(h), _p(p)
@@ -40,7 +41,7 @@ void	Bomberman::initialize()
 
   if (!this->_context.start(1920, 1080, "My bomberman!"))
     throw std::runtime_error("Cannot instanciate the window");
-  if (SDL_Init(SDL_INIT_JOYSTICK | SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) < 0)
+  if (SDL_Init(SDL_INIT_JOYSTICK | SDL_INIT_VIDEO) < 0)
     throw loading_error("Bomberman : Joystick error");
 
   this->_SoundPlayer = new Music();
@@ -136,6 +137,10 @@ void	Bomberman::end_init_player()
 
 bool Bomberman::update()
 {
+  PhysicalPlayer	*player;
+  IUpdatable		*updatable;
+  int			rot;
+
   this->_context.updateClock(this->_clock);
   this->_context.updateInputs(this->_input);
 
@@ -144,7 +149,7 @@ bool Bomberman::update()
   if (this->_input.getKey(SDLK_F5))
     {
       MapSaver::saveMap(this->_map, this->_playerlist, this->_w, this->_h, this->_p);
-      std::stringstream ss;
+      std::stringstream	ss;
       this->_numberOfSave++;
       ss << "Screenshots/Save" << this->_numberOfSave << ".tga";
       saveScreenshot(ss.str(), 1920, 1080);
@@ -152,7 +157,7 @@ bool Bomberman::update()
   for (unsigned int i = 0; i < this->_map.size(); ++i)
     for (unsigned int j = 0; j < this->_map[i].size(); ++j)
       {
-	IUpdatable *updatable = dynamic_cast<IUpdatable *>(this->_map[i][j]);
+	updatable = dynamic_cast<IUpdatable *>(this->_map[i][j]);
 	if (updatable)
 	  updatable->update(this->_clock, this->_map, this->_playerlist);
       }
@@ -162,12 +167,12 @@ bool Bomberman::update()
     {
       if (!(*it)->isDead())
 	{
-	  PhysicalPlayer *player = dynamic_cast<PhysicalPlayer *>(*it);
+	  player = dynamic_cast<PhysicalPlayer *>(*it);
 	  if (player)
 	    player->setInput(this->_input);
 	  (*it)->update(this->_clock, this->_map, this->_playerlist);
 	  (*it)->resetRotate();
-	  int rot = ((*it)->getOrientation() % 2 == 0) ? (*it)->getOrientation() * 90 - 180 : (*it)->getOrientation() * 90;
+	  rot = ((*it)->getOrientation() % 2 == 0) ? (*it)->getOrientation() * 90 - 180 : (*it)->getOrientation() * 90;
 	  (*it)->rotate(glm::vec3(0, 1, 0), rot);
 	  (*it)->SetPos(glm::vec3((*it)->getX(), 1.001, (*it)->getY()));
 	}
@@ -180,6 +185,7 @@ void Bomberman::draw()
 {
   glm::mat4 transformation;
   int	nb = 0;
+  Fire  *fire;
 
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   this->_shader.bind();
@@ -197,7 +203,7 @@ void Bomberman::draw()
     for (unsigned int j = 0; j < this->_map[i].size(); ++j)
       if (this->_map[i][j])
 	{
-	  Fire	*fire = dynamic_cast<Fire *>(this->_map[i][j]);
+	  fire = dynamic_cast<Fire *>(this->_map[i][j]);
 	  if (fire)
 	    {
 	      this->_map[i][j]->setModel(this->_modelPool->getGeometry());
@@ -228,14 +234,15 @@ void Bomberman::draw()
   this->_shader.bind();
   this->_shader.setUniform("view", transformation);
   this->_context.flush();
+  delete fire;
 }
 
 Bomberman::~Bomberman()
 {
-  //  for (size_t i = 0; i < this->_objects.size(); ++i)
+  //for (size_t i = 0; i < this->_objects.size(); ++i)
   //delete this->_objects[i];
-  //for (unsigned int i = 0; i < this->_map.size(); i++)
-  //for (unsigned int j = 0; j < this->_map[i].size(); j++)
+  //  for (unsigned int i = 0; i < this->_map.size(); i++)
+  // for (unsigned int j = 0; j < this->_map[i].size(); j++)
   //  if (this->_map[i][j])
   //	delete this->_map[i][j];
   std::list<APlayer *>::iterator it;

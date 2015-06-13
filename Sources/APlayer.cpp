@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Fri Jun 12 03:37:29 2015 clément jean
+// Last update Sat Jun 13 03:24:55 2015 clément jean
 //
 
 #include "APlayer.hh"
@@ -30,6 +30,7 @@ APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
       if (this->_model.load("./Assets/Player/marvin2.dae") == false)
 	throw exec_error("APlayer : Cannot load the model");
     }
+  usleep(100000);
   if (this->_model.createSubAnim(0, "wait", 0, 0) == false)
     throw exec_error("APlayer : Cannot wait");
   if (this->_model.createSubAnim(0, "run", 36, 53) == false)
