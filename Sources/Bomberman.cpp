@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Sat Jun 13 18:32:38 2015 Leo Thevenet
+// Last update Sat Jun 13 18:37:47 2015 Leo Thevenet
 //
 
 #include "Bomberman.hh"
@@ -240,8 +240,9 @@ void	Bomberman::setCam()
 
   std::list<APlayer *>::iterator it = this->_playerlist.begin();
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
-    if (!(*it)->isDead() && (*it)->getID() != 0)
+    if ((*it)->isDead() == false && (*it)->getID() != 0)
       nb++;
+  it = this->_playerlist.begin();
 
   if (nb == 2)
     {
@@ -255,12 +256,12 @@ void	Bomberman::setCam()
     }
   else
     {
-      if ((*it)->isDead())
+      if ((*it)->isDead() == true)
 	it = std::next(this->_playerlist.begin());
       transformation = glm::lookAt(glm::vec3((*it)->getX(), 15, (*it)->getY() + 5),
 				   glm::vec3((*it)->getX(), 0, (*it)->getY()),
 				   glm::vec3(0, 1, 0));
-   }
+    }
   this->_shader.setUniform("view", transformation);
 }
 
