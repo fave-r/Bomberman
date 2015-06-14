@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Thu Jun  4 22:36:52 2015 polydo_s
-// Last update Sun Jun 14 18:24:00 2015 Leo Thevenet
+// Last update Sun Jun 14 21:54:41 2015 Leo Thevenet
 //
 
 #include "Map.hh"
@@ -56,7 +56,7 @@ std::list<APlayer *> Map::spawnPlayers(std::vector<std::vector<AObject *> > &map
       if (i < physical)
 	players.push_back(new PhysicalPlayer(x, y, static_cast<APlayer::eOrientation>(distribution(generator) % 4)));
       else
-       	players.push_back(new ArtificialPlayer(x, y, static_cast<APlayer::eOrientation>(distribution(generator) % 4)));
+	players.push_back(new ArtificialPlayer(x, y, static_cast<APlayer::eOrientation>(distribution(generator) % 4)));
 
       for (unsigned int j = y - 1, k = 0; k < 3; ++j, ++k)
 	for (unsigned int l = x - 1, m = 0; m < 3; ++l, ++m)
@@ -79,9 +79,9 @@ std::vector<std::vector<AObject *> > Map::generate()
 	  map[y][x] = new Wall(x, y);
 	else
 	  {
-	    if (distribution(generator) <= Parseur::getDensite() && !dynamic_cast<Wall *>(map[y - 1][x]))
+	    if (distribution(generator) <= Parseur::getDensite() && !dynamic_cast<Wall *>(map[y - 1][x]) && !dynamic_cast<Wall *>(map[y - 1][x + 1]))
 	      map[y][x] = new Wall(x, y);
-	    else if (distribution(generator) <= 70)
+	    else
 	      map[y][x] = new Box(x, y);
 	  }
       }
