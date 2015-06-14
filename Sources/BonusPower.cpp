@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri Jun 12 01:20:26 2015 polydo_s
-// Last update Sat Jun 13 18:01:05 2015 clément jean
+// Last update Sun Jun 14 10:16:54 2015 clément jean
 //
 
 #include "BonusPower.hh"
@@ -22,30 +22,30 @@ BonusPower::~BonusPower()
 {
 }
 
-ABonus		*BonusPower::create(int x, int y)
+ABonus			*BonusPower::create(int x, int y)
 {
   return new BonusPower(x, y);
 }
 
-void		BonusPower::affect(std::vector<std::vector<AObject *> > &map, APlayer *player)
+void			BonusPower::affect(std::vector<std::vector<AObject *> > &map, APlayer *player)
 {
   this->_SoundPlayer->playSound("BonusF", false);
   player->increasePower();
   map[this->_y][this->_x] = NULL;
 }
 
-void		BonusPower::draw(gdl::AShader &shader)
+void			BonusPower::draw(gdl::AShader &shader)
 {
   this->_texture.bind();
   this->_model.draw(shader, getTransformation(), 0.02);
 }
 
-void		BonusPower::setModel(const gdl::Geometry &geo)
+void			BonusPower::setModel(const gdl::Geometry &geo)
 {
   (void)geo;
 }
 
-const std::string             &BonusPower::getType() const
+const std::string	&BonusPower::getType() const
 {
   static std::string str("3");
   return(str);

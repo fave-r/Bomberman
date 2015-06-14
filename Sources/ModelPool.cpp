@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri Jun  5 00:17:20 2015 clément jean
-// Last update Fri Jun 12 23:05:12 2015 clément jean
+// Last update Sun Jun 14 10:22:26 2015 clément jean
 //
 
 #include "ModelPool.hh"
@@ -14,7 +14,11 @@ ModelPool::ModelPool()
 {
 }
 
-void	ModelPool::init()
+ModelPool::~ModelPool()
+{
+}
+
+void			ModelPool::init()
 {
   this->_geometry.pushVertex(glm::vec3(0.5, -0.5, 0.5));
   this->_geometry.pushVertex(glm::vec3(0.5, 0.5, 0.5));
@@ -76,16 +80,12 @@ void	ModelPool::init()
   this->_ground.build();
 }
 
-ModelPool::~ModelPool()
-{
-}
-
-const gdl::Geometry   &ModelPool::getGeometry() const
+const gdl::Geometry	&ModelPool::getGeometry() const
 {
   return this->_geometry;
 }
 
-const gdl::Geometry   &ModelPool::getGround() const
+const gdl::Geometry	&ModelPool::getGround() const
 {
   return this->_ground;
 }

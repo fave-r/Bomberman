@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 13:51:26 2015 polydo_s
-// Last update Sat Jun 13 19:04:00 2015 clément jean
+// Last update Sun Jun 14 10:34:25 2015 clément jean
 //
 
 #include "Error.hh"
@@ -18,7 +18,7 @@ int	main()
   Menu	*menu = new Menu();
   try
     {
-      Music		*SoundPlayer = new Music();
+      Music	*SoundPlayer = new Music();
 
       SoundPlayer->createSound("./Ressources/Sounds/intro.mp3", "intro");
       SoundPlayer->playSound("intro", true);

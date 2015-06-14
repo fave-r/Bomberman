@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Sat Jun 13 12:29:41 2015 clément jean
+// Last update Sun Jun 14 10:14:43 2015 clément jean
 //
 
 #include "Bomb.hh"
@@ -64,7 +64,6 @@ void			Bomb::destroy(std::vector<std::vector<AObject *> > &map, APlayer *player)
       break;
   this->_SoundPlayer->playSound("explosion", false);
   player->decreaseCurrentBombs();
-  //  delete this;
 }
 
 void			Bomb::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map, std::list<APlayer *> &players)

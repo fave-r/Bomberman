@@ -5,22 +5,10 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  9 15:39:29 2015 Leo Thevenet
-// Last update Sat Jun 13 18:43:57 2015 clément jean
+// Last update Sun Jun 14 10:20:10 2015 clément jean
 //
 
 #include "HighScore.hh"
-
-void HighScore::init()
-{
-  if (TTF_Init() == -1)
-    throw loading_error("HighScore : TTF error");
-  if (!(this->_font = TTF_OpenFont("Ressources/font/simple.ttf", 150)))
-    throw loading_error(TTF_GetError());
-  this->_backS = IMG_Load("./Assets/Menu/BackgroundMenu.jpg");
-  this->_backT = SDL_CreateTextureFromSurface(this->_Main_Renderer, this->_backS);
-  SDL_RenderClear(this->_Main_Renderer);
-  SDL_RenderCopy(this->_Main_Renderer, this->_backT, NULL, NULL);
-}
 
 HighScore::HighScore(SDL_Window *windows, SDL_Renderer *_Main_Renderer, SDL_Event *event)
 {
@@ -58,7 +46,19 @@ HighScore::~HighScore()
   TTF_Quit();
 }
 
-void HighScore::showWinner(const std::string &str)
+void		HighScore::init()
+{
+  if (TTF_Init() == -1)
+    throw loading_error("HighScore : TTF error");
+  if (!(this->_font = TTF_OpenFont("Ressources/font/simple.ttf", 150)))
+    throw loading_error(TTF_GetError());
+  this->_backS = IMG_Load("./Assets/Menu/BackgroundMenu.jpg");
+  this->_backT = SDL_CreateTextureFromSurface(this->_Main_Renderer, this->_backS);
+  SDL_RenderClear(this->_Main_Renderer);
+  SDL_RenderCopy(this->_Main_Renderer, this->_backT, NULL, NULL);
+}
+
+void		HighScore::showWinner(const std::string &str)
 {
   SDL_Rect r;
   r.x = 470;
@@ -74,7 +74,7 @@ void HighScore::showWinner(const std::string &str)
   this->_y += 200;
 }
 
-void HighScore::showAllScore()
+void		HighScore::showAllScore()
 {
   std::pair<int, int> _all = Score::getAllScore();
 
@@ -86,7 +86,7 @@ void HighScore::showAllScore()
   putOneScore(str);
 }
 
-void HighScore::putOneScore(const std::string &str)
+void		HighScore::putOneScore(const std::string &str)
 {
   SDL_Rect r;
   r.x = 660;
@@ -102,7 +102,7 @@ void HighScore::putOneScore(const std::string &str)
   this->_y += 120;
 }
 
-void HighScore::getKey()
+void		HighScore::getKey()
 {
   while (42)
     {

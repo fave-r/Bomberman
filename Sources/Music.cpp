@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  2 09:49:05 2015 Leo Thevenet
-// Last update Fri Jun 12 22:06:27 2015 clément jean
+// Last update Sun Jun 14 10:23:15 2015 clément jean
 //
 
 #include "Music.hh"
@@ -28,7 +28,7 @@ Music::~Music()
     (*it).second->release();
 }
 
-void Music::createSound(const char* pFile, const char* id)
+void		Music::createSound(const char* pFile, const char* id)
 {
   FMOD::Sound	*son;
 
@@ -37,7 +37,7 @@ void Music::createSound(const char* pFile, const char* id)
   this->_sons[id] = son;
 }
 
-void Music::playSound(const char* id, bool bLoop = false)
+void		Music::playSound(const char* id, bool bLoop)
 {
   if (!bLoop)
     this->_sons[id]->setMode(FMOD_LOOP_OFF);

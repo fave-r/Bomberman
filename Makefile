@@ -5,7 +5,7 @@
 ## Login   <polydo_s@epitech.net>
 ##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Sat Jun 13 19:20:18 2015 clément jean
+## Last update Sun Jun 14 10:13:20 2015 clément jean
 ##
 
 CXX		= g++
@@ -55,18 +55,18 @@ SRCS		= main.cpp			\
 
 OBJS		= $(SRCS:.cpp=.o)
 
-all: $(NAME)
+all:		$(NAME)
 
-$(NAME): $(OBJS)
-	mkdir -p $(BIN)
-	$(CXX) $(OBJS) -o $(BIN)/$(NAME) $(LDLIBS) $(LDFLAGS)
+$(NAME):	$(OBJS)
+		mkdir -p $(BIN)
+		$(CXX) $(OBJS) -o $(BIN)/$(NAME) $(LDLIBS) $(LDFLAGS)
 
 clean:
-	$(RM) $(OBJS)
+		$(RM) $(OBJS)
 
-fclean: clean
-	$(RM) $(BIN)
+fclean:		clean
+		$(RM) $(BIN)
 
-re: fclean all
+re:		fclean all
 
-.PHONY: all $(NAME) clean fclean re
+.PHONY:		all $(NAME) clean fclean re

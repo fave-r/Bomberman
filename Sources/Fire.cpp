@@ -6,7 +6,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 17:27:42 2015 clément jean
-// Last update Sat Jun 13 12:27:21 2015 clément jean
+// Last update Sun Jun 14 10:18:40 2015 clément jean
 //
 
 #include "Fire.hh"
@@ -20,7 +20,8 @@ Fire::Fire(float x, float y, double elapsed)
 
 Fire::~Fire() {}
 
-void		Fire::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map, std::list<APlayer *> &players)
+void			Fire::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map
+				     , std::list<APlayer *> &players)
 {
   (void)players;
   this->_elapsed += clock.getElapsed();
@@ -28,24 +29,24 @@ void		Fire::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> >
     map[this->_y][this->_x] = NULL;
 }
 
-void		Fire::draw(gdl::AShader &shader)
+void			Fire::draw(gdl::AShader &shader)
 {
   this->_texture.bind();
   this->_geometry.draw(shader, getTransformation(), GL_QUADS);
 }
 
-void          Fire::setModel(const gdl::Geometry &geo)
+void			Fire::setModel(const gdl::Geometry &geo)
 {
   this->_geometry = geo;
 }
 
-void          Fire::affect(std::vector<std::vector<AObject *> > &map, APlayer *player)
+void			Fire::affect(std::vector<std::vector<AObject *> > &map, APlayer *player)
 {
   (void)map;
   player->kill();
 }
 
-const std::string             &Fire::getType() const
+const std::string	&Fire::getType() const
 {
   static std::string str("F");
   return(str);

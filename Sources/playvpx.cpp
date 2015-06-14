@@ -7,14 +7,14 @@
 
 #define interface (vpx_codec_vp8_dx())
 
-static unsigned int mem_get_le32(const unsigned char *mem)
+static unsigned int	mem_get_le32(const unsigned char *mem)
 {
   return (mem[3] << 24)|(mem[2] << 16)|(mem[1] << 8)|(mem[0]);
 }
 
-static void playvpx_die(Vpxdata *data,const char *fmt, ...)
+static void		playvpx_die(Vpxdata *data,const char *fmt, ...)
 {
-  va_list ap;
+  va_list		ap;
 
   (void)data;
   va_start(ap, fmt);
@@ -23,23 +23,23 @@ static void playvpx_die(Vpxdata *data,const char *fmt, ...)
     printf("\n");
 }
 
-static void playvpx_die_codec(Vpxdata *data, const char *s)
+static void		playvpx_die_codec(Vpxdata *data, const char *s)
 {
-  const char *detail = vpx_codec_error_detail(&data->codec);
+  const char		*detail = vpx_codec_error_detail(&data->codec);
 
   printf("%s", s);
   if(detail)
     printf("    %s\n",detail);
 }
 
-void playvpx_(Vpxdata *data,const char *msg)
+void			playvpx_(Vpxdata *data,const char *msg)
 {
   (void)data;
   fprintf(stderr,"playvpx: %s\n",msg);
   return;
 }
 
-void playvpx_init(Vpxdata *data, const char *_fname)
+void			playvpx_init(Vpxdata *data, const char *_fname)
 {
   memset(data,0,sizeof(*data));
   strcpy(data->fname,_fname);
@@ -49,7 +49,6 @@ void playvpx_init(Vpxdata *data, const char *_fname)
       playvpx_die(data,"unable to open file: '%s'",data->fname);
       return;
     }
-
   if (!(fread(data->file_hdr, 1, IVF_FILE_HDR_SZ, data->infile) == IVF_FILE_HDR_SZ
 	&& data->file_hdr[0]=='D' && data->file_hdr[1]=='K' && data->file_hdr[2]=='I'
 	&& data->file_hdr[3]=='F'))
@@ -65,7 +64,7 @@ void playvpx_init(Vpxdata *data, const char *_fname)
   data->is_init = 1;
 }
 
-bool	playvpx_loop(Vpxdata *data)
+bool			playvpx_loop(Vpxdata *data)
 {
   if (!data->is_init)
     return false;
@@ -109,7 +108,7 @@ bool	playvpx_loop(Vpxdata *data)
   return true;
 }
 
-void	playvpx_convert_to_rgb(Vpxdata *data)
+void			playvpx_convert_to_rgb(Vpxdata *data)
 {
   if (!data->is_init)
     return;
@@ -174,7 +173,7 @@ void	playvpx_convert_to_rgb(Vpxdata *data)
 }
 
 
-int	playvpx_get_texture(Vpxdata *data)
+int			playvpx_get_texture(Vpxdata *data)
 {
   if (!data->is_init) { return 0; }
   if (data->state == -1) { return 0; }
@@ -200,7 +199,7 @@ int	playvpx_get_texture(Vpxdata *data)
 }
 
 
-void	playvpx_deinit(Vpxdata *data)
+void			playvpx_deinit(Vpxdata *data)
 {
   if (!data->is_init)
     return;
@@ -215,7 +214,7 @@ void	playvpx_deinit(Vpxdata *data)
   memset(data,0,sizeof(*data));
 }
 
-void	gfx_tex_blit(int tid, float dx, float dy, float dw, float dh)
+void			gfx_tex_blit(int tid, float dx, float dy, float dw, float dh)
 {
   float sx=0,sy=0,sw=1,sh=1;
 
@@ -228,7 +227,7 @@ void	gfx_tex_blit(int tid, float dx, float dy, float dw, float dh)
   glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
-void	 VideoPlay() {
+void			VideoPlay() {
 
   int ww = 1024;
   int hh = 768;
@@ -275,14 +274,15 @@ void	 VideoPlay() {
   SDL_Quit();
 }
 
-bool	saveScreenshot(const std::string &filename, int w, int h)
+bool			saveScreenshot(const std::string &filename, int w, int h)
 {
   glPixelStorei(GL_PACK_ALIGNMENT, 1);
 
   int nSize = w * h * 3;
   char* dataBuffer = (char*)malloc(nSize*sizeof(char));
 
-  if (!dataBuffer) return false;
+  if (!dataBuffer)
+    throw std::runtime_error("Screenshot bug");
 
   glReadPixels((GLint)0, (GLint)0,
 	       (GLint)w, (GLint)h,

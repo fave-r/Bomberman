@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Sun Jun 14 00:05:51 2015 clément jean
+// Last update Sun Jun 14 10:15:39 2015 clément jean
 //
 
 #include "Bomberman.hh"
@@ -51,8 +51,6 @@ void	Bomberman::initialize()
   projection = glm::perspective(70.0f, 1920.0f / 1080.0f, 0.1f, 1000.0f);
   this->_shader.bind();
   this->_shader.setUniform("projection", projection);
-  //  this->_shader.setUniform("view", transformation);
-  //this->_context.flush();
 
   this->_SoundPlayer = new Music();
   this->_texturePool = new TexturePool();
@@ -200,17 +198,14 @@ bool Bomberman::update()
       delete hg;
       return false;
     }
-  // this->_shader.bind();
   return true;
 }
 
 void Bomberman::draw()
 {
-  //Fire		*fire;
   std::list<APlayer *>::iterator it;
 
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  //this->_shader.bind();
 
   for (size_t i = 0; i < this->_objects.size(); ++i)
     this->_objects[i]->draw(this->_shader);
@@ -231,9 +226,7 @@ void Bomberman::draw()
 	  this->_map[i][j]->draw(this->_shader);
 	}
   setCam();
-  //  this->_shader.bind();
   this->_context.flush();
-  //delete fire;
 }
 
 void	Bomberman::setCam()
@@ -266,17 +259,10 @@ void	Bomberman::setCam()
 				   glm::vec3(0, 1, 0));
     }
   this->_shader.setUniform("view", transformation);
-  //this->_context.flush();
 }
 
 Bomberman::~Bomberman()
 {
-  //for (size_t i = 0; i < this->_objects.size(); ++i)
-  //delete this->_objects[i];
-  //  for (unsigned int i = 0; i < this->_map.size(); i++)
-  // for (unsigned int j = 0; j < this->_map[i].size(); j++)
-  //  if (this->_map[i][j])
-  //	delete this->_map[i][j];
   std::list<APlayer *>::iterator it;
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
     delete (*it);

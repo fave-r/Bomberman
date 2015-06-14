@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Mon Jun  8 01:23:10 2015 clément jean
-// Last update Sat Jun 13 12:32:46 2015 clément jean
+// Last update Sun Jun 14 10:16:23 2015 clément jean
 //
 
 #include "BonusBomb.hh"
@@ -25,30 +25,30 @@ BonusBomb::~BonusBomb()
 {
 }
 
-ABonus		*BonusBomb::create(int x, int y)
+ABonus			*BonusBomb::create(int x, int y)
 {
   return new BonusBomb(x, y);
 }
 
-void		BonusBomb::affect(std::vector<std::vector<AObject *> > &map, APlayer *player)
+void			BonusBomb::affect(std::vector<std::vector<AObject *> > &map, APlayer *player)
 {
   this->_SoundPlayer->playSound("BonusB", false);
   player->increaseMaxBombs();
   map[this->_y][this->_x] = NULL;
 }
 
-void		BonusBomb::draw(gdl::AShader &shader)
+void			BonusBomb::draw(gdl::AShader &shader)
 {
   this->_texture.bind();
   this->_model.draw(shader, getTransformation(), 0.02);
 }
 
-void		BonusBomb::setModel(const gdl::Geometry &geo)
+void			BonusBomb::setModel(const gdl::Geometry &geo)
 {
   (void)geo;
 }
 
-const std::string             &BonusBomb::getType() const
+const std::string	&BonusBomb::getType() const
 {
   static std::string str("1");
   return(str);

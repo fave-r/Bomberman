@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun  7 17:58:20 2015 clément jean
-// Last update Sat Jun 13 18:01:31 2015 clément jean
+// Last update Sun Jun 14 10:32:47 2015 clément jean
 //
 
 #ifndef __ABONUS_HH__
@@ -18,7 +18,7 @@
 
 #include "APlayer.hh"
 
-class ICrossable;
+class	ICrossable;
 
 class	ABonus : public ICrossable, public AObject
 {

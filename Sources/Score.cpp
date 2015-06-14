@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  9 16:13:55 2015 Leo Thevenet
-// Last update Thu Jun 11 10:50:24 2015 Leo Thevenet
+// Last update Sun Jun 14 10:30:54 2015 clément jean
 //
 
 #include "Score.hh"
@@ -13,10 +13,10 @@
 
 namespace	Score
 {
-  void		addNewScore(const int &s, const int &p)
+  void			addNewScore(const int &s, const int &p)
   {
     std::pair<int, int> a = Score::getAllScore();
-    std::ofstream fichier(".score", std::ofstream::out | std::ofstream::trunc);
+    std::ofstream	fichier(".score", std::ofstream::out | std::ofstream::trunc);
 
     if(fichier)
       {
@@ -31,10 +31,10 @@ namespace	Score
       throw loading_error("Can't acces file .score");
   }
 
-  std::pair<int, int> getAllScore()
+  std::pair<int, int>	getAllScore()
   {
-    std::ifstream fichier(".score", std::ifstream::in);
-    int		a, b;
+    std::ifstream	fichier(".score", std::ifstream::in);
+    int			a, b;
 
     if(!fichier)
       return std::make_pair(0, 0);

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 19:27:19 2015 clément jean
-// Last update Sat Jun 13 18:04:41 2015 clément jean
+// Last update Sun Jun 14 10:14:18 2015 clément jean
 //
 
 #include "AObject.hh"
@@ -100,7 +100,7 @@ void			AObject::SetPos(const glm::vec3 &v)
   this->_position.z = v.z;
 }
 
-void                  AObject::setTexture(const gdl::Texture &old)
+void			AObject::setTexture(const gdl::Texture &old)
 {
   this->_texture = old;
 }

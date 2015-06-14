@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Tue Jun  2 09:48:39 2015 Leo Thevenet
-// Last update Sat Jun 13 18:30:20 2015 clément jean
+// Last update Sun Jun 14 10:23:12 2015 clément jean
 //
 
 #ifndef __MUSIC_HH__
@@ -27,7 +27,7 @@ public:
 
 public:
   void					createSound(const char*, const char*);
-  void					playSound(const char*, bool);
+  void					playSound(const char*, bool = false);
 };
 
 #endif

@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Fri May 29 14:48:30 2015 Leo Thevenet
-// Last update Sat Jun 13 18:35:11 2015 clément jean
+// Last update Sun Jun 14 10:24:31 2015 clément jean
 //
 
 #include "Options.hh"
@@ -39,11 +39,12 @@ Options::~Options()
   TTF_Quit();
 }
 
-void Options::MakeScreen()
+void		Options::MakeScreen()
 {
-  SDL_Rect r;
-  SDL_Color fg = {255, 255, 255, 255};
-  SDL_Color sl = {255, 55, 55, 255};
+  SDL_Rect	r;
+  SDL_Color	fg = {255, 255, 255, 255};
+  SDL_Color	sl = {255, 55, 55, 255};
+
   r.x = 150;
   r.y = 50;
   r.w = 1100;
@@ -67,7 +68,7 @@ void Options::MakeScreen()
   SDL_RenderPresent(this->_Main_Renderer);
 }
 
-void Options::PutStringOnScreen(const SDL_Color &fg, const SDL_Rect &r, std::string str, int nb)
+void		Options::PutStringOnScreen(const SDL_Color &fg, const SDL_Rect &r, std::string str, int nb)
 {
   str += (nb == -1) ? "" : std::to_string(nb);
   SDL_Surface *surf = TTF_RenderText_Blended(this->_font, str.c_str(), fg);
@@ -77,21 +78,21 @@ void Options::PutStringOnScreen(const SDL_Color &fg, const SDL_Rect &r, std::str
   SDL_FreeSurface(surf);
 }
 
-void Options::FirstView()
+void		Options::FirstView()
 {
   MakeScreen();
   while (getKey())
     MakeScreen();
 }
 
-void Options::MoveCursor(int where)
+void		Options::MoveCursor(int where)
 {
   this->select += where;
   this->select = (this->select < 0) ? 5 : this->select;
   this->select = (this->select > 5) ? 0 : this->select;
 }
 
-void Options::ChangeValue(int nb)
+void		Options::ChangeValue(int nb)
 {
   if (this->select == 0)
     this->x += (this->x + nb < 10) ? 0 : nb;
@@ -105,10 +106,10 @@ void Options::ChangeValue(int nb)
     this->densite += (this->densite + nb < 0) ? 0 : (this->densite + nb > 80) ? 0 : nb;
 }
 
-bool Options::getKey()
+bool		Options::getKey()
 {
-  SDL_Joystick *aa = SDL_JoystickOpen(0);
-  int a = 10000;
+  SDL_Joystick	*aa = SDL_JoystickOpen(0);
+  int		a = 10000;
 
   if (SDL_JoystickGetButton(aa, 4) == 1)
     MoveCursor(-1);

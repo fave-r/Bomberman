@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Thu May 28 15:44:49 2015 Leo Thevenet
-// Last update Thu Jun 11 15:37:50 2015 Leo Thevenet
+// Last update Sun Jun 14 10:26:02 2015 clément jean
 //
 
 #include <fstream>
@@ -16,23 +16,24 @@
 
 namespace	Parseur
 {
-  void		setConf(int largeur, int longueur, int joueur, int IA, int densite)
+  void			setConf(int largeur, int longueur, int joueur, int IA, int densite)
   {
-    std::ofstream fichier(".conf", std::ofstream::out | std::ofstream::trunc);
+    std::ofstream	fichier(".conf", std::ofstream::out | std::ofstream::trunc);
 
-    if(fichier)
+    if (fichier)
       {
-    	fichier << largeur << std::endl << longueur << std::endl << joueur << std::endl << IA << std::endl << densite << std::endl;
+    	fichier << largeur << std::endl << longueur << std::endl
+		<< joueur << std::endl << IA << std::endl << densite << std::endl;
     	fichier.close();
       }
     else
       throw loading_error("Parseur : can't set conf");
   }
 
-  int		getX()
+  int			getX()
   {
-    std::ifstream fichier(".conf", std::ifstream::in);
-    int x;
+    std::ifstream	fichier(".conf", std::ifstream::in);
+    int			x;
 
     if(fichier)
       {
@@ -45,10 +46,10 @@ namespace	Parseur
     return x;
   }
 
-  int		getY()
+  int			getY()
   {
-    std::ifstream fichier(".conf", std::ifstream::in);
-    int y;
+    std::ifstream	fichier(".conf", std::ifstream::in);
+    int			y;
 
     if(fichier)
       {
@@ -61,10 +62,10 @@ namespace	Parseur
     return y;
   }
 
-  int		getPlayer()
+  int			getPlayer()
   {
-    std::ifstream fichier(".conf", std::ifstream::in);
-    int p;
+    std::ifstream	fichier(".conf", std::ifstream::in);
+    int			p;
 
     if(fichier)
       {
@@ -77,10 +78,10 @@ namespace	Parseur
     return p;
   }
 
-  int		getIA()
+  int			getIA()
   {
-    std::ifstream fichier(".conf", std::ifstream::in);
-    int ia;
+    std::ifstream	fichier(".conf", std::ifstream::in);
+    int			ia;
 
     if(fichier)
       {
@@ -93,10 +94,10 @@ namespace	Parseur
     return ia;
   }
 
-  int		getDensite()
+  int			getDensite()
   {
-    std::ifstream fichier(".conf", std::ifstream::in);
-    int d;
+    std::ifstream	fichier(".conf", std::ifstream::in);
+    int			d;
 
     if(fichier)
       {
