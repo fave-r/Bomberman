@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Sun Jun 14 17:29:48 2015 Leo Thevenet
+// Last update Sun Jun 14 18:14:19 2015 polydo_s
 //
 
 #include "Bomberman.hh"
@@ -168,7 +168,6 @@ bool Bomberman::update()
 	}
       else
 	{
-	  std::cout << (*it)->getID() << std::endl;
 	  if ((*it)->getID() == 0)
 	    iaDead++;
 	  else
