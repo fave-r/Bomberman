@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Sun Jun 14 19:15:01 2015 polydo_s
+// Last update Sun Jun 14 23:04:07 2015 polydo_s
 //
 
 #include "Bomb.hh"
@@ -31,10 +31,12 @@ bool			Bomb::damage(std::vector<std::vector<AObject *> > &map, int x, int y)
   for (it = this->_players.begin(); it != this->_players.end(); ++it)
     {
       if (!(*it)->isDead())
-	if (static_cast<int>((*it)->getX() + (*it)->getWidth() / 2) == x && y == static_cast<int>((*it)->getY() + (*it)->getHeight()))
-	  (*it)->kill();
+	{
+	  std::cout << x << ":" << y << std::endl;
+	  if (static_cast<int>((*it)->getX() + (*it)->getWidth() / 2) == x && y == static_cast<int>((*it)->getY() + (*it)->getHeight() / 2))
+	    (*it)->kill();
+	}
     }
-
   if (!map[y][x])
     {
       map[y][x] = new Fire(x, y, this->_elapsed);
@@ -70,10 +72,10 @@ void			Bomb::destroy(std::vector<std::vector<AObject *> > &map, APlayer *player)
 void			Bomb::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map
 				     , std::list<APlayer *> &players)
 {
+  this->_players = players;
   this->_elapsed += clock.getElapsed();
   if (this->_elapsed > this->_livespan)
     {
-      this->_players = players;
       this->destroy(map, this->_player);
     }
 }
