@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:18:58 2015 clément jean
-// Last update Sun Jun 14 16:44:56 2015 polydo_s
+// Last update Sun Jun 14 18:00:45 2015 polydo_s
 //
 
 #ifndef __BOMB_HH__
@@ -47,7 +47,7 @@ public:
   virtual const std::string     getType() const;
 
 public:
-  int				getPower() const;
+  unsigned int		       	getPower() const;
 
 public:
   void				setModel(const gdl::Geometry &);

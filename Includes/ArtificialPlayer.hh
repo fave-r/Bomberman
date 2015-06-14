@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 20:05:43 2015 polydo_s
-// Last update Sun Jun 14 15:56:29 2015 polydo_s
+// Last update Sun Jun 14 19:56:52 2015 clément jean
 //
 
 #ifndef ARTIFICIAL_PLAYER_HH
@@ -20,7 +20,7 @@ public:
   ArtificialPlayer(float x, float y, APlayer::eOrientation orientation);
 
 private:
-  bool isDanger(std::vector<std::vector<AObject *> > &map);
+  bool isDanger(std::vector<std::vector<AObject *> > &map, int x, int y);
 
 public:
   virtual void update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map, std::list<APlayer *> &players);
@@ -29,6 +29,10 @@ public:
 
 public:
   virtual const std::string getType() const;
+
+private:
+  float	_objX;
+  float	_objY;
 };
 
 #endif

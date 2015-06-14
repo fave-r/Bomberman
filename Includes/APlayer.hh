@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Sun Jun 14 16:58:06 2015 polydo_s
+// Last update Sun Jun 14 19:42:54 2015 clément jean
 //
 
 #ifndef PLAYER_HH
@@ -79,5 +79,4 @@ public:
   void					increasePower();
   void					increaseMaxBombs();
 };
-
 #endif

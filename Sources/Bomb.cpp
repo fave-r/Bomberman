@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Sun Jun 14 16:49:37 2015 polydo_s
+// Last update Sun Jun 14 19:15:01 2015 polydo_s
 //
 
 #include "Bomb.hh"
@@ -31,7 +31,7 @@ bool			Bomb::damage(std::vector<std::vector<AObject *> > &map, int x, int y)
   for (it = this->_players.begin(); it != this->_players.end(); ++it)
     {
       if (!(*it)->isDead())
-	if (static_cast<int>((*it)->getX() + (*it)->getWidth() / 2) == x && y == static_cast<int>((*it)->getY() + (*it)->getHeight() / 2))
+	if (static_cast<int>((*it)->getX() + (*it)->getWidth() / 2) == x && y == static_cast<int>((*it)->getY() + (*it)->getHeight()))
 	  (*it)->kill();
     }
 
@@ -84,7 +84,7 @@ void			Bomb::draw(gdl::AShader &shader)
   this->_model.draw(shader, getTransformation(), 0.02);
 }
 
-int	Bomb::getPower() const
+unsigned int	Bomb::getPower() const
 {
   return this->_power;
 }
