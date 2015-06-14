@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 20:05:43 2015 polydo_s
-// Last update Sun Jun 14 17:58:50 2015 polydo_s
+// Last update Sun Jun 14 19:56:52 2015 clément jean
 //
 
 #ifndef ARTIFICIAL_PLAYER_HH
@@ -29,6 +29,10 @@ public:
 
 public:
   virtual const std::string getType() const;
+
+private:
+  float	_objX;
+  float	_objY;
 };
 
 #endif
