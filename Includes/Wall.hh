@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 17:25:07 2015 clément jean
-// Last update Sat Jun 13 18:40:06 2015 clément jean
+// Last update Sun Jun 14 11:59:13 2015 clément jean
 //
 
 #ifndef __WALL_HH__
@@ -25,7 +25,7 @@ public:
 
 public:
   virtual void			draw(gdl::AShader &shader);
-  virtual const std::string     &getType() const;
+  virtual const std::string     getType() const;
 };
 
 #endif

@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri Jun 12 01:20:26 2015 polydo_s
-// Last update Sun Jun 14 10:16:54 2015 clément jean
+// Last update Sun Jun 14 11:57:15 2015 clément jean
 //
 
 #include "BonusPower.hh"
@@ -45,8 +45,7 @@ void			BonusPower::setModel(const gdl::Geometry &geo)
   (void)geo;
 }
 
-const std::string	&BonusPower::getType() const
+const std::string	BonusPower::getType() const
 {
-  static std::string str("3");
-  return(str);
+  return("3");
 }

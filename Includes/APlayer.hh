@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Sat Jun 13 18:47:38 2015 clément jean
+// Last update Sun Jun 14 12:00:04 2015 clément jean
 //
 
 #ifndef PLAYER_HH
@@ -50,7 +50,7 @@ public:
   virtual void				draw(gdl::AShader &shader);
   virtual void				update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map
 					       , std::list<APlayer *> &players) = 0;
-  virtual const std::string             &getType() const = 0;
+  virtual const std::string             getType() const = 0;
 
 public:
   void					wait();

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May  5 19:27:04 2015 clément jean
-// Last update Sat Jun 13 18:05:54 2015 clément jean
+// Last update Sun Jun 14 11:58:56 2015 clément jean
 //
 
 #ifndef __AOBJECT_HPP__
@@ -56,7 +56,7 @@ public:
   float					getWidth() const;
   float					getHeight() const;
   const glm::mat4			getTransformation();
-  virtual const std::string		&getType() const = 0;
+  virtual const std::string		getType() const = 0;
 
 public:
   void					setTexture(const gdl::Texture &old);

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:18:58 2015 clément jean
-// Last update Sat Jun 13 18:12:32 2015 clément jean
+// Last update Sun Jun 14 11:59:44 2015 clément jean
 //
 
 #ifndef __BOMB_HH__
@@ -44,7 +44,7 @@ public:
   virtual void			update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map,
 				       std::list<APlayer *> &players);
   virtual void			draw(gdl::AShader &shader);
-  virtual const std::string     &getType() const;
+  virtual const std::string     getType() const;
 
 public:
   void				setModel(const gdl::Geometry &);

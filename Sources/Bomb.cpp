@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Sun Jun 14 10:14:43 2015 clément jean
+// Last update Sun Jun 14 11:56:19 2015 clément jean
 //
 
 #include "Bomb.hh"
@@ -66,7 +66,8 @@ void			Bomb::destroy(std::vector<std::vector<AObject *> > &map, APlayer *player)
   player->decreaseCurrentBombs();
 }
 
-void			Bomb::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map, std::list<APlayer *> &players)
+void			Bomb::update(const gdl::Clock &clock, std::vector<std::vector<AObject *> > &map
+				     , std::list<APlayer *> &players)
 {
   this->_elapsed += clock.getElapsed();
   if (this->_elapsed > this->_livespan)
@@ -83,13 +84,12 @@ void			Bomb::draw(gdl::AShader &shader)
 }
 
 
-void	Bomb::setModel(const gdl::Geometry &geo)
+void			Bomb::setModel(const gdl::Geometry &geo)
 {
   (void)geo;
 }
 
-const std::string             &Bomb::getType() const
+const std::string	Bomb::getType() const
 {
-  static std::string str("b");
-  return(str);
+  return("b");
 }
