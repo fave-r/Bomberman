@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Sun Jun 14 00:15:34 2015 clément jean
+// Last update Sun Jun 14 11:39:54 2015 Leo Thevenet
 //
 
 #include "APlayer.hh"
@@ -14,7 +14,7 @@
 APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
   : AObject(x, y, 0.70, 0.70),
     _dead(false), _orientation(orientation), _delta(0.5),
-    _speed(2), _power(1), _currentBombs(0), _maxBombs(1),
+    _speed(1), _power(1), _currentBombs(0), _maxBombs(1),
     _inAnim(false), _score(0)
 {
   static unsigned id = 1;
@@ -183,6 +183,7 @@ void				APlayer::decreaseCurrentBombs()
 void				APlayer::increaseSpeed()
 {
   this->_speed += 0.5;
+  this->_speed = (this->_speed > 5) ? 5 : this->_speed;
 }
 
 void				APlayer::increasePower()
@@ -193,6 +194,7 @@ void				APlayer::increasePower()
 void				APlayer::increaseMaxBombs()
 {
   this->_maxBombs++;
+  this->_maxBombs = (this->_maxBombs > 5) ? 5 : this->_maxBombs;
 }
 
 void				APlayer::updateScore(int nb)

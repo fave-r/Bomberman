@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Sat Jun 13 18:43:33 2015 clément jean
+// Last update Sun Jun 14 10:55:16 2015 Leo Thevenet
 //
 
 #include "Menu.hh"
@@ -204,9 +204,6 @@ bool          Menu::Check_Path()
 	  std::cerr << e.what() << std::endl;
 	  return (false);
 	}
-      // HighScore *hg = new HighScore(this->_Main_Window, this->_Main_Renderer, &(this->event));
-      // hg->getKey();
-      // delete hg;
     }
   else if (this->_select == 1)
     {
@@ -223,7 +220,6 @@ bool          Menu::Check_Path()
 	  std::cerr << e.what() << std::endl;
 	  return (false);
 	}
-      // highscore
     }
   else if (this->_select == 2)
     {
@@ -240,14 +236,11 @@ bool          Menu::Check_Path()
   return false;
 }
 
-void		Menu::launchHighscore(int a)
+void		Menu::launchHighscore()
 {
   HighScore *hg;
 
-  if (a == -1)
-    hg = new HighScore(this->_Main_Window, this->_Main_Renderer, &(this->event));
-  // else
-  //   hg = new HighScore(this->_Main_Window, this->_Main_Renderer, &(this->event), a);
+  hg = new HighScore(this->_Main_Window, this->_Main_Renderer, &(this->event));
   hg->getKey();
   delete hg;
 }
