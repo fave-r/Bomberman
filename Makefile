@@ -5,7 +5,7 @@
 ## Login   <polydo_s@epitech.net>
 ##
 ## Started on  Tue Apr 28 16:18:00 2015 Swann polydo_s
-## Last update Sun Jun 14 10:13:20 2015 clément jean
+## Last update Sun Jun 14 15:50:31 2015 polydo_s
 ##
 
 CXX		= g++
@@ -30,6 +30,7 @@ SRC		= Sources
 SRCS		= main.cpp			\
 		  $(SRC)/APlayer.cpp		\
 		  $(SRC)/PhysicalPlayer.cpp	\
+		  $(SRC)/ArtificialPlayer.cpp	\
 		  $(SRC)/Box.cpp		\
 		  $(SRC)/Wall.cpp		\
 		  $(SRC)/Bomberman.cpp		\
@@ -69,4 +70,4 @@ fclean:		clean
 
 re:		fclean all
 
-.PHONY:		all $(NAME) clean fclean re
+.PHONY: fclean clean $(NAME) all

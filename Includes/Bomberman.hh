@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:34:06 2015 clément jean
-// Last update Sat Jun 13 18:46:56 2015 clément jean
+// Last update Sun Jun 14 15:53:36 2015 polydo_s
 //
 
 #ifndef __BOMBERMAN_HH__
@@ -37,12 +37,11 @@
 class Bomberman
 {
 public:
-  Bomberman(unsigned int, unsigned int, unsigned int);
+  Bomberman();
   Bomberman(const std::string &);
   ~Bomberman();
 
 public:
-
   void						initialize();
   void						init_player();
   void						end_init_player();

@@ -5,8 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Tue May 19 20:34:29 2015 clément jean
-// Last update Sun Jun 14 10:55:16 2015 Leo Thevenet
-//
+// Last update Sun Jun 14 15:48:09 2015 polydo_s
 
 #include "Menu.hh"
 #include "Options.hh"
@@ -195,7 +194,7 @@ bool          Menu::Check_Path()
       SDL_Quit();
       try
 	{
-	  Bomberman *bomberman = new Bomberman(Parseur::getX(), Parseur::getY(), Parseur::getPlayer());
+	  Bomberman *bomberman = new Bomberman();
 	  bomberman->initialize();
 	  launchBomberman(bomberman);
 	}

@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:39 2015 polydo_s
-// Last update Sun Jun 14 14:09:52 2015 Leo Thevenet
+// Last update Sun Jun 14 17:01:15 2015 polydo_s
 //
 
 #include "APlayer.hh"
@@ -15,18 +15,23 @@ APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
   : AObject(x, y, 0.70, 0.70),
     _dead(false), _orientation(orientation), _delta(0.5),
     _speed(2), _power(1), _currentBombs(0), _maxBombs(1),
-    _inAnim(false), _score(0)
+    _inAnim(false), _score(0), _elapse(0)
 {
-  static unsigned id = 1;
+  static unsigned int id = 1;
   this->_id = id++;
   if (this->_id == 1)
     {
       if (this->_model.load("./Assets/Player/marvin.dae") == false)
 	throw exec_error("APlayer : Cannot load the model");
     }
-  else
+  else if (Parseur::getPlayer() == 2 && this->_id == 2)
     {
       if (this->_model.load("./Assets/Player/marvin.fbx") == false)
+	throw exec_error("APlayer : Cannot load the model");
+    }
+  else
+    {
+      if (this->_model.load("./Assets/Player/marvin2.dae") == false)
 	throw exec_error("APlayer : Cannot load the model");
     }
   this->scale(glm::vec3(0.002, 0.002, 0.002));
@@ -47,7 +52,7 @@ void			APlayer::wait()
 void			APlayer::draw(gdl::AShader &shader)
 {
   this->_texture.bind();
-  this->_model.draw(shader, getTransformation(), 0.03);
+  this->_model.draw(shader, getTransformation(), this->_elapse / 3 * this->_speed);
 }
 
 void			APlayer::move(const int &x, const int &y, const int &z)
@@ -194,7 +199,7 @@ void				APlayer::increasePower()
 void				APlayer::increaseMaxBombs()
 {
   this->_maxBombs++;
-  this->_maxBombs = (this->_maxBombs > 5) ? 5 : this->_maxBombs;
+  this->_maxBombs = (this->_maxBombs > 10) ? 10 : this->_maxBombs;
 }
 
 void				APlayer::updateScore(int nb)

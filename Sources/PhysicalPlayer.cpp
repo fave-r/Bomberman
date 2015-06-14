@@ -5,13 +5,13 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Fri May 15 16:55:48 2015 polydo_s
-// Last update Sun Jun 14 12:00:45 2015 clément jean
+// Last update Sun Jun 14 16:11:15 2015 polydo_s
 //
 
 #include "PhysicalPlayer.hh"
 
 PhysicalPlayer::PhysicalPlayer(float x, float y, APlayer::eOrientation orientation)
-  : APlayer(x, y, orientation), _elapse(0)
+  : APlayer(x, y, orientation)
 {
   if (this->_id == 1)
     {
@@ -45,7 +45,7 @@ void			PhysicalPlayer::update(const gdl::Clock &clock, std::vector<std::vector<A
 					       , std::list<APlayer *> &players)
 {
   (void)players;
-  bool		validKey = false;
+  bool validKey = false;
   std::map<int, void(APlayer::*)(std::vector<std::vector<AObject *> > &map, const gdl::Clock &clock)>::const_iterator it;
 
   SDL_Joystick *aa = SDL_JoystickOpen(this->_id - 1);
@@ -69,7 +69,7 @@ void			PhysicalPlayer::draw(gdl::AShader &shader)
   this->_model.draw(shader, getTransformation(), this->_elapse / 3 * this->_speed);
 }
 
-void			PhysicalPlayer::setInput(const gdl::Input &input)
+void	PhysicalPlayer::setInput(const gdl::Input &input)
 {
   this->_input = input;
 }

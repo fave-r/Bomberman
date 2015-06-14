@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:18:58 2015 clément jean
-// Last update Sun Jun 14 11:59:44 2015 clément jean
+// Last update Sun Jun 14 16:44:56 2015 polydo_s
 //
 
 #ifndef __BOMB_HH__
@@ -37,7 +37,7 @@ public:
   ~Bomb();
 
 public:
-  bool				damage(std::vector<std::vector<AObject *> > &map, APlayer *player, int x, int y);
+  bool				damage(std::vector<std::vector<AObject *> > &map, int x, int y);
   void				destroy(std::vector<std::vector<AObject *> > &map, APlayer *player);
 
 public:
@@ -45,6 +45,9 @@ public:
 				       std::list<APlayer *> &players);
   virtual void			draw(gdl::AShader &shader);
   virtual const std::string     getType() const;
+
+public:
+  int				getPower() const;
 
 public:
   void				setModel(const gdl::Geometry &);

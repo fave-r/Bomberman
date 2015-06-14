@@ -5,16 +5,16 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Sun Jun 14 10:15:39 2015 clément jean
+// Last update Sun Jun 14 15:49:29 2015 polydo_s
 //
 
 #include "Bomberman.hh"
 #include "HighScore.hh"
 
-Bomberman::Bomberman(unsigned int w, unsigned int h, unsigned int p)
-  : _w(w), _h(h), _p(p)
+Bomberman::Bomberman()
+  : _w(Parseur::getX()), _h(Parseur::getY()), _p(0)
 {
-  this->_map = Map::generate(this->_w, this->_h, this->_p);
+  this->_map = Map::generate();
   this->_namedMap = "";
   this->_numberOfSave = 0;
 }
@@ -63,11 +63,18 @@ void	Bomberman::initialize()
 
   if (this->_namedMap != "")
     getMap();
+  if (!this->_shader.load("./Ressources/lib/shaders/basic.fp", GL_FRAGMENT_SHADER)
+      || !this->_shader.load("./Ressources/lib/shaders/basic.vp", GL_VERTEX_SHADER)
+      || !this->_shader.build())
+    throw std::runtime_error("shader erreur");
+
+  if (this->_playerlist.size() == 0)
+    this->_playerlist = Map::spawnPlayers(this->_map);
+  projection = glm::perspective(70.0f, 1920.0f / 1080.0f, 0.1f, 1000.0f);
+  this->_shader.bind();
+  this->_shader.setUniform("projection", projection);
   init_map();
-  if (this->_playerlist.empty())
-    init_player();
-  else
-    end_init_player();
+  init_player();
   setCam();
   draw();
   this->_SoundPlayer->createSound("./Ressources/Sounds/BackgroundSound.wav", "game");
@@ -109,19 +116,6 @@ void	Bomberman::init_map()
 }
 
 void	Bomberman::init_player()
-{
-  PhysicalPlayer *p1 = new PhysicalPlayer(1, 1, APlayer::DOWN);
-  p1->setTexture(this->_texturePool->getPlayer());
-  this->_playerlist.push_back(p1);
-  if (this->_p == 2)
-    {
-      PhysicalPlayer *p2 = new PhysicalPlayer(this->_w - 2, this->_h - 2, APlayer::UP);
-      this->_playerlist.push_back(p2);
-    }
-  end_init_player();
-}
-
-void	Bomberman::end_init_player()
 {
   std::list<APlayer *>::const_iterator it;
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)

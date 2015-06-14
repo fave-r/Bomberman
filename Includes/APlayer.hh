@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Tue May  5 19:56:12 2015 polydo_s
-// Last update Sun Jun 14 12:00:04 2015 clément jean
+// Last update Sun Jun 14 16:58:06 2015 polydo_s
 //
 
 #ifndef PLAYER_HH
@@ -14,6 +14,7 @@
 #include <iostream>
 
 #include "AObject.hh"
+#include "Parseur.hh"
 #include "ICrossable.hh"
 #include "IUpdatable.hh"
 
@@ -28,19 +29,20 @@ public:
   };
 
 protected:
-  unsigned int				_id;
-  bool					_dead;
-  eOrientation				_orientation;
-  float					_delta;
-  float					_speed;
-  int					_power;
-  int					_currentBombs;
-  int					_maxBombs;
-  bool					_inAnim;
-  gdl::Texture				_texture;
-  gdl::Model				_model;
-  int					_score;
-  std::list<APlayer *>			_playerList;
+  unsigned int		_id;
+  bool			_dead;
+  eOrientation		_orientation;
+  float			_delta;
+  float			_speed;
+  int			_power;
+  int			_currentBombs;
+  int			_maxBombs;
+  bool			_inAnim;
+  gdl::Texture		_texture;
+  gdl::Model		_model;
+  int			_score;
+  std::list<APlayer *>	_playerList;
+  float			_elapse;
 
 public:
   APlayer(float, float, APlayer::eOrientation);
