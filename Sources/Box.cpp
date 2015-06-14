@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:49:34 2015 clément jean
-// Last update Sun Jun 14 10:17:56 2015 clément jean
+// Last update Sun Jun 14 11:57:44 2015 clément jean
 //
 
 #include "Box.hh"
@@ -41,8 +41,7 @@ void			Box::setModel(const gdl::Geometry &geo)
   this->_geometry = geo;
 }
 
-const std::string	&Box::getType() const
+const std::string	Box::getType() const
 {
-  static std::string str("B");
-  return str;
+  return "B";
 }

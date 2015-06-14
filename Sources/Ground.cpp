@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri Jun 12 22:45:22 2015 clément jean
-// Last update Sun Jun 14 10:19:17 2015 clément jean
+// Last update Sun Jun 14 11:58:18 2015 clément jean
 //
 
 #include "Ground.hh"
@@ -25,8 +25,7 @@ void			Ground::setModel(const gdl::Geometry &geo)
   this->_geometry = geo;
 }
 
-const std::string	&Ground::getType() const
+const std::string	Ground::getType() const
 {
-  static std::string str("G");
-  return(str);
+  return("G");
 }

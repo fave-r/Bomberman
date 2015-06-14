@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:48:39 2015 clément jean
-// Last update Sat Jun 13 18:15:13 2015 clément jean
+// Last update Sun Jun 14 11:59:06 2015 clément jean
 //
 
 #ifndef __BOX_HH__
@@ -36,7 +36,7 @@ public:
 
 public:
   virtual void				draw(gdl::AShader &shader);
-  virtual const std::string             &getType() const;
+  virtual const std::string             getType() const;
 
 public:
   void					setModel(const gdl::Geometry &geo);

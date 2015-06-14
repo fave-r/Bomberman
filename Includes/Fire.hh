@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 17:17:08 2015 clément jean
-// Last update Sat Jun 13 18:17:31 2015 clément jean
+// Last update Sun Jun 14 11:59:20 2015 clément jean
 //
 
 #ifndef __FIRE_HH__
@@ -36,7 +36,7 @@ public:
 
 public:
   virtual void				draw(gdl::AShader &shader);
-  virtual const std::string             &getType() const;
+  virtual const std::string             getType() const;
 
 public:
   virtual void				setModel(const gdl::Geometry &);

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun  7 18:46:28 2015 clément jean
-// Last update Sun Jun 14 10:17:25 2015 clément jean
+// Last update Sun Jun 14 11:57:29 2015 clément jean
 //
 
 #include "BonusSpeed.hh"
@@ -45,8 +45,7 @@ void			BonusSpeed::setModel(const gdl::Geometry &geo)
   (void)geo;
 }
 
-const std::string	&BonusSpeed::getType() const
+const std::string	BonusSpeed::getType() const
 {
-  static std::string str("2");
-  return(str);
+  return("2");
 }

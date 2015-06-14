@@ -6,7 +6,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 17:27:42 2015 clément jean
-// Last update Sun Jun 14 10:18:40 2015 clément jean
+// Last update Sun Jun 14 11:58:03 2015 clément jean
 //
 
 #include "Fire.hh"
@@ -46,8 +46,7 @@ void			Fire::affect(std::vector<std::vector<AObject *> > &map, APlayer *player)
   player->kill();
 }
 
-const std::string	&Fire::getType() const
+const std::string	Fire::getType() const
 {
-  static std::string str("F");
-  return(str);
+  return("F");
 }
