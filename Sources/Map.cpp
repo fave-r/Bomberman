@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Thu Jun  4 22:36:52 2015 polydo_s
-// Last update Sun Jun 14 15:49:01 2015 polydo_s
+// Last update Sun Jun 14 18:24:00 2015 Leo Thevenet
 //
 
 #include "Map.hh"
@@ -81,7 +81,7 @@ std::vector<std::vector<AObject *> > Map::generate()
 	  {
 	    if (distribution(generator) <= Parseur::getDensite() && !dynamic_cast<Wall *>(map[y - 1][x]))
 	      map[y][x] = new Wall(x, y);
-	    else
+	    else if (distribution(generator) <= 70)
 	      map[y][x] = new Box(x, y);
 	  }
       }
