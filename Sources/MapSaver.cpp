@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Mon Jun  8 16:18:51 2015 Leo Thevenet
-// Last update Sun Jun 14 11:41:19 2015 Leo Thevenet
+// Last update Sun Jun 14 14:04:56 2015 Leo Thevenet
 //
 
 #include "MapSaver.hh"
@@ -60,12 +60,14 @@ namespace	MapSaver
     int p, w, h;
     float x, y;
 
-    fichier >> w;
     fichier >> h;
+    fichier >> w;
     fichier >> p;
     fichier >> x;
     fichier >> y;
 
+    if (w > 100 || h > 100 || w < 10 || h < 10 || p < 1 || p > 2 || x > (h - 2) || x < 1 || y > (w - 2) || y < 1)
+      throw loading_error("Map corrupted");
     std::list<APlayer *> players;
     PhysicalPlayer *p1 = new PhysicalPlayer(x, y, APlayer::DOWN);
     players.push_back(p1);
@@ -73,6 +75,8 @@ namespace	MapSaver
       {
 	fichier >> x;
 	fichier >> y;
+	if (x > (h - 2) || x < 1 || y > (w - 2) || y < 1)
+	  throw loading_error("Map corrupted");
 	PhysicalPlayer *p2 = new PhysicalPlayer(x, y, APlayer::UP);
 	players.push_back(p2);
       }
@@ -88,10 +92,19 @@ namespace	MapSaver
 	      map[i][j] = new Wall(j, i);
 	    else if (a == 2)
 	      map[i][j] = new Box(j, i);
-	    else
+	    else if (a == 0)
 	      map[i][j] = NULL;
+	    else
+	      throw loading_error("Map corrupted");
+	    if ((j == 0 || j == (h - 1) || i == 0 || i == (w - 1)) && a != 1)
+	      throw loading_error("Map corrupted");
 	  }
+	if (static_cast<int>(map[i].size()) != h)
+	  throw loading_error("Map corrupted");
       }
+    if (static_cast<int>(map.size()) != w)
+      throw loading_error("Map corrupted");
+
     std::tuple<int, int, int, std::vector< std::vector<AObject *> >, std::list<APlayer *> > foo(w, h, p, map, players);
 
     fichier.close();

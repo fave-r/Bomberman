@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 15 21:49:34 2015 clément jean
-// Last update Sun Jun 14 11:57:44 2015 clément jean
+// Last update Sun Jun 14 15:26:59 2015 Leo Thevenet
 //
 
 #include "Box.hh"
