@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Sun Jun 14 23:04:07 2015 polydo_s
+// Last update Sun Jun 14 23:08:05 2015 Leo Thevenet
 //
 
 #include "Bomb.hh"
@@ -53,6 +53,7 @@ void			Bomb::destroy(std::vector<std::vector<AObject *> > &map, APlayer *player)
   (void)player;
   map[this->_y][this->_x] = new Fire(this->_x, this->_y, this->_elapsed);
   this->damage(map, this->_x, this->_y);
+  std::cout << player << std::endl;
   for (int i = this->_y - 1, j = this->_power; j > 0; --i, --j)
     if (!this->damage(map, this->_x, i))
       break;
