@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Fri May 29 02:23:16 2015 clément jean
-// Last update Sun Jun 14 23:08:05 2015 Leo Thevenet
+// Last update Sun Jun 14 23:10:25 2015 Leo Thevenet
 //
 
 #include "Bomb.hh"
@@ -31,11 +31,8 @@ bool			Bomb::damage(std::vector<std::vector<AObject *> > &map, int x, int y)
   for (it = this->_players.begin(); it != this->_players.end(); ++it)
     {
       if (!(*it)->isDead())
-	{
-	  std::cout << x << ":" << y << std::endl;
-	  if (static_cast<int>((*it)->getX() + (*it)->getWidth() / 2) == x && y == static_cast<int>((*it)->getY() + (*it)->getHeight() / 2))
-	    (*it)->kill();
-	}
+	if (static_cast<int>((*it)->getX() + (*it)->getWidth() / 2) == x && y == static_cast<int>((*it)->getY() + (*it)->getHeight() / 2))
+	  (*it)->kill();
     }
   if (!map[y][x])
     {
@@ -53,7 +50,6 @@ void			Bomb::destroy(std::vector<std::vector<AObject *> > &map, APlayer *player)
   (void)player;
   map[this->_y][this->_x] = new Fire(this->_x, this->_y, this->_elapsed);
   this->damage(map, this->_x, this->_y);
-  std::cout << player << std::endl;
   for (int i = this->_y - 1, j = this->_power; j > 0; --i, --j)
     if (!this->damage(map, this->_x, i))
       break;
