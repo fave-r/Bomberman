@@ -14,7 +14,7 @@
 APlayer::APlayer(float x, float y, APlayer::eOrientation orientation)
   : AObject(x, y, 0.70, 0.70),
     _dead(false), _orientation(orientation), _delta(0.5),
-    _speed(2), _power(1), _currentBombs(0), _maxBombs(5),
+    _speed(2), _power(1), _currentBombs(0), _maxBombs(1),
     _inAnim(false), _score(0), _elapse(0)
 {
   static unsigned int id = 1;
