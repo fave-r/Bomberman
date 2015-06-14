@@ -5,7 +5,7 @@
 // Login   <polydo_s@epitech.net>
 //
 // Started on  Sun Jun 14 03:03:34 2015 polydo_s
-// Last update Sun Jun 14 16:58:53 2015 polydo_s
+// Last update Sun Jun 14 17:13:07 2015 Leo Thevenet
 //
 
 #include "ArtificialPlayer.hh"
@@ -13,7 +13,7 @@
 ArtificialPlayer::ArtificialPlayer(float x, float y, APlayer::eOrientation orientation)
   : APlayer(x, y, orientation)
 {
-
+  this->_id = 0;
 }
 
 bool ArtificialPlayer::isDanger(std::vector<std::vector<AObject *> > &map)

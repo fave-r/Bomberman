@@ -5,14 +5,14 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun May 17 22:37:06 2015 clément jean
-// Last update Sun Jun 14 15:49:29 2015 polydo_s
+// Last update Sun Jun 14 17:29:48 2015 Leo Thevenet
 //
 
 #include "Bomberman.hh"
 #include "HighScore.hh"
 
 Bomberman::Bomberman()
-  : _w(Parseur::getX()), _h(Parseur::getY()), _p(0)
+  : _w(Parseur::getX()), _h(Parseur::getY()), _p(Parseur::getPlayer())
 {
   this->_map = Map::generate();
   this->_namedMap = "";
@@ -156,7 +156,7 @@ bool Bomberman::update()
   std::list<APlayer *>::iterator it;
   for (it = this->_playerlist.begin(); it != this->_playerlist.end(); ++it)
     {
-      if (!(*it)->isDead())
+      if ((*it)->isDead() == false)
 	{
 	  if ((*it)->getType() == "P")
 	    static_cast<PhysicalPlayer *>(*it)->setInput(this->_input);
@@ -167,14 +167,16 @@ bool Bomberman::update()
 	  (*it)->SetPos(glm::vec3((*it)->getX(), 1.001, (*it)->getY()));
 	}
       else
-	if ((*it)->getID() == 0)
-	  iaDead++;
-	else
-	  pDead++;
+	{
+	  std::cout << (*it)->getID() << std::endl;
+	  if ((*it)->getID() == 0)
+	    iaDead++;
+	  else
+	    pDead++;
+	}
     }
   it = this->_playerlist.begin();
-
-  if (pDead == 2 || (pDead == 1 && (iaDead + this->_p) == this->_playerlist.size()))
+  if (static_cast<int>(pDead) == this->_p || (static_cast<int>(pDead) == (this->_p - 1) && (iaDead + this->_p) == this->_playerlist.size()))
     {
       int ended = 0;
       Score::addNewScore((*it)->getScore(), 1);
